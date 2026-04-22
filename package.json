@@ -15,7 +15,7 @@
     "gray-matter": "^4.0.3",
     "motion": "^11.11.17",
     "next": "^15.1.0",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "reading-time": "^1.5.0",
