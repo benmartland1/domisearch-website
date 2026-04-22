@@ -1,0 +1,145 @@
+{
+  "_meta": {
+    "purpose": "Hyper-realistic image generation prompts for nano banana (Gemini 2.5 Flash Image). Goal: give the DomiSearch site the 'real, established, lived-in' feel of clicky.co.uk without inventing fake team members or fake events.",
+    "how_to_use": "For every prompt, upload /public/brand/founder.jpg as a reference image and tell Gemini: 'Use the attached photo as the exact likeness — same face, same hair (curly dark brown), same build — in the scene described below.' Generate 3–4 variants per prompt and pick the most natural. Avoid variants with visible AI tells (extra fingers, distorted text, waxy skin, symmetrical backgrounds).",
+    "subject_reference": "public/brand/founder.jpg — Ben Martland, mid-20s male, curly dark brown hair (short on sides, fuller on top), trim dark stubble beard, brown eyes, athletic build, roughly 5'11\".",
+    "house_style": {
+      "realism": "photorealistic, shot on a Sony A7 IV or Fujifilm X-T5, 35mm or 50mm prime, f/1.8–2.8 shallow depth of field, subtle natural grain, imperfect composition, candid energy",
+      "lighting": "warm natural light wherever possible — window light, golden hour, overcast soft light. No harsh studio flash. No clinical ring-light look.",
+      "colour": "mostly neutral and warm with occasional cool Manchester overcast tones. A very occasional hint of DomiSearch green (#01e890) via a laptop screen, sticker, or notebook cover — never overdone.",
+      "wardrobe_rules": "dark t-shirts, simple merino/overshirts, muted colours (black, charcoal, navy, oatmeal). No suits. No logos of other brands. Smart-casual founder-in-Manchester.",
+      "must_avoid": [
+        "waxy skin, plasticky face, 'AI gloss'",
+        "perfectly symmetrical framing",
+        "stock-photo composition (e.g. laughing at laptop)",
+        "illegible/gibberish text on screens or signs — prefer screens that are angled away or out of focus",
+        "extra fingers, warped hands, distorted watches/jewellery",
+        "invented co-workers or fake team members",
+        "fake company logos other than 'DomiSearch' (and even that sparingly)",
+        "overused AI clichés: glowing brains, holographic interfaces, neon circuit boards",
+        "stock-photo smiles to camera unless the shot is explicitly a portrait"
+      ],
+      "aspect_ratios_by_use": {
+        "portrait_4x5": "Founder section portrait slot (matches existing FounderSection aspect)",
+        "square_1x1": "Service-page 'Arrange a call' founder thumb, author bio",
+        "landscape_16x9": "Hero backdrop, blog headers, case study top",
+        "landscape_3x2": "In-page editorial, about page, process illustrations"
+      }
+    }
+  },
+
+  "prompts": [
+    {
+      "id": "01_founder_portrait_working_warm",
+      "use": "Primary founder portrait — replacement/alternate for FounderSection on homepage and /about page",
+      "aspect_ratio": "4:5",
+      "reference": "public/brand/founder.jpg",
+      "prompt": "A natural, candid photorealistic portrait of Ben (use the reference photo for exact likeness — curly dark brown hair, trim stubble, mid-20s, brown eyes). He's sitting at a warm wooden desk in a modern Manchester co-working space, mid-sentence, looking just off-camera as if mid-conversation with someone unseen. Soft diffused window light from camera-left, warm afternoon tones. Wearing a plain black crew-neck t-shirt. An open MacBook is in front of him, screen angled away from the viewer. A small ceramic coffee cup on the desk, a simple Moleskine-style notebook with a pen. Shallow depth of field (50mm f/1.8). Slightly imperfect crop. Subtle natural skin texture, visible pore detail, no smoothing. Very light natural film grain. Photojournalism feel, not studio.",
+      "negative_prompt": "no corporate stock-photo smile to camera, no harsh flash, no fake team members in background, no illegible text on screen, no gloss or waxy skin, no extra fingers",
+      "variants_to_generate": 4
+    },
+
+    {
+      "id": "02_founder_portrait_consultation_square",
+      "use": "Service-page 'Arrange a call' sidebar founder thumb (the exact use case you mentioned from the LLM Optimisation page)",
+      "aspect_ratio": "1:1",
+      "reference": "public/brand/founder.jpg",
+      "prompt": "A close, warm headshot of Ben (use reference image for likeness). Head-and-shoulders, looking directly at the camera with a relaxed, confident half-smile — friendly but not toothy. Softly out-of-focus interior behind him suggesting a bright modern workspace — wooden slats, a hint of green foliage, soft daylight. Wearing a dark charcoal merino crewneck. 85mm lens, f/2.0, natural catchlights in the eyes, no retouching look — real pores, natural asymmetry. Shot square, tight crop from mid-chest up, eyes on upper third. Warm, trustworthy, 'founder you'd actually want to talk to'.",
+      "negative_prompt": "no stiff LinkedIn pose, no studio seamless background, no skin smoothing, no heavy vignette, no HDR",
+      "variants_to_generate": 4
+    },
+
+    {
+      "id": "03_founder_on_video_call",
+      "use": "'How we work' / consultation section — shows Ben in actual client-call context",
+      "aspect_ratio": "3:2",
+      "reference": "public/brand/founder.jpg",
+      "prompt": "Ben (use reference photo for likeness) shown from a three-quarter angle at a wooden desk, mid-video-call, laptop open in front of him, gesturing with one hand as he talks. The laptop screen is angled away so its contents are not readable. Natural light from a large window to his left. A second monitor beside the laptop shows an abstract analytics-like chart out of focus (do NOT generate legible logos or brand names). A coffee cup, a spiral notebook with handwritten notes, a pair of AirPods on the desk. Room has a warm lived-in feel — wooden slats on the wall behind him, a small green plant, a framed print out of focus. Shot at 35mm f/2.5, slight ambient shadow, warm white balance. Candid, in-the-moment energy.",
+      "negative_prompt": "no readable brand names on screen, no gibberish text, no person on the video call visible, no harsh ring light, no fake 'office stock' vibe",
+      "variants_to_generate": 4
+    },
+
+    {
+      "id": "04_laptop_desk_environment_no_face",
+      "use": "Hero/backdrop imagery, blog headers, editorial — establishes 'real workspace' without needing a person",
+      "aspect_ratio": "16:9",
+      "reference": null,
+      "prompt": "Overhead and slightly-angled photorealistic shot of a real working desk in natural light. A MacBook open, screen displaying an abstract terminal / code editor with tasteful, clearly-fictional monospace text (avoid any real brand or recognisable software UI). A ceramic mug with black coffee, a dog-eared Moleskine notebook open to a page with hand-drawn diagrams — small arrows, circles, and the handwritten words 'AEO', 'prompts', 'citations' in casual blue biro. A pair of wired headphones coiled loosely. A small potted plant. Wooden desk, warm window light from the right creating gentle shadows. Shot at 35mm f/2.8. A single subtle accent of DomiSearch green — a small sticker on the laptop lid or a highlighter cap — nothing more. Realistic dust, a small crumb, one coffee ring stain: the desk of someone who actually uses it.",
+      "negative_prompt": "no AI clichés (holographic interfaces, glowing keyboards), no real brand logos, no gibberish code, no too-clean 'product shot' sterility",
+      "variants_to_generate": 4
+    },
+
+    {
+      "id": "05_manchester_window_skyline",
+      "use": "About page, Footer backdrop, or 'Manchester-based' eyebrow block — grounds you in place",
+      "aspect_ratio": "16:9",
+      "reference": null,
+      "prompt": "Photorealistic view from inside a warm, modern co-working / apartment interior looking out through a large industrial-style window onto the Manchester skyline at blue hour. Recognisable but not on-the-nose: brick buildings, Beetham Tower faintly visible in the distance, a train viaduct, soft drizzle catching the streetlights. The interior is partially visible in the foreground — the edge of a desk with a laptop (screen dimmed), a lamp, a coffee cup, a plant. Warm interior tungsten light contrasting with cool blue dusk outside. Realistic window reflections — not overdone. Shot at 24mm f/4 for depth. Moody, lived-in, unmistakably Manchester without being a postcard.",
+      "negative_prompt": "no touristy Manchester-postcard framing, no oversaturated colours, no fake-looking rain streaks, no obvious AI atmospheric mush",
+      "variants_to_generate": 3
+    },
+
+    {
+      "id": "06_founder_whiteboard_strategy",
+      "use": "Service pages ('what we actually do'), process section, or LinkedIn-style proof shot",
+      "aspect_ratio": "3:2",
+      "reference": "public/brand/founder.jpg",
+      "prompt": "Ben (use reference for likeness) standing at a large wall-mounted whiteboard, black marker in hand, mid-explanation, shown from a side three-quarter angle. On the whiteboard: a hand-drawn diagram of a buyer journey — boxes, arrows, the handwritten words 'Prompt', 'Retrieval', 'Answer', 'Citation', and a bar chart with 3 bars. Text must be hand-printed and legible but casual — not perfect. He's wearing a dark olive overshirt over a plain white tee. Soft directional daylight. A table in the foreground with a half-full coffee cup and an open laptop (out of focus). Shot at 35mm f/2.8, slight motion in his gesturing hand for realism. Candid workshop feel.",
+      "negative_prompt": "no perfect-calligraphy whiteboard, no gibberish scrawl, no fake attendees in the room, no corporate 'team meeting' stock vibe",
+      "variants_to_generate": 4
+    },
+
+    {
+      "id": "07_founder_walking_manchester",
+      "use": "About page mid-scroll, blog editorial — 'the human behind the agency' moment",
+      "aspect_ratio": "3:2",
+      "reference": "public/brand/founder.jpg",
+      "prompt": "A candid street-style shot of Ben (use reference for likeness) walking along a Manchester street in the Northern Quarter — brick walls, a hint of street art out of focus, wet pavement reflecting overcast light. Mid-stride, looking slightly down at his phone, not posed. Wearing a charcoal overshirt, dark jeans, a plain tee underneath, carrying a minimal leather tote bag over one shoulder. Soft grey UK overcast light, gentle cool tones. Shallow depth of field (50mm f/2.0). Background softly blurred with out-of-focus passers-by (no identifiable faces). Documentary photography feel, like a Guardian Weekend magazine portrait. Slight motion in the legs implies real movement.",
+      "negative_prompt": "no over-posed fashion editorial, no fake 'street photography' cinematic grading, no identifiable faces in background, no oversaturated colour",
+      "variants_to_generate": 3
+    },
+
+    {
+      "id": "08_notebook_aeo_flatlay",
+      "use": "Blog post headers (especially for AEO 101 / process posts), newsletter thumb, case-study intro",
+      "aspect_ratio": "3:2",
+      "reference": null,
+      "prompt": "Overhead flatlay of an open Moleskine-style notebook on a warm oak desk. The left page has a hand-drawn funnel diagram with the handwritten labels 'ChatGPT', 'Perplexity', 'Google AI Overviews' running down it and arrows pointing to 'Citation'. The right page has a short handwritten checklist — three ticked items, two unticked — in blue biro, casually written not calligraphic. Surrounding props: a mechanical pencil, a pair of wired over-ear headphones, a small ceramic coffee cup, a phone face-down. Warm natural window light from top-left with soft shadows. 35mm f/4. Slightly imperfect framing — a corner of the notebook cropped. Texture on the paper visible, slight indentations where the pen pressed.",
+      "negative_prompt": "no gibberish handwriting, no perfect geometry, no floating props (shadows must ground them), no real brand logos",
+      "variants_to_generate": 3
+    },
+
+    {
+      "id": "09_founder_reviewing_print_out",
+      "use": "Process section — 'personally reviewed every month' proof shot",
+      "aspect_ratio": "3:2",
+      "reference": "public/brand/founder.jpg",
+      "prompt": "Ben (use reference for likeness) seated at a desk, shown from a slightly-above three-quarter angle, head bent slightly, reading through a printed report with a pen in hand — one line visibly ticked. On the page: clearly-hand-drawn annotations in the margin, circled numbers, an arrow pointing to a bar chart (the actual text on the report should be blurred or clearly non-specific). Soft warm window light, co-working space, wooden desk. A coffee cup, a laptop closed beside him, a pair of glasses folded on the desk. Wearing a dark navy crewneck. 50mm f/2.0. Quiet, focused energy — not smiling, not posed. Feels like you've walked in on him mid-work.",
+      "negative_prompt": "no posed 'thinking' pose with chin on hand, no fake-looking charts, no gibberish text on the printout",
+      "variants_to_generate": 4
+    },
+
+    {
+      "id": "10_client_workshop_two_chairs",
+      "use": "'Book a call' / consultation page hero — suggests a real working session without inventing a team",
+      "aspect_ratio": "16:9",
+      "reference": "public/brand/founder.jpg",
+      "prompt": "Wide environmental shot of a small bright meeting room. Ben (use reference for likeness) sits on one side of a small round wooden table, laptop open, gesturing as he speaks — in profile to the camera. The chair across from him is empty but has a coffee cup and a closed notebook on the table in front of it, implying the other person has just stepped away. A pull-down screen on the wall shows an abstract chart clearly out of focus. Large window with warm daylight. Green plant in the corner. Real, lived-in feel. 24mm f/4.0, slightly elevated angle, room has natural asymmetry. Documentary in style.",
+      "negative_prompt": "no fake client across the table, no overly staged 'consultation' cliche, no visible readable logos on the screen, no artificial depth-of-field bokeh",
+      "variants_to_generate": 3
+    }
+  ],
+
+  "process_suggestions": {
+    "order_to_build": [
+      "Start with 02 (square founder) — highest-leverage, direct replacement for the thumb you already have next to 'Arrange a call about this'",
+      "Then 04 (desk no-face) and 08 (notebook flatlay) — safe, no-likeness shots for blog/editorial",
+      "Then 01 (portrait) and 09 (reviewing printout) — reinforce the 'personally reviewed by me' message",
+      "Then 03, 06, 10 — scene shots that imply real client work",
+      "Finally 05 and 07 — mood/place shots for About and footer"
+    ],
+    "naming_convention": "Save outputs as public/brand/ben-{id}.jpg (e.g. public/brand/ben-02-consultation-square.jpg) so they cross-reference back to this spec",
+    "quality_bar": "Before using, open the image full-screen and check: (a) hands and fingers are correct, (b) any visible text is either clearly legible or clearly blurred — never gibberish-legible, (c) skin looks like skin, not plastic, (d) the background has real-world imperfection. If any one fails, regenerate.",
+    "ethical_note": "Every image in this spec depicts a real person (Ben) in scenarios he could plausibly actually be in, or depicts no person at all. We are not generating fake team members, fake clients, or fake events. Stay on this side of the line."
+  }
+}

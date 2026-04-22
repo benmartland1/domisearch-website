@@ -1,0 +1,112 @@
+"use client";
+
+import Link from "next/link";
+import { motion, useReducedMotion } from "motion/react";
+import { site } from "@/lib/site";
+import { Counter } from "./Counter";
+import { MagneticButton } from "./MagneticButton";
+import { GooglePartnerBadge } from "./ui/GooglePartnerBadge";
+import { ShopifyPartnerBadge } from "./ui/ShopifyPartnerBadge";
+
+export function Hero() {
+  const reduce = useReducedMotion();
+  const word = (i: number) => ({
+    initial: { opacity: 0, y: reduce ? 0 : 40 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.9, delay: 0.12 * i, ease: [0.2, 0.8, 0.2, 1] },
+  });
+
+  return (
+    <section className="relative isolate overflow-hidden">
+      <div className="absolute inset-0 grid-backdrop" aria-hidden />
+      <div
+        aria-hidden
+        className="glow"
+        style={{ width: 560, height: 560, background: "var(--color-domigreen)", top: -160, left: "-10%" }}
+      />
+      <div
+        aria-hidden
+        className="glow"
+        style={{ width: 420, height: 420, background: "var(--color-pine)", bottom: -200, right: "-10%", opacity: 0.5 }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-6 pb-24 pt-20 lg:px-10 lg:pt-28">
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-wrap items-center gap-3"
+        >
+          <GooglePartnerBadge className="w-[165px]! sm:w-[195px]!" />
+          <ShopifyPartnerBadge className="w-[165px]! sm:w-[195px]!" />
+        </motion.div>
+
+        <h1 className="display mt-10 max-w-5xl text-balance text-[clamp(2.75rem,7vw,5.75rem)]">
+          <motion.span {...word(0)} className="block">
+            Be the brand
+          </motion.span>
+          <motion.span {...word(1)} className="block">
+            AI <span className="italic font-[500] text-[color:var(--color-domigreen)]">recommends</span>.
+          </motion.span>
+        </h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.55, duration: 0.8 }}
+          className="mt-8 max-w-2xl text-pretty text-lg leading-relaxed text-[color:var(--color-fog)]/85 sm:text-xl"
+        >
+          We run Google Ads to capture the demand that exists today - and AEO to engineer
+          the demand forming inside ChatGPT, Gemini and Perplexity. One discipline:{" "}
+          <span className="text-[color:var(--color-glacier)]">Search Ownership.</span>
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.75, duration: 0.8 }}
+          className="mt-10 flex flex-wrap items-center gap-3"
+        >
+          <MagneticButton
+            href={site.calendly}
+            target="_blank"
+            rel="noopener"
+            className="btn btn-primary"
+          >
+            Free Google Ads audit
+            <span aria-hidden>→</span>
+          </MagneticButton>
+          <MagneticButton href="/services/aeo" className="btn btn-primary">
+            ChatGPT visibility check
+            <span aria-hidden>→</span>
+          </MagneticButton>
+        </motion.div>
+
+        <motion.dl
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="mt-20 grid max-w-xl grid-cols-2 gap-x-10 gap-y-10"
+        >
+          {[
+            { value: 3, prefix: "£", suffix: "M+", label: "Managed ad spend" },
+            { value: 50, suffix: "+", label: "Brands served" },
+          ].map((item) => (
+            <div key={item.label}>
+              <dt className="display text-4xl text-[color:var(--color-domigreen)] sm:text-5xl">
+                <Counter
+                  value={item.value}
+                  prefix={item.prefix}
+                  suffix={item.suffix}
+                />
+              </dt>
+              <dd className="mt-2 text-sm uppercase tracking-[0.18em] text-[color:var(--color-fog)]/70">
+                {item.label}
+              </dd>
+            </div>
+          ))}
+        </motion.dl>
+      </div>
+    </section>
+  );
+}
