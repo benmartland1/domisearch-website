@@ -32,7 +32,7 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 sm:py-4 lg:px-10">
         <Link href="/" aria-label="DomiSearch home" className="flex items-center gap-2">
           <Image
             src="/brand/logo.png"
@@ -40,7 +40,7 @@ export function Header() {
             width={178}
             height={28}
             priority
-            className="logo-mark h-7 w-auto"
+            className="logo-mark h-[22px] w-auto sm:h-7"
           />
         </Link>
 
@@ -81,21 +81,33 @@ export function Header() {
           className="relative grid h-10 w-10 place-items-center rounded-full border border-white/10 lg:hidden"
           onClick={() => setOpen((v) => !v)}
         >
-          <span
-            className={`block h-px w-5 bg-[color:var(--color-glacier)] transition-transform ${
-              open ? "translate-y-[3px] rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`mt-1 block h-px w-5 bg-[color:var(--color-glacier)] transition-transform ${
-              open ? "-translate-y-[3px] -rotate-45" : ""
-            }`}
-          />
+          <span className="sr-only">Menu</span>
+          <span className="relative block h-3 w-[18px]">
+            <span
+              className={`absolute left-0 block h-px w-[18px] bg-[color:var(--color-glacier)] transition-all duration-300 ease-out ${
+                open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
+              }`}
+            />
+            <span
+              className={`absolute left-0 top-1/2 block h-px w-[18px] -translate-y-1/2 bg-[color:var(--color-glacier)] transition-opacity duration-200 ease-out ${
+                open ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`absolute left-0 block h-px w-[18px] bg-[color:var(--color-glacier)] transition-all duration-300 ease-out ${
+                open ? "top-1/2 -translate-y-1/2 -rotate-45" : "bottom-0"
+              }`}
+            />
+          </span>
         </button>
       </div>
 
-      {open && (
-        <div className="border-t border-white/5 bg-[color:var(--color-charcoal)] lg:hidden">
+      <div
+        className={`grid overflow-hidden border-white/5 bg-[color:var(--color-charcoal)] transition-[grid-template-rows,opacity,border-top-width] duration-300 ease-out lg:hidden ${
+          open ? "grid-rows-[1fr] border-t opacity-100" : "grid-rows-[0fr] border-t-0 opacity-0"
+        }`}
+      >
+        <div className="min-h-0 overflow-hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
             {site.nav.map((item) => (
               <Link
@@ -112,13 +124,14 @@ export function Header() {
               target="_blank"
               rel="noopener"
               onClick={() => setOpen(false)}
-              className="btn btn-primary mt-2 justify-center"
+              className="btn btn-primary mt-2 justify-center gap-2"
             >
-              Book a call →
+              Book a call
+              <span aria-hidden>→</span>
             </Link>
           </nav>
         </div>
-      )}
+      </div>
     </header>
   );
 }
