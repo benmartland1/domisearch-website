@@ -20,6 +20,7 @@ export const site = {
   nav: [
     { label: "Google Ads", href: "/services/google-ads" },
     { label: "AI Search", href: "/services/aeo" },
+    { label: "Pricing", href: "/pricing" },
     { label: "Free audit", href: "/scorecard" },
     { label: "About", href: "/about" },
     { label: "Blog", href: "/blog" },

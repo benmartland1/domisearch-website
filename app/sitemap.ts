@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/services/google-ads",
     "/services/aeo",
+    "/pricing",
     "/scorecard",
     "/about",
     "/careers",
