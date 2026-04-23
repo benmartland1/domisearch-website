@@ -94,21 +94,23 @@ html, body {
 .text-balance { text-wrap: balance; }
 .text-pretty { text-wrap: pretty; }
 
-.display {
-  font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -0.035em;
-  line-height: 0.95;
-  color: var(--color-glacier);
-}
+@layer components {
+  .display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    color: var(--color-glacier);
+  }
 
-.eyebrow {
-  font-family: var(--font-display);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  font-size: 0.72rem;
-  color: var(--color-domigreen);
+  .eyebrow {
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.72rem;
+    color: var(--color-domigreen);
+  }
 }
 
 .btn {

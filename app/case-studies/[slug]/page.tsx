@@ -310,7 +310,7 @@ export default async function CaseStudyPage({ params }: Props) {
               <figure className="relative overflow-hidden rounded-3xl border border-black/10 bg-[color:var(--color-paper-2)] p-10 sm:p-14">
                 <span
                   aria-hidden
-                  className="absolute -left-2 -top-14 font-[700] text-[16rem] leading-none text-[color:var(--color-pine)]/12 select-none sm:text-[20rem]"
+                  className="absolute -left-5 top-3 font-[700] text-[10rem] leading-[0.8] text-[color:var(--color-pine)]/12 select-none sm:text-[13rem] sm:top-5"
                   style={{
                     color: cs.accent
                       ? `color-mix(in oklab, ${cs.accent} 18%, transparent)`
