@@ -33,7 +33,7 @@ export function FounderSection() {
             <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.06] via-white/[0.02] to-transparent p-2">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.6rem] bg-[color:var(--color-charcoal)]">
                 <Image
-                  src="/brand/founder.jpg"
+                  src="/brand/founder.png"
                   alt="Ben Martland, Founder of DomiSearch"
                   fill
                   priority={false}
