@@ -3,18 +3,46 @@ import { site } from "./site";
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${site.url}/#organization`,
   name: site.name,
   url: site.url,
   logo: `${site.url}/brand/logo.png`,
   email: site.email,
   telephone: site.phone,
-  sameAs: [site.social.linkedin, site.social.x],
+  description:
+    "DomiSearch is a Google Partner and Shopify Partner search agency based in Manchester, UK, specialising in Google Ads management and AI Engine Optimisation (AEO).",
+  sameAs: [site.social.linkedin, site.social.x, site.trustpilot],
   address: {
     "@type": "PostalAddress",
     addressLocality: site.city,
     addressCountry: "GB",
   },
   founder: { "@type": "Person", name: site.founder },
+};
+
+export const professionalServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": `${site.url}/#service`,
+  name: site.name,
+  url: site.url,
+  telephone: site.phone,
+  email: site.email,
+  image: `${site.url}/brand/logo.png`,
+  priceRange: "£££",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: site.city,
+    addressCountry: "GB",
+  },
+  areaServed: ["GB", "US", "EU"],
+  makesOffer: [
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Google Ads management" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Engine Optimisation (AEO)" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Search Revenue Ownership" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Landing page CRO" } },
+  ],
+  sameAs: [site.social.linkedin, site.social.x, site.trustpilot],
 };
 
 export const localBusinessSchema = {
