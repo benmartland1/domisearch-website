@@ -135,7 +135,7 @@ export default function GoogleAdsPage() {
           <ScrollReveal delay={220}>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link href={site.calendly} target="_blank" rel="noopener" className="btn btn-primary">
-                Book a free audit
+                Book a call
                 <span aria-hidden>→</span>
               </Link>
               <Link href="/contact" className="btn btn-ghost">

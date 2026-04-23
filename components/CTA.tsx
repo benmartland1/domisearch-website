@@ -24,7 +24,7 @@ export function CTA({
           <ScrollReveal delay={120}>
             <div className="flex flex-wrap gap-3 lg:justify-end">
               <Link href={site.calendly} target="_blank" rel="noopener" className="btn btn-primary">
-                Claim your free audit
+                Book a call
                 <span aria-hidden>→</span>
               </Link>
               <Link href="/contact" className="btn btn-ghost">Contact us</Link>

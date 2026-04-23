@@ -11,7 +11,7 @@ type Props = {
 
 export function ConsultationRail({
   eyebrow = "Arrange a call about this",
-  ctaLabel = "Book a 30-min consultation",
+  ctaLabel = "Book a call",
   founderQuote = "You'll speak to me - not a sales pod. If this isn't right for you I'll say so on the call.",
   className = "",
 }: Props) {

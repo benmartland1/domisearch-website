@@ -75,11 +75,7 @@ export function Hero() {
               rel="noopener"
               className="btn btn-primary"
             >
-              Free Google Ads audit
-              <span aria-hidden>→</span>
-            </MagneticButton>
-            <MagneticButton href="/services/aeo" className="btn btn-primary">
-              ChatGPT visibility check
+              Book a call
               <span aria-hidden>→</span>
             </MagneticButton>
           </motion.div>

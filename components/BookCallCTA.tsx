@@ -17,7 +17,7 @@ type Props = {
  * Designed to be dropped between major sections without fighting the section rhythm.
  */
 export function BookCallCTA({
-  label = "Book a 30-minute call with Ben",
+  label = "Book a call",
   eyebrow = "Meet Ben",
   className = "mt-24",
 }: Props) {

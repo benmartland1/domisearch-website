@@ -106,7 +106,7 @@ export function FounderSection() {
           <ScrollReveal delay={340}>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href={site.calendly} target="_blank" rel="noopener" className="btn btn-primary">
-                Book a call with Ben
+                Book a call
                 <span aria-hidden>→</span>
               </Link>
               <Link href="/about" className="btn btn-ghost">

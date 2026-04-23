@@ -298,7 +298,7 @@ export function Testimonials({ showBookCall = false }: TestimonialsProps = {}) {
               className="h-11 w-11 shrink-0 rounded-full object-cover object-center ring-2 ring-[color:var(--color-domigreen)]/40"
               style={{ objectPosition: "center 15%" }}
             />
-            <span className="whitespace-nowrap">Book a 30-minute call with Ben</span>
+            <span className="whitespace-nowrap">Book a call</span>
             <span
               aria-hidden
               className="transition-transform duration-300 group-hover:translate-x-0.5"

@@ -125,7 +125,7 @@ export default function AboutPage() {
             <ScrollReveal delay={260}>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href={site.calendly} target="_blank" rel="noopener" className="btn btn-primary">
-                  Book a call with Ben →
+                  Book a call →
                 </Link>
                 <Link href={site.social.linkedin} target="_blank" rel="noopener" className="btn btn-ghost">
                   LinkedIn

@@ -207,7 +207,7 @@ export default function AEOPage() {
           <ScrollReveal delay={200}>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link href={site.calendly} target="_blank" rel="noopener" className="btn btn-primary">
-                See how you rank in ChatGPT
+                Book a call
                 <span aria-hidden>→</span>
               </Link>
               <Link href="#how-we-measure" className="btn btn-ghost">
