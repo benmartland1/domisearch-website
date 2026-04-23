@@ -7,6 +7,8 @@ import { FounderSection } from "@/components/FounderSection";
 import { Testimonials } from "@/components/Testimonials";
 import { CTA } from "@/components/CTA";
 import { JsonLd } from "@/components/JsonLd";
+import { PricingTable } from "@/components/PricingTable";
+import { SectionHeader } from "@/components/SectionHeader";
 import { localBusinessSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
@@ -26,6 +28,16 @@ export default function HomePage() {
       </div>
       <ServicesGrid />
       <CaseStudiesSection />
+      <section className="relative mx-auto mt-32 max-w-7xl px-6 lg:px-10">
+        <SectionHeader
+          eyebrow="Pricing"
+          title="Senior work. Plain pricing."
+          description="Monthly retainers, three-month minimum, no setup fees. Published starting rates so you can qualify yourself before the call."
+        />
+        <div className="mt-14">
+          <PricingTable />
+        </div>
+      </section>
       <FounderSection />
       <Testimonials showBookCall />
       <CTA
