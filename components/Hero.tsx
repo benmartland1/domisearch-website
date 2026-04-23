@@ -31,7 +31,7 @@ export function Hero() {
         style={{ width: 420, height: 420, background: "var(--color-pine)", bottom: -200, right: "-10%", opacity: 0.5 }}
       />
 
-      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-24 pt-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:px-10 lg:pt-28">
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-24 pt-20 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-10 lg:pt-28">
         <div>
           <motion.div
             initial={{ opacity: 0, y: 8 }}
@@ -39,11 +39,11 @@ export function Hero() {
             transition={{ duration: 0.6 }}
             className="flex flex-wrap items-center gap-3"
           >
-            <GooglePartnerBadge className="w-[165px]! sm:w-[195px]!" />
-            <ShopifyPartnerBadge className="w-[165px]! sm:w-[195px]!" />
+            <GooglePartnerBadge className="w-[148px]! sm:w-[175px]!" />
+            <ShopifyPartnerBadge className="w-[148px]! sm:w-[175px]!" />
           </motion.div>
 
-          <h1 className="display mt-10 text-balance text-[clamp(2.75rem,6vw,5rem)]">
+          <h1 className="display mt-10 text-balance text-[clamp(2.5rem,5.4vw,4.5rem)]">
             <motion.span {...word(0)} className="block">
               Be the brand
             </motion.span>
@@ -56,7 +56,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.55, duration: 0.8 }}
-            className="mt-8 max-w-2xl text-pretty text-lg leading-relaxed text-[color:var(--color-fog)]/85 sm:text-xl"
+            className="mt-8 max-w-2xl text-pretty text-base leading-relaxed text-[color:var(--color-fog)]/85 sm:text-lg"
           >
             We run Google Ads to capture the demand that exists today - and AEO to engineer
             the demand forming inside ChatGPT, Gemini and Perplexity. One discipline:{" "}
@@ -95,7 +95,7 @@ export function Hero() {
               { value: 50, suffix: "+", label: "Brands served" },
             ].map((item) => (
               <div key={item.label}>
-                <dt className="display text-4xl text-[color:var(--color-domigreen)] sm:text-5xl">
+                <dt className="display text-[2rem] text-[color:var(--color-domigreen)] sm:text-[2.75rem]">
                   <Counter
                     value={item.value}
                     prefix={item.prefix}
@@ -122,8 +122,8 @@ export function Hero() {
             width={1080}
             height={1080}
             priority
-            sizes="(max-width: 1280px) 40vw, 520px"
-            className="h-auto w-full max-w-[520px]"
+            sizes="(max-width: 1280px) 50vw, 660px"
+            className="h-auto w-full max-w-[660px]"
           />
         </motion.div>
       </div>
