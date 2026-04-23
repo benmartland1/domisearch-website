@@ -45,24 +45,6 @@ export const professionalServiceSchema = {
   sameAs: [site.social.linkedin, site.social.x, site.trustpilot],
 };
 
-export const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": `${site.url}/#business`,
-  name: site.name,
-  url: site.url,
-  email: site.email,
-  telephone: site.phone,
-  image: `${site.url}/brand/logo.png`,
-  priceRange: "£££",
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: site.city,
-    addressCountry: "GB",
-  },
-  areaServed: ["GB", "US", "EU"],
-};
-
 export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",

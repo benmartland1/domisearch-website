@@ -8,6 +8,7 @@ import { Testimonials } from "@/components/Testimonials";
 import { CTA } from "@/components/CTA";
 import { PricingTable } from "@/components/PricingTable";
 import { SectionHeader } from "@/components/SectionHeader";
+import { FAQ } from "@/components/FAQ";
 import {
   organizationSchema,
   professionalServiceSchema,
@@ -88,6 +89,7 @@ export default function HomePage() {
       </section>
       <FounderSection />
       <Testimonials showBookCall />
+      <FAQ items={homeFaqs} heading="Common questions." />
       <CTA
         heading="Own every surface your buyers search."
         sub="Book a free 30-minute call with Ben. We'll walk through your Google Ads account and how you're showing up across ChatGPT, Gemini and Perplexity - then tell you the three highest-leverage moves you can make next."
