@@ -43,7 +43,7 @@ export default function AboutPage() {
           personSchema({
             name: site.founder,
             jobTitle: "Founder, DomiSearch",
-            image: "/brand/founder.jpg",
+            image: "/brand/founder.png",
             url: `${site.url}/about`,
             sameAs: [site.social.linkedin],
             description:
@@ -94,7 +94,7 @@ export default function AboutPage() {
               <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.06] via-white/[0.02] to-transparent p-2">
                 <div className="relative aspect-square w-full overflow-hidden rounded-[1.6rem] bg-[color:var(--color-charcoal)]">
                   <Image
-                    src="/brand/ben-warm.jpg"
+                    src="/brand/founder.png"
                     alt="Ben Martland, Founder of DomiSearch"
                     fill
                     sizes="(max-width: 1024px) 100vw, 520px"
