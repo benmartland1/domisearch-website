@@ -55,10 +55,6 @@ export const metadata: Metadata = {
     description: site.description,
     images: ["/brand/logo.png"],
   },
-  icons: {
-    icon: "/brand/logo.png",
-    apple: "/brand/logo.png",
-  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
