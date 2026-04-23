@@ -5,7 +5,7 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { CTA } from "@/components/CTA";
 
 export const metadata: Metadata = {
-  title: "Blog - AEO, SEO & Google Ads insights",
+  title: "Blog - AEO & Google Ads insights",
   description:
     "Research, playbooks and strategy from the DomiSearch team on AI engine optimisation, Google Ads performance and search in the AI era.",
   alternates: { canonical: "/blog" },
@@ -40,8 +40,8 @@ export default function BlogIndexPage() {
           </ScrollReveal>
           <ScrollReveal delay={140}>
             <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-fog)]/85">
-              Playbooks, research and opinion from the team - on AEO, SEO, Google Ads and what's
-              coming next.
+              Playbooks, research and opinion from the team - on AEO, Google Ads and what's
+              coming next in search.
             </p>
           </ScrollReveal>
         </div>

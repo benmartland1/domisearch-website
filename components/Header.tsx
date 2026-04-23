@@ -32,7 +32,7 @@ export function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 sm:py-4 lg:px-10">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-10">
         <Link href="/" aria-label="DomiSearch home" className="flex items-center gap-2">
           <Image
             src="/brand/logo.png"

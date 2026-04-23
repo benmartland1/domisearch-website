@@ -19,7 +19,7 @@ export function Footer() {
             />
           </Link>
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-[color:var(--color-fog)]/80">
-            Google Ads, SEO and AI Engine Optimisation - engineered to make your brand the
+            Google Ads and AI Engine Optimisation - engineered to make your brand the
             answer AI recommends.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">

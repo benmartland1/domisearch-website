@@ -18,7 +18,7 @@ export function Hero() {
   });
 
   return (
-    <section className="relative isolate overflow-hidden">
+    <section className="relative isolate overflow-x-clip">
       <div className="absolute inset-0 grid-backdrop" aria-hidden />
       <div
         aria-hidden

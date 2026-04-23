@@ -12,6 +12,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { ConsultationRail } from "@/components/ConsultationRail";
 import { BookCallCTA } from "@/components/BookCallCTA";
 import { Testimonials } from "@/components/Testimonials";
+import { AIEnginesBadge } from "@/components/ui/AIEnginesBadge";
 import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 import { getCaseStudiesByService } from "@/lib/case-studies";
 import { site } from "@/lib/site";
@@ -97,9 +98,9 @@ const engines = [
 
 const faqs = [
   {
-    question: "Is this just SEO with a new name?",
+    question: "Is this just organic search work with a new name?",
     answer:
-      "About 70–80% overlaps with good SEO. The new 20–30% - prompt tracking, llms.txt, citation ops, model-specific content patterns - is where the real work sits. We'll tell you exactly which of your problems are SEO and which are AEO.",
+      "About 70–80% overlaps with classic organic work - clean architecture, helpful content, real authority. The new 20–30% - prompt tracking, llms.txt, citation ops, model-specific content patterns - is where the new leverage sits. We'll tell you exactly what each of your problems actually is.",
   },
   {
     question: "How do you measure success?",
@@ -132,9 +133,9 @@ const faqs = [
       "Yes. Ads + AEO is how most of our clients work with us. Ads captures demand that exists today; AEO captures demand forming inside AI answers. Running both means today's numbers and tomorrow's moat.",
   },
   {
-    question: "How is AEO different from traditional SEO?",
+    question: "How does AEO compare to ranking on Google?",
     answer:
-      "Traditional SEO ranks pages in a list. AEO ensures your brand appears inside the conversational answer - where faster decisions get made. We target citations and share-of-voice, not just clicks.",
+      "Ranking aims to put your page on a results list. AEO ensures your brand appears inside the conversational answer - where faster decisions get made. We target citations and share-of-voice, not just clicks.",
   },
   {
     question: "Do you work with any industry?",
@@ -186,11 +187,11 @@ export default function AEOPage() {
           }}
         />
         <div className="relative mx-auto max-w-7xl px-6 pb-20 pt-16 lg:px-10 lg:pt-24">
-          <ScrollReveal as="span" className="eyebrow">
-            Service · 02 · AEO
+          <ScrollReveal>
+            <AIEnginesBadge className="w-[240px]! sm:w-[280px]!" />
           </ScrollReveal>
-          <ScrollReveal delay={60}>
-            <h1 className="display mt-5 text-balance text-[clamp(2.5rem,6vw,5rem)]">
+          <ScrollReveal delay={80}>
+            <h1 className="display mt-10 text-balance text-[clamp(2.5rem,6vw,5rem)]">
               Be the brand
               <br />
               <span className="text-[color:var(--color-domigreen)]">AI recommends.</span>

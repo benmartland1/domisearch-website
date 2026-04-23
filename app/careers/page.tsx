@@ -73,8 +73,8 @@ export default function CareersPage() {
             <div className="eyebrow">Current openings</div>
             <h2 className="display mt-4 text-3xl sm:text-4xl">No public roles right now.</h2>
             <p className="mt-5 max-w-2xl text-[color:var(--color-fog)]/85">
-              We hire opportunistically. If you're exceptional at Google Ads, AEO, technical SEO,
-              or you think you'd be a great fit for a small senior team, email Ben directly.
+              We hire opportunistically. If you're exceptional at Google Ads, AEO, or you
+              think you'd be a great fit for a small senior team, email Ben directly.
               Include work you're proud of.
             </p>
             <div className="mt-8">
