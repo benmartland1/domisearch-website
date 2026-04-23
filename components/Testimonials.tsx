@@ -290,7 +290,7 @@ export function Testimonials({ showBookCall = false }: TestimonialsProps = {}) {
             className="group inline-flex h-16 items-center justify-center gap-4 rounded-full border border-white/10 bg-white/[0.04] py-2.5 pl-2.5 pr-7 text-[15px] font-medium text-[color:var(--color-glacier)] shadow-[0_12px_36px_-14px_rgba(0,0,0,0.5)] transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-[color:var(--color-domigreen)]/50 hover:shadow-[0_18px_44px_-14px_color-mix(in_oklab,var(--color-domigreen)_38%,transparent)]"
           >
             <Image
-              src="/brand/founder.jpg"
+              src="/brand/founder-cta.png"
               alt="Ben Martland"
               width={48}
               height={48}

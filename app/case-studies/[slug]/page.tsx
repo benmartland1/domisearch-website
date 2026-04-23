@@ -333,12 +333,23 @@ export default async function CaseStudyPage({ params }: Props) {
                 </blockquote>
                 {cs.quoteAuthor && (
                   <figcaption className="relative mt-10 flex items-center gap-5">
-                    <span
-                      className="grid h-12 w-12 place-items-center rounded-full border border-black/10 bg-[color:var(--color-paper)] text-sm font-[600]"
-                      style={{ color: cs.accent ?? "#01634c" }}
-                    >
-                      {cs.quoteAuthor.split(" ").map((p) => p[0]).join("")}
-                    </span>
+                    {cs.quoteAuthorPhoto ? (
+                      <Image
+                        src={cs.quoteAuthorPhoto}
+                        alt={cs.quoteAuthor}
+                        width={48}
+                        height={48}
+                        sizes="48px"
+                        className="h-12 w-12 shrink-0 rounded-full object-cover object-center ring-1 ring-black/10"
+                      />
+                    ) : (
+                      <span
+                        className="grid h-12 w-12 place-items-center rounded-full border border-black/10 bg-[color:var(--color-paper)] text-sm font-[600]"
+                        style={{ color: cs.accent ?? "#01634c" }}
+                      >
+                        {cs.quoteAuthor.split(" ").map((p) => p[0]).join("")}
+                      </span>
+                    )}
                     <div>
                       <div className="text-sm font-[600] text-[color:var(--color-ink)]">
                         {cs.quoteAuthor}

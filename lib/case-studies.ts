@@ -23,6 +23,7 @@ export type CaseStudyFrontmatter = {
   excerpt: string;
   quote?: string;
   quoteAuthor?: string;
+  quoteAuthorPhoto?: string;
   quoteRole?: string;
   featured?: boolean;
   metaTitle?: string;
@@ -76,6 +77,7 @@ export function getCaseStudyBySlug(slug: string): CaseStudy | null {
     excerpt: fm.excerpt ?? "",
     quote: fm.quote,
     quoteAuthor: fm.quoteAuthor,
+    quoteAuthorPhoto: fm.quoteAuthorPhoto,
     quoteRole: fm.quoteRole,
     featured: fm.featured ?? false,
     metaTitle: fm.metaTitle,

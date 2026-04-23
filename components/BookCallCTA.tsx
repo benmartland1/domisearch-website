@@ -34,7 +34,7 @@ export function BookCallCTA({
         {/* Headshot */}
         <span className="relative block h-11 w-11 shrink-0 overflow-hidden rounded-full ring-2 ring-[color:var(--color-domigreen)]/40 transition-[ring-color,transform] duration-300 group-hover:ring-[color:var(--color-domigreen)] sm:h-12 sm:w-12">
           <Image
-            src="/brand/founder.jpg"
+            src="/brand/founder-cta.png"
             alt="Ben Martland"
             fill
             sizes="48px"
