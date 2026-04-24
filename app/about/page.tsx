@@ -6,13 +6,68 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { LogoWall } from "@/components/LogoWall";
 import { CTA } from "@/components/CTA";
 import { JsonLd } from "@/components/JsonLd";
-import { personSchema, breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 
+const aboutGraph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${site.url}/#organization`,
+      name: "DomiSearch",
+      url: site.url,
+      logo: `${site.url}/brand/logo.png`,
+      foundingDate: "2023",
+      description:
+        "DomiSearch is a Manchester-based Google Ads and AI Engine Optimisation (AEO) agency. A certified Google Partner and Shopify Partner, DomiSearch helps e-commerce and service brands capture demand through Google Ads and engineer demand forming inside AI search engines including ChatGPT, Gemini, and Perplexity.",
+      areaServed: ["United Kingdom", "European Union", "United States"],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Manchester",
+        addressCountry: "GB",
+      },
+      sameAs: [
+        site.social.linkedin,
+        site.trustpilot,
+        "https://x.com/benmartland",
+      ],
+      founder: { "@type": "Person", name: "Ben Martland" },
+    },
+    {
+      "@type": "Person",
+      "@id": `${site.url}/about#ben-martland`,
+      name: "Ben Martland",
+      jobTitle: "Founder",
+      worksFor: { "@type": "Organization", name: "DomiSearch" },
+      url: `${site.url}/about`,
+      sameAs: [
+        "https://www.linkedin.com/in/benmartland/",
+        "https://x.com/benmartland",
+      ],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Manchester",
+        addressCountry: "GB",
+      },
+      description:
+        "Ben Martland is the founder of DomiSearch, a Manchester-based Google Ads and AEO agency. He has 5 years of experience managing Google Ads for e-commerce and service brands, with over £3M in personally managed ad spend. He holds Google Partner certification and leads DomiSearch's monthly AEO research programme.",
+    },
+    {
+      "@type": "AboutPage",
+      name: "About DomiSearch",
+      url: `${site.url}/about`,
+      description:
+        "Learn about DomiSearch, a Manchester-based Google Ads and AEO agency founded in 2023 by Ben Martland. Google Partner, Shopify Partner, and one of the UK's first agencies to offer AI Engine Optimisation as a standalone service.",
+      mainEntity: { "@type": "Organization", name: "DomiSearch" },
+    },
+  ],
+};
+
 export const metadata: Metadata = {
-  title: "About - The team behind DomiSearch",
+  title: "About DomiSearch | Google Ads & AEO Agency - Manchester",
   description:
-    "DomiSearch is a small, senior team led by Ben Martland - a Google Partner and Shopify Partner agency built on performance, transparency and AI-first thinking.",
+    "DomiSearch is a Manchester-based Google Ads and AEO agency founded in 2023 by Ben Martland. Google Partner, Shopify Partner, £3M+ in personally managed ad spend.",
   alternates: { canonical: "/about" },
 };
 
@@ -38,23 +93,15 @@ const values = [
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutGraph) }}
+      />
       <JsonLd
-        data={[
-          personSchema({
-            name: site.founder,
-            jobTitle: "Founder, DomiSearch",
-            image: "/brand/founder.png",
-            url: `${site.url}/about`,
-            sameAs: [site.social.linkedin],
-            description:
-              "Ben Martland is the founder of DomiSearch. Four years running Google Ads for e-commerce and service brands. Google Partner and Shopify Partner. Leads the agency's AEO research programme from Manchester.",
-            worksFor: { name: site.name, url: site.url },
-          }),
-          breadcrumbSchema([
-            { name: "Home", url: site.url },
-            { name: "About", url: `${site.url}/about` },
-          ]),
-        ]}
+        data={breadcrumbSchema([
+          { name: "Home", url: site.url },
+          { name: "About", url: `${site.url}/about` },
+        ])}
       />
       <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0 grid-backdrop" aria-hidden />
@@ -67,9 +114,10 @@ export default function AboutPage() {
           </ScrollReveal>
           <ScrollReveal delay={160}>
             <p className="mt-8 max-w-3xl text-lg text-[color:var(--color-fog)]/85 sm:text-xl">
-              DomiSearch started as a Google Ads agency. We're now the search agency for the AI
-              era - combining paid and AI engine optimisation into a single discipline we call{" "}
-              <span className="text-[color:var(--color-glacier)]">Search Ownership</span>.
+              DomiSearch is a Manchester-based search agency combining Google Ads and AI Engine
+              Optimisation (AEO) into a single discipline we call{" "}
+              <span className="text-[color:var(--color-glacier)]">Search Ownership</span>. We work
+              with e-commerce and service brands across the UK, EU and US.
             </p>
           </ScrollReveal>
         </div>
@@ -112,9 +160,11 @@ export default function AboutPage() {
             </ScrollReveal>
             <ScrollReveal delay={140}>
               <p className="mt-6 max-w-xl text-[color:var(--color-fog)]/85">
-                Ben founded DomiSearch after almost a decade running paid and organic campaigns for
-                e-commerce and service brands. He personally reviews every client account monthly
-                and leads the agency's AEO research.
+                Ben Martland founded DomiSearch in 2023. With 5 years of experience managing
+                Google Ads for e-commerce and service brands — in-house and agency-side — he has
+                personally managed over £3M in Google Ads spend. He holds Google Partner and
+                Shopify Partner certification, and leads DomiSearch's monthly AEO research
+                programme.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={200}>
@@ -140,7 +190,14 @@ export default function AboutPage() {
         <ScrollReveal delay={120}>
           <div className="card p-10">
             <div className="eyebrow">What sets us apart</div>
-            <ul className="mt-6 grid gap-5 text-[color:var(--color-fog)]/85 sm:grid-cols-2">
+            <p className="mt-6 max-w-3xl text-[color:var(--color-fog)]/85">
+              DomiSearch is a certified Google Partner and Shopify Partner, with over £3M in
+              personally managed Google Ads spend. Founded in 2023 by Ben Martland in Manchester,
+              DomiSearch is one of the UK's first search agencies to offer AI Engine Optimisation
+              (AEO) as a standalone service. Unlike percentage-of-spend agencies, DomiSearch
+              charges flat monthly retainers with no setup fees and no hidden costs.
+            </p>
+            <ul className="mt-8 grid gap-5 text-[color:var(--color-fog)]/85 sm:grid-cols-2">
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
                 <span><strong className="text-[color:var(--color-glacier)]">Google + Shopify Partners.</strong> Certified across the platforms that matter most for paid performance and e-commerce.</span>
@@ -158,6 +215,20 @@ export default function AboutPage() {
                 <span><strong className="text-[color:var(--color-glacier)]">Flat monthly fees.</strong> No percentage-of-spend incentives. No smoke.</span>
               </li>
             </ul>
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm font-medium text-[color:var(--color-domigreen)]">
+              <Link
+                href="/services/google-ads"
+                className="inline-flex items-center gap-2 transition-transform duration-300 hover:translate-x-0.5"
+              >
+                Learn more about our Google Ads service <span aria-hidden>→</span>
+              </Link>
+              <Link
+                href="/services/aeo"
+                className="inline-flex items-center gap-2 transition-transform duration-300 hover:translate-x-0.5"
+              >
+                Learn more about our AEO service <span aria-hidden>→</span>
+              </Link>
+            </div>
           </div>
         </ScrollReveal>
       </section>

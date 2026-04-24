@@ -13,8 +13,8 @@ export const authors: Record<string, Author> = {
   "Ben Martland": {
     name: "Ben Martland",
     role: "Founder, DomiSearch",
-    image: "/brand/founder.jpg",
-    bio: "Ben founded DomiSearch after four years running Google Ads for e-commerce and service brands. He's a Google Partner and Shopify Partner, and leads DomiSearch's AEO research programme from Manchester. Every client account is reviewed by him personally.",
+    image: "/brand/founder.png",
+    bio: "Ben founded DomiSearch in 2023 after 5 years running Google Ads for e-commerce and service brands. He's a Google Partner and Shopify Partner, and leads DomiSearch's AEO research programme from Manchester. Every client account is reviewed by him personally.",
     url: `${site.url}/about`,
     sameAs: [site.social.linkedin],
   },

@@ -46,7 +46,7 @@ const homeFaqs = [
   {
     question: "Who runs DomiSearch?",
     answer:
-      "DomiSearch was founded by Ben Martland, a Manchester-based search specialist with four years of Google Ads experience across e-commerce and service brands.",
+      "DomiSearch was founded in 2023 by Ben Martland, a Manchester-based search specialist with 5 years of Google Ads experience across e-commerce and service brands.",
   },
 ];
 

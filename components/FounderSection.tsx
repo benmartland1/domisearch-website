@@ -83,7 +83,7 @@ export function FounderSection() {
           </ScrollReveal>
           <ScrollReveal delay={220}>
             <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[color:var(--color-fog)]/85">
-              Four years running Google Ads for e-commerce and service brands - in-house, then
+              Five years running Google Ads for e-commerce and service brands - in-house, then
               agency-side. I lead our AEO research because the next five years of search are being
               rewritten right now, and most agencies are pretending they aren't.
             </p>
