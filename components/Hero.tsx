@@ -39,8 +39,8 @@ export function Hero() {
             transition={{ duration: 0.6 }}
             className="flex flex-wrap items-center gap-3"
           >
-            <GooglePartnerBadge className="w-[148px]! sm:w-[175px]!" />
-            <ShopifyPartnerBadge className="w-[148px]! sm:w-[175px]!" />
+            <GooglePartnerBadge className="w-[178px]! sm:w-[210px]!" />
+            <ShopifyPartnerBadge className="w-[178px]! sm:w-[210px]!" />
           </motion.div>
 
           <h1 className="display mt-10 text-balance text-[clamp(2.5rem,5.4vw,4.5rem)]">
