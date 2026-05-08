@@ -1,9 +1,14 @@
+// Force-canonicalise to www regardless of what NEXT_PUBLIC_SITE_URL is set to —
+// Vercel currently serves www as primary so all schema/sitemap/canonicals must match.
+const rawUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.domisearch.com";
+const canonicalUrl = rawUrl.replace(/^https?:\/\/(?!www\.)domisearch\.com/, "https://www.domisearch.com");
+
 export const site = {
   name: "DomiSearch",
   tagline: "The search agency for the AI era.",
   description:
     "DomiSearch is a Google Partner and Shopify Partner agency combining Google Ads with AI Engine Optimisation (AEO) so brands win across Google, ChatGPT, Gemini and Perplexity.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://domisearch.com",
+  url: canonicalUrl,
   email: "hi@domisearch.com",
   phone: "+44 7980 920 659",
   phoneHref: "+447980920659",

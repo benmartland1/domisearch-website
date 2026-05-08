@@ -154,7 +154,7 @@ async function main() {
   console.log(`\nNext:`);
   console.log(`  1. Review the file and adjust copy/links if needed.`);
   console.log(`  2. Commit and push - Vercel will rebuild the sitemap + llms.txt automatically.`);
-  console.log(`  3. Share: https://domisearch.com/blog/${slug}\n`);
+  console.log(`  3. Share: https://www.domisearch.com/blog/${slug}\n`);
 }
 
 main().catch((err) => {
