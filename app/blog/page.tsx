@@ -131,7 +131,7 @@ export default function BlogIndexPage() {
 
       <CTA
         heading="Want this playbook applied to your brand?"
-        sub="Book a free audit with Ben. We'll tell you what to ignore, what to prioritise, and how long it'll take to show up."
+        sub="Book a call with Ben. We'll tell you what to ignore, what to prioritise, and how long it'll take to show up."
       />
     </>
   );

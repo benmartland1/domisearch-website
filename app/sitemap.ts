@@ -12,7 +12,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/services/google-ads",
     "/services/aeo",
     "/pricing",
-    "/scorecard",
     "/about",
     "/careers",
     "/contact",
@@ -28,9 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ? 1
         : path.startsWith("/services")
           ? 0.9
-          : path === "/scorecard"
-            ? 0.85
-            : 0.6,
+          : 0.6,
   }));
 
   const posts = getAllPosts().map((p) => ({

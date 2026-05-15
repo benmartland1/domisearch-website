@@ -192,7 +192,7 @@ export default function GoogleAdsPage() {
 
           <ConsultationRail
             eyebrow="Arrange a call about Google Ads"
-            ctaLabel="Book a free audit"
+            ctaLabel="Book a call"
             founderQuote="You'll speak to me — not a sales pod. If Google Ads isn't the right fit I'll say so on the call."
             className="lg:sticky lg:top-28 lg:self-start"
           />
@@ -249,7 +249,7 @@ export default function GoogleAdsPage() {
       <FAQ items={faqs} heading="Google Ads — FAQs" />
       <CTA
         heading="Ready to stop wasting ad spend?"
-        sub="Book a free audit with Ben. You'll walk away with a short, honest assessment of what's working, what's leaking, and what to do next — whether we work together or not."
+        sub="Book a call with Ben. You'll walk away with a short, honest assessment of what's working, what's leaking, and what to do next — whether we work together or not."
       />
     </>
   );

@@ -33,7 +33,6 @@ export function Footer() {
           <ul className="space-y-3 text-sm">
             <li><Link href="/services/google-ads" className="hover:text-[color:var(--color-domigreen)]">Google Ads</Link></li>
             <li><Link href="/services/aeo" className="hover:text-[color:var(--color-domigreen)]">AI Search (AEO)</Link></li>
-            <li><Link href="/scorecard" className="hover:text-[color:var(--color-domigreen)]">Scorecard</Link></li>
           </ul>
         </div>
 

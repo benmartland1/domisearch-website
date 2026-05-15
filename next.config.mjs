@@ -44,8 +44,9 @@ const nextConfig = {
       },
       // Framer service pages → new structure
       { source: "/aeo", destination: "/services/aeo", permanent: true },
-      { source: "/audit", destination: "/scorecard", permanent: true },
-      { source: "/visibility-audit", destination: "/scorecard", permanent: true },
+      { source: "/audit", destination: "/contact", permanent: true },
+      { source: "/visibility-audit", destination: "/contact", permanent: true },
+      { source: "/scorecard", destination: "/contact", permanent: true },
       { source: "/ecom", destination: "/services/google-ads", permanent: true },
       { source: "/ecom/thank-you", destination: "/", permanent: true },
       // Framer career pages → unified careers page

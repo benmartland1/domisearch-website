@@ -27,11 +27,6 @@ export function GET() {
   lines.push(`- [Google Ads Management](${site.url}/services/google-ads): End-to-end Google Ads management run by a Google Partner. Restructure, creative, CRO and transparent reporting.`);
   lines.push(`- [AI Engine Optimisation (AEO)](${site.url}/services/aeo): Entity optimisation, AI-ready content, schema, citation ops and monthly AI visibility reporting across ChatGPT, Gemini, Perplexity, Copilot, Claude and Google AI Overviews.`);
   lines.push("");
-  lines.push("## Diagnostic");
-  lines.push(
-    `- [The Visibility Scorecard](${site.url}/scorecard): Free 48-hour audit. Google Ads account review + 20-prompt AI visibility audit, delivered by the founder.`
-  );
-  lines.push("");
   if (studies.length > 0) {
     lines.push("## Case studies");
     for (const c of studies) {
@@ -42,7 +37,7 @@ export function GET() {
   lines.push("## Key pages");
   lines.push(`- [Home](${site.url}/)`);
   lines.push(`- [About](${site.url}/about)`);
-  lines.push(`- [Visibility Scorecard (free audit)](${site.url}/scorecard)`);
+  lines.push(`- [Pricing](${site.url}/pricing)`);
   lines.push(`- [Contact](${site.url}/contact): Email ${site.email}, phone ${site.phone}, or book a call at ${site.calendly}`);
   lines.push(`- [Careers](${site.url}/careers)`);
   lines.push(`- [Blog](${site.url}/blog)`);

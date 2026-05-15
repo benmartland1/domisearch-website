@@ -42,9 +42,9 @@ const faqs = [
       "Because search is one behaviour now. Buyers start in ChatGPT or Google, click a paid result, compare in Gemini, search your brand, then convert. Running both channels under one strategy compounds - you capture demand that exists today and engineer the demand forming inside AI answers, with a single reporting view.",
   },
   {
-    question: "Can I just try the free audit first?",
+    question: "Can I talk to you before committing?",
     answer:
-      "Yes - and most clients do. The free 48-hour AI visibility audit is our lowest-friction way to see if we're a fit. If the audit turns up three things worth doing, we'll tell you. If it doesn't, we'll say so - and you'll have a useful document either way.",
+      "Yes - and most clients do. Book a 30-minute call with Ben and we'll walk through your account, your AI visibility position, and whether we're the right fit. No pressure, no proposal deck.",
   },
 ];
 
@@ -143,8 +143,8 @@ export default function PricingPage() {
                 Book a call
                 <span aria-hidden>→</span>
               </Link>
-              <Link href="/scorecard" className="btn btn-ghost">
-                Start with the free audit
+              <Link href="/contact" className="btn btn-ghost">
+                Ask a question
               </Link>
             </div>
           </div>
