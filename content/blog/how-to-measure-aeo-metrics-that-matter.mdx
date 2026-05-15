@@ -1,0 +1,156 @@
+---
+title: "How to Measure AEO: The Metrics That Actually Matter When Clicks Disappear"
+slug: how-to-measure-aeo-metrics-that-matter
+date: 2026-04-25
+excerpt: "58.5% of Google searches now end without a click. If your AEO reporting is built on traffic, you'll consistently undervalue what it's actually doing. Here are the five metrics that prove AEO ROI honestly."
+author: "Ben Martland"
+tags: ["AEO", "AI Search", "Measurement", "Analytics"]
+metaTitle: "How to Measure AEO: 5 Metrics That Actually Matter"
+metaDescription: "Citation rate, share of voice, branded search lift, AI referral quality, assisted conversions - the AEO measurement framework that survives the zero-click era."
+---
+
+Here's a question I get asked on almost every discovery call right now: "How do we actually know if AEO is working?"
+
+It's a fair question, and an important one. If you're paying a retainer for [Answer Engine Optimisation](/blog/what-is-aeo), you deserve a clear answer that isn't just "trust the process." The problem is that most of the standard reporting dashboards weren't built for this. They're still measuring clicks, rankings, and organic traffic volume — metrics that made perfect sense in 2019 but are increasingly misleading in 2026.
+
+**The uncomfortable truth:** [**58.5% of Google searches now end without a single click**](https://www.thehoth.com/blog/zero-click-seo-aeo/). When a query triggers a Google AI Overview, that zero-click rate jumps to 83%. If your entire measurement framework is built around traffic volume, you will consistently undervalue what AEO is actually doing for your business.
+
+This post is about fixing that. Below is the measurement framework I use with clients to prove AEO ROI clearly and honestly, without pretending clicks tell the whole story.
+
+## Why Your Current Metrics Are Lying to You
+
+Before we get to the new scorecard, it's worth understanding why the old one breaks down.
+
+Your brand could be cited as the authoritative answer in hundreds of AI responses every day and register zero impressions in [Google Search Console](https://search.google.com/search-console/about). GA4 won't log the citation. If someone sees your brand recommended in a ChatGPT response and then searches for you directly three days later, that session shows up as direct traffic, not AI-sourced.
+
+This creates what I call the attribution gap. The ROI looks invisible because the tracking infrastructure hasn't caught up with how people actually search.
+
+According to a [GoodFirms 2026 survey](https://www.goodfirms.co/), only 14% of marketers are currently tracking AI citation visibility, despite 43% naming AI search optimisation as a core priority for the year. That gap between stated priority and actual measurement is where most brands are losing ground without realising it.
+
+The fix isn't to abandon measurement. It's to replace the old scorecard with one that reflects how AI-driven discovery actually works.
+
+### The old metrics vs. the new ones
+
+| Old Metric | Why It Fails | New AEO Metric |
+| --- | --- | --- |
+| Keyword rankings | AI engines don't rank pages, they cite sources | Citation Rate |
+| Organic traffic volume | Most AI sessions end without a click | Branded Search Lift |
+| Click-through rate | Irrelevant when answers are delivered in-engine | AI Share of Voice |
+| Impressions | GSC doesn't report AI Overview impressions | AI Referral Quality |
+| Bounce rate | Misleading when intent is resolved pre-click | Assisted Conversions |
+
+## The 5 Metrics That Actually Measure AEO Performance
+
+Here's the framework I use. These five metrics cover the full picture: visibility, brand impact, and commercial outcomes.
+
+### 1. Citation Rate (Your North Star Metric)
+
+Citation Rate is the percentage of relevant queries where AI platforms mention your brand. It's the closest equivalent to "ranking" in the AEO era.
+
+**Formula:** (Your brand citations / Total relevant queries tested) × 100
+
+In practice: build a prompt library of 50 to 100 questions your buyers actually ask. Run them monthly across ChatGPT, Perplexity, Google AI Overviews, and Gemini. Log every mention, every platform, every position. If you test 100 queries and appear in 22 responses, your citation rate is 22%.
+
+A rising citation rate tells you the strategy is working. Stagnation or decline tells you to adjust content, fix entity conflicts, or build more third-party validation.
+
+**Benchmark targets to aim for:**
+
+- Early stage: appearing in at least 1 in 5 relevant AI responses (20%+)
+- Growth stage: 40%+ citation rate; 15+ citations per month
+- Scale stage: 60%+ citation rate; 35%+ AI Share of Voice vs. top competitors
+
+### 2. AI Share of Voice
+
+Citation Rate tells you if you're visible. Share of Voice tells you if you're dominant.
+
+**Formula:** (Your brand mentions / Total brand mentions across all competitors) × 100
+
+Weight this by prominence. If you're cited first in an AI response, that's worth more than a third-mention buried in a long list. Track this across platforms separately, because ChatGPT, Perplexity, and Google AI Overviews behave very differently.
+
+### 3. Branded Search Lift
+
+This is one of the most reliable proxy signals for AEO impact, and it's hiding in plain sight inside [Google Search Console](https://search.google.com/search-console/about).
+
+When users consistently see your brand in AI answers, they search for you by name later in their research journey. A sustained increase in branded impressions and clicks, correlated with periods of improved citation rate, is strong indirect evidence of AEO working.
+
+**How to track it:** monitor branded query volume in GSC week-over-week. Define a baseline before your AEO programme starts. Look for uplift 7 to 14 days after citation rate improvements. Samsung attributed 28% of its direct brand searches to increased zero-click AI exposure using this same correlation approach.
+
+### 4. AI Referral Traffic Quality
+
+When AI engines do send clicks, those sessions are worth tracking carefully. The conversion data here is striking: according to industry analysis, AI-referred visitors convert at significantly higher rates than traditional organic traffic, with some studies reporting 4.4x to 23x higher conversion rates compared to standard organic sessions.
+
+**How to capture this in GA4:**
+
+- Navigate to Reports > Acquisition > Traffic Acquisition
+- Look for referral sources including `chatgpt.com`, `perplexity.ai`, `claude.ai`, and `gemini.google.com`
+- Build a custom channel group labelled "AI Sources" to segment this traffic permanently
+- Add `?utm_source=ai_citation&utm_medium=referral` UTM parameters to content you know gets cited frequently
+
+The goal isn't volume. It's conversion rate and deal quality from this cohort compared to your other channels.
+
+### 5. Assisted Conversions and CRM Attribution
+
+This is where AEO measurement connects to revenue, and it's the metric that matters most in a retainer conversation.
+
+Not every conversion traces directly back to an AI referral click. Many happen days later, after a branded search or a direct visit. Assisted conversions in GA4 capture the hidden value of AEO exposure that nudges prospects through the funnel without leaving a clean attribution trail.
+
+Beyond analytics, add "How did you hear about us?" fields to your lead forms with AI assistant options listed explicitly. This qualitative signal often surfaces AEO influence that no tracking tool can catch.
+
+**The full attribution chain to track:**
+
+1. Citation Rate improvement (leading indicator)
+2. Branded search volume lift, 7 to 14 days later (lagging indicator)
+3. Direct traffic increase (lagging indicator)
+4. Assisted conversions in GA4 (revenue signal)
+5. CRM-level attribution from form fields (qualitative revenue signal)
+
+## What Zero-Click Visibility Is Actually Worth
+
+One objection I hear regularly: "If nobody's clicking, what's the point?"
+
+It's the wrong frame. Zero-click visibility isn't the absence of value. It's a different kind of value that your current analytics can't see.
+
+Here's what the data shows. [Seer Interactive found](https://searchengineland.com/) that brands cited within AI Overviews achieve **35% higher organic CTR and 91% higher paid CTR** compared to brands that aren't cited. The zero-click environment doesn't eliminate clicks entirely. It concentrates them on the sources AI systems have already validated as trustworthy. Being cited trains the algorithm and the audience simultaneously.
+
+Better.com measured a 41% improvement in brand recall after optimising for AI search visibility. That's not a traffic metric. That's a revenue-pipeline metric, because brand recall directly influences conversion rates later in the buying journey.
+
+> **The real risk isn't that AEO doesn't work. It's that your measurement framework marks it as a failure when it's actually succeeding.**
+
+The equivalent ad value model helps translate this for stakeholders who need a number. If your brand appears in 1,000 AI answers this month, and the average CPC in your category is £8, that's roughly £8,000 in media exposure value, even if no one clicked. It's an imperfect model, but it reframes the conversation from "we didn't get traffic" to "we earned significant visibility without paying for each impression."
+
+## How to Set Up Your AEO Measurement Stack
+
+You don't need expensive proprietary tools to get started. Here's a practical setup that works for most businesses.
+
+### Free tools (start here)
+
+- [**Google Search Console**](https://search.google.com/search-console/about): Monitor branded query volume as your primary proxy for AEO impact. Set up weekly exports and track trends against your AEO activity timeline.
+- [**Google Analytics 4**](https://analytics.google.com/): Build a custom "AI Sources" channel group. Filter by referral sources from chatgpt.com, perplexity.ai, claude.ai, and gemini.google.com. Track conversion rates for this segment separately.
+- **Manual prompt testing:** Build a spreadsheet with 50 core buyer questions. Test monthly across ChatGPT, Perplexity, and Google AI Overviews. Log: query, platform, cited (Y/N), position, sentiment, competitor cited instead.
+
+### Paid tools worth considering
+
+- **SEMrush:** Now includes AI Overview tracking in its Organic Research reports. Useful for monitoring which queries trigger AI answers and whether your domain is cited.
+- **Ahrefs Brand Radar:** Tracks AI citations, brand mentions, and AI Share of Voice across platforms.
+
+### The one thing most people skip
+
+Check your server logs for AI crawler activity. GPTBot, PerplexityBot, ClaudeBot, and Bingbot leave traces in your server logs every time they index your pages. Increased crawl frequency from these bots is a leading indicator that your content is being considered for citation, often before the citation itself shows up in your prompt testing.
+
+This is a simple but powerful early warning system that almost nobody uses.
+
+## The Honest Conversation About AEO Timelines
+
+One more thing worth addressing directly: AEO results don't appear overnight, and anyone telling you otherwise is selling you something.
+
+Citation Rate improvements typically take 8 to 12 weeks of consistent content and authority-building work before they become statistically meaningful. Branded search lift usually follows 2 to 4 weeks after citation rate starts moving. Revenue attribution, through assisted conversions and CRM data, takes a full quarter to build a reliable picture.
+
+This is why the baseline matters so much. Before any AEO work starts, record your current citation rate (even if it's zero), your branded search volume, your direct traffic trend, and your AI referral traffic (even if it's negligible). Without that starting point, you're trying to measure movement without knowing where you began.
+
+The measurement framework outlined here isn't perfect. The attribution gap is real, and it will remain partially invisible until analytics platforms catch up with how AI search actually works. But "imperfect measurement" is not the same as "unmeasurable." The brands that are winning in AI search right now are the ones who built a measurement practice before they needed it, not after.
+
+If you're evaluating an AEO retainer and your agency can't tell you how they'll measure citation rate, branded search lift, and assisted conversions, that's a red flag. Those three data points, tracked consistently, tell you almost everything you need to know.
+
+---
+
+**Want help building an AEO measurement framework for your business?** At DomiSearch, we set up citation tracking, GA4 AI channel groupings, and monthly prompt audits as part of every [AEO engagement](/services/aeo). [Book a discovery call](/contact) and we'll show you exactly where you stand today.
