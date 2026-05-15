@@ -47,9 +47,9 @@ const pillars = [
 
 const metrics = [
   { value: 3, prefix: "£", suffix: "M+", label: "Managed ad spend" },
-  { value: 50, suffix: "+", label: "Brands served" },
-  { value: 23, suffix: "×", label: "Taxd conversion growth" },
-  { value: 35, prefix: "−", suffix: "%", label: "Taxd cost-per-acquisition" },
+  { value: 4.1, suffix: "×", decimals: 1, label: "Average ROAS improvement" },
+  { value: 23, suffix: "%", label: "Avg CPA reduction in Q1" },
+  { value: 14, suffix: " days", label: "Typical time to first wins" },
 ];
 
 const faqs = [
