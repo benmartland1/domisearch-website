@@ -7,11 +7,14 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const schema = z.object({
-  name: z.string().min(1).max(120),
-  email: z.string().email().max(200),
+  name: z.string().min(1, "Please enter your name.").max(120),
+  email: z.string().email("Please enter a valid email address.").max(200),
   company: z.string().max(200).optional().or(z.literal("")),
   budget: z.string().max(120).optional().or(z.literal("")),
-  message: z.string().min(10).max(5000),
+  message: z
+    .string()
+    .min(10, "Your message needs to be at least 10 characters.")
+    .max(5000),
 });
 
 function escape(s: string) {
@@ -32,8 +35,9 @@ export async function POST(request: Request) {
 
   const parsed = schema.safeParse(data);
   if (!parsed.success) {
+    const firstIssue = parsed.error.issues[0];
     return NextResponse.json(
-      { error: "Please check your details and try again." },
+      { error: firstIssue?.message ?? "Please check your details and try again." },
       { status: 422 }
     );
   }
