@@ -13,7 +13,7 @@ export function ContactForm() {
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
     // Honeypot - if filled, silently succeed and drop
-    if (data.company_website) {
+    if (data.hp_field_dom) {
       setStatus("success");
       form.reset();
       return;
@@ -52,15 +52,19 @@ export function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="card flex flex-col gap-5 p-8 sm:p-10" noValidate>
-      {/* Honeypot */}
-      <input
-        type="text"
-        name="company_website"
-        tabIndex={-1}
-        autoComplete="off"
-        className="absolute left-[-9999px] h-0 w-0 opacity-0"
-        aria-hidden
-      />
+      {/* Honeypot — must not be filled. Hardened against password-manager autofill. */}
+      <div aria-hidden style={{ position: "absolute", left: "-9999px", width: "1px", height: "1px", overflow: "hidden" }}>
+        <label>
+          Leave this empty
+          <input
+            type="text"
+            name="hp_field_dom"
+            tabIndex={-1}
+            autoComplete="new-password"
+            defaultValue=""
+          />
+        </label>
+      </div>
 
       <div className="grid gap-5 sm:grid-cols-2">
         <Field name="name" label="Your name" required />
