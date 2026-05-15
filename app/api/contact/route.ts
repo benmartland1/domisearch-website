@@ -13,7 +13,7 @@ const schema = z.object({
   budget: z.string().max(120).optional().or(z.literal("")),
   message: z
     .string()
-    .min(10, "Your message needs to be at least 10 characters.")
+    .min(3, "Please add a short message.")
     .max(5000),
 });
 
