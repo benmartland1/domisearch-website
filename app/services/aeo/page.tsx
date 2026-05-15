@@ -210,7 +210,7 @@ export default function AEOPage() {
                 Book a call
                 <span aria-hidden>→</span>
               </Link>
-              <Link href="#how-we-measure" className="btn btn-ghost">
+              <Link href="/blog/how-to-measure-aeo-metrics-that-matter" className="btn btn-ghost">
                 How we measure it
               </Link>
             </div>
