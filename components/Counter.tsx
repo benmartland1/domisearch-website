@@ -28,7 +28,9 @@ export function Counter({
   className,
 }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
-  const [display, setDisplay] = useState(0);
+  // Start at the final value so SSR/no-JS crawlers see the real number, not 0.
+  // The count-up animation re-triggers from 0 only after client hydration.
+  const [display, setDisplay] = useState(value);
   const started = useRef(false);
 
   useEffect(() => {
@@ -47,6 +49,7 @@ export function Counter({
         entries.forEach((entry) => {
           if (entry.isIntersecting && !started.current) {
             started.current = true;
+            setDisplay(0);
             const start = performance.now();
             const step = (now: number) => {
               const t = Math.min((now - start) / duration, 1);
