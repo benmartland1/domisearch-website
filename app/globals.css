@@ -2,28 +2,28 @@
 
 @font-face {
   font-family: "Axiforma";
-  src: url("/fonts/Axiforma-Book.ttf") format("truetype");
+  src: url("/fonts/Axiforma-Book.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Axiforma";
-  src: url("/fonts/Axiforma-Medium.ttf") format("truetype");
+  src: url("/fonts/Axiforma-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Axiforma";
-  src: url("/fonts/Axiforma-SemiBold.ttf") format("truetype");
+  src: url("/fonts/Axiforma-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
   font-family: "Axiforma";
-  src: url("/fonts/Axiforma-Bold.ttf") format("truetype");
+  src: url("/fonts/Axiforma-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;

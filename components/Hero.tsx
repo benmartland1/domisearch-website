@@ -117,7 +117,7 @@ export function Hero() {
             alt="DomiSearch: ChatGPT and Google search results on mobile"
             width={1080}
             height={1080}
-            loading="lazy"
+            priority
             sizes="(max-width: 1023px) 0px, (max-width: 1280px) 50vw, 660px"
             className="h-auto w-full max-w-[660px]"
           />
