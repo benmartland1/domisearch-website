@@ -60,6 +60,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-GB">
+      <head>
+        <link
+          rel="preload"
+          href="/fonts/Axiforma-Book.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body className="antialiased">
         <JsonLd data={[organizationSchema, websiteSchema]} />
         <div className="grain" aria-hidden />
