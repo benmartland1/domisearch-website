@@ -220,7 +220,7 @@ export async function POST(request: Request) {
   const missing: string[] = [];
   if (!openaiKey) missing.push("OPENAI_API_KEY");
   if (!anthropicKey) missing.push("ANTHROPIC_API_KEY");
-  if (missing.length > 0) {
+  if (missing.length > 0 || !openaiKey || !anthropicKey) {
     return NextResponse.json(
       { error: `Missing env var(s) on Vercel: ${missing.join(", ")}. Add them in Settings → Environment Variables, then redeploy without build cache.` },
       { status: 500 },
