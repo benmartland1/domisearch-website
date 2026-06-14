@@ -130,7 +130,12 @@ export function VisibilityClient() {
           "content-type": "application/json",
           "x-visibility-token": token,
         },
-        body: JSON.stringify({ company: company.trim(), url: url.trim(), industry, location }),
+        body: JSON.stringify({
+          company: company.trim(),
+          url: /^https?:\/\//i.test(url.trim()) ? url.trim() : `https://${url.trim()}`,
+          industry,
+          location,
+        }),
       });
       if (res.status === 401) {
         window.sessionStorage.removeItem(STORAGE_KEY);
@@ -198,11 +203,11 @@ export function VisibilityClient() {
           <input
             id="url"
             required
-            type="url"
+            type="text"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             className="mt-2 w-full rounded-md border border-white/15 bg-white/[0.04] px-4 py-3 text-base text-[color:var(--color-glacier)] focus:border-[color:var(--color-domigreen)]/60 focus:outline-none"
-            placeholder="https://example.com"
+            placeholder="taxd.com or https://example.com"
           />
         </div>
         <div>
