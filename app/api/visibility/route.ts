@@ -217,8 +217,14 @@ export async function POST(request: Request) {
 
   const openaiKey = process.env.OPENAI_API_KEY;
   const anthropicKey = process.env.ANTHROPIC_API_KEY;
-  if (!openaiKey || !anthropicKey) {
-    return NextResponse.json({ error: "Server not configured (missing API keys)" }, { status: 500 });
+  const missing: string[] = [];
+  if (!openaiKey) missing.push("OPENAI_API_KEY");
+  if (!anthropicKey) missing.push("ANTHROPIC_API_KEY");
+  if (missing.length > 0) {
+    return NextResponse.json(
+      { error: `Missing env var(s) on Vercel: ${missing.join(", ")}. Add them in Settings → Environment Variables, then redeploy without build cache.` },
+      { status: 500 },
+    );
   }
 
   try {
