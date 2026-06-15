@@ -418,6 +418,12 @@ function Report({ report }: { report: Report }) {
               </div>
             </div>
 
+            {p.error && (
+              <pre className="mt-4 overflow-auto rounded-md border border-red-500/30 bg-red-500/5 p-3 text-xs text-red-300 whitespace-pre-wrap">
+                {p.error}
+              </pre>
+            )}
+
             {p.answer_summary && (
               <p className="mt-4 text-sm italic text-[color:var(--color-fog)]/75">
                 {p.answer_summary}
