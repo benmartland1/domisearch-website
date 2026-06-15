@@ -101,6 +101,20 @@ export function VisibilityClient() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [report, setReport] = useState<Report | null>(null);
+  const [diagnosis, setDiagnosis] = useState<string | null>(null);
+
+  async function runDiagnosis() {
+    setDiagnosis("Checking…");
+    try {
+      const res = await fetch("/api/visibility/debug", {
+        headers: { "x-visibility-token": token },
+      });
+      const data = await res.json();
+      setDiagnosis(JSON.stringify(data, null, 2));
+    } catch (e) {
+      setDiagnosis(`Error: ${e instanceof Error ? e.message : "unknown"}`);
+    }
+  }
 
   useEffect(() => {
     const saved = typeof window !== "undefined" ? window.sessionStorage.getItem(STORAGE_KEY) : null;
@@ -256,7 +270,23 @@ export function VisibilityClient() {
       </form>
 
       {error && (
-        <div className="card border-red-500/40 bg-red-500/5 p-6 text-red-300">{error}</div>
+        <div className="card border-red-500/40 bg-red-500/5 p-6 text-red-300">
+          <div>{error}</div>
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={runDiagnosis}
+              className="rounded-md border border-red-500/40 bg-red-500/10 px-3 py-1.5 text-xs text-red-200 hover:bg-red-500/20"
+            >
+              Diagnose env vars
+            </button>
+          </div>
+          {diagnosis && (
+            <pre className="mt-4 overflow-auto rounded-md border border-white/10 bg-black/40 p-4 text-xs text-[color:var(--color-fog)]/80">
+              {diagnosis}
+            </pre>
+          )}
+        </div>
       )}
 
       {loading && (
