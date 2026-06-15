@@ -320,174 +320,344 @@ export function VisibilityClient() {
   );
 }
 
-function Report({ report }: { report: Report }) {
+function bandHex(band: Report["visibility_band"]): string {
+  switch (band) {
+    case "Invisible": return "#f87171";
+    case "Barely visible": return "#fb923c";
+    case "Patchy": return "#fde047";
+    case "Visible": return "#01e890";
+  }
+}
+
+function ScoreGauge({ score, band }: { score: number; band: Report["visibility_band"] }) {
+  const size = 240;
+  const stroke = 18;
+  const radius = (size - stroke) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (score / 100) * circumference;
+  const color = bandHex(band);
   return (
-    <div className="space-y-10 print:space-y-6">
-      {/* Hero stats */}
-      <div className="card overflow-hidden p-10">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-center">
-          <div>
-            <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-fog)]/60">
-              Visibility score
-            </div>
-            <div className={`display mt-3 text-7xl ${band_color(report.visibility_band)}`}>
-              {report.visibility_score}
-              <span className="text-3xl text-[color:var(--color-fog)]/40">/100</span>
-            </div>
-            <div className={`mt-2 text-xl font-medium ${band_color(report.visibility_band)}`}>
-              {report.visibility_band}
-            </div>
-          </div>
-          <div>
-            <h2 className="display text-2xl sm:text-3xl">{report.company}</h2>
-            <p className="mt-2 text-sm text-[color:var(--color-fog)]/70">
-              {report.industry} · {report.location}
-            </p>
-            <a
-              href={report.url}
-              target="_blank"
-              rel="noopener"
-              className="mt-1 inline-block text-sm text-[color:var(--color-domigreen)] hover:underline"
-            >
-              {report.url} ↗
-            </a>
-            <div className="hairline mt-6" />
-            <dl className="mt-6 grid grid-cols-2 gap-x-8 gap-y-4 sm:grid-cols-3">
-              <div>
-                <dt className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/55">
-                  Mentioned in
-                </dt>
-                <dd className="display mt-1 text-3xl text-[color:var(--color-glacier)]">
-                  {report.mentions}/{report.total}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/55">
-                  Recommended in
-                </dt>
-                <dd className="display mt-1 text-3xl text-[color:var(--color-glacier)]">
-                  {report.recommended}/{report.total}
-                </dd>
-              </div>
-              <div>
-                <dt className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/55">
-                  Top rivals
-                </dt>
-                <dd className="display mt-1 text-3xl text-[color:var(--color-glacier)]">
-                  {report.top_competitors.length}
-                </dd>
-              </div>
-            </dl>
-          </div>
+    <div className="relative inline-flex shrink-0 items-center justify-center" style={{ width: size, height: size }}>
+      <svg width={size} height={size} className="-rotate-90">
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke="rgba(255,255,255,0.06)"
+          strokeWidth={stroke}
+        />
+        <circle
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke={color}
+          strokeWidth={stroke}
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          strokeDashoffset={offset}
+          style={{ filter: `drop-shadow(0 0 14px ${color}80)`, transition: "stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1)" }}
+        />
+      </svg>
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <div className="display text-6xl leading-none" style={{ color }}>
+          {score}
+        </div>
+        <div className="mt-2 text-[10px] uppercase tracking-[0.28em] text-[color:var(--color-fog)]/55">
+          / 100
+        </div>
+        <div className="mt-2 text-xs font-medium uppercase tracking-[0.18em]" style={{ color }}>
+          {band}
         </div>
       </div>
+    </div>
+  );
+}
 
-      {/* Competitors */}
-      {report.top_competitors.length > 0 && (
-        <div className="card p-8">
-          <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-fog)]/60">
-            Brands ChatGPT recommended instead
-          </div>
-          <div className="mt-6 flex flex-wrap gap-3">
-            {report.top_competitors.map((c) => (
-              <span
-                key={c.name}
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm text-[color:var(--color-fog)]/85"
-              >
-                {c.name}
-                <span className="text-[color:var(--color-domigreen)]">×{c.count}</span>
+function StackedBar({ recommended, mentionedOnly, missing }: { recommended: number; mentionedOnly: number; missing: number }) {
+  const total = recommended + mentionedOnly + missing || 1;
+  const rec = (recommended / total) * 100;
+  const men = (mentionedOnly / total) * 100;
+  const mis = (missing / total) * 100;
+  return (
+    <div>
+      <div className="flex h-3 w-full overflow-hidden rounded-full bg-white/[0.04]">
+        {recommended > 0 && (
+          <div style={{ width: `${rec}%`, background: "#01e890" }} title={`Recommended: ${recommended}`} />
+        )}
+        {mentionedOnly > 0 && (
+          <div style={{ width: `${men}%`, background: "#fde047" }} title={`Mentioned only: ${mentionedOnly}`} />
+        )}
+        {missing > 0 && (
+          <div style={{ width: `${mis}%`, background: "rgba(248,113,113,0.7)" }} title={`Not mentioned: ${missing}`} />
+        )}
+      </div>
+      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-xs text-[color:var(--color-fog)]/75">
+        <span className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-sm" style={{ background: "#01e890" }} />
+          Recommended ({recommended})
+        </span>
+        <span className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-sm" style={{ background: "#fde047" }} />
+          Mentioned only ({mentionedOnly})
+        </span>
+        <span className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-sm bg-red-400/70" />
+          Not mentioned ({missing})
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function statusPill(p: Analysis) {
+  if (p.error) {
+    return (
+      <span className="inline-flex items-center gap-1.5 rounded-full bg-red-500/15 px-3 py-1 text-xs font-medium text-red-300">
+        <span className="h-1.5 w-1.5 rounded-full bg-red-300" />
+        Error
+      </span>
+    );
+  }
+  if (p.target_recommended) {
+    return (
+      <span className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--color-domigreen)]/15 px-3 py-1 text-xs font-medium text-[color:var(--color-domigreen)]">
+        <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-domigreen)]" />
+        Recommended
+      </span>
+    );
+  }
+  if (p.target_mentioned) {
+    return (
+      <span className="inline-flex items-center gap-1.5 rounded-full bg-yellow-500/15 px-3 py-1 text-xs font-medium text-yellow-300">
+        <span className="h-1.5 w-1.5 rounded-full bg-yellow-300" />
+        Mentioned only
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full bg-red-500/10 px-3 py-1 text-xs font-medium text-red-300">
+      <span className="h-1.5 w-1.5 rounded-full bg-red-300" />
+      Not mentioned
+    </span>
+  );
+}
+
+function Report({ report }: { report: Report }) {
+  const recommendedCount = report.recommended;
+  const mentionedOnly = report.mentions - report.recommended;
+  const missingCount = report.total - report.mentions;
+  const maxCompetitorCount = Math.max(1, ...report.top_competitors.map((c) => c.count));
+  const generated = new Date().toLocaleString("en-GB", {
+    day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit",
+  });
+
+  return (
+    <div className="space-y-10 print:space-y-6">
+      {/* ============ HERO REPORT HEADER ============ */}
+      <div className="card relative overflow-hidden p-8 sm:p-12">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-32 -top-32 h-[400px] w-[400px] rounded-full opacity-25"
+          style={{ background: `radial-gradient(circle, ${bandHex(report.visibility_band)} 0%, transparent 70%)`, filter: "blur(60px)" }}
+        />
+        <div className="relative flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:gap-14">
+          <ScoreGauge score={report.visibility_score} band={report.visibility_band} />
+          <div className="flex-1 text-center lg:text-left">
+            <div className="text-[10px] uppercase tracking-[0.28em] text-[color:var(--color-domigreen)]">
+              AI Visibility Snapshot
+            </div>
+            <h2 className="display mt-3 text-balance text-4xl sm:text-5xl">{report.company}</h2>
+            <div className="mt-3 flex flex-wrap justify-center gap-2 text-xs lg:justify-start">
+              <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[color:var(--color-fog)]/80">
+                {report.industry}
               </span>
-            ))}
+              <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[color:var(--color-fog)]/80">
+                {report.location}
+              </span>
+              <a
+                href={report.url}
+                target="_blank"
+                rel="noopener"
+                className="rounded-full border border-[color:var(--color-domigreen)]/30 bg-[color:var(--color-domigreen)]/5 px-3 py-1 text-[color:var(--color-domigreen)] hover:bg-[color:var(--color-domigreen)]/10"
+              >
+                {report.url.replace(/^https?:\/\//, "")} ↗
+              </a>
+            </div>
+            <p className="mt-4 text-xs text-[color:var(--color-fog)]/55">
+              Generated {generated} · 10 buyer-intent prompts · ChatGPT (gpt-4o) with live web search
+            </p>
           </div>
         </div>
-      )}
 
-      {/* Per-prompt cards */}
-      <div className="space-y-4">
-        <h3 className="display text-2xl">Prompt-by-prompt breakdown</h3>
-        {report.prompts.map((p, i) => (
-          <div key={i} className="card p-6 sm:p-8">
-            <div className="flex flex-wrap items-start justify-between gap-4">
-              <div className="flex-1 min-w-[260px]">
-                <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/55">
-                  Prompt {i + 1}
-                </div>
-                <p className="mt-1 text-base font-medium text-[color:var(--color-glacier)]">
-                  &ldquo;{p.prompt}&rdquo;
-                </p>
+        {/* ============ KPI TILES ============ */}
+        <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          {[
+            { label: "Recommended", value: report.recommended, total: report.total, accent: "#01e890" },
+            { label: "Mentioned", value: report.mentions, total: report.total, accent: "#fde047" },
+            { label: "Competitors", value: report.top_competitors.length, total: null, accent: "#94a3b8" },
+          ].map((kpi) => (
+            <div key={kpi.label} className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+              <span aria-hidden className="absolute left-0 top-0 h-full w-[2px]" style={{ background: kpi.accent }} />
+              <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/55">
+                {kpi.label}
               </div>
-              <div className="flex shrink-0 flex-wrap gap-2">
-                {p.error ? (
-                  <span className="rounded-full bg-red-500/15 px-3 py-1 text-xs text-red-300">
-                    Error
-                  </span>
-                ) : p.target_recommended ? (
-                  <span className="rounded-full bg-[color:var(--color-domigreen)]/15 px-3 py-1 text-xs text-[color:var(--color-domigreen)]">
-                    ✓ Recommended
-                  </span>
-                ) : p.target_mentioned ? (
-                  <span className="rounded-full bg-yellow-500/15 px-3 py-1 text-xs text-yellow-300">
-                    Mentioned only
-                  </span>
-                ) : (
-                  <span className="rounded-full bg-red-500/15 px-3 py-1 text-xs text-red-300">
-                    Not mentioned
-                  </span>
+              <div className="display mt-3 text-4xl text-[color:var(--color-glacier)]">
+                {kpi.value}
+                {kpi.total !== null && (
+                  <span className="ml-1 text-xl text-[color:var(--color-fog)]/40">/ {kpi.total}</span>
                 )}
               </div>
             </div>
+          ))}
+        </div>
 
-            {p.error && (
-              <pre className="mt-4 overflow-auto rounded-md border border-red-500/30 bg-red-500/5 p-3 text-xs text-red-300 whitespace-pre-wrap">
-                {p.error}
-              </pre>
-            )}
-
-            {p.answer_summary && (
-              <p className="mt-4 text-sm italic text-[color:var(--color-fog)]/75">
-                {p.answer_summary}
-              </p>
-            )}
-
-            {p.competitors.length > 0 && (
-              <div className="mt-4">
-                <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/55">
-                  Competitors named
-                </div>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {p.competitors.map((c, j) => (
-                    <span
-                      key={j}
-                      className="rounded-md border border-white/10 bg-white/[0.03] px-2 py-1 text-xs text-[color:var(--color-fog)]/80"
-                    >
-                      {c}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {p.response && (
-              <details className="mt-4">
-                <summary className="cursor-pointer text-xs uppercase tracking-[0.22em] text-[color:var(--color-fog)]/55 hover:text-[color:var(--color-domigreen)]">
-                  Show ChatGPT response
-                </summary>
-                <div
-                  className="prose prose-invert mt-3 max-w-none whitespace-pre-wrap text-sm text-[color:var(--color-fog)]/85"
-                  dangerouslySetInnerHTML={{ __html: highlight(p.response, report.company, report.url) }}
-                />
-              </details>
-            )}
+        {/* ============ STACKED BAR ============ */}
+        <div className="mt-8">
+          <div className="mb-3 text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/55">
+            Prompt outcomes
           </div>
-        ))}
+          <StackedBar recommended={recommendedCount} mentionedOnly={mentionedOnly} missing={missingCount} />
+        </div>
       </div>
 
-      <div className="text-center print:hidden">
-        <button
-          type="button"
-          onClick={() => window.print()}
-          className="btn btn-ghost"
-        >
+      {/* ============ COMPETITOR LEADERBOARD ============ */}
+      {report.top_competitors.length > 0 && (
+        <div className="card p-8 sm:p-10">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <div>
+              <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-domigreen)]">
+                Top rivals
+              </div>
+              <h3 className="display mt-2 text-2xl sm:text-3xl">
+                Brands ChatGPT recommended <span className="text-[color:var(--color-fog)]/50">instead</span>
+              </h3>
+            </div>
+            <p className="text-xs text-[color:var(--color-fog)]/55">
+              Ranked by mention count across {report.total} prompts
+            </p>
+          </div>
+          <ol className="mt-8 space-y-3">
+            {report.top_competitors.map((c, i) => {
+              const pct = Math.max(8, (c.count / maxCompetitorCount) * 100);
+              return (
+                <li key={c.name} className="grid grid-cols-[28px_1fr_60px] items-center gap-4">
+                  <span className="text-sm font-medium text-[color:var(--color-fog)]/45">{i + 1}.</span>
+                  <div className="flex items-center gap-3">
+                    <span className="min-w-[160px] text-sm font-medium text-[color:var(--color-glacier)]">
+                      {c.name}
+                    </span>
+                    <div className="h-2 flex-1 overflow-hidden rounded-full bg-white/[0.04]">
+                      <div
+                        className="h-full rounded-full"
+                        style={{
+                          width: `${pct}%`,
+                          background: "linear-gradient(90deg, rgba(1,232,144,0.5), rgba(1,232,144,0.85))",
+                          transition: "width 0.8s cubic-bezier(.2,.8,.2,1)",
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <span className="text-right text-sm tabular-nums text-[color:var(--color-fog)]/75">
+                    {c.count} {c.count === 1 ? "mention" : "mentions"}
+                  </span>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      )}
+
+      {/* ============ PROMPT-BY-PROMPT BREAKDOWN ============ */}
+      <div>
+        <div className="mb-6 flex flex-wrap items-baseline justify-between gap-2">
+          <div>
+            <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-domigreen)]">
+              The detail
+            </div>
+            <h3 className="display mt-2 text-2xl sm:text-3xl">Prompt-by-prompt breakdown</h3>
+          </div>
+          <p className="text-xs text-[color:var(--color-fog)]/55">
+            Click any card to read the full ChatGPT response
+          </p>
+        </div>
+        <div className="space-y-3">
+          {report.prompts.map((p, i) => (
+            <div key={i} className="card group p-6 sm:p-8 transition-colors hover:border-white/20">
+              <div className="flex flex-wrap items-start gap-4">
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-sm font-medium text-[color:var(--color-fog)]/60">
+                  {i + 1}
+                </div>
+                <div className="flex-1 min-w-[200px]">
+                  <p className="text-base font-medium leading-relaxed text-[color:var(--color-glacier)]">
+                    &ldquo;{p.prompt}&rdquo;
+                  </p>
+                </div>
+                <div className="shrink-0">{statusPill(p)}</div>
+              </div>
+
+              {p.error && (
+                <pre className="ml-14 mt-4 overflow-auto rounded-md border border-red-500/30 bg-red-500/5 p-3 text-xs text-red-300 whitespace-pre-wrap">
+                  {p.error}
+                </pre>
+              )}
+
+              {p.answer_summary && (
+                <p className="ml-14 mt-4 border-l-2 border-[color:var(--color-domigreen)]/30 pl-4 text-sm leading-relaxed text-[color:var(--color-fog)]/75">
+                  {p.answer_summary}
+                </p>
+              )}
+
+              {p.competitors.length > 0 && (
+                <div className="ml-14 mt-5">
+                  <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/45">
+                    Brands ChatGPT named
+                  </div>
+                  <div className="mt-2 flex flex-wrap gap-1.5">
+                    {p.competitors.map((c, j) => (
+                      <span
+                        key={j}
+                        className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 text-xs text-[color:var(--color-fog)]/85"
+                      >
+                        {c}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {p.response && (
+                <details className="ml-14 mt-5 group/details">
+                  <summary className="cursor-pointer text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/45 transition-colors hover:text-[color:var(--color-domigreen)] group-open/details:text-[color:var(--color-domigreen)]">
+                    Read full ChatGPT response ↓
+                  </summary>
+                  <div
+                    className="prose prose-invert mt-4 max-w-none whitespace-pre-wrap rounded-lg border border-white/5 bg-black/20 p-5 text-sm leading-relaxed text-[color:var(--color-fog)]/85"
+                    dangerouslySetInnerHTML={{ __html: highlight(p.response, report.company, report.url) }}
+                  />
+                </details>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ============ METHODOLOGY FOOTER ============ */}
+      <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6 text-xs leading-relaxed text-[color:var(--color-fog)]/55">
+        <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/45">
+          Methodology
+        </div>
+        <p className="mt-2">
+          10 buyer-intent prompts generated by Claude based on the brand&apos;s product and market. Each prompt is run through OpenAI&apos;s gpt-4o with live web search ON — the same retrieval stack ChatGPT.com uses for fresh queries. Responses are analysed by Claude to detect brand mentions, recommendations, and competitor brands. The visibility score is the percentage of prompts in which the target brand appears.
+        </p>
+        <p className="mt-2">
+          Snapshot generated by <span className="text-[color:var(--color-domigreen)]">DomiSearch</span> on {generated}.
+        </p>
+      </div>
+
+      <div className="flex justify-center gap-3 print:hidden">
+        <button type="button" onClick={() => window.print()} className="btn btn-ghost">
           Print / Save as PDF
         </button>
       </div>
