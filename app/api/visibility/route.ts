@@ -143,7 +143,7 @@ Generate 10 prompts a real buyer of THIS specific product/service would type int
   return arr.map(String).filter(Boolean).slice(0, 10);
 }
 
-async function queryOpenAI(prompt: string, openaiKey: string): Promise<string> {
+async function queryOpenAI(prompt: string, openaiKey: string, attempt = 1): Promise<string> {
   const res = await fetch("https://api.openai.com/v1/responses", {
     method: "POST",
     headers: {
@@ -157,6 +157,13 @@ async function queryOpenAI(prompt: string, openaiKey: string): Promise<string> {
       tools: [{ type: "web_search" }],
     }),
   });
+  if (res.status === 429 && attempt <= 2) {
+    // Honour OpenAI's Retry-After hint, fall back to 8s × attempt with jitter
+    const retryAfter = Number(res.headers.get("retry-after")) || 8 * attempt;
+    const wait = Math.min(retryAfter * 1000 + Math.floor(Math.random() * 1500), 22_000);
+    await new Promise((r) => setTimeout(r, wait));
+    return queryOpenAI(prompt, openaiKey, attempt + 1);
+  }
   if (!res.ok) throw new Error(`OpenAI ${res.status}: ${await res.text()}`);
   const data = await res.json();
   if (data.output_text) return String(data.output_text).trim();
