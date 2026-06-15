@@ -97,6 +97,7 @@ export function VisibilityClient() {
   const [url, setUrl] = useState("");
   const [industry, setIndustry] = useState(INDUSTRIES[0]);
   const [location, setLocation] = useState(LOCATIONS[0]);
+  const [description, setDescription] = useState("");
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -149,6 +150,7 @@ export function VisibilityClient() {
           url: /^https?:\/\//i.test(url.trim()) ? url.trim() : `https://${url.trim()}`,
           industry,
           location,
+          description: description.trim(),
         }),
       });
       if (res.status === 401) {
@@ -257,6 +259,23 @@ export function VisibilityClient() {
               </option>
             ))}
           </select>
+        </div>
+        <div className="sm:col-span-2">
+          <label htmlFor="description" className="block text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-fog)]/60">
+            What they actually do <span className="lowercase tracking-normal text-[color:var(--color-fog)]/40">(optional but improves accuracy)</span>
+          </label>
+          <textarea
+            id="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            rows={2}
+            maxLength={500}
+            className="mt-2 w-full rounded-md border border-white/15 bg-white/[0.04] px-4 py-3 text-base text-[color:var(--color-glacier)] focus:border-[color:var(--color-domigreen)]/60 focus:outline-none"
+            placeholder="e.g. Taxd is self-assessment tax software for UK individuals (not accountants) — they file their own tax return online via a guided flow."
+          />
+          <p className="mt-1 text-[11px] text-[color:var(--color-fog)]/45">
+            If blank, we&apos;ll auto-fetch the homepage title + meta description. A clear one-liner here produces sharper prompts.
+          </p>
         </div>
         <div className="sm:col-span-2 flex flex-wrap items-center justify-between gap-4 pt-2">
           <p className="text-xs text-[color:var(--color-fog)]/60">

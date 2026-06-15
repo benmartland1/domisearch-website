@@ -10,6 +10,7 @@ const inputSchema = z.object({
   url: z.string().url().max(300),
   industry: z.string().min(1).max(120),
   location: z.string().min(1).max(120),
+  description: z.string().max(500).optional().or(z.literal("")),
 });
 
 type Lead = z.infer<typeof inputSchema>;
@@ -68,10 +69,51 @@ function stringMatch(company: string, domain: string, text: string): boolean {
   return !!name && low.includes(name);
 }
 
+async function fetchBrandContext(url: string): Promise<string> {
+  try {
+    const ctrl = new AbortController();
+    const timeout = setTimeout(() => ctrl.abort(), 5000);
+    const res = await fetch(url, {
+      headers: { "user-agent": "Mozilla/5.0 (compatible; DomiSearchBot/1.0)" },
+      signal: ctrl.signal,
+    });
+    clearTimeout(timeout);
+    if (!res.ok) return "";
+    const html = await res.text();
+    const title = html.match(/<title[^>]*>([^<]+)<\/title>/i)?.[1]?.trim() ?? "";
+    const desc = html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)["']/i)?.[1]?.trim()
+      ?? html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+name=["']description["']/i)?.[1]?.trim()
+      ?? "";
+    const h1 = html.match(/<h1[^>]*>([^<]+)<\/h1>/i)?.[1]?.trim() ?? "";
+    return [title, desc, h1].filter(Boolean).slice(0, 3).join(" | ").slice(0, 600);
+  } catch {
+    return "";
+  }
+}
+
 async function generatePrompts(lead: Lead, anthropicKey: string): Promise<string[]> {
+  // Pull live homepage context for accuracy when user didn't supply a description.
+  let context = lead.description?.trim() ?? "";
+  if (!context) context = await fetchBrandContext(lead.url);
+
   const system =
-    "You generate realistic buyer-intent search prompts — the exact questions a potential customer would type into ChatGPT or Gemini when looking for this type of business. UK phrasing for UK businesses, US English for US. No mention of the company name itself (we are testing whether AI recommends them unprompted). Return ONLY a JSON array of strings, no markdown fences, no preamble.";
-  const user = `Business: ${lead.company} | Industry: ${lead.industry} | Location: ${lead.location} | Website: ${lead.url}\nGenerate 10 prompts: ~40% local/direct intent, ~30% category research, ~30% problem-led.`;
+    "You generate realistic buyer-intent search prompts — the exact questions a potential customer would type into ChatGPT when looking for this type of product or service. " +
+    "CRITICAL: ground every prompt in what the brand ACTUALLY does (from the description below), NOT generic interpretations of the industry label. " +
+    "Read the description carefully — if it's consumer-facing, write consumer prompts; if it's B2B, write B2B prompts; match the actual product. " +
+    "UK phrasing for UK businesses, US English for US. " +
+    "Never mention the brand name itself (we are testing whether AI recommends them unprompted). " +
+    "Return ONLY a JSON array of 10 strings, no markdown fences, no preamble.";
+
+  const user = `Brand: ${lead.company}
+Website: ${lead.url}
+What they do: ${context || "(no description provided — infer carefully from URL and industry)"}
+Industry label: ${lead.industry}
+Primary market: ${lead.location}
+
+Generate 10 prompts a real buyer of THIS specific product/service would type into ChatGPT:
+- ~40% direct/category intent ("best X for Y", "top X in UK")
+- ~30% comparison/research ("X vs Y", "how to choose X")
+- ~30% problem-led ("I need to do X but...", "struggling with Y")`;
 
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
