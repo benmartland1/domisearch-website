@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { site } from "@/lib/site";
 import { Counter } from "./Counter";
-import { MagneticButton } from "./MagneticButton";
+import { VisibilityCheckForm } from "./VisibilityCheckForm";
 import { GooglePartnerBadge } from "./ui/GooglePartnerBadge";
 import { ShopifyPartnerBadge } from "./ui/ShopifyPartnerBadge";
 
@@ -67,17 +67,21 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.75, duration: 0.8 }}
-            className="mt-10 flex flex-wrap items-center gap-3"
+            className="mt-10"
           >
-            <MagneticButton
-              href={site.calendly}
-              target="_blank"
-              rel="noopener"
-              className="btn btn-primary"
-            >
-              Book a call
-              <span aria-hidden>→</span>
-            </MagneticButton>
+            <VisibilityCheckForm />
+            <p className="mt-4 text-sm text-[color:var(--color-fog)]/65">
+              Prefer to talk first?{" "}
+              <Link
+                href={site.calendly}
+                target="_blank"
+                rel="noopener"
+                className="text-[color:var(--color-domigreen)] underline-offset-4 hover:underline"
+              >
+                Book a call
+              </Link>
+              .
+            </p>
           </motion.div>
 
           <motion.dl
