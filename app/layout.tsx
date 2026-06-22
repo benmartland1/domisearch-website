@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { LayoutChrome } from "@/components/LayoutChrome";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
@@ -72,9 +73,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="antialiased">
         <JsonLd data={[organizationSchema, websiteSchema]} />
         <div className="grain" aria-hidden />
-        <Header />
-        <main className="relative z-10 pt-24">{children}</main>
-        <Footer />
+        <LayoutChrome header={<Header />} footer={<Footer />}>
+          {children}
+        </LayoutChrome>
         <Analytics />
         <SpeedInsights />
       </body>
