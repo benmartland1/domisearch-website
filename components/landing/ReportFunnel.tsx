@@ -9,6 +9,7 @@ import {
   type FormEvent,
 } from "react";
 import { site } from "@/lib/site";
+import { trackMeta } from "@/lib/meta";
 
 type Step = "email" | "booking";
 
@@ -61,6 +62,21 @@ export function ReportFunnelProvider({ children }: { children: React.ReactNode }
     };
   }, [open]);
 
+  // When a Calendly booking completes inside the embed, Calendly posts a
+  // `calendly.event_scheduled` message to the parent window. Redirect to the
+  // thank-you page so the conversion can be tracked (PageView + Schedule event).
+  useEffect(() => {
+    function onMessage(e: MessageEvent) {
+      if (e.origin !== "https://calendly.com") return;
+      const data = e.data as { event?: string } | null;
+      if (data && typeof data === "object" && data.event === "calendly.event_scheduled") {
+        window.location.assign("/ai-visibility-report/thank-you");
+      }
+    }
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, []);
+
   async function submitEmail(e: FormEvent) {
     e.preventDefault();
     setError(null);
@@ -75,6 +91,8 @@ export function ReportFunnelProvider({ children }: { children: React.ReactNode }
         const body = await res.json().catch(() => ({}));
         throw new Error(body?.error ?? "Something went wrong. Please try again.");
       }
+      // Meta conversion signal: a real lead (domain + email captured).
+      trackMeta("Lead", { content_name: "AI Visibility Report" });
       setStep("booking");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unknown error");
