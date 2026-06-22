@@ -17,6 +17,30 @@ const fraunces = Fraunces({
 
 const serif = "font-[family-name:var(--font-fraunces)]";
 
+// Fine hand-drawn underline used under one or two hero keywords. A single
+// slightly-wavy stroke reads premium/editorial rather than a tacky marker block.
+const HL_SVG =
+  "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16' preserveAspectRatio='none'><path d='M4,9C48,5,92,13,128,8C160,4,184,12,196,8' fill='none' stroke='#01a36b' stroke-width='4' stroke-linecap='round'/></svg>";
+const HL_URI = `url("data:image/svg+xml,${encodeURIComponent(HL_SVG)}")`;
+
+function Highlight({ children }: { children: React.ReactNode }) {
+  return (
+    <span
+      className="pb-[0.04em]"
+      style={{
+        backgroundImage: HL_URI,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100% 0.36em",
+        backgroundPosition: "0 100%",
+        WebkitBoxDecorationBreak: "clone",
+        boxDecorationBreak: "clone",
+      }}
+    >
+      {children}
+    </span>
+  );
+}
+
 export const metadata: Metadata = {
   title: "Is AI Recommending Your Aesthetic Clinic? · DomiSearch",
   description:
@@ -111,6 +135,56 @@ const STEPS = [
   },
 ];
 
+function UnionFlag({ className = "h-[11px] w-[22px]" }: { className?: string }) {
+  return (
+    <span className={`inline-block overflow-hidden rounded-[2px] ring-1 ring-black/10 ${className}`}>
+      <svg viewBox="0 0 60 30" className="h-full w-full" preserveAspectRatio="none" aria-hidden>
+        <clipPath id="uk-flag-clip">
+          <path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z" />
+        </clipPath>
+        <rect width="60" height="30" fill="#01634c" />
+        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#f5f2ec" strokeWidth="6" />
+        <path d="M0,0 L60,30 M60,0 L0,30" clipPath="url(#uk-flag-clip)" stroke="#2dc295" strokeWidth="4" />
+        <path d="M30,0 v30 M0,15 h60" stroke="#f5f2ec" strokeWidth="10" />
+        <path d="M30,0 v30 M0,15 h60" stroke="#2dc295" strokeWidth="6" />
+      </svg>
+    </span>
+  );
+}
+
+// Mid-page CTA: scrolls back up to the hero form (smooth via global CSS)
+// instead of repeating the full URL entry field.
+function ScrollCta({ label }: { label: string }) {
+  return (
+    <div className="flex justify-center">
+      <a
+        href="#top"
+        className="inline-flex items-center justify-center gap-2 rounded-full bg-[color:var(--color-pine)] px-7 py-4 text-base font-semibold text-[color:var(--color-paper)] shadow-[0_10px_30px_-12px_rgba(1,99,76,0.7)] transition-transform hover:-translate-y-0.5"
+      >
+        {label}
+        <span aria-hidden>→</span>
+      </a>
+    </div>
+  );
+}
+
+function Stars() {
+  return (
+    <div className="inline-flex items-center gap-2.5">
+      <div className="flex gap-0.5">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <svg key={i} viewBox="0 0 24 24" className="h-5 w-5" fill="#00b67a" aria-hidden>
+            <path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 9.5l6.9-.6z" />
+          </svg>
+        ))}
+      </div>
+      <span className="text-sm font-semibold text-[color:var(--color-ink)]">
+        Rated 5 stars on Trustpilot
+      </span>
+    </div>
+  );
+}
+
 function Check({ className = "mt-0.5 h-5 w-5" }: { className?: string }) {
   return (
     <svg aria-hidden viewBox="0 0 20 20" className={`shrink-0 ${className}`} fill="none">
@@ -142,7 +216,7 @@ export default function AestheticsPage() {
         </div>
 
         {/* ============================ HERO ============================ */}
-        <section className="relative isolate overflow-hidden">
+        <section id="top" className="relative isolate overflow-hidden scroll-mt-6">
           {/* soft green glow */}
           <div
             aria-hidden
@@ -157,24 +231,26 @@ export default function AestheticsPage() {
           />
           <div className="relative mx-auto max-w-4xl px-6 pb-16 pt-8 text-center sm:pt-14">
             <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-pine)]/25 bg-[color:var(--color-pine)]/[0.06] px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-pine)]">
+              <UnionFlag />
               For UK aesthetic clinics
             </div>
 
             <h1 className={`mx-auto mt-6 max-w-3xl text-balance ${serif} text-[clamp(2.3rem,5.8vw,3.7rem)] font-medium leading-[1.08] tracking-[-0.01em] text-[color:var(--color-ink)]`}>
-              Someone near you just asked AI for the best aesthetic clinic.{" "}
+              Someone near you just asked <Highlight>AI</Highlight> for the best aesthetic{" "}
+              <Highlight>clinic</Highlight>.{" "}
               <span className="italic font-normal text-[color:var(--color-pine)]">
                 Did it say your name?
               </span>
             </h1>
 
             <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-[color:var(--color-ink-2)]">
-              More patients now choose their injector by asking ChatGPT and Google AI before they
-              ever pick up the phone. If the answer names a rival, you've lost the client before the
-              consultation, and you can't run an ad to fix it.
+              Patients now ask ChatGPT and Google AI which clinic to trust before they ever pick up
+              the phone. If the answer names a rival, you've lost them, and you can't run an ad to
+              fix it.
             </p>
 
             <div className="mt-9">
-              <DomainCaptureForm id="domain-hero" />
+              <DomainCaptureForm id="domain-hero" placeholder="yourclinic.com" />
               <div className="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13px] text-[color:var(--color-ink-3)]">
                 {["Fully compliant", "No ad spend", "Built for UK clinics"].map((t) => (
                   <span key={t} className="inline-flex items-center gap-1.5">
@@ -222,6 +298,10 @@ export default function AestheticsPage() {
                   </div>
                 );
               })}
+            </div>
+
+            <div className="mt-12">
+              <ScrollCta label="See where your clinic stands" />
             </div>
           </div>
         </section>
@@ -279,6 +359,10 @@ export default function AestheticsPage() {
                 </div>
               ))}
             </div>
+
+            <div className="mt-12">
+              <ScrollCta label="Get my free AI Visibility Report" />
+            </div>
           </div>
         </section>
 
@@ -304,6 +388,39 @@ export default function AestheticsPage() {
           </div>
         </section>
 
+        {/* ==================== WHY CLINICS TRUST US ==================== */}
+        <section className="border-y border-black/[0.06] bg-[color:var(--color-paper-2)]">
+          <div className="mx-auto max-w-3xl px-6 py-16 text-center sm:py-20">
+            <h2 className={`${serif} text-[clamp(1.7rem,4vw,2.5rem)] font-medium leading-tight tracking-[-0.01em] text-[color:var(--color-ink)]`}>
+              Why clinics trust DomiSearch with this
+            </h2>
+
+            <div className="mt-6 flex justify-center">
+              <Stars />
+            </div>
+
+            <ul className="mx-auto mt-10 max-w-2xl space-y-4 text-left">
+              {[
+                "A Google Partner agency - the same rigour we apply to ad accounts, applied to AI visibility.",
+                "Built for UK aesthetics: every prompt reflects how real patients ask, every fix checked against ASA and MHRA rules.",
+                "No guesswork - we show you which engines name you, which name your rivals, and the gaps to close first.",
+              ].map((t) => (
+                <li key={t} className="flex gap-3">
+                  <span aria-hidden className="mt-px shrink-0 font-semibold text-[color:var(--color-pine)]">
+                    →
+                  </span>
+                  <span className="text-[15px] leading-relaxed text-[color:var(--color-ink-2)]">{t}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p className={`mx-auto mt-10 max-w-xl ${serif} text-[clamp(1.15rem,2.6vw,1.5rem)] font-medium leading-snug text-[color:var(--color-ink)]`}>
+              The agency clinics trust to get them recommended,{" "}
+              <span className="italic font-normal text-[color:var(--color-pine)]">compliantly.</span>
+            </p>
+          </div>
+        </section>
+
         {/* ========================= FINAL CTA ========================= */}
         <section className="bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
           <div className="mx-auto max-w-3xl px-6 py-20 text-center sm:py-24">
@@ -316,7 +433,7 @@ export default function AestheticsPage() {
               ten seconds to start.
             </p>
             <div className="mt-9">
-              <DomainCaptureForm id="domain-final" />
+              <DomainCaptureForm id="domain-final" placeholder="yourclinic.com" />
             </div>
           </div>
         </section>

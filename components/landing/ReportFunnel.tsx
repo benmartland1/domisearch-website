@@ -211,7 +211,13 @@ export function ReportFunnelProvider({ children }: { children: React.ReactNode }
 /* Domain capture form - the single, repeated CTA                      */
 /* ------------------------------------------------------------------ */
 
-export function DomainCaptureForm({ id }: { id: string }) {
+export function DomainCaptureForm({
+  id,
+  placeholder = "yourbrand.com",
+}: {
+  id: string;
+  placeholder?: string;
+}) {
   const { start } = useFunnel();
   const [domain, setDomain] = useState("");
 
@@ -246,7 +252,7 @@ export function DomainCaptureForm({ id }: { id: string }) {
           autoComplete="url"
           value={domain}
           onChange={(e) => setDomain(e.target.value)}
-          placeholder="yourbrand.com"
+          placeholder={placeholder}
           className="w-full rounded-full border border-black/15 bg-white py-4 pl-[4.6rem] pr-5 text-base text-[color:var(--color-ink)] outline-none transition-colors placeholder:text-black/35 focus:border-[color:var(--color-pine)]"
         />
       </div>
