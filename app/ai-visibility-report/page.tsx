@@ -210,10 +210,10 @@ export default function AiVisibilityReportPage() {
 
         {/* =========================== PROOF =========================== */}
         <section className="mx-auto max-w-5xl px-6 py-16 text-center sm:py-20">
-          {/* Placeholder stat - swap for a real, defensible number */}
           <p className="mx-auto max-w-2xl text-[clamp(1.3rem,3.2vw,1.9rem)] font-bold leading-snug tracking-tight text-[color:var(--color-ink)]">
-            “[Placeholder stat - e.g. We&apos;ve checked AI visibility for 50+ UK brands and found
-            most are invisible for their highest-intent buyer questions.]”
+            Taxd went from invisible to{" "}
+            <span className="text-[color:var(--color-pine)]">200+ AI mentions a month</span> across
+            ChatGPT, Claude, Perplexity and Gemini.
           </p>
           <p className="mt-10 text-[12px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink-3)]">
             Trusted by brands like
@@ -226,7 +226,7 @@ export default function AiVisibilityReportPage() {
                 alt={logo.name}
                 width={132}
                 height={40}
-                className="h-7 w-auto opacity-60 grayscale sm:h-8"
+                className="h-7 w-auto opacity-70 brightness-0 sm:h-8"
               />
             ))}
           </div>
