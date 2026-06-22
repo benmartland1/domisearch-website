@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 
 /**
  * Renders the global site chrome (header/footer/padding) on normal routes,
- * and nothing — a bare full-bleed surface — on dedicated landing pages that
+ * and nothing - a bare full-bleed surface - on dedicated landing pages that
  * must have no nav and no competing links (e.g. paid-traffic lead magnets).
  *
  * Header/Footer are passed in as already-server-rendered nodes so they stay

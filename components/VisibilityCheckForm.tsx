@@ -41,7 +41,7 @@ export function VisibilityCheckForm() {
   if (status === "success") {
     return (
       <div className="max-w-xl rounded-2xl border border-[color:var(--color-domigreen)]/40 bg-[color:var(--color-domigreen)]/10 px-5 py-4 text-sm text-[color:var(--color-glacier)]">
-        Got it — Ben will run your AI search visibility check personally and follow up with a
+        Got it - Ben will run your AI search visibility check personally and follow up with a
         short audit.
       </div>
     );

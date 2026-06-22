@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 const schema = z.object({
   url: z.string().min(3).max(300),
-  // Honeypot — must be empty.
+  // Honeypot - must be empty.
   hp_company: z.string().optional(),
 });
 
@@ -41,7 +41,7 @@ export async function POST(request: Request) {
   }
   const { url, hp_company } = parsed.data;
 
-  // Honeypot — pretend success, do nothing.
+  // Honeypot - pretend success, do nothing.
   if (hp_company) {
     return NextResponse.json({ ok: true });
   }
@@ -58,14 +58,14 @@ export async function POST(request: Request) {
   const notifyTo = process.env.CONTACT_TO_EMAIL ?? site.email;
 
   if (!apiKey) {
-    console.error("[audit-request] RESEND_API_KEY missing — request not delivered:", { website });
+    console.error("[audit-request] RESEND_API_KEY missing - request not delivered:", { website });
     // Don't fail the visitor; the lead is at least logged.
     return NextResponse.json({ ok: true });
   }
 
   const resend = new Resend(apiKey);
 
-  // Internal notification to Ben — the lead.
+  // Internal notification to Ben - the lead.
   try {
     await resend.emails.send({
       from: `DomiSearch Website <${fromEmail}>`,

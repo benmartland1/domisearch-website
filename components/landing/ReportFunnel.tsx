@@ -164,7 +164,7 @@ export function ReportFunnelProvider({ children }: { children: React.ReactNode }
                   We&apos;re generating the report for{" "}
                   <span className="font-semibold text-[color:var(--color-ink)]">{domain}</span> and it&apos;s
                   landing in your inbox shortly. Grab a slot below and we&apos;ll go through exactly where
-                  you&apos;re missing — and the fastest gaps to close.
+                  you&apos;re missing - and the fastest gaps to close.
                 </p>
 
                 {/* Calendly inline embed. Swap site.calendly in lib/site.ts to change the booking link. */}
@@ -190,7 +190,7 @@ export function ReportFunnelProvider({ children }: { children: React.ReactNode }
 }
 
 /* ------------------------------------------------------------------ */
-/* Domain capture form — the single, repeated CTA                      */
+/* Domain capture form - the single, repeated CTA                      */
 /* ------------------------------------------------------------------ */
 
 export function DomainCaptureForm({ id }: { id: string }) {

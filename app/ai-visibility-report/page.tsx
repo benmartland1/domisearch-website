@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ReportFunnelProvider, DomainCaptureForm } from "@/components/landing/ReportFunnel";
+import { DomiMark } from "@/components/landing/DomiMark";
+import { EngineStrip } from "@/components/landing/EngineStrip";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Free AI Visibility Report — Are You in the Answer? · DomiSearch",
+  title: "Free AI Visibility Report - Are You in the Answer? · DomiSearch",
   description:
-    "Your customers are asking ChatGPT, Perplexity and Google AI for recommendations. Find out whether your brand shows up — get a free AI Visibility Report.",
+    "Your customers are asking ChatGPT, Perplexity and Google AI for recommendations. Find out whether your brand shows up - get a free AI Visibility Report.",
   alternates: { canonical: "/ai-visibility-report" },
   openGraph: {
     title: "Are you in the answer? Free AI Visibility Report",
     description:
-      "See where your brand shows up across ChatGPT, Google AI and Perplexity — and where competitors are winning the answer.",
+      "See where your brand shows up across ChatGPT, Google AI and Perplexity - and where competitors are winning the answer.",
     url: `${site.url}/ai-visibility-report`,
   },
 };
@@ -27,8 +29,8 @@ const PROOF_LOGOS = [
 
 const PROBLEMS = [
   {
-    title: "Buyers ask AI now — not just Google",
-    body: "People type “best accountant in Manchester” or “which CRM should I use” straight into ChatGPT, Perplexity and Google’s AI — and act on whatever it tells them.",
+    title: "Buyers ask AI now - not just Google",
+    body: "People type “best accountant in Manchester” or “which CRM should I use” straight into ChatGPT, Perplexity and Google’s AI - and act on whatever it tells them.",
   },
   {
     title: "Most brands are invisible in the answer",
@@ -36,13 +38,13 @@ const PROBLEMS = [
   },
   {
     title: "The winner is picked before the click",
-    body: "The brand the AI recommends gets the trust, the visit and the sale — often before the buyer ever reaches a single website. Your competitor wins by default.",
+    body: "The brand the AI recommends gets the trust, the visit and the sale - often before the buyer ever reaches a single website. Your competitor wins by default.",
   },
 ];
 
 const REPORT_BULLETS = [
-  "Which AI platforms mention you — ChatGPT, Google AI Overviews, Perplexity and Gemini",
-  "The exact buyer questions you show up for — and the ones where you’re missing",
+  "Which AI platforms mention you - ChatGPT, Google AI Overviews, Perplexity and Gemini",
+  "The exact buyer questions you show up for - and the ones where you’re missing",
   "Which competitors the AI recommends instead of you, and how often",
   "The specific gaps to fix first to start appearing in the answers that matter",
 ];
@@ -56,7 +58,7 @@ const STEPS = [
   {
     n: "2",
     title: "We run live AI visibility tracking",
-    body: "We check your brand across the major AI search engines using real buyer prompts — not guesswork.",
+    body: "We check your brand across the major AI search engines using real buyer prompts - not guesswork.",
   },
   {
     n: "3",
@@ -89,15 +91,9 @@ export default function AiVisibilityReportPage() {
   return (
     <ReportFunnelProvider>
       <div className="min-h-screen bg-[color:var(--color-paper)] text-[color:var(--color-ink-2)]">
-        {/* Minimal brand bar — no nav, no links */}
+        {/* Minimal brand bar - no nav, no links */}
         <div className="mx-auto flex max-w-6xl items-center gap-2.5 px-6 py-6">
-          <Image
-            src="/brand/logo.png"
-            alt="DomiSearch"
-            width={34}
-            height={34}
-            className="h-8 w-8 rounded-md"
-          />
+          <DomiMark className="h-7 w-7" />
           <span className="text-[15px] font-bold tracking-tight text-[color:var(--color-ink)]">
             DomiSearch
           </span>
@@ -118,7 +114,7 @@ export default function AiVisibilityReportPage() {
           </h1>
 
           <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-[color:var(--color-ink-2)]">
-            More and more buying decisions now start — and finish — inside ChatGPT, Perplexity and
+            More and more buying decisions now start - and finish - inside ChatGPT, Perplexity and
             Google’s AI, not a page of blue links. If those answers don’t mention you, you&apos;re
             invisible at the exact moment people choose.
           </p>
@@ -126,8 +122,12 @@ export default function AiVisibilityReportPage() {
           <div className="mt-9">
             <DomainCaptureForm id="domain-hero" />
             <p className="mt-4 text-sm text-[color:var(--color-ink-3)]">
-              Free report · Covers ChatGPT, Google AI, Perplexity &amp; Gemini · No credit card
+              Free report · No credit card · Takes ten seconds
             </p>
+          </div>
+
+          <div className="mt-12">
+            <EngineStrip label="We check every engine your buyers ask" />
           </div>
         </section>
 
@@ -167,7 +167,7 @@ export default function AiVisibilityReportPage() {
               </h2>
               <p className="mt-4 text-[15px] leading-relaxed text-[color:var(--color-ink-2)]">
                 A plain-English snapshot of how visible your brand is when buyers ask AI for
-                recommendations — and the quickest ways to start showing up.
+                recommendations - and the quickest ways to start showing up.
               </p>
             </div>
 
@@ -210,9 +210,9 @@ export default function AiVisibilityReportPage() {
 
         {/* =========================== PROOF =========================== */}
         <section className="mx-auto max-w-5xl px-6 py-16 text-center sm:py-20">
-          {/* Placeholder stat — swap for a real, defensible number */}
+          {/* Placeholder stat - swap for a real, defensible number */}
           <p className="mx-auto max-w-2xl text-[clamp(1.3rem,3.2vw,1.9rem)] font-bold leading-snug tracking-tight text-[color:var(--color-ink)]">
-            “[Placeholder stat — e.g. We&apos;ve checked AI visibility for 50+ UK brands and found
+            “[Placeholder stat - e.g. We&apos;ve checked AI visibility for 50+ UK brands and found
             most are invisible for their highest-intent buyer questions.]”
           </p>
           <p className="mt-10 text-[12px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink-3)]">
@@ -236,7 +236,7 @@ export default function AiVisibilityReportPage() {
         <section className="bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
           <div className="mx-auto max-w-3xl px-6 py-20 text-center sm:py-24">
             <h2 className="mx-auto max-w-2xl text-balance text-[clamp(1.8rem,4.6vw,2.8rem)] font-bold leading-[1.1] tracking-tight">
-              Find out if AI is recommending you — or your competitor
+              Find out if AI is recommending you - or your competitor
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-pretty text-lg leading-relaxed text-[color:var(--color-paper)]/70">
               Get your free AI Visibility Report and see exactly where you stand. It takes ten

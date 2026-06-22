@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 const schema = z.object({
   domain: z.string().min(3).max(300),
   email: z.string().email().max(200),
-  // Honeypot — must be empty.
+  // Honeypot - must be empty.
   hp_company: z.string().optional(),
 });
 
@@ -42,7 +42,7 @@ export async function POST(request: Request) {
   }
   const { domain, email, hp_company } = parsed.data;
 
-  // Honeypot — pretend success, do nothing.
+  // Honeypot - pretend success, do nothing.
   if (hp_company) {
     return NextResponse.json({ ok: true });
   }
@@ -64,14 +64,14 @@ export async function POST(request: Request) {
   // ────────────────────────────────────────────────────────────────────────
 
   if (!apiKey) {
-    console.error("[report-request] RESEND_API_KEY missing — lead not delivered:", { host, email });
+    console.error("[report-request] RESEND_API_KEY missing - lead not delivered:", { host, email });
     // Don't fail the visitor; the lead is at least logged.
     return NextResponse.json({ ok: true });
   }
 
   const resend = new Resend(apiKey);
 
-  // Internal notification to Ben — the lead.
+  // Internal notification to Ben - the lead.
   try {
     await resend.emails.send({
       from: `DomiSearch Website <${fromEmail}>`,
@@ -103,7 +103,7 @@ Generate the report and bring it to the booking call. Reply to this email to rea
     <div style="font-family: -apple-system, system-ui, sans-serif; max-width: 560px; margin: 0 auto; padding: 32px; color: #1a1a1a;">
       <h2 style="margin: 0 0 16px; font-size: 22px; font-weight: 600;">Your AI Visibility Report is on its way.</h2>
       <p style="line-height: 1.6; margin: 0 0 16px;">
-        Thanks — we're checking <strong>${host}</strong> across ChatGPT, Google AI and Perplexity to see
+        Thanks - we're checking <strong>${host}</strong> across ChatGPT, Google AI and Perplexity to see
         where you show up, where you don't, and which competitors are winning the answer.
       </p>
       <p style="line-height: 1.6; margin: 0 0 16px;">
@@ -111,18 +111,18 @@ Generate the report and bring it to the booking call. Reply to this email to rea
         and the quickest gaps to close: <a href="${site.calendly}" style="color: #01634c;">${site.calendly}</a>
       </p>
       <p style="line-height: 1.6; margin: 24px 0 0;">
-        — Ben<br/>
+        - Ben<br/>
         <span style="color: #666; font-size: 14px;">Founder, DomiSearch</span>
       </p>
     </div>
   `;
   const confirmText = `Your AI Visibility Report is on its way.
 
-Thanks — we're checking ${host} across ChatGPT, Google AI and Perplexity to see where you show up, where you don't, and which competitors are winning the answer.
+Thanks - we're checking ${host} across ChatGPT, Google AI and Perplexity to see where you show up, where you don't, and which competitors are winning the answer.
 
 If you haven't already, book your walkthrough call and we'll go through the report together: ${site.calendly}
 
-— Ben
+- Ben
 Founder, DomiSearch`;
 
   try {
