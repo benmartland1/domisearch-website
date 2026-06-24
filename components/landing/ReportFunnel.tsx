@@ -6,6 +6,7 @@ import {
   useState,
   useCallback,
   useEffect,
+  useRef,
   type FormEvent,
 } from "react";
 import { site } from "@/lib/site";
@@ -33,13 +34,17 @@ export function ReportFunnelProvider({ children }: { children: React.ReactNode }
   const [open, setOpen] = useState(false);
   const [step, setStep] = useState<Step>("email");
   const [domain, setDomain] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const start = useCallback((d: string) => {
     setDomain(d);
+    setName("");
     setEmail("");
+    setPhone("");
     setError(null);
     setStep("email");
     setOpen(true);
@@ -85,7 +90,12 @@ export function ReportFunnelProvider({ children }: { children: React.ReactNode }
       const res = await fetch("/api/report-request", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ domain, email: email.trim() }),
+        body: JSON.stringify({
+          domain,
+          name: name.trim(),
+          email: email.trim(),
+          phone: phone.trim(),
+        }),
       });
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
@@ -136,28 +146,60 @@ export function ReportFunnelProvider({ children }: { children: React.ReactNode }
                 <p className="mt-3 text-[15px] leading-relaxed text-[color:var(--color-ink-2)]">
                   We&apos;re building the AI visibility report for{" "}
                   <span className="font-semibold text-[color:var(--color-ink)]">{domain}</span>.
-                  Add your email and we&apos;ll send it over, then you can book a call to walk through it.
+                  Add your details and we&apos;ll send it over, then you can book a call to walk through it.
                 </p>
 
-                <form onSubmit={submitEmail} className="mt-6">
-                  <label htmlFor="funnel-email" className="sr-only">
-                    Email address
-                  </label>
-                  <input
-                    id="funnel-email"
-                    type="email"
-                    required
-                    autoFocus
-                    autoComplete="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@company.com"
-                    className="w-full rounded-xl border border-black/15 bg-white px-4 py-3.5 text-base text-[color:var(--color-ink)] outline-none transition-colors placeholder:text-black/35 focus:border-[color:var(--color-pine)]"
-                  />
+                <form onSubmit={submitEmail} className="mt-6 space-y-3">
+                  <div>
+                    <label htmlFor="funnel-name" className="sr-only">
+                      Your name
+                    </label>
+                    <input
+                      id="funnel-name"
+                      type="text"
+                      required
+                      autoFocus
+                      autoComplete="name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Your name"
+                      className="w-full rounded-xl border border-black/15 bg-white px-4 py-3.5 text-base text-[color:var(--color-ink)] outline-none transition-colors placeholder:text-black/35 focus:border-[color:var(--color-pine)]"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="funnel-email" className="sr-only">
+                      Email address
+                    </label>
+                    <input
+                      id="funnel-email"
+                      type="email"
+                      required
+                      autoComplete="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="you@company.com"
+                      className="w-full rounded-xl border border-black/15 bg-white px-4 py-3.5 text-base text-[color:var(--color-ink)] outline-none transition-colors placeholder:text-black/35 focus:border-[color:var(--color-pine)]"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="funnel-phone" className="sr-only">
+                      Phone number
+                    </label>
+                    <input
+                      id="funnel-phone"
+                      type="tel"
+                      required
+                      autoComplete="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="Phone number"
+                      className="w-full rounded-xl border border-black/15 bg-white px-4 py-3.5 text-base text-[color:var(--color-ink)] outline-none transition-colors placeholder:text-black/35 focus:border-[color:var(--color-pine)]"
+                    />
+                  </div>
                   <button
                     type="submit"
                     disabled={sending}
-                    className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-[color:var(--color-pine)] px-6 py-3.5 text-base font-semibold text-[color:var(--color-paper)] transition-opacity hover:opacity-90 disabled:opacity-60"
+                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-[color:var(--color-pine)] px-6 py-3.5 text-base font-semibold text-[color:var(--color-paper)] transition-opacity hover:opacity-90 disabled:opacity-60"
                   >
                     {sending ? "Sending…" : "Send My Free Report"}
                     <span aria-hidden>→</span>
@@ -167,7 +209,7 @@ export function ReportFunnelProvider({ children }: { children: React.ReactNode }
                 {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
 
                 <p className="mt-4 text-xs text-[color:var(--color-ink-3)]">
-                  No spam. We use your email only to send the report and arrange your call.
+                  No spam. We use your details only to send the report and arrange your call.
                 </p>
               </div>
             ) : (
@@ -220,11 +262,20 @@ export function DomainCaptureForm({
 }) {
   const { start } = useFunnel();
   const [domain, setDomain] = useState("");
+  const [invalid, setInvalid] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
     const value = domain.trim();
-    if (value.length < 3 || !value.includes(".")) return;
+    if (value.length < 3 || !value.includes(".")) {
+      // Don't fail silently — highlight + focus the field so it's clear the
+      // visitor needs to enter a website here.
+      setInvalid(true);
+      inputRef.current?.focus();
+      return;
+    }
+    setInvalid(false);
     start(value.replace(/^https?:\/\//i, "").replace(/\/.*$/, ""));
   }
 
@@ -245,15 +296,20 @@ export function DomainCaptureForm({
           https://
         </span>
         <input
+          ref={inputRef}
           id={id}
           type="text"
           inputMode="url"
           required
           autoComplete="url"
+          aria-invalid={invalid}
           value={domain}
-          onChange={(e) => setDomain(e.target.value)}
+          onChange={(e) => {
+            setDomain(e.target.value);
+            if (invalid) setInvalid(false);
+          }}
           placeholder={placeholder}
-          className="w-full rounded-full border border-black/15 bg-white py-4 pl-[4.6rem] pr-5 text-base text-[color:var(--color-ink)] outline-none transition-colors placeholder:text-black/35 focus:border-[color:var(--color-pine)]"
+          className={`w-full rounded-full border bg-white py-4 pl-[4.6rem] pr-5 text-base text-[color:var(--color-ink)] outline-none transition-colors placeholder:text-black/35 focus:border-[color:var(--color-pine)] ${invalid ? "border-red-400" : "border-black/15"}`}
         />
       </div>
       <button

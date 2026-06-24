@@ -8,7 +8,9 @@ export const dynamic = "force-dynamic";
 
 const schema = z.object({
   domain: z.string().min(3).max(300),
+  name: z.string().min(1).max(120),
   email: z.string().email().max(200),
+  phone: z.string().min(5).max(40),
   // Honeypot - must be empty.
   hp_company: z.string().optional(),
 });
@@ -36,11 +38,11 @@ export async function POST(request: Request) {
   const parsed = schema.safeParse(data);
   if (!parsed.success) {
     return NextResponse.json(
-      { error: "Please enter a valid domain and email." },
+      { error: "Please enter your name, a valid email and phone number." },
       { status: 422 },
     );
   }
-  const { domain, email, hp_company } = parsed.data;
+  const { domain, name, email, phone, hp_company } = parsed.data;
 
   // Honeypot - pretend success, do nothing.
   if (hp_company) {
@@ -77,18 +79,22 @@ export async function POST(request: Request) {
       from: `DomiSearch Website <${fromEmail}>`,
       to: [notifyTo],
       replyTo: email,
-      subject: `AI Visibility Report request: ${host}`,
+      subject: `AI Visibility Report request: ${name} (${host})`,
       text: `New AI Visibility Report lead (from the paid landing page).
 
+Name:   ${name}
 Domain: ${host}
 Email:  ${email}
+Phone:  ${phone}
 
 Generate the report and bring it to the booking call. Reply to this email to reach them.`,
       html: `
         <div style="font-family: -apple-system, system-ui, sans-serif; max-width: 560px; margin: 0 auto; padding: 32px; color: #1a1a1a;">
           <h2 style="margin: 0 0 16px; font-size: 20px; font-weight: 600;">New AI Visibility Report lead</h2>
+          <p style="line-height: 1.6; margin: 0 0 8px;"><strong>Name:</strong> ${name}</p>
           <p style="line-height: 1.6; margin: 0 0 8px;"><strong>Domain:</strong> <a href="https://${host}" style="color: #01634c;">${host}</a></p>
-          <p style="line-height: 1.6; margin: 0 0 16px;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #01634c;">${email}</a></p>
+          <p style="line-height: 1.6; margin: 0 0 8px;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #01634c;">${email}</a></p>
+          <p style="line-height: 1.6; margin: 0 0 16px;"><strong>Phone:</strong> <a href="tel:${phone}" style="color: #01634c;">${phone}</a></p>
           <p style="line-height: 1.6; margin: 0; color: #666; font-size: 14px;">From the paid landing page. Generate the report and bring it to the booking call.</p>
         </div>
       `,
@@ -103,7 +109,7 @@ Generate the report and bring it to the booking call. Reply to this email to rea
     <div style="font-family: -apple-system, system-ui, sans-serif; max-width: 560px; margin: 0 auto; padding: 32px; color: #1a1a1a;">
       <h2 style="margin: 0 0 16px; font-size: 22px; font-weight: 600;">Your AI Visibility Report is on its way.</h2>
       <p style="line-height: 1.6; margin: 0 0 16px;">
-        Thanks - we're checking <strong>${host}</strong> across ChatGPT, Google AI and Perplexity to see
+        Thanks ${name} - we're checking <strong>${host}</strong> across ChatGPT, Google AI and Perplexity to see
         where you show up, where you don't, and which competitors are winning the answer.
       </p>
       <p style="line-height: 1.6; margin: 0 0 16px;">
@@ -118,7 +124,7 @@ Generate the report and bring it to the booking call. Reply to this email to rea
   `;
   const confirmText = `Your AI Visibility Report is on its way.
 
-Thanks - we're checking ${host} across ChatGPT, Google AI and Perplexity to see where you show up, where you don't, and which competitors are winning the answer.
+Thanks ${name} - we're checking ${host} across ChatGPT, Google AI and Perplexity to see where you show up, where you don't, and which competitors are winning the answer.
 
 If you haven't already, book your walkthrough call and we'll go through the report together: ${site.calendly}
 
