@@ -160,6 +160,24 @@ html, body {
   pointer-events: none;
 }
 
+/* Engine "live scan" pulse — staggered per chip in EngineStrip. */
+@keyframes enginePulse {
+  0%, 100% { opacity: 0.18; transform: scale(0.7); }
+  45% { opacity: 1; transform: scale(1.3); }
+}
+.engine-pulse {
+  animation: enginePulse 1.5s ease-in-out infinite;
+}
+
+/* Gentle float for the hero report mockup. */
+@keyframes reportFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.report-float {
+  animation: reportFloat 4s ease-in-out infinite;
+}
+
 .card {
   background: color-mix(in oklab, var(--color-glacier) 3%, transparent);
   border: 1px solid color-mix(in oklab, var(--color-glacier) 8%, transparent);
@@ -556,5 +574,7 @@ html, body {
   .marquee-track { animation: none; }
   .magnetic { transform: none; transition: none; }
   .spotlight::before { display: none; }
+  .engine-pulse { animation: none; opacity: 0.6; }
+  .report-float { animation: none; }
   html { scroll-behavior: auto; }
 }

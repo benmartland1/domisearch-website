@@ -12,20 +12,29 @@ const ENGINES = [
   { name: "Copilot", src: "/engines/copilot.png" },
 ];
 
-export function EngineStrip({ label }: { label?: string }) {
+export function EngineStrip({ label, animated = false }: { label?: string; animated?: boolean }) {
   return (
     <div>
       {label && (
-        <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink-3)]">
+        <p className="text-center text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink-3)]">
           {label}
         </p>
       )}
       <div className="mt-4 flex flex-wrap items-center justify-center gap-2.5">
-        {ENGINES.map((e) => (
+        {ENGINES.map((e, i) => (
           <span
             key={e.name}
             className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3.5 py-2 shadow-[0_1px_3px_rgba(0,0,0,0.04)]"
           >
+            {/* Live "scanning" indicator — a green pulse that travels across the
+                engines (staggered per chip) to prove the tool is checking them. */}
+            {animated && (
+              <span
+                aria-hidden
+                className="engine-pulse h-1.5 w-1.5 shrink-0 rounded-full bg-[#01a36b]"
+                style={{ animationDelay: `${i * 0.28}s` }}
+              />
+            )}
             <Image
               src={e.src}
               alt=""

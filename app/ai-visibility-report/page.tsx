@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ReportFunnelProvider, DomainCaptureForm } from "@/components/landing/ReportFunnel";
 import { DomiMark } from "@/components/landing/DomiMark";
 import { EngineStrip } from "@/components/landing/EngineStrip";
+import { ReportMockup } from "@/components/landing/ReportMockup";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -103,31 +104,62 @@ export default function AiVisibilityReportPage() {
         </div>
 
         {/* ============================ HERO ============================ */}
-        <section className="mx-auto max-w-4xl px-6 pb-16 pt-8 text-center sm:pt-14">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-pine)]/25 bg-[color:var(--color-pine)]/[0.06] px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-pine)]">
-            AI Search Visibility
-          </div>
+        <section className="relative">
+          <div className="mx-auto max-w-6xl px-6 pb-16 pt-8 sm:pt-14">
+            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+              {/* Left: headline / CTA block */}
+              <div className="text-center lg:text-left">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-pine)]/25 bg-[color:var(--color-pine)]/[0.06] px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-pine)]">
+                  AI Search Visibility
+                </div>
 
-          <h1 className="mx-auto mt-6 max-w-3xl text-balance text-[clamp(2.1rem,6vw,3.6rem)] font-bold leading-[1.05] tracking-tight text-[color:var(--color-ink)]">
-            Your customers are asking ChatGPT for recommendations.{" "}
-            <span className="text-[color:var(--color-pine)]">Are you in the answer?</span>
-          </h1>
+                <h1 className="mx-auto mt-6 max-w-3xl text-balance text-[clamp(2.1rem,6vw,3.1rem)] font-bold leading-[1.05] tracking-tight text-[color:var(--color-ink)] lg:mx-0">
+                  Your customers are asking ChatGPT for recommendations.{" "}
+                  <span className="text-[color:var(--color-pine)]">Are you in the answer?</span>
+                </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-[color:var(--color-ink-2)]">
-            More and more buying decisions now start - and finish - inside ChatGPT, Perplexity and
-            Google’s AI, not a page of blue links. If those answers don’t mention you, you&apos;re
-            invisible at the exact moment people choose.
-          </p>
+                <p className="mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed text-[color:var(--color-ink-2)] sm:text-lg lg:mx-0">
+                  More and more buying decisions now start - and finish - inside ChatGPT, Perplexity and
+                  Google’s AI, not a page of blue links. If those answers don’t mention you, you&apos;re
+                  invisible at the exact moment people choose.
+                </p>
 
-          <div className="mt-9">
-            <DomainCaptureForm id="domain-hero" />
-            <p className="mt-4 text-sm text-[color:var(--color-ink-3)]">
-              Free report · No credit card · Takes ten seconds
-            </p>
-          </div>
+                <div className="mt-9">
+                  <DomainCaptureForm id="domain-hero" />
+                  <p className="mt-4 text-sm text-[color:var(--color-ink-3)]">
+                    Free report · No credit card · Takes ten seconds
+                  </p>
+                </div>
 
-          <div className="mt-12">
-            <EngineStrip label="We check every engine your buyers ask" />
+                {/* Trustpilot trust signal */}
+                <div className="mt-5 flex justify-center lg:justify-start">
+                  <a
+                    href={site.trustpilot}
+                    target="_blank"
+                    rel="noopener"
+                    className="inline-flex flex-wrap items-center justify-center gap-2 text-sm text-[color:var(--color-ink-3)] transition-colors hover:text-[color:var(--color-ink)]"
+                  >
+                    <span className="flex gap-0.5" aria-hidden>
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <svg key={i} viewBox="0 0 24 24" className="h-4 w-4" fill="#00b67a">
+                          <path d="M12 2l2.9 6.3 6.9.6-5.2 4.6 1.6 6.8L12 17.3 5.8 20.9l1.6-6.8L2.2 9.5l6.9-.6z" />
+                        </svg>
+                      ))}
+                    </span>
+                    <span className="font-medium">Rated 5 stars on Trustpilot</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Right: floating report mockup */}
+              <div className="mt-2 lg:mt-0">
+                <ReportMockup />
+              </div>
+            </div>
+
+            <div className="mt-14">
+              <EngineStrip label="We check every engine your buyers ask" animated />
+            </div>
           </div>
         </section>
 
