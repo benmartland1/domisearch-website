@@ -58,13 +58,6 @@ export async function POST(request: Request) {
   const fromEmail = process.env.CONTACT_FROM_EMAIL ?? "noreply@domisearch.com";
   const notifyTo = process.env.CONTACT_TO_EMAIL ?? site.email;
 
-  // ── Hook point ──────────────────────────────────────────────────────────
-  // This is where an automated AI-visibility report generation could be
-  // triggered (queue the domain, run it through the visibility engine, email
-  // the PDF). For now the lead is delivered to Ben, who generates the report
-  // manually and brings it to the booking call.
-  // ────────────────────────────────────────────────────────────────────────
-
   if (!apiKey) {
     console.error("[report-request] RESEND_API_KEY missing - lead not delivered:", { host, email });
     // Don't fail the visitor; the lead is at least logged.
@@ -104,45 +97,36 @@ Generate the report and bring it to the booking call. Reply to this email to rea
     return NextResponse.json({ error: "Could not submit. Please try again." }, { status: 500 });
   }
 
-  // Confirmation to the prospect.
-  const confirmHtml = `
-    <div style="font-family: -apple-system, system-ui, sans-serif; max-width: 560px; margin: 0 auto; padding: 32px; color: #1a1a1a;">
-      <h2 style="margin: 0 0 16px; font-size: 22px; font-weight: 600;">Your AI Visibility Report is on its way.</h2>
-      <p style="line-height: 1.6; margin: 0 0 16px;">
-        Thanks ${name} - we're checking <strong>${host}</strong> across ChatGPT, Google AI and Perplexity to see
-        where you show up, where you don't, and which competitors are winning the answer.
-      </p>
-      <p style="line-height: 1.6; margin: 0 0 16px;">
-        If you haven't already, book your walkthrough call and we'll go through the report together
-        and the quickest gaps to close: <a href="${site.calendly}" style="color: #01634c;">${site.calendly}</a>
-      </p>
-      <p style="line-height: 1.6; margin: 24px 0 0;">
-        - Ben<br/>
-        <span style="color: #666; font-size: 14px;">Founder, DomiSearch</span>
-      </p>
-    </div>
-  `;
-  const confirmText = `Your AI Visibility Report is on its way.
-
-Thanks ${name} - we're checking ${host} across ChatGPT, Google AI and Perplexity to see where you show up, where you don't, and which competitors are winning the answer.
-
-If you haven't already, book your walkthrough call and we'll go through the report together: ${site.calendly}
-
-- Ben
-Founder, DomiSearch`;
-
-  try {
-    await resend.emails.send({
-      from: `Ben at DomiSearch <${fromEmail}>`,
-      to: [email],
-      replyTo: notifyTo,
-      subject: "Your AI Visibility Report is being generated",
-      html: confirmHtml,
-      text: confirmText,
-    });
-  } catch (err) {
-    // Lead already reached Ben; don't fail on the confirmation.
-    console.error("[report-request] confirmation email failed", err);
+  // Trigger the AI Visibility Report generator (GitHub Actions) for this lead.
+  // Fire-and-forget: a failure here must never block the visitor or lose the
+  // lead — Ben already has the lead email above. Nothing is sent to the prospect.
+  const ghToken = process.env.GITHUB_DISPATCH_TOKEN;
+  if (ghToken) {
+    try {
+      const dispatch = await fetch(
+        "https://api.github.com/repos/benmartland1/ai-visibility-report-generator/dispatches",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${ghToken}`,
+            Accept: "application/vnd.github+json",
+            "X-GitHub-Api-Version": "2022-11-28",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            event_type: "new-lead",
+            client_payload: { domain: host, name, email },
+          }),
+        },
+      );
+      if (!dispatch.ok) {
+        console.error("[report-request] dispatch failed", dispatch.status, await dispatch.text());
+      }
+    } catch (err) {
+      console.error("[report-request] dispatch error", err);
+    }
+  } else {
+    console.warn("[report-request] GITHUB_DISPATCH_TOKEN missing — generation not triggered");
   }
 
   return NextResponse.json({ ok: true });
