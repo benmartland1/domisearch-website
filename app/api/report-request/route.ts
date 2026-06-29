@@ -27,6 +27,30 @@ function normaliseDomain(raw: string): string | null {
   }
 }
 
+// Spend guard: only fire a (paid) report generation for plausible business
+// domains. Free-email and placeholder domains are captured as leads but never
+// trigger generation, so bots/junk on cold traffic can't burn API budget.
+const FREE_EMAIL_DOMAINS = new Set([
+  "gmail.com", "googlemail.com", "outlook.com", "hotmail.com", "live.com",
+  "yahoo.com", "ymail.com", "icloud.com", "me.com", "mac.com", "aol.com",
+  "protonmail.com", "proton.me", "gmx.com", "gmx.co.uk", "mail.com", "msn.com",
+  "yandex.com", "zoho.com",
+]);
+const PLACEHOLDER_DOMAINS = new Set([
+  "example.com", "example.org", "example.net", "test.com", "domain.com",
+  "yourbrand.com", "yourclinic.com", "yourcompany.com", "website.com",
+]);
+
+function isGenerableDomain(host: string): boolean {
+  const h = host.toLowerCase();
+  if (FREE_EMAIL_DOMAINS.has(h) || PLACEHOLDER_DOMAINS.has(h)) return false;
+  if (/^\d+\.\d+\.\d+\.\d+$/.test(h)) return false; // IP address
+  const parts = h.split(".");
+  if (parts.length < 2) return false;
+  const tld = parts[parts.length - 1];
+  return /^[a-z]{2,}$/.test(tld);
+}
+
 export async function POST(request: Request) {
   let data: unknown;
   try {
@@ -101,7 +125,9 @@ Generate the report and bring it to the booking call. Reply to this email to rea
   // Fire-and-forget: a failure here must never block the visitor or lose the
   // lead — Ben already has the lead email above. Nothing is sent to the prospect.
   const ghToken = process.env.GITHUB_DISPATCH_TOKEN;
-  if (ghToken) {
+  if (ghToken && !isGenerableDomain(host)) {
+    console.warn("[report-request] domain not eligible for auto-generation (spend guard):", host);
+  } else if (ghToken) {
     try {
       const dispatch = await fetch(
         "https://api.github.com/repos/benmartland1/ai-visibility-report-generator/dispatches",
