@@ -31,7 +31,7 @@ export function Hero() {
         style={{ width: 420, height: 420, background: "var(--color-pine)", bottom: -200, right: "-10%", opacity: 0.5 }}
       />
 
-      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-24 pt-20 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-10 lg:pt-28">
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-8 pt-20 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-10 lg:pb-24 lg:pt-28">
         <div>
           <motion.div
             initial={{ opacity: 0, y: 8 }}

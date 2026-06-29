@@ -267,7 +267,7 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeGraph) }}
       />
       <Hero />
-      <div className="mt-16">
+      <div className="mt-6 lg:mt-16">
         <ClientMarquee />
       </div>
       <ServicesGrid />
