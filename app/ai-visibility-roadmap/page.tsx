@@ -9,12 +9,12 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "The £99 AI Visibility Roadmap · DomiSearch",
   description:
-    "Get the exact 90-day roadmap to become the brand AI recommends across ChatGPT, Google AI, Perplexity and Gemini. The same process we run for clients - yours for £99.",
+    "The 90-day plan to become the brand AI recommends across ChatGPT, Google AI, Perplexity and Gemini. The same process we run for clients - yours for £99.",
   alternates: { canonical: "/ai-visibility-roadmap" },
   openGraph: {
     title: "The £99 AI Visibility Roadmap",
     description:
-      "Your 90-day plan to become the brand AI recommends. Delivered within 24 hours, yours to keep.",
+      "The 90-day plan to become the brand AI recommends. Delivered within 24 hours, yours to keep.",
     url: `${site.url}/ai-visibility-roadmap`,
   },
 };
@@ -50,7 +50,7 @@ const STEPS = [
 
 function IconGauge() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
       <path d="M4 15a8 8 0 0 1 16 0" />
       <path d="M12 15l3.5-3.5" />
     </svg>
@@ -58,7 +58,7 @@ function IconGauge() {
 }
 function IconAudit() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
       <path d="M5 4h11l3 3v13H5z" />
       <path d="M9 10h6M9 14h6" />
     </svg>
@@ -66,14 +66,14 @@ function IconAudit() {
 }
 function IconContent() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
       <path d="M12 3l1.9 5.2L19 10l-5.1 1.8L12 17l-1.9-5.2L5 10l5.1-1.8z" />
     </svg>
   );
 }
 function IconRoadmap() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
       <path d="M6 19V7a3 3 0 0 1 3-3 3 3 0 0 1 3 3v10a3 3 0 0 0 3 3 3 3 0 0 0 3-3" />
       <circle cx="6" cy="19" r="1.6" /><circle cx="18" cy="5" r="1.6" />
     </svg>
@@ -81,28 +81,20 @@ function IconRoadmap() {
 }
 
 const VALUE_STACK = [
-  { icon: IconGauge, title: "Your AI Visibility Score", body: "Where you stand across every engine - ChatGPT, Google AI, Perplexity, Gemini and Copilot." },
-  { icon: IconAudit, title: "A full technical audit", body: "The exact fixes holding you back, prioritised so you know what to do first." },
-  { icon: IconContent, title: "Content opportunities", body: "The buyer questions you’re missing - mapped and ready to action." },
-  { icon: IconRoadmap, title: "Your phased 90-day roadmap", body: "What to do, in what order, to close the gap and become the recommended answer." },
+  { icon: IconGauge, title: "Visibility score", sub: "across every engine" },
+  { icon: IconAudit, title: "Full technical audit", sub: "the fixes, prioritised" },
+  { icon: IconContent, title: "Content opportunities", sub: "the questions you’re missing" },
+  { icon: IconRoadmap, title: "Phased 90-day plan", sub: "what to do, in order" },
 ];
 
-function Microcopy() {
+function TrustpilotCue({ align = "start" }: { align?: "start" | "center" }) {
   return (
-    <p className="text-sm text-[color:var(--color-ink-3)]">
-      Delivered within 24 hours · Yours to keep · Money-back if it&apos;s not useful
-    </p>
-  );
-}
-
-function Trustpilot({ align = "start" }: { align?: "start" | "center" }) {
-  return (
-    <div className={`flex ${align === "center" ? "justify-center" : "justify-center lg:justify-start"}`}>
+    <div className={align === "center" ? "flex justify-center" : "flex justify-center lg:justify-start"}>
       <a
         href={site.trustpilot}
         target="_blank"
         rel="noopener"
-        className="inline-flex flex-wrap items-center justify-center gap-2 text-sm text-[color:var(--color-ink-3)] transition-colors hover:text-[color:var(--color-ink)]"
+        className="inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-black/[0.07] bg-white/70 px-3.5 py-1.5 text-sm text-[color:var(--color-ink-2)] transition-colors hover:text-[color:var(--color-ink)]"
       >
         <span className="flex gap-0.5" aria-hidden>
           {Array.from({ length: 5 }).map((_, i) => (
@@ -111,7 +103,7 @@ function Trustpilot({ align = "start" }: { align?: "start" | "center" }) {
             </svg>
           ))}
         </span>
-        <span className="font-medium">Rated 5 stars on Trustpilot</span>
+        <span className="font-semibold">Rated 5 stars on Trustpilot</span>
       </a>
     </div>
   );
@@ -131,36 +123,57 @@ export default function AiVisibilityRoadmapPage() {
 
       {/* ============================ HERO ============================ */}
       <section className="relative">
-        <div className="mx-auto max-w-6xl px-6 pb-16 pt-8 sm:pt-14">
+        <div aria-hidden className="pointer-events-none absolute inset-0 grid-backdrop-light" />
+        <div className="relative mx-auto max-w-6xl px-6 pb-16 pt-6 sm:pt-10">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-14">
-            {/* Left: headline / CTA */}
+            {/* Left: headline / value / CTA */}
             <div className="text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 rounded-full border border-[color:var(--color-pine)]/25 bg-[color:var(--color-pine)]/[0.06] px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-pine)]">
-                AI Visibility Roadmap · £99
-              </div>
+              <TrustpilotCue />
 
-              <h1 className="mx-auto mt-6 max-w-3xl text-balance text-[clamp(2.1rem,6vw,3.1rem)] font-bold leading-[1.05] tracking-tight text-[color:var(--color-ink)] lg:mx-0">
-                Your customers are asking ChatGPT for recommendations.{" "}
-                <span className="text-[color:var(--color-pine)]">Are you in the answer?</span>
+              <h1 className="mx-auto mt-6 max-w-2xl text-balance text-[clamp(2.1rem,5.6vw,3.05rem)] font-bold leading-[1.06] tracking-tight text-[color:var(--color-ink)] lg:mx-0">
+                The 90-day plan to become the brand{" "}
+                <span className="text-[color:var(--color-pine)]">AI recommends.</span>
               </h1>
 
-              <p className="mx-auto mt-6 max-w-2xl text-pretty text-base leading-relaxed text-[color:var(--color-ink-2)] sm:text-lg lg:mx-0">
+              <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-[color:var(--color-ink-2)] sm:text-lg lg:mx-0">
                 Get the exact 90-day roadmap to become the brand AI recommends. The same process we
                 run for our clients - yours for £99.
               </p>
 
-              <div className="mt-9 space-y-4">
-                <RoadmapCheckout id="checkout-hero" />
-                <Microcopy />
+              {/* Value stack surfaced on the page - tight 2x2 */}
+              <div className="mx-auto mt-7 grid max-w-xl grid-cols-2 gap-2.5 lg:mx-0">
+                {VALUE_STACK.map((v) => {
+                  const Icon = v.icon;
+                  return (
+                    <div key={v.title} className="flex items-start gap-2.5 rounded-xl border border-black/[0.06] bg-white/60 p-3 text-left">
+                      <div className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[color:var(--color-pine)]/[0.08] text-[color:var(--color-pine)]">
+                        <Icon />
+                      </div>
+                      <div>
+                        <div className="text-[13px] font-bold leading-tight text-[color:var(--color-ink)]">{v.title}</div>
+                        <div className="mt-0.5 text-[11.5px] leading-tight text-[color:var(--color-ink-3)]">{v.sub}</div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
 
-              <div className="mt-5">
-                <Trustpilot />
+              {/* Price anchor pulled up next to the CTA */}
+              <p className="mt-7 text-[15px] leading-relaxed text-[color:var(--color-ink-2)]">
+                Agencies charge <span className="text-[color:var(--color-ink-3)] line-through">£1,000+</span> for
+                an audit like this - yours is <span className="font-bold text-[color:var(--color-pine)]">£99</span>.
+              </p>
+
+              <div className="mt-4 space-y-3">
+                <RoadmapCheckout id="checkout-hero" />
+                <p className="text-sm text-[color:var(--color-ink-3)]">
+                  Delivered within 24 hours · Yours to keep · Money-back if it&apos;s not useful
+                </p>
               </div>
             </div>
 
-            {/* Right: floating roadmap mockup (the hero asset) */}
-            <div className="mt-4 lg:mt-0">
+            {/* Right: floating roadmap document */}
+            <div className="mt-2 lg:mt-0">
               <RoadmapMockup />
             </div>
           </div>
@@ -185,56 +198,6 @@ export default function AiVisibilityRoadmapPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ===================== WHAT YOU GET (value stack) ===================== */}
-      <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
-        <div className="mx-auto max-w-2xl text-center">
-          <div className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-pine)]">
-            What you get
-          </div>
-          <h2 className="mt-4 text-[clamp(1.7rem,4vw,2.5rem)] font-bold leading-tight tracking-tight text-[color:var(--color-ink)]">
-            A real deliverable - not a lead magnet
-          </h2>
-        </div>
-
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
-          {VALUE_STACK.map((v, i) => {
-            const Icon = v.icon;
-            return (
-              <div key={v.title} className="flex gap-4 rounded-2xl border border-black/[0.07] bg-[color:var(--color-paper-2)] p-7">
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[color:var(--color-pine)]/[0.08] text-[color:var(--color-pine)]">
-                  <Icon />
-                </div>
-                <div>
-                  <h3 className="text-[17px] font-bold tracking-tight text-[color:var(--color-ink)]">
-                    {String(i + 1).padStart(2, "0")} · {v.title}
-                  </h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-[color:var(--color-ink-2)]">{v.body}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        <p className="mx-auto mt-12 max-w-2xl text-center text-[clamp(1.1rem,2.6vw,1.4rem)] font-bold leading-snug tracking-tight text-[color:var(--color-ink)]">
-          This is the exact process we run for paying clients. Packaged, prioritised, and{" "}
-          <span className="text-[color:var(--color-pine)]">yours for £99.</span>
-        </p>
-      </section>
-
-      {/* ===================== PRICE ANCHOR ===================== */}
-      <section className="bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
-        <div className="mx-auto max-w-3xl px-6 py-16 text-center sm:py-20">
-          <p className="mx-auto max-w-2xl text-[clamp(1.5rem,4vw,2.3rem)] font-bold leading-snug tracking-tight">
-            Agencies charge <span className="text-[color:var(--color-paper)]/55 line-through">£1,000+</span> for
-            an audit like this.
-          </p>
-          <p className="mx-auto mt-4 max-w-xl text-pretty text-lg leading-relaxed text-[color:var(--color-paper)]/75">
-            Yours is <span className="font-bold text-[color:var(--color-domigreen)]">£99</span> - and it&apos;s
-            yours whether you work with us or not.
-          </p>
         </div>
       </section>
 
@@ -283,7 +246,7 @@ export default function AiVisibilityRoadmapPage() {
             Get your 90-day roadmap to becoming the recommended answer
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-pretty text-lg leading-relaxed text-[color:var(--color-paper)]/70">
-            One payment. Delivered within 24 hours. Yours to keep.
+            Agencies charge £1,000+. Yours is £99 - one payment, delivered within 24 hours, yours to keep.
           </p>
           <div className="mx-auto mt-9 max-w-md space-y-4 rounded-3xl bg-white/[0.04] p-6 sm:p-7">
             <RoadmapCheckout id="checkout-final" />

@@ -2,9 +2,10 @@ import { DomiMark } from "./DomiMark";
 
 /**
  * The hero asset of the paid page: a floating, fanned mockup of the multi-page
- * "AI Visibility Roadmap" PDF - so it reads as a real, premium deliverable they
- * buy and keep. Top page = the score/cover; pages behind peek out showing a
- * technical-fixes checklist and a phased 90-day timeline.
+ * "AI Visibility Roadmap" PDF - one cohesive document. The pages stack DOWNWARD
+ * (positive offsets + a top pad) so nothing translates up into the hero copy on
+ * mobile: a 90-day timeline sheet and a technical-fixes checklist sheet peek out
+ * behind the score cover, tightly overlapping with layered shadow.
  *
  * All content is believable placeholder - no real customer data.
  */
@@ -33,7 +34,6 @@ function MiniGauge({ score }: { score: number }) {
   );
 }
 
-/* A back page: white sheet with a green section header + peeking content rows. */
 function SheetHeader({ label }: { label: string }) {
   return (
     <div className="flex items-center gap-1.5 border-b border-black/[0.06] px-4 pb-2 pt-3">
@@ -52,18 +52,17 @@ const FIXES = [
 ];
 
 const PHASES = [
-  { label: "Days 0–30 · Foundations", w: "38%" },
-  { label: "Days 30–60 · Authority", w: "66%" },
-  { label: "Days 60–90 · Compounding", w: "92%" },
+  { label: "Days 0-30 · Foundations", w: "38%" },
+  { label: "Days 30-60 · Authority", w: "66%" },
+  { label: "Days 60-90 · Compounding", w: "92%" },
 ];
 
 export function RoadmapMockup() {
-  const sheet =
-    "overflow-hidden rounded-xl bg-white ring-1 ring-black/[0.05] shadow-[0_16px_40px_-20px_rgba(20,17,13,0.28)]";
+  const sheet = "overflow-hidden rounded-xl bg-white ring-1 ring-black/[0.05]";
   return (
-    <div className="report-float relative mx-auto w-full max-w-[300px] pt-24 sm:max-w-[340px]">
-      {/* Back page 3 - 90-day timeline (peeks highest) */}
-      <div className={`absolute inset-x-0 top-0 -translate-y-[112px] translate-x-[16px] lg:rotate-[5deg] ${sheet}`}>
+    <div className="report-float relative mx-auto w-[290px] pt-[92px] sm:w-[330px]">
+      {/* Back sheet - 90-day timeline (peeks at the very top) */}
+      <div className={`absolute inset-x-0 top-0 translate-x-[12px] shadow-[0_10px_26px_-16px_rgba(20,17,13,0.35)] lg:rotate-[3.5deg] ${sheet}`}>
         <SheetHeader label="90-Day Roadmap" />
         <div className="space-y-2 px-4 py-3">
           {PHASES.map((p) => (
@@ -77,8 +76,8 @@ export function RoadmapMockup() {
         </div>
       </div>
 
-      {/* Back page 2 - technical fixes checklist (peeks middle) */}
-      <div className={`absolute inset-x-0 top-0 -translate-y-[56px] translate-x-[8px] lg:rotate-[2.5deg] ${sheet}`}>
+      {/* Mid sheet - technical fixes checklist (peeks below the timeline) */}
+      <div className={`absolute inset-x-0 top-[46px] translate-x-[6px] shadow-[0_12px_30px_-18px_rgba(20,17,13,0.4)] lg:rotate-[1.8deg] ${sheet}`}>
         <SheetHeader label="Technical Fixes · Prioritised" />
         <div className="space-y-2 px-4 py-3">
           {FIXES.map((f) => (
@@ -93,8 +92,8 @@ export function RoadmapMockup() {
         </div>
       </div>
 
-      {/* Front page - cover + score gauge */}
-      <div className={`relative ${sheet}`}>
+      {/* Front sheet - cover + score (carries the strongest shadow) */}
+      <div className={`relative shadow-[0_28px_60px_-22px_rgba(20,17,13,0.45)] ${sheet}`}>
         <div className="flex items-center justify-between border-b border-black/[0.06] px-5 pb-3 pt-4">
           <div className="flex items-center gap-1.5">
             <DomiMark className="h-4 w-4" />

@@ -160,6 +160,17 @@ html, body {
   pointer-events: none;
 }
 
+/* Faint light grid backdrop for cream landing-page heroes — masked so it fades
+   out at the edges rather than reading as a boxed panel. */
+.grid-backdrop-light {
+  background-image:
+    linear-gradient(to right, rgba(20, 17, 13, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 17, 13, 0.04) 1px, transparent 1px);
+  background-size: 58px 58px;
+  -webkit-mask-image: radial-gradient(ellipse 92% 74% at 50% 18%, rgba(0,0,0,0.8), transparent 78%);
+  mask-image: radial-gradient(ellipse 92% 74% at 50% 18%, rgba(0,0,0,0.8), transparent 78%);
+}
+
 /* Engine "live scan" pulse — staggered per chip in EngineStrip. */
 @keyframes enginePulse {
   0%, 100% { opacity: 0.18; transform: scale(0.7); }
