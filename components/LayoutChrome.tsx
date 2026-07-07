@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
  * Header/Footer are passed in as already-server-rendered nodes so they stay
  * server components; this wrapper only decides whether to include them.
  */
-const BARE_ROUTES = ["/ai-visibility-report", "/aesthetics", "/ai-visibility-roadmap"];
+const BARE_ROUTES = ["/ai-visibility-report", "/aesthetics", "/ai-visibility-roadmap", "/taxd-case-study"];
 
 export function LayoutChrome({
   header,
