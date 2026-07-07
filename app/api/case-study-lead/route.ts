@@ -6,6 +6,8 @@ import { site } from "@/lib/site";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
 const schema = z.object({
   name: z.string().min(1).max(120),
   business: z.string().min(1).max(160),
@@ -55,14 +57,21 @@ export async function POST(request: Request) {
 
   const resend = new Resend(apiKey);
 
-  // Internal notification to Ben - the lead.
-  try {
-    await resend.emails.send({
-      from: `DomiSearch Website <${fromEmail}>`,
-      to: [notifyTo],
-      replyTo: email,
-      subject: `Taxd case study lead: ${name} (${business})`,
-      text: `New Taxd case study lead (from the paid landing page).
+  // Internal notification to Ben - the lead. The Resend SDK returns { error }
+  // on API failures (e.g. a 429 rate-limit) rather than throwing, so we must
+  // check it and retry with backoff - otherwise a failed send would fall through
+  // to a silent success and the lead would be lost.
+  let delivered = false;
+  let lastErr: unknown = null;
+  for (let attempt = 0; attempt < 3 && !delivered; attempt++) {
+    if (attempt > 0) await sleep(800 * attempt); // 0ms, 800ms, 1600ms
+    try {
+      const { error } = await resend.emails.send({
+        from: `DomiSearch Website <${fromEmail}>`,
+        to: [notifyTo],
+        replyTo: email,
+        subject: `Taxd case study lead: ${name} (${business})`,
+        text: `New Taxd case study lead (from the paid landing page).
 
 Name:     ${name}
 Business: ${business}
@@ -70,7 +79,7 @@ Email:    ${email}
 Phone:    ${phone}
 
 Reply to this email to reach them.`,
-      html: `
+        html: `
         <div style="font-family: -apple-system, system-ui, sans-serif; max-width: 560px; margin: 0 auto; padding: 32px; color: #1a1a1a;">
           <h2 style="margin: 0 0 16px; font-size: 20px; font-weight: 600;">New Taxd case study lead</h2>
           <p style="line-height: 1.6; margin: 0 0 8px;"><strong>Name:</strong> ${name}</p>
@@ -80,25 +89,42 @@ Reply to this email to reach them.`,
           <p style="line-height: 1.6; margin: 0; color: #666; font-size: 14px;">From the Taxd case study landing page (paid traffic).</p>
         </div>
       `,
-    });
-  } catch (err) {
-    console.error("[case-study-lead] internal notification failed", err);
+      });
+      if (error) {
+        lastErr = error;
+        console.error(`[case-study-lead] send error (attempt ${attempt + 1})`, error);
+      } else {
+        delivered = true;
+      }
+    } catch (err) {
+      lastErr = err;
+      console.error(`[case-study-lead] send threw (attempt ${attempt + 1})`, err);
+    }
+  }
+
+  if (!delivered) {
+    console.error("[case-study-lead] lead NOT delivered after retries:", { name, business, email, phone, lastErr });
     return NextResponse.json({ error: "Could not submit. Please try again." }, { status: 500 });
   }
 
-  // Add to the marketing audience (best-effort - never block the unlock).
+  // Add to the marketing audience (best-effort - never block the unlock, and
+  // run after the email is confirmed so it can't starve the send of a
+  // rate-limit slot).
   if (audienceId) {
     try {
       const [firstName, ...rest] = name.trim().split(/\s+/);
-      await resend.contacts.create({
+      const { error } = await resend.contacts.create({
         email,
         audienceId,
         unsubscribed: false,
         firstName,
         lastName: rest.join(" ") || undefined,
       });
+      if (error && !/already exists/i.test(error.message ?? "")) {
+        console.error("[case-study-lead] audience add failed (non-fatal)", error);
+      }
     } catch (err) {
-      console.error("[case-study-lead] audience add failed (non-fatal)", err);
+      console.error("[case-study-lead] audience add threw (non-fatal)", err);
     }
   }
 

@@ -65,14 +65,22 @@ export function CaseStudyGate({ id, tone = "light" }: { id: string; tone?: "ligh
     });
 
     setSending(true);
-    // Best-effort capture — never block the unlock on a delivery hiccup.
-    try {
-      await fetch("/api/case-study-lead", {
+    // Capture the lead. The server already retries the email send, but give the
+    // whole request one more attempt if it fails outright — a lead is worth more
+    // than the ~1s wait. Never block the unlock indefinitely on a hiccup.
+    const post = () =>
+      fetch("/api/case-study-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...v, hp_company: hp }),
         keepalive: true,
       });
+    try {
+      const res = await post();
+      if (!res.ok) {
+        await new Promise((r) => setTimeout(r, 900));
+        await post();
+      }
     } catch {
       /* ignore — the pixel Lead has already fired and we still unlock */
     }
