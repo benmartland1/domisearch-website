@@ -71,6 +71,7 @@ export function CaseStudyGate({ id, tone = "light" }: { id: string; tone?: "ligh
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...v, hp_company: hp }),
+        keepalive: true,
       });
     } catch {
       /* ignore — the pixel Lead has already fired and we still unlock */
@@ -126,17 +127,18 @@ export function CaseStudyGate({ id, tone = "light" }: { id: string; tone?: "ligh
             </p>
 
             <form onSubmit={onSubmit} className="mt-6 space-y-4" noValidate>
-              {/* Honeypot — hidden from real users */}
-              <div className="absolute left-[-9999px]" aria-hidden>
-                <label>
-                  Company
-                  <input
-                    tabIndex={-1}
-                    autoComplete="off"
-                    value={hp}
-                    onChange={(e) => setHp(e.target.value)}
-                  />
-                </label>
+              {/* Honeypot — hidden from real users. No label/name/placeholder so
+                  browser autofill never populates it (a filled honeypot would be
+                  treated as a bot and the lead silently dropped). */}
+              <div aria-hidden className="pointer-events-none absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden">
+                <input
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  value={hp}
+                  onChange={(e) => setHp(e.target.value)}
+                />
               </div>
 
               <div>
