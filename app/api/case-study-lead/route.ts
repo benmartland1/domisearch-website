@@ -10,11 +10,10 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 const schema = z.object({
   name: z.string().min(1).max(120),
+  // note: no honeypot — it was silently dropping real (autofilled) submissions.
   business: z.string().min(1).max(160),
   phone: z.string().min(5).max(40),
   email: z.string().email().max(200),
-  // Honeypot - must be empty.
-  hp_company: z.string().optional(),
 });
 
 export async function POST(request: Request) {
@@ -32,12 +31,7 @@ export async function POST(request: Request) {
       { status: 422 },
     );
   }
-  const { name, business, phone, email, hp_company } = parsed.data;
-
-  // Honeypot - pretend success, do nothing.
-  if (hp_company) {
-    return NextResponse.json({ ok: true });
-  }
+  const { name, business, phone, email } = parsed.data;
 
   const apiKey = process.env.RESEND_API_KEY;
   const audienceId = process.env.RESEND_AUDIENCE_ID;
