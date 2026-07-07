@@ -48,34 +48,45 @@ const STEPS = [
   { n: "3", title: "Get your roadmap within 24 hours", body: "Your full roadmap PDF lands in your inbox - plus an optional call to walk through it." },
 ];
 
+const iconProps = {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.75,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  className: "h-[18px] w-[18px]",
+};
 function IconGauge() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
-      <path d="M4 15a8 8 0 0 1 16 0" />
-      <path d="M12 15l3.5-3.5" />
+    <svg {...iconProps}>
+      <path d="M4 15.5a8 8 0 0 1 16 0" />
+      <path d="M12 15.5l3.8-3" />
     </svg>
   );
 }
 function IconAudit() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
-      <path d="M5 4h11l3 3v13H5z" />
-      <path d="M9 10h6M9 14h6" />
+    <svg {...iconProps}>
+      <path d="M6.5 3.5h7l4 4v13h-11z" />
+      <path d="M13.5 3.5v4h4" />
+      <path d="M9.5 12h5M9.5 15.5h5" />
     </svg>
   );
 }
 function IconContent() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
-      <path d="M12 3l1.9 5.2L19 10l-5.1 1.8L12 17l-1.9-5.2L5 10l5.1-1.8z" />
+    <svg {...iconProps}>
+      <path d="M12 4.2l1.9 5.9 5.9 1.9-5.9 1.9L12 19.8l-1.9-5.9L4.2 12l5.9-1.9z" />
     </svg>
   );
 }
 function IconRoadmap() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+    <svg {...iconProps}>
       <path d="M6 19V7a3 3 0 0 1 3-3 3 3 0 0 1 3 3v10a3 3 0 0 0 3 3 3 3 0 0 0 3-3" />
-      <circle cx="6" cy="19" r="1.6" /><circle cx="18" cy="5" r="1.6" />
+      <circle cx="6" cy="19" r="1.5" fill="currentColor" stroke="none" />
+      <circle cx="18" cy="5" r="1.5" fill="currentColor" stroke="none" />
     </svg>
   );
 }
@@ -141,17 +152,17 @@ export default function AiVisibilityRoadmapPage() {
               </p>
 
               {/* Value stack surfaced on the page - tight 2x2 */}
-              <div className="mx-auto mt-7 grid max-w-xl grid-cols-2 gap-2.5 lg:mx-0">
+              <div className="mx-auto mt-7 grid max-w-xl auto-rows-fr grid-cols-2 gap-2.5 lg:mx-0">
                 {VALUE_STACK.map((v) => {
                   const Icon = v.icon;
                   return (
-                    <div key={v.title} className="flex items-start gap-2.5 rounded-xl border border-black/[0.06] bg-white/60 p-3 text-left">
-                      <div className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-[color:var(--color-pine)]/[0.08] text-[color:var(--color-pine)]">
+                    <div key={v.title} className="flex h-full items-start gap-3 rounded-xl border border-black/[0.06] bg-white/70 p-3.5 text-left">
+                      <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-[color:var(--color-pine)]/[0.08] text-[color:var(--color-pine)]">
                         <Icon />
                       </div>
-                      <div>
-                        <div className="text-[13px] font-bold leading-tight text-[color:var(--color-ink)]">{v.title}</div>
-                        <div className="mt-0.5 text-[11.5px] leading-tight text-[color:var(--color-ink-3)]">{v.sub}</div>
+                      <div className="min-w-0">
+                        <div className="text-[13px] font-bold leading-snug text-[color:var(--color-ink)]">{v.title}</div>
+                        <div className="mt-1 text-[12px] leading-snug text-[color:var(--color-ink-3)]">{v.sub}</div>
                       </div>
                     </div>
                   );
