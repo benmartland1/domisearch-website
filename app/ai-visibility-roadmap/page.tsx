@@ -178,7 +178,7 @@ export default function AiVisibilityRoadmapPage() {
               <div className="mt-4 space-y-3">
                 <RoadmapCheckout id="checkout-hero" />
                 <p className="text-sm text-[color:var(--color-ink-3)]">
-                  Delivered within 24 hours · Yours to keep · Money-back if it&apos;s not useful
+                  Delivered within 24 hours · Yours to keep
                 </p>
               </div>
             </div>
@@ -262,7 +262,7 @@ export default function AiVisibilityRoadmapPage() {
           <div className="mx-auto mt-9 max-w-md space-y-4 rounded-3xl bg-white/[0.04] p-6 sm:p-7">
             <RoadmapCheckout id="checkout-final" />
             <p className="text-sm text-[color:var(--color-paper)]/55">
-              Delivered within 24 hours · Yours to keep · Money-back if it&apos;s not useful
+              Delivered within 24 hours · Yours to keep
             </p>
           </div>
         </div>
