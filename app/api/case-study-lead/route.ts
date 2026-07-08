@@ -101,6 +101,9 @@ Reply to this email to reach them.`,
     return NextResponse.json({ error: "Could not submit. Please try again." }, { status: 500 });
   }
 
+  // Trail on success too, so every captured lead is visible in Vercel logs.
+  console.log("[case-study-lead] LEAD:", { name, business, email, phone });
+
   // Add to the marketing audience (best-effort - never block the unlock, and
   // run after the email is confirmed so it can't starve the send of a
   // rate-limit slot).

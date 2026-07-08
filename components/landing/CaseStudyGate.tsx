@@ -96,7 +96,7 @@ export function CaseStudyGate({ id, tone = "light" }: { id: string; tone?: "ligh
         onClick={() => setOpen(true)}
         className="cta-pulse flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--color-ink)] px-7 py-4 text-base font-semibold text-[color:var(--color-paper)] shadow-[0_14px_34px_-14px_rgba(0,0,0,0.7)] transition-transform hover:-translate-y-0.5"
       >
-        Unlock the full breakdown
+        Unlock the full blueprint
         <span aria-hidden>→</span>
       </button>
       <p className={`mt-3 text-center text-sm ${helper}`}>5 resources · 100% free · Instant access</p>
@@ -127,7 +127,7 @@ export function CaseStudyGate({ id, tone = "light" }: { id: string; tone?: "ligh
               id={`${id}-modal-title`}
               className="pr-8 text-[clamp(1.3rem,4vw,1.6rem)] font-bold leading-tight tracking-tight text-[color:var(--color-ink)]"
             >
-              Unlock the full Taxd breakdown
+              Unlock the full Taxd blueprint
             </h2>
             <p className="mt-2 text-[14px] leading-relaxed text-[color:var(--color-ink-2)]">
               Tell us where to send it and you&apos;ll get instant access to all five resources.
@@ -192,7 +192,7 @@ export function CaseStudyGate({ id, tone = "light" }: { id: string; tone?: "ligh
                 disabled={sending}
                 className="flex w-full items-center justify-center gap-2 rounded-full bg-[color:var(--color-ink)] px-7 py-4 text-base font-semibold text-[color:var(--color-paper)] shadow-[0_14px_34px_-14px_rgba(0,0,0,0.7)] transition-transform hover:-translate-y-0.5 disabled:opacity-60"
               >
-                {sending ? "Unlocking…" : "Unlock the full breakdown"}
+                {sending ? "Unlocking…" : "Unlock the full blueprint"}
                 <span aria-hidden>→</span>
               </button>
               <p className="text-center text-[13px] text-[color:var(--color-ink-3)]">

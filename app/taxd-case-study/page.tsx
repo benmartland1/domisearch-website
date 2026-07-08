@@ -10,7 +10,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "How Taxd became the name AI recommends · DomiSearch",
   description:
-    "The full breakdown of how Taxd went from 0 to 200+ AI recommendations every week: the technical work, the content and the strategy. Unlock the case study free.",
+    "The full blueprint behind how Taxd went from 0 to 200+ AI recommendations every week: the technical work, the content and the strategy. Unlock the case study free.",
   alternates: { canonical: "/taxd-case-study" },
   robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
   openGraph: {
@@ -233,7 +233,7 @@ export default function TaxdCaseStudyPage() {
         <div aria-hidden className="pointer-events-none absolute inset-0 grid-backdrop-light" />
         <div className="relative mx-auto max-w-2xl px-6 py-20 text-center sm:py-24">
           <h2 className="mx-auto max-w-xl text-balance text-[clamp(1.8rem,4.6vw,2.7rem)] font-bold leading-[1.1] tracking-tight text-[color:var(--color-ink)]">
-            Unlock the full breakdown
+            Unlock the full blueprint
           </h2>
           <p className="mx-auto mt-5 max-w-lg text-pretty text-lg leading-relaxed text-[color:var(--color-ink-2)]">
             The exact method behind Taxd going from invisible to the name AI recommends. Free, in
