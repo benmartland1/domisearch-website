@@ -187,7 +187,7 @@ export function TerritoryMap() {
         })}
       </ul>
 
-      <div className="mt-8 grid items-start gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,19rem)] lg:gap-12">
+      <div className="mt-5 grid items-start gap-5 sm:mt-8 sm:gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,19rem)] lg:gap-12">
         {/* Map */}
         <div>
           <div className="flex items-center justify-between gap-3">
@@ -228,7 +228,7 @@ export function TerritoryMap() {
           <svg
             key={view}
             viewBox={viewBox}
-            className="map-zoom mx-auto mt-4 h-auto w-full max-w-[17rem] sm:max-w-[22rem] lg:max-w-[30rem]"
+            className="map-zoom mx-auto mt-3 h-auto w-full max-w-[13.5rem] sm:max-w-[22rem] lg:max-w-[30rem]"
             role="img"
             aria-label={
               isWorld
@@ -368,7 +368,7 @@ export function TerritoryMap() {
         </div>
 
         {/* Result */}
-        <div className="rounded-[1.25rem] border border-black/[0.08] bg-[color:var(--color-paper-2)] p-5 sm:p-6">
+        <div className="rounded-[1.25rem] border border-black/[0.08] bg-[color:var(--color-paper-2)] p-4 sm:p-6">
           {isWorld ? (
             <>
               <h3 className="text-[16px] font-bold tracking-tight text-[color:var(--color-ink)]">
@@ -424,7 +424,7 @@ export function TerritoryMap() {
       {/* Absence from the map is the commonest misread: a visitor whose niche is
           not listed assumes we do not cover it, when it actually means nobody
           holds it. */}
-      <p className="mt-6 rounded-[1.25rem] border border-[color:var(--color-pine)]/25 bg-[color:var(--color-pine)]/[0.05] px-5 py-4 text-[14px] leading-relaxed text-[color:var(--color-ink-2)]">
+      <p className="mt-5 rounded-[1.25rem] border border-[color:var(--color-pine)]/25 bg-[color:var(--color-pine)]/[0.05] px-4 py-3.5 sm:px-5 sm:py-4 text-[14px] leading-relaxed text-[color:var(--color-ink-2)]">
         <span className="font-bold text-[color:var(--color-ink)]">
           Cannot see your sector on here?
         </span>{" "}

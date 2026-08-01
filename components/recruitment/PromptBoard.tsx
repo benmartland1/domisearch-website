@@ -83,6 +83,8 @@ const TABS = ["All", "Construction", "Engineering", "Trades"] as const;
 
 export function PromptBoard() {
   const [tab, setTab] = useState<(typeof TABS)[number]>("All");
+  /** Mobile shows the first four prompts; the rest are one tap away. */
+  const [showAll, setShowAll] = useState(false);
   const rows = tab === "All" ? ROWS : ROWS.filter((r) => r.sector === tab);
 
   return (
@@ -128,10 +130,12 @@ export function PromptBoard() {
             </tr>
           </thead>
           <tbody>
-            {rows.map((r) => (
+            {rows.map((r, i) => (
               <tr
                 key={r.prompt}
-                className="border-b border-black/[0.05] last:border-0 hover:bg-black/[0.015]"
+                className={`border-b border-black/[0.05] last:border-0 hover:bg-black/[0.015] ${
+                  !showAll && i >= 4 ? "hidden sm:table-row" : ""
+                }`}
               >
                 <td className="px-4 py-3 text-[14px] font-medium tracking-tight text-[color:var(--color-ink)] sm:px-6">
                   {r.prompt}
@@ -153,6 +157,17 @@ export function PromptBoard() {
           </tbody>
         </table>
       </div>
+
+      {rows.length > 4 ? (
+        <button
+          type="button"
+          onClick={() => setShowAll(!showAll)}
+          aria-expanded={showAll}
+          className="w-full border-t border-black/[0.06] px-4 py-3 text-[13px] font-bold tracking-tight text-[color:var(--color-pine)] sm:hidden"
+        >
+          {showAll ? "Show fewer prompts" : `Show all ${rows.length} prompts`}
+        </button>
+      ) : null}
 
       <div className="border-t border-black/[0.06] bg-[#fbfaf8] px-4 py-3 text-[11px] leading-relaxed text-[color:var(--color-ink-3)] sm:px-6">
         Illustrative example of the audit we run before any engagement. Competitor slots are

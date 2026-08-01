@@ -198,7 +198,7 @@ export function AISearchDemo() {
             answer streams in, or the whole hero shifts under it. Measured
             against the tallest finished state (614px at lg, 595px at 390px)
             with headroom for font-loading variance. */}
-        <div className="flex h-[27rem] flex-col px-3.5 py-4 sm:h-[40rem] sm:px-6 sm:py-6 lg:h-[41rem]">
+        <div className="flex h-[22rem] flex-col px-3.5 py-4 sm:h-[40rem] sm:px-6 sm:py-6 lg:h-[41rem]">
           <div className="min-w-0 flex-1 overflow-hidden">
           {/* User message */}
           {showBubble ? (
@@ -276,6 +276,8 @@ export function AISearchDemo() {
                   <div
                     key={r.name}
                     className={`row-in flex items-center gap-2.5 rounded-xl border px-2.5 py-1.5 sm:gap-3 sm:px-3.5 sm:py-3 ${
+                      i > 0 ? "hidden sm:flex" : ""
+                    } ${
                       r.you
                         ? "border-[color:var(--color-pine)]/35 bg-[color:var(--color-pine)]/[0.06]"
                         : "border-black/[0.06] bg-[#fbfaf8]"

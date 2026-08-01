@@ -22,7 +22,7 @@ export function RecruitmentFaq({ items }: { items: FaqItem[] }) {
               type="button"
               onClick={() => setOpen(isOpen ? null : i)}
               aria-expanded={isOpen}
-              className="flex w-full items-center gap-4 px-5 py-5 text-left transition-colors hover:bg-black/[0.015] sm:px-7"
+              className="flex w-full items-center gap-4 px-5 py-4 text-left transition-colors hover:bg-black/[0.015] sm:px-7 sm:py-5"
             >
               <span className="flex-1 text-[15px] font-bold tracking-tight text-[color:var(--color-ink)] sm:text-[17px]">
                 {item.q}
@@ -51,7 +51,7 @@ export function RecruitmentFaq({ items }: { items: FaqItem[] }) {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="px-5 pb-5 text-[15px] leading-relaxed text-[color:var(--color-ink-2)] sm:px-7 sm:pb-6">
+                <p className="px-5 pb-4 text-[15px] leading-relaxed text-[color:var(--color-ink-2)] sm:px-7 sm:pb-6">
                   {item.a}
                 </p>
               </div>

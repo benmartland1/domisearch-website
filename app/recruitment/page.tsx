@@ -8,6 +8,13 @@ import { PromptTicker } from "@/components/recruitment/PromptTicker";
 import { RecruitmentNav } from "@/components/recruitment/RecruitmentNav";
 import { RecruitmentFaq, type FaqItem } from "@/components/recruitment/RecruitmentFaq";
 import { Cta, CtaBlock } from "@/components/recruitment/Cta";
+import {
+  Carousel,
+  ClampedText,
+  MobileCollapse,
+  StepsAccordion,
+  StickyCta,
+} from "@/components/recruitment/Mobile";
 import { Signature } from "@/components/recruitment/Signature";
 import {
   TerritoryMap,
@@ -100,21 +107,25 @@ const STEPS = [
   {
     n: "01",
     title: "Prompt audit",
+    summary: "What every engine answers about your patch today.",
     body: "We map the questions your buyers actually type, by sector, by discipline and by city, then check what every major AI engine answers today. You see exactly who gets named instead of you.",
   },
   {
     n: "02",
     title: "Entity foundations",
+    summary: "The plumbing that decides whether a model can cite you.",
     body: "Schema, llms.txt, consistent entity data and a site structure AI can parse. This is the plumbing that decides whether a model can cite you at all. Most recruitment sites fail here.",
   },
   {
     n: "03",
     title: "Citable content",
+    summary: "Pages written to be quoted, not ranked.",
     body: "Sector and city pages written to be quoted, not ranked: salary data, hiring guides, market commentary. Specific enough that a model reaches for you over a national generalist.",
   },
   {
     n: "04",
     title: "Tracked monthly",
+    summary: "Movement reported every month, engine by engine.",
     body: "The Territory Engine dashboard monitors your prompts across ChatGPT, Gemini, Perplexity, Copilot and Google AI, and reports movement every month. Visibility, share of voice, and which sources the models pulled from. You see the same screen we do.",
   },
 ];
@@ -383,6 +394,7 @@ export default function RecruitmentPage() {
     >
       <JsonLd data={[faqSchema]} />
       <PromptTicker />
+      <StickyCta href={site.calendly} />
       <Ticker />
       <RecruitmentNav
         calendly={site.calendly}
@@ -466,31 +478,31 @@ export default function RecruitmentPage() {
       </section>
 
       {/* ===================== 3 · THE PROBLEM ===================== */}
-      <section id="problem" className="mx-auto max-w-6xl px-5 py-12 sm:px-6 sm:py-28">
+      <section id="problem" className="mx-auto max-w-6xl px-5 py-7 sm:px-6 sm:py-28">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           {/* Left column carries the headline and the two stats, so it is not a
               headline sitting over empty space beside six paragraphs. */}
           <div>
-            <h2 className="text-balance text-[clamp(1.9rem,4.4vw,3.2rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
+            <h2 className="text-balance text-[clamp(1.7rem,4.4vw,3.2rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
               Your next client is asking an AI which agency to use{" "}
               <span className="text-[color:var(--color-ink-3)]">and you never see the question</span>
             </h2>
 
             {/* SOURCE CHECK — verify the 70-80% and 95% figures before launch. */}
-            <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-black/[0.08] pt-8 sm:mt-12 sm:gap-x-10">
+            <div className="mt-7 grid grid-cols-2 gap-x-4 border-t border-black/[0.08] pt-6 sm:mt-12 sm:gap-x-10 sm:pt-8">
               <div>
-                <div className="text-[clamp(1.9rem,5vw,2.8rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-ink)]">
+                <div className="text-[clamp(1.55rem,5vw,2.8rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-ink)]">
                   70 to 80%
                 </div>
-                <div className="mt-3 text-[14px] leading-snug text-[color:var(--color-ink-2)]">
+                <div className="mt-2 text-[13px] leading-snug text-[color:var(--color-ink-2)] sm:mt-3 sm:text-[14px]">
                   of buyer research happens before anyone gets contacted
                 </div>
               </div>
-              <div className="border-l border-black/[0.08] pl-6 sm:pl-10">
-                <div className="text-[clamp(1.9rem,5vw,2.8rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-ink)]">
+              <div className="border-l border-black/[0.08] pl-4 sm:pl-10">
+                <div className="text-[clamp(1.55rem,5vw,2.8rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-ink)]">
                   95%
                 </div>
-                <div className="mt-3 text-[14px] leading-snug text-[color:var(--color-ink-2)]">
+                <div className="mt-2 text-[13px] leading-snug text-[color:var(--color-ink-2)] sm:mt-3 sm:text-[14px]">
                   of the time, the firm already on the shortlist wins
                 </div>
               </div>
@@ -498,7 +510,7 @@ export default function RecruitmentPage() {
           </div>
 
           <div className="text-[16px] leading-relaxed text-[color:var(--color-ink-2)] sm:text-[17px]">
-            <div className="space-y-5">
+            <div className="space-y-4 sm:space-y-5">
               <p>
                 By the time an employer picks up the phone, the shortlist is already written. The
                 research that built it happened weeks earlier, without you.
@@ -522,14 +534,13 @@ export default function RecruitmentPage() {
           </div>
         </div>
 
-        <div className="mt-8 sm:mt-14">
+        <div className="mt-7 sm:mt-14">
           <PromptBoard />
         </div>
 
-        <CtaBlock
-          href={site.calendly}
-          line="Want to see this run on your prompts instead of ours? We will do it live on the call."
-        />
+        <div className="hidden sm:block">
+          <CtaBlock href={site.calendly} line="Want to see this run on your prompts instead of ours? We will do it live on the call." />
+        </div>
       </section>
 
       {/* ============ 3b · CLIENT QUOTE (dark) ============
@@ -538,7 +549,7 @@ export default function RecruitmentPage() {
       {/* TODO: replace with real client quote before launch. */}
       {SHOW_PLACEHOLDER_TESTIMONIAL ? (
         <section className="bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
-          <div className="mx-auto max-w-3xl px-5 py-12 text-center sm:px-6 sm:py-16">
+          <div className="mx-auto max-w-3xl px-5 py-9 text-center sm:px-6 sm:py-16">
             <svg
               viewBox="0 0 24 24"
               className="mx-auto h-9 w-9 text-[color:var(--color-domigreen)]/55"
@@ -586,35 +597,22 @@ export default function RecruitmentPage() {
 
       {/* ===================== 4 · THE SYSTEM ===================== */}
       <section id="system" className="border-y border-black/[0.06] bg-[color:var(--color-paper-2)]">
-        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-6 sm:py-28">
+        <div className="mx-auto max-w-6xl px-5 py-7 sm:px-6 sm:py-28">
           <SectionLabel>How it works</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.9rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
+          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
             The Territory Engine.{" "}
             <span className="text-[color:var(--color-ink-3)]">
               Four moves, run every month until you&apos;re the answer.
             </span>
           </h2>
 
-          <div className="mt-8 grid gap-px overflow-hidden rounded-[1.5rem] sm:mt-14 border border-black/[0.08] bg-black/[0.06] sm:grid-cols-2">
-            {STEPS.map((s) => (
-              <div key={s.n} className="bg-[color:var(--color-paper)] p-7 sm:p-9">
-                <span className="text-[12px] font-bold tracking-[0.2em] text-[color:var(--color-pine)]">
-                  {s.n}
-                </span>
-                <h3 className="mt-4 text-[20px] font-bold tracking-tight text-[color:var(--color-ink)] sm:text-[22px]">
-                  {s.title}
-                </h3>
-                <p className="mt-3 text-[15px] leading-relaxed text-[color:var(--color-ink-2)]">
-                  {s.body}
-                </p>
-              </div>
-            ))}
+          <div className="mt-5 sm:mt-14">
+            <StepsAccordion steps={STEPS} />
           </div>
 
-          <CtaBlock
-            href={site.calendly}
-            line="Thirty minutes to see what the Territory Engine would work on first for your firm."
-          />
+          <div className="hidden sm:block">
+            <CtaBlock href={site.calendly} line="Thirty minutes to see what the Territory Engine would work on first for your firm." />
+          </div>
         </div>
       </section>
 
@@ -624,9 +622,9 @@ export default function RecruitmentPage() {
           Hidden entirely unless SHOW_TERRITORIES is on. */}
       {SHOW_TERRITORIES ? (
         <section id="territories" className="border-b border-black/[0.06] bg-white">
-          <div className="mx-auto max-w-5xl px-5 py-12 sm:px-6 sm:py-24">
+          <div className="mx-auto max-w-5xl px-5 py-7 sm:px-6 sm:py-24">
             <SectionLabel>Availability</SectionLabel>
-            <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.9rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
+            <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
               Can we work with your firm?{" "}
               <span className="text-[color:var(--color-ink-3)]">Check the map.</span>
             </h2>
@@ -635,7 +633,7 @@ export default function RecruitmentPage() {
               and we will show you what is still open. If your patch is held, we will tell you on the
               first call rather than waste your time.
             </p>
-            <div className="mt-10 sm:mt-12">
+            <div className="mt-7 sm:mt-12">
               <TerritoryMap />
             </div>
 
@@ -648,9 +646,9 @@ export default function RecruitmentPage() {
       ) : null}
 
       {/* ===================== 5 · PROOF ===================== */}
-      <section id="proof" className="mx-auto max-w-6xl px-5 py-12 sm:px-6 sm:py-28">
+      <section id="proof" className="mx-auto max-w-6xl px-5 py-7 sm:px-6 sm:py-28">
         <SectionLabel>Proof</SectionLabel>
-        <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.9rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
+        <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
           We&apos;ve done this outside recruitment{" "}
           <span className="text-[color:var(--color-ink-3)]">and we&apos;ll show you the work</span>
         </h2>
@@ -661,7 +659,7 @@ export default function RecruitmentPage() {
 
         {/* Featured case study */}
         <div className="mt-8 overflow-hidden rounded-[1.75rem] sm:mt-12 border border-black/[0.08] bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
-          <div className="grid gap-8 p-8 sm:p-12 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div className="grid gap-6 p-6 sm:gap-8 sm:p-12 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <Image
                 src="/clients/taxd-white.png"
@@ -706,11 +704,12 @@ export default function RecruitmentPage() {
         </div>
 
         {/* Testimonials */}
-        <div className="mt-8 grid gap-5 sm:mt-12 lg:grid-cols-3">
-          {TESTIMONIALS.map((t) => (
+        <div className="mt-5 sm:mt-12">
+          <Carousel>
+            {TESTIMONIALS.map((t) => (
             <figure
               key={t.name}
-              className="flex flex-col rounded-[1.5rem] border border-black/[0.08] bg-white p-7"
+              className="flex flex-col rounded-[1.5rem] border border-black/[0.08] bg-white p-5 sm:p-7"
             >
               <span className="flex gap-0.5" aria-hidden>
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -737,21 +736,21 @@ export default function RecruitmentPage() {
                   <span className="block text-[12px] text-[color:var(--color-ink-3)]">{t.role}</span>
                 </span>
               </figcaption>
-            </figure>
-          ))}
+              </figure>
+            ))}
+          </Carousel>
         </div>
 
-        <CtaBlock
-          href={site.calendly}
-          line="We will show you the same numbers for your firm, live, on a 30 minute call."
-        />
+        <div className="hidden sm:block">
+          <CtaBlock href={site.calendly} line="We will show you the same numbers for your firm, live, on a 30 minute call." />
+        </div>
       </section>
 
       {/* ===================== 6 · TEAM ===================== */}
       <section id="team" className="border-y border-black/[0.06] bg-[color:var(--color-paper-2)]">
-        <div className="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-28">
+        <div className="mx-auto max-w-3xl px-5 py-7 sm:px-6 sm:py-28">
           <SectionLabel>Who you&apos;ll work with</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.9rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
+          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
             Two of us.{" "}
             <span className="text-[color:var(--color-ink-3)]">Both on every account.</span>
           </h2>
@@ -772,7 +771,7 @@ export default function RecruitmentPage() {
                 {/* This wrapper is deliberately NOT overflow-hidden: the card
                     inside clips the photo for the hover zoom, while the
                     signature hangs past the bottom edge. */}
-                <div className="relative w-[190px] sm:w-[200px]">
+                <div className="relative w-[150px] sm:w-[200px]">
                   <div className="group relative overflow-hidden rounded-[1.1rem] border border-black/[0.08] bg-[color:var(--color-ink)] shadow-[0_18px_40px_-24px_rgba(20,17,13,0.5)]">
                     <Image
                       src={m.photo}
@@ -809,9 +808,9 @@ export default function RecruitmentPage() {
                   <p className="mt-0.5 text-[13px] text-[color:var(--color-ink-3)]">{m.role}</p>
                 </div>
 
-                <p className="mt-5 text-[15px] leading-relaxed text-[color:var(--color-ink-2)]">
-                  {m.bio}
-                </p>
+                <div className="mt-5">
+                  <ClampedText>{m.bio}</ClampedText>
+                </div>
               </div>
             ))}
           </div>
@@ -841,12 +840,12 @@ export default function RecruitmentPage() {
           break and makes the commercial section read as a destination. The
           cards stay light so they lift off the dark ground. */}
       <section id="pricing" className="bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
-        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 sm:py-28">
+        <div className="mx-auto max-w-6xl px-5 py-7 sm:px-6 sm:py-28">
           <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-domigreen)]">
             <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-domigreen)]" />
             Pricing
           </span>
-          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.9rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-paper)]">
+          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-paper)]">
             Two packages.{" "}
             <span className="text-[color:var(--color-paper)]/55">
               The difference is how much ground you hold.
@@ -855,7 +854,7 @@ export default function RecruitmentPage() {
 
           {/* Buyer maths, promoted out of body copy into a stat block so the
               price is read against the value of one placement. */}
-          <div className="mt-8 grid max-w-4xl gap-4 rounded-[1.5rem] border border-[color:var(--color-domigreen)]/25 bg-[color:var(--color-domigreen)]/[0.07] p-6 sm:mt-10 sm:grid-cols-[auto_1fr] sm:items-center sm:gap-8 sm:p-8">
+          <div className="mt-8 grid max-w-4xl gap-3 rounded-[1.5rem] border border-[color:var(--color-domigreen)]/25 bg-[color:var(--color-domigreen)]/[0.07] p-5 sm:mt-10 sm:grid-cols-[auto_1fr] sm:items-center sm:gap-8 sm:p-8">
             <div>
               {/* PLACEHOLDER — £8k to £12k is a typical construction perm fee at
                   roughly 20% of salary; adjust to the disciplines you target. */}
@@ -883,7 +882,7 @@ export default function RecruitmentPage() {
             {PLANS.map((p) => (
               <div
                 key={p.name}
-                className={`relative flex flex-col rounded-[1.5rem] p-7 sm:p-8 ${
+                className={`relative flex flex-col rounded-[1.5rem] p-5 sm:p-8 ${
                   p.featured
                     ? "bg-white shadow-[0_30px_70px_-30px_rgba(1,232,144,0.35)] ring-2 ring-[color:var(--color-domigreen)]/60"
                     : "bg-white/90 ring-1 ring-white/15"
@@ -925,30 +924,33 @@ export default function RecruitmentPage() {
                     {p.anchor}
                   </p>
                 ) : null}
-                {p.inherits ? (
-                  <p className="mt-6 text-[13px] font-bold tracking-tight text-[color:var(--color-ink)]">
-                    {p.inherits}
-                  </p>
-                ) : null}
-                <ul className={`flex-1 space-y-2.5 ${p.inherits ? "mt-3" : "mt-6"}`}>
-                  {p.features.map((f) => (
-                    <li key={f} className="flex gap-2.5 text-[14px] text-[color:var(--color-ink-2)]">
-                      <svg
-                        viewBox="0 0 24 24"
-                        className="mt-[3px] h-4 w-4 shrink-0 text-[color:var(--color-pine)]"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.6"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        aria-hidden
-                      >
-                        <path d="m5 13 4 4L19 7" />
-                      </svg>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
+                <MobileCollapse label="See what&apos;s included" closeLabel="Hide details">
+                  {p.inherits ? (
+                    <p className="mt-6 text-[13px] font-bold tracking-tight text-[color:var(--color-ink)]">
+                      {p.inherits}
+                    </p>
+                  ) : null}
+                  <ul className={`space-y-2.5 ${p.inherits ? "mt-3" : "mt-6"}`}>
+                    {p.features.map((f) => (
+                      <li key={f} className="flex gap-2.5 text-[14px] text-[color:var(--color-ink-2)]">
+                        <svg
+                          viewBox="0 0 24 24"
+                          className="mt-[3px] h-4 w-4 shrink-0 text-[color:var(--color-pine)]"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.6"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          aria-hidden
+                        >
+                          <path d="m5 13 4 4L19 7" />
+                        </svg>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </MobileCollapse>
+                <span className="flex-1" aria-hidden />
                 <Cta
                   href={site.calendly}
                   variant={p.featured ? "solid" : "outline"}
@@ -960,7 +962,7 @@ export default function RecruitmentPage() {
 
           {/* The plumbing, collapsed. Native details/summary so it needs no JS
               and works on touch without a handler. */}
-          <details className="group mx-auto mt-5 max-w-4xl overflow-hidden rounded-[1.5rem] border border-white/12 bg-white/[0.04] [&_summary::-webkit-details-marker]:hidden">
+          <details className="group mx-auto mt-4 max-w-4xl sm:mt-5 overflow-hidden rounded-[1.5rem] border border-white/12 bg-white/[0.04] [&_summary::-webkit-details-marker]:hidden">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 sm:px-8">
               <span className="text-[15px] font-bold tracking-tight text-[color:var(--color-paper)] sm:text-[17px]">
                 What&apos;s inside the engine
@@ -1015,7 +1017,7 @@ export default function RecruitmentPage() {
 
           {/* Risk reversal. Deliberately loud: it is the strongest thing on the
               page and should not read as small print. */}
-          <div className="mx-auto mt-6 max-w-4xl rounded-[1.5rem] border-2 border-[color:var(--color-domigreen)]/45 bg-[color:var(--color-domigreen)]/[0.09] p-6 text-center sm:p-8">
+          <div className="mx-auto mt-4 max-w-4xl sm:mt-6 rounded-[1.5rem] border-2 border-[color:var(--color-domigreen)]/45 bg-[color:var(--color-domigreen)]/[0.09] p-5 text-center sm:p-8">
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-domigreen)]">
               Our guarantee
             </span>
@@ -1028,7 +1030,7 @@ export default function RecruitmentPage() {
             </p>
           </div>
 
-          <p className="mx-auto mt-6 max-w-4xl text-[13px] text-[color:var(--color-paper)]/45">
+          <p className="mx-auto mt-4 max-w-4xl sm:mt-6 text-[13px] text-[color:var(--color-paper)]/45">
             Both packages are pure AI search, one firm per sub-sector per region, on a 3 month initial
             term and rolling monthly after that. AI visibility compounds, so we do not take clients for a single month. Not ready to
             commit? We will run the visibility audit free on a call so you can see where you stand
@@ -1040,11 +1042,11 @@ export default function RecruitmentPage() {
 
       {/* ===================== 8 · FAQ ===================== */}
       <section className="border-t border-black/[0.06] bg-[color:var(--color-paper-2)]">
-        <div className="mx-auto max-w-3xl px-5 py-12 sm:px-6 sm:py-28">
-          <h2 className="text-balance text-center text-[clamp(1.8rem,4vw,2.6rem)] font-bold leading-[1.1] tracking-[-0.03em] text-[color:var(--color-ink)]">
+        <div className="mx-auto max-w-3xl px-5 py-7 sm:px-6 sm:py-28">
+          <h2 className="text-balance text-center text-[clamp(1.6rem,4vw,2.6rem)] font-bold leading-[1.1] tracking-[-0.03em] text-[color:var(--color-ink)]">
             Questions recruitment owners ask
           </h2>
-          <div className="mt-7 sm:mt-10">
+          <div className="mt-5 sm:mt-10">
             <RecruitmentFaq items={FAQS} />
           </div>
 
@@ -1060,7 +1062,7 @@ export default function RecruitmentPage() {
       {/* ===================== 9 · FINAL CTA ===================== */}
       <section className="relative bg-[color:var(--color-paper)]">
         <div aria-hidden className="pointer-events-none absolute inset-0 grid-backdrop-light" />
-        <div className="relative mx-auto max-w-3xl px-5 py-14 text-center sm:px-6 sm:py-32">
+        <div className="relative mx-auto max-w-3xl px-5 py-10 text-center sm:px-6 sm:py-32">
           <h2 className="mx-auto max-w-2xl text-balance text-[clamp(2rem,5vw,3.4rem)] font-bold leading-[1.04] tracking-[-0.035em] text-[color:var(--color-ink)]">
             Find out what AI says about your firm{" "}
             <span className="text-[color:var(--color-ink-3)]">before your competitor does</span>
