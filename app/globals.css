@@ -29,6 +29,24 @@
   font-display: swap;
 }
 
+/* Two signature faces (both SIL Open Font License 1.1, self-hosted) so the two
+   autographs read as two different hands rather than one typeface set twice.
+   Homemade Apple is a heavy looping pen; Zeyada is thinner and more angular. */
+@font-face {
+  font-family: "SignatureA";
+  src: url("/fonts/HomemadeApple-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SignatureB";
+  src: url("/fonts/Zeyada-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --color-charcoal: #090909;
   --color-ash: #373737;
@@ -602,6 +620,15 @@ html, body {
 /* Recruitment vertical page — AI search demo + proof modules             */
 /* ====================================================================== */
 
+/* Light-surface routes. html/body are charcoal for the dark site, which shows
+   through the overscroll area on mobile behind a cream page (and forces a dark
+   colour-scheme onto form controls and scrollbars). Repaint from the page. */
+body:has([data-surface="paper"]),
+html:has([data-surface="paper"]) {
+  background-color: var(--color-paper);
+  color-scheme: light;
+}
+
 /* Blinking text caret for the mock composer and the streaming answer */
 @keyframes caretBlink {
   0%, 45% { opacity: 1; }
@@ -635,6 +662,14 @@ html, body {
 .source-in { opacity: 0; animation: demoIn 0.4s ease-out forwards; }
 .row-in { animation: demoIn 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
 
+/* Availability map: swapping view fades and scales up slightly, so moving
+   between world and region reads as a zoom rather than a hard cut. */
+@keyframes mapZoom {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+.map-zoom { animation: mapZoom 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
 /* Slower marquee for the dark claim ticker at the top of the page */
 .ticker-track {
   animation: marquee 48s linear infinite;
@@ -648,6 +683,7 @@ html, body {
   .source-in { animation: none; opacity: 1; }
   .row-in { animation: none; }
   .ticker-track { animation: none; }
+  .map-zoom { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .marquee-track { animation: none; }
   .magnetic { transform: none; transition: none; }

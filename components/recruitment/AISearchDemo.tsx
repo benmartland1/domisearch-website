@@ -25,7 +25,7 @@ const ANSWER_PARTS: { text: string; brand?: boolean }[] = [
   },
   { text: "Your Firm", brand: true },
   {
-    text: "— they cover site managers, quantity surveyors and project managers across the North West, and are repeatedly rated for speed of placement.",
+    text: ". They cover site managers, quantity surveyors and project managers across the North West, and are repeatedly rated for speed of placement.",
   },
 ];
 
@@ -198,12 +198,12 @@ export function AISearchDemo() {
             answer streams in, or the whole hero shifts under it. Measured
             against the tallest finished state (614px at lg, 595px at 390px)
             with headroom for font-loading variance. */}
-        <div className="flex h-[40rem] flex-col px-4 py-5 sm:px-6 sm:py-6 lg:h-[41rem]">
+        <div className="flex h-[27rem] flex-col px-3.5 py-4 sm:h-[40rem] sm:px-6 sm:py-6 lg:h-[41rem]">
           <div className="min-w-0 flex-1 overflow-hidden">
           {/* User message */}
           {showBubble ? (
             <div className="flex justify-end">
-              <div className="max-w-[85%] rounded-2xl rounded-br-md bg-[#f1efe9] px-4 py-2.5 text-[14px] leading-snug text-[color:var(--color-ink)] sm:text-[15px]">
+              <div className="max-w-[88%] rounded-2xl rounded-br-md bg-[#f1efe9] px-3 py-1.5 text-[12.5px] leading-snug text-[color:var(--color-ink)] sm:px-4 sm:py-2.5 sm:text-[15px]">
                 {QUERY}
               </div>
             </div>
@@ -211,8 +211,8 @@ export function AISearchDemo() {
 
           {/* Searching state */}
           {phase === "searching" ? (
-            <div className="mt-5">
-              <div className="flex items-center gap-2 text-[13px] text-[color:var(--color-ink-3)]">
+            <div className="mt-4 sm:mt-5">
+              <div className="flex items-center gap-2 text-[12px] sm:text-[13px] text-[color:var(--color-ink-3)]">
                 <span className="flex gap-1" aria-hidden>
                   {[0, 1, 2].map((i) => (
                     <span
@@ -241,8 +241,8 @@ export function AISearchDemo() {
 
           {/* Streamed answer */}
           {showAnswer ? (
-            <div className="mt-5">
-              <p className="text-[15px] leading-relaxed text-[color:var(--color-ink-2)] sm:text-[16px]">
+            <div className="mt-4 sm:mt-5">
+              <p className="text-[12.5px] leading-[1.45] text-[color:var(--color-ink-2)] sm:text-[16px] sm:leading-relaxed">
                 {ANSWER_PARTS.map((part, pi) => {
                   const before = WORDS.filter((w) => w.part < pi).length;
                   const total = WORDS.filter((w) => w.part === pi).length;
@@ -271,18 +271,18 @@ export function AISearchDemo() {
               </p>
 
               {/* Ranked rows */}
-              <div className="mt-5 space-y-2">
+              <div className="mt-2.5 space-y-1 sm:mt-5 sm:space-y-2">
                 {RESULTS.slice(0, rows).map((r, i) => (
                   <div
                     key={r.name}
-                    className={`row-in flex items-center gap-3 rounded-xl border px-3.5 py-3 ${
+                    className={`row-in flex items-center gap-2.5 rounded-xl border px-2.5 py-1.5 sm:gap-3 sm:px-3.5 sm:py-3 ${
                       r.you
                         ? "border-[color:var(--color-pine)]/35 bg-[color:var(--color-pine)]/[0.06]"
                         : "border-black/[0.06] bg-[#fbfaf8]"
                     }`}
                   >
                     <span
-                      className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[11px] font-bold ${
+                      className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold sm:h-6 sm:w-6 sm:text-[11px] ${
                         r.you
                           ? "bg-[color:var(--color-pine)] text-white"
                           : "bg-black/[0.06] text-[color:var(--color-ink-3)]"
@@ -292,7 +292,7 @@ export function AISearchDemo() {
                     </span>
                     <span className="min-w-0 flex-1">
                       <span
-                        className={`block truncate text-[14px] font-semibold tracking-tight ${
+                        className={`block truncate text-[12.5px] font-semibold tracking-tight sm:text-[14px] ${
                           r.you
                             ? "text-[color:var(--color-ink)]"
                             : "text-[color:var(--color-ink-3)]"
@@ -300,7 +300,7 @@ export function AISearchDemo() {
                       >
                         {r.name}
                       </span>
-                      <span className="block truncate text-[12px] text-[color:var(--color-ink-3)]">
+                      <span className="block truncate text-[10.5px] text-[color:var(--color-ink-3)] sm:text-[12px]">
                         {r.meta}
                       </span>
                     </span>
@@ -315,7 +315,7 @@ export function AISearchDemo() {
 
               {/* Payoff callout — inline so it can never collide with the rows */}
               <div
-                className={`mt-4 flex flex-wrap items-center gap-2 transition-all duration-500 ${
+                className={`mt-3 hidden flex-wrap items-center gap-2 transition-all duration-500 sm:mt-4 sm:flex ${
                   badge ? "translate-y-0 opacity-100" : "translate-y-1.5 opacity-0"
                 }`}
               >
@@ -332,8 +332,8 @@ export function AISearchDemo() {
           </div>
 
           {/* Composer — pinned to the bottom throughout, as in a real chat */}
-          <div className="mt-5 flex items-center gap-2 rounded-2xl border border-black/[0.09] bg-[#fbfaf8] px-4 py-3">
-            <span className="min-w-0 flex-1 truncate text-[14px] text-[color:var(--color-ink)] sm:text-[15px]">
+          <div className="mt-3 flex items-center gap-2 rounded-2xl border border-black/[0.09] bg-[#fbfaf8] px-3 py-2.5 sm:mt-5 sm:px-4 sm:py-3">
+            <span className="min-w-0 flex-1 truncate text-[12.5px] text-[color:var(--color-ink)] sm:text-[15px]">
               {phase === "typing" ? (
                 <>
                   {QUERY.slice(0, typed) || (

@@ -133,16 +133,16 @@ export function PromptBoard() {
                 key={r.prompt}
                 className="border-b border-black/[0.05] last:border-0 hover:bg-black/[0.015]"
               >
-                <td className="px-4 py-3.5 text-[14px] font-medium tracking-tight text-[color:var(--color-ink)] sm:px-6">
+                <td className="px-4 py-3 text-[14px] font-medium tracking-tight text-[color:var(--color-ink)] sm:px-6">
                   {r.prompt}
                 </td>
-                <td className="px-4 py-3.5 text-[13px] text-[color:var(--color-ink-3)]">
+                <td className="px-4 py-3 text-[13px] text-[color:var(--color-ink-3)]">
                   {r.engine}
                 </td>
-                <td className="px-4 py-3.5 text-[13px] text-[color:var(--color-ink-3)]">
+                <td className="px-4 py-3 text-[13px] text-[color:var(--color-ink-3)]">
                   {r.named}
                 </td>
-                <td className="px-4 py-3.5 text-right sm:px-6">
+                <td className="px-4 py-3 text-right sm:px-6">
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-[#fdeeee] px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.08em] text-[#b4342f]">
                     <span className="h-1.5 w-1.5 rounded-full bg-[#d4453f]" />
                     Not cited
@@ -156,7 +156,7 @@ export function PromptBoard() {
 
       <div className="border-t border-black/[0.06] bg-[#fbfaf8] px-4 py-3 text-[11px] leading-relaxed text-[color:var(--color-ink-3)] sm:px-6">
         Illustrative example of the audit we run before any engagement. Competitor slots are
-        described generically — we never publish another firm&apos;s ranking.
+        described generically, and we never publish another firm&apos;s ranking.
       </div>
     </div>
   );

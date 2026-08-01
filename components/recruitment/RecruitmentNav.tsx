@@ -15,7 +15,15 @@ const LINKS = [
   { label: "Pricing", href: "#pricing" },
 ];
 
-export function RecruitmentNav({ calendly }: { calendly: string }) {
+export function RecruitmentNav({
+  calendly,
+  territories,
+}: {
+  calendly: string;
+  /** Capacity counter, mirroring the "54/60 clients" scarcity pattern. Omitted
+   *  entirely while the territory data is still placeholder. */
+  territories?: { taken: number; total: number };
+}) {
   const [solid, setSolid] = useState(false);
 
   useEffect(() => {
@@ -54,16 +62,27 @@ export function RecruitmentNav({ calendly }: { calendly: string }) {
         </div>
 
         <div className="ml-auto flex items-center gap-3">
-          <span className="hidden text-right text-[11px] leading-tight text-[color:var(--color-ink-3)] sm:block">
-            Manchester based
-            <br />
-            Google &amp; Shopify Partner
-          </span>
+          {territories ? (
+            <span className="hidden text-right text-[11px] leading-tight text-[color:var(--color-ink-3)] sm:block">
+              <span className="font-bold text-[color:var(--color-pine)]">
+                {territories.taken} of {territories.total}
+              </span>{" "}
+              territories held
+              <br />
+              Manchester based, UK-wide
+            </span>
+          ) : (
+            <span className="hidden text-right text-[11px] leading-tight text-[color:var(--color-ink-3)] sm:block">
+              Manchester based
+              <br />
+              Google &amp; Shopify Partner
+            </span>
+          )}
           <a
             href={calendly}
             target="_blank"
             rel="noopener"
-            className="shrink-0 rounded-full bg-[color:var(--color-ink)] px-4 py-2.5 text-[13px] font-bold tracking-tight text-[color:var(--color-paper)] transition-transform hover:-translate-y-px"
+            className="shrink-0 rounded-full bg-[color:var(--color-ink)] px-4 py-2.5 text-[13px] font-bold tracking-tight text-[color:var(--color-paper)] transition-all duration-200 hover:-translate-y-px hover:bg-[color:var(--color-domigreen)] hover:text-[color:var(--color-charcoal)] motion-reduce:transition-none"
           >
             Book a call
           </a>
