@@ -598,7 +598,56 @@ html, body {
   transform: translateY(-1px);
 }
 
+/* ====================================================================== */
+/* Recruitment vertical page — AI search demo + proof modules             */
+/* ====================================================================== */
+
+/* Blinking text caret for the mock composer and the streaming answer */
+@keyframes caretBlink {
+  0%, 45% { opacity: 1; }
+  55%, 100% { opacity: 0; }
+}
+.caret { animation: caretBlink 1s steps(1) infinite; }
+
+/* Highlighter sweep behind the brand name once it finishes streaming.
+   Animates background-size so it never fights the text stacking context. */
+@keyframes markSweep {
+  to { background-size: 100% 0.42em; }
+}
+.brand-mark {
+  padding: 0 0.06em;
+  background-image: linear-gradient(
+    to right,
+    color-mix(in oklab, var(--color-domigreen) 55%, transparent),
+    color-mix(in oklab, var(--color-domigreen) 55%, transparent)
+  );
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 0% 0.42em;
+  animation: markSweep 0.55s 0.12s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Shared entrance for streamed source chips and ranked answer rows */
+@keyframes demoIn {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.source-in { opacity: 0; animation: demoIn 0.4s ease-out forwards; }
+.row-in { animation: demoIn 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+
+/* Slower marquee for the dark claim ticker at the top of the page */
+.ticker-track {
+  animation: marquee 48s linear infinite;
+  width: max-content;
+  display: flex;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .caret { animation: none; opacity: 1; }
+  .brand-mark { animation: none; background-size: 100% 0.42em; }
+  .source-in { animation: none; opacity: 1; }
+  .row-in { animation: none; }
+  .ticker-track { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
   .marquee-track { animation: none; }
   .magnetic { transform: none; transition: none; }
@@ -607,4 +656,104 @@ html, body {
   .report-float { animation: none; }
   .cta-pulse { animation: none; }
   html { scroll-behavior: auto; }
+}
+
+/* ====================================================================== */
+/* CMS editor prose — deliberately close to .prose-paper so what a writer  */
+/* sees in the editor matches the published post                          */
+/* ====================================================================== */
+.cms-prose {
+  color: var(--color-ink-2);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.cms-prose > * + * { margin-top: 1.1rem; }
+.cms-prose h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.7rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  margin-top: 2.4rem;
+}
+.cms-prose h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.28rem;
+  color: var(--color-ink);
+  margin-top: 1.8rem;
+}
+.cms-prose strong { color: var(--color-ink); font-weight: 600; }
+.cms-prose a { color: var(--color-pine); text-decoration: underline; text-underline-offset: 2px; }
+.cms-prose ul, .cms-prose ol { padding-left: 1.5rem; }
+.cms-prose ul { list-style: disc; }
+.cms-prose ol { list-style: decimal; }
+.cms-prose li { margin-top: 0.35rem; }
+.cms-prose li > p { margin: 0; }
+.cms-prose blockquote {
+  border-left: 3px solid var(--color-pine);
+  padding: 0.15rem 0 0.15rem 1.25rem;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+.cms-prose code {
+  background: color-mix(in oklab, var(--color-ink) 6%, transparent);
+  color: var(--color-ink);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.4rem;
+  font-size: 0.92em;
+}
+.cms-prose pre {
+  background: var(--color-charcoal);
+  color: var(--color-glacier);
+  padding: 1rem 1.15rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+}
+.cms-prose pre code { background: none; color: inherit; padding: 0; }
+.cms-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+}
+.cms-prose hr { border: 0; border-top: 1px solid color-mix(in oklab, var(--color-ink) 12%, transparent); }
+
+/* Tables are editable in place, so the cell borders need to be visible */
+.cms-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  overflow: hidden;
+}
+.cms-prose th, .cms-prose td {
+  border: 1px solid color-mix(in oklab, var(--color-ink) 15%, transparent);
+  padding: 0.6rem 0.75rem;
+  vertical-align: top;
+  text-align: left;
+  position: relative;
+}
+.cms-prose th {
+  background: var(--color-paper-2);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.cms-prose .selectedCell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: color-mix(in oklab, var(--color-pine) 12%, transparent);
+  pointer-events: none;
+}
+
+/* Placeholder text on the first empty line */
+.cms-prose p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  color: color-mix(in oklab, var(--color-ink) 35%, transparent);
+  pointer-events: none;
 }

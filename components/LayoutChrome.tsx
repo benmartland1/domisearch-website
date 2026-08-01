@@ -10,7 +10,17 @@ import { usePathname } from "next/navigation";
  * Header/Footer are passed in as already-server-rendered nodes so they stay
  * server components; this wrapper only decides whether to include them.
  */
-const BARE_ROUTES = ["/ai-visibility-report", "/aesthetics", "/ai-visibility-roadmap", "/taxd-case-study"];
+const BARE_ROUTES = [
+  "/ai-visibility-report",
+  "/aesthetics",
+  "/ai-visibility-roadmap",
+  "/taxd-case-study",
+  // Vertical landing page — cream surface with its own light nav, so the dark
+  // global header would clash.
+  "/recruitment",
+  // The CMS is a separate application that happens to share this deployment.
+  "/cms",
+];
 
 export function LayoutChrome({
   header,

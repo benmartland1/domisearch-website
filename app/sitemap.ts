@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/services/google-ads",
     "/services/aeo",
+    "/recruitment",
     "/pricing",
     "/about",
     "/careers",
@@ -25,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority:
       path === ""
         ? 1
-        : path.startsWith("/services")
+        : path.startsWith("/services") || path === "/recruitment"
           ? 0.9
           : 0.6,
   }));
