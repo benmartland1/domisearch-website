@@ -177,91 +177,79 @@ const TESTIMONIALS = [
  * moves the needle for a recruitment firm (JobPosting markup, sector and
  * location entities). Tune the specifics before publishing.
  */
-const PLANS = [
-  {
-    name: "AI Search Foundations",
-    price: "£1,995",
-    cadence: "per month",
-    term: "3 month initial term, then rolling monthly",
-    anchor: null,
-    tagline: "Own one prompt territory.",
-    blurb:
-      "One discipline, one region, held exclusively. For as long as you hold the slot we will not take a rival chasing the same prompts.",
-    inherits: null,
-    // Outcome language only. The plumbing lives in ENGINE_SPEC below, in a
-    // collapsed panel: a recruitment owner cannot evaluate "llms.txt" or
-    // "Breadcrumb markup", so on the card it reads as noise.
-    features: [
-      "Everything needed to win the slot: technical foundations, entity work and a site structure AI can actually read",
-      "10 content pieces a month, written to be quoted inside answers rather than ranked on a page",
-      "Visibility tracked across 6 engines, so you can see movement prompt by prompt",
-      "A monthly reporting call with the person doing the work, not an account manager",
-    ],
-    cta: "Book a call",
-    featured: false,
-  },
-  {
-    name: "AI Search Authority",
-    price: "£3,495",
-    cadence: "per month",
-    term: "3 month initial term, then rolling monthly",
-    // £3,495 / £1,995 = 1.75. One line beats explaining a percentage discount.
-    anchor: "Three territories for 1.75x the price.",
-    tagline: "Own the map.",
-    blurb:
-      "Up to three disciplines or two regions, every one of them closed to competitors, plus the deeper technical layer and monthly work on the pages you already have.",
-    inherits: "Everything in Foundations, plus:",
-    features: [
-      "Up to three disciplines or two regions, all held exclusively",
-      "Monthly landing page optimisation on the pages already pulling traffic",
-      "The deeper technical layer, maintained every month rather than set once",
-      "16 content pieces a month instead of 10",
-    ],
-    cta: "Book a call",
-    featured: true,
-  },
-];
+/**
+ * One productised programme at a single price. Replaced a two-tier structure
+ * (Foundations / Authority) that split the same work by volume; territory is
+ * the scarce thing, not deliverable count, so the tiers only added friction.
+ */
+const PROGRAMME = {
+  name: "AI Search for Recruitment",
+  price: "£2,995",
+  cadence: "per month",
+  term: "3 month initial term, then rolling monthly",
+  tagline: "One firm per sub-sector, per region.",
+  firstMonth: [
+    "Full prompt audit, visibility scorecard and 90 day roadmap",
+    "Baseline capture and competitor citation benchmark",
+    "Technical foundations: schema, llms.txt and an AI-readable site structure",
+    "Entity and directory pass across the sources AI actually reads",
+  ],
+  ongoing: [
+    // PLACEHOLDER — new/refresh split is indicative, adjust to how you deliver.
+    "10 content pieces built to be cited (6 new, 4 refreshed)",
+    "4 third-party citation actions: directory, listicle and press placements pitched on your behalf",
+    "Review engine to turn client wins into visible proof",
+    "Visibility tracked across 6 engines, monthly report and call, quarterly re-audit",
+  ],
+  territory:
+    "Covers one exclusive territory (your sub-sector and region). Additional territories agreed on the call.",
+  cta: "Book a call",
+};
 
 /**
- * The technical detail, moved off the cards into a collapsed panel. Buyers who
+ * The technical detail, moved off the card into a collapsed panel. Buyers who
  * want it open it; everyone else scans past.
  */
 const ENGINE_SPEC = [
   {
     area: "AI crawler access",
-    foundations: "llms.txt, robots and crawler access configured so the engines can reach you",
-    authority: "Plus crawler log monitoring and a monthly fix cycle",
+    detail:
+      "llms.txt, robots and crawler access configured so the engines can reach you, then crawler log monitoring and a monthly fix cycle.",
   },
   {
     area: "Schema markup",
-    foundations: "Organization, WebSite, Service and FAQ",
-    authority: "Plus JobPosting, Person, Review and Breadcrumb, maintained monthly",
+    detail:
+      "Organization, WebSite, Service and FAQ to start, then JobPosting, Person, Review and Breadcrumb, maintained monthly.",
   },
   {
     area: "Entity data",
-    foundations: "Consistency pass across your site and the directories AI reads",
-    authority: "Full sector and location entity architecture",
+    detail:
+      "Consistency pass across your site and the directories AI reads, building into a full sector and location entity architecture.",
   },
   {
     area: "Site structure",
-    foundations: "Core pages restructured for extraction",
-    authority: "Plus an internal linking graph mapped to your disciplines and regions",
+    detail:
+      "Core pages restructured for extraction, with an internal linking graph mapped to your sub-sector and region.",
   },
   {
-    // PLACEHOLDER — new/refresh split is indicative, adjust to how you deliver.
     area: "Content",
-    foundations: "10 pieces a month (typically 6 new, 4 refreshed)",
-    authority: "16 pieces a month (typically 10 new, 6 refreshed)",
+    detail:
+      "10 pieces a month written to be quoted rather than ranked: salary data, hiring guides and market commentary.",
   },
   {
-    area: "Landing pages",
-    foundations: "Not included",
-    authority: "Conversion work on your existing pages, every month",
+    area: "Citations",
+    detail:
+      "4 third-party actions a month. Directory listings, listicle inclusion and press placements pitched on your behalf, because AI answers cite sources, not you.",
+  },
+  {
+    area: "Reviews",
+    detail:
+      "A review engine that turns client wins into public proof the engines can read and quote back.",
   },
   {
     area: "Reporting",
-    foundations: "Territory Engine dashboard across 6 engines, plus a monthly call",
-    authority: "Plus prompt coverage across every discipline and region you hold",
+    detail:
+      "Territory Engine dashboard across 6 engines, a monthly report and call, and a full re-audit every quarter.",
   },
 ];
 
@@ -316,7 +304,7 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "How long does it take to appear in AI answers?",
-    a: "Foundations land in the first month. Movement on real buyer prompts typically starts showing between month two and month four, depending on how competitive your sectors are and how much authority your site already carries. It is slower than paid and faster than traditional SEO. That is why both packages run a three month initial term and then roll monthly: AI visibility compounds, and a single month proves nothing either way.",
+    a: "The foundations land in the first month. Movement on real buyer prompts typically starts showing between month two and month four, depending on how competitive your sub-sector is and how much authority your site already carries. It is slower than paid and faster than traditional SEO. That is why the programme runs a three month initial term and then rolls monthly: AI visibility compounds, and a single month proves nothing either way.",
   },
   {
     q: "Which sectors does this work best for?",
@@ -872,10 +860,8 @@ export default function RecruitmentPage() {
             Pricing
           </span>
           <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-paper)]">
-            Two packages.{" "}
-            <span className="text-[color:var(--color-paper)]/55">
-              The difference is how much ground you hold.
-            </span>
+            One programme. One price.{" "}
+            <span className="text-[color:var(--color-paper)]/55">Your patch held exclusively.</span>
           </h2>
 
           {/* Buyer maths, promoted out of body copy into a stat block so the
@@ -893,7 +879,7 @@ export default function RecruitmentPage() {
             </div>
             <div className="sm:border-l sm:border-white/10 sm:pl-8">
               <p className="text-[16px] leading-relaxed text-[color:var(--color-paper)]/85 sm:text-[17px]">
-                Foundations pays for itself if it wins you a single extra client a quarter.
+                The programme pays for itself if it wins you a single extra client a quarter.
                 Everything after that is margin.
               </p>
               {/* SOURCE CHECK — verify the £25 CPC figure before launch. */}
@@ -904,87 +890,70 @@ export default function RecruitmentPage() {
             </div>
           </div>
 
-          <div className="mx-auto mt-8 grid max-w-4xl items-stretch gap-5 sm:mt-12 lg:auto-rows-fr lg:grid-cols-2">
-            {PLANS.map((p) => (
-              <div
-                key={p.name}
-                className={`relative flex flex-col rounded-[1.5rem] p-5 sm:p-8 ${
-                  p.featured
-                    ? "bg-white shadow-[0_30px_70px_-30px_rgba(1,232,144,0.35)] ring-2 ring-[color:var(--color-domigreen)]/60"
-                    : "bg-white/90 ring-1 ring-white/15"
-                }`}
-              >
-                {/* Both cards render this row so the two prices stay on the same
-                    baseline; the unfeatured one is an invisible spacer. Keeping
-                    it in flow means the badge can never overlap the title. */}
-                <span
-                  aria-hidden={!p.featured}
-                  className={`mb-4 inline-flex w-fit rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] ${
-                    p.featured
-                      ? "bg-[color:var(--color-pine)] text-white"
-                      : "invisible bg-transparent"
-                  }`}
-                >
-                  {p.featured ? "For competitive sectors" : " "}
+          <div className="mx-auto mt-6 max-w-2xl sm:mt-12">
+            <div className="relative flex flex-col rounded-[1.5rem] bg-white p-5 shadow-[0_30px_70px_-30px_rgba(1,232,144,0.35)] ring-2 ring-[color:var(--color-domigreen)]/60 sm:p-8">
+              <h3 className="text-[19px] font-bold tracking-tight text-[color:var(--color-ink)] sm:text-[21px]">
+                {PROGRAMME.name}
+              </h3>
+              <div className="mt-4 flex items-baseline gap-2">
+                <span className="text-[clamp(2rem,4vw,2.6rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-ink)]">
+                  {PROGRAMME.price}
                 </span>
-                <h3 className="text-[19px] font-bold tracking-tight text-[color:var(--color-ink)]">
-                  {p.name}
-                </h3>
-                <div className="mt-4 flex items-baseline gap-2">
-                  <span className="text-[clamp(1.8rem,3.4vw,2.4rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-ink)]">
-                    {p.price}
-                  </span>
-                  <span className="text-[13px] text-[color:var(--color-ink-3)]">{p.cadence}</span>
-                </div>
-                <p className="mt-1.5 text-[12px] font-semibold text-[color:var(--color-ink-3)]">
-                  {p.term}
-                </p>
-                <p className="mt-4 text-[16px] font-bold tracking-tight text-[color:var(--color-pine)]">
-                  {p.tagline}
-                </p>
-                <p className="mt-2 text-[14px] leading-relaxed text-[color:var(--color-ink-2)]">
-                  {p.blurb}
-                </p>
-                {p.anchor ? (
-                  <p className="mt-4 rounded-xl bg-[color:var(--color-pine)]/[0.08] px-3.5 py-3 text-[13px] font-semibold leading-relaxed text-[color:var(--color-pine)]">
-                    {p.anchor}
-                  </p>
-                ) : null}
-                <MobileCollapse label="See what&apos;s included" closeLabel="Hide details">
-                  {p.inherits ? (
-                    <p className="mt-6 text-[13px] font-bold tracking-tight text-[color:var(--color-ink)]">
-                      {p.inherits}
-                    </p>
-                  ) : null}
-                  <ul className={`space-y-2.5 ${p.inherits ? "mt-3" : "mt-6"}`}>
-                    {p.features.map((f) => (
-                      <li key={f} className="flex gap-2.5 text-[14px] text-[color:var(--color-ink-2)]">
-                        <svg
-                          viewBox="0 0 24 24"
-                          className="mt-[3px] h-4 w-4 shrink-0 text-[color:var(--color-pine)]"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.6"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          aria-hidden
-                        >
-                          <path d="m5 13 4 4L19 7" />
-                        </svg>
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                </MobileCollapse>
-                <span className="flex-1" aria-hidden />
-                <Cta
-                  href={site.calendly}
-                  variant={p.featured ? "solid" : "outline"}
-                  className="mt-7 w-full self-end"
-                />
+                <span className="text-[13px] text-[color:var(--color-ink-3)]">
+                  {PROGRAMME.cadence}
+                </span>
               </div>
-            ))}
+              <p className="mt-1.5 text-[12px] font-semibold text-[color:var(--color-ink-3)]">
+                {PROGRAMME.term}
+              </p>
+              <p className="mt-4 text-[16px] font-bold tracking-tight text-[color:var(--color-pine)]">
+                {PROGRAMME.tagline}
+              </p>
+
+              <MobileCollapse label="See what&apos;s included" closeLabel="Hide details">
+                {(
+                  [
+                    ["Your first month", PROGRAMME.firstMonth],
+                    ["Every month after", PROGRAMME.ongoing],
+                  ] as const
+                ).map(([heading, items], bi) => (
+                  <div key={heading} className={bi === 0 ? "mt-6" : "mt-7"}>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-ink-3)]">
+                      {heading}
+                    </p>
+                    <ul className="mt-3 space-y-2.5">
+                      {items.map((f) => (
+                        <li
+                          key={f}
+                          className="flex gap-2.5 text-[14px] text-[color:var(--color-ink-2)]"
+                        >
+                          <svg
+                            viewBox="0 0 24 24"
+                            className="mt-[3px] h-4 w-4 shrink-0 text-[color:var(--color-pine)]"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.6"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            aria-hidden
+                          >
+                            <path d="m5 13 4 4L19 7" />
+                          </svg>
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+                <p className="mt-6 rounded-xl bg-[color:var(--color-pine)]/[0.08] px-3.5 py-3 text-[13px] font-semibold leading-relaxed text-[color:var(--color-pine)]">
+                  {PROGRAMME.territory}
+                </p>
+              </MobileCollapse>
+
+              <Cta href={site.calendly} className="mt-7 w-full" />
+            </div>
           </div>
+
 
           {/* The plumbing, collapsed. Native details/summary so it needs no JS
               and works on touch without a handler. */}
@@ -1011,30 +980,16 @@ export default function RecruitmentPage() {
             </summary>
 
             <div className="border-t border-white/10 px-6 pb-6 pt-2 sm:px-8 sm:pb-8">
-              <div className="hidden grid-cols-[minmax(0,9rem)_minmax(0,1fr)_minmax(0,1fr)] gap-x-6 border-b border-white/10 py-3 text-[11px] font-bold uppercase tracking-[0.14em] text-[color:var(--color-paper)]/40 sm:grid">
-                <span>Area</span>
-                <span>Foundations</span>
-                <span className="text-[color:var(--color-domigreen)]">Authority</span>
-              </div>
               {ENGINE_SPEC.map((row) => (
                 <div
                   key={row.area}
-                  className="grid gap-x-6 gap-y-1 border-b border-white/[0.07] py-4 last:border-0 sm:grid-cols-[minmax(0,9rem)_minmax(0,1fr)_minmax(0,1fr)]"
+                  className="grid gap-x-6 gap-y-1 border-b border-white/[0.07] py-4 last:border-0 sm:grid-cols-[minmax(0,10rem)_minmax(0,1fr)]"
                 >
                   <span className="text-[13px] font-bold tracking-tight text-[color:var(--color-paper)] sm:text-[14px]">
                     {row.area}
                   </span>
                   <span className="text-[13px] leading-relaxed text-[color:var(--color-paper)]/60 sm:text-[14px]">
-                    <span className="mr-1.5 font-semibold text-[color:var(--color-paper)]/40 sm:hidden">
-                      Foundations:
-                    </span>
-                    {row.foundations}
-                  </span>
-                  <span className="text-[13px] leading-relaxed text-[color:var(--color-paper)]/60 sm:text-[14px]">
-                    <span className="mr-1.5 font-semibold text-[color:var(--color-domigreen)]/70 sm:hidden">
-                      Authority:
-                    </span>
-                    {row.authority}
+                    {row.detail}
                   </span>
                 </div>
               ))}
@@ -1057,7 +1012,7 @@ export default function RecruitmentPage() {
           </div>
 
           <p className="mx-auto mt-4 max-w-4xl sm:mt-6 text-[13px] text-[color:var(--color-paper)]/45">
-            Both packages are pure AI search, one firm per sub-sector per region, on a 3 month initial
+            The programme is pure AI search, one firm per sub-sector per region, on a 3 month initial
             term and rolling monthly after that. AI visibility compounds, so we do not take clients for a single month. Not ready to
             commit? We will run the visibility audit free on a call so you can see where you stand
             first.

@@ -33,7 +33,7 @@ const homeFaqs = [
   {
     question: "How much does DomiSearch charge?",
     answer:
-      "Google Ads management starts from £1,500/month. AEO / AI Search starts from £1,950/month. The combined Search Revenue Ownership package starts from £2,950/month. All retainers are monthly with a three-month minimum and no setup fees.",
+      "Google Ads management starts from £1,500/month. AEO / AI Search starts from £2,950/month. The combined Search Revenue Ownership package starts from £3,950/month. All retainers are monthly with a three-month minimum and no setup fees.",
   },
   {
     question: "Is DomiSearch a Google Partner?",
@@ -144,12 +144,12 @@ const homeGraph = {
               name: "AI Engine Optimisation (AEO)",
               url: `${site.url}/services/aeo`,
               description:
-                "Entity optimisation, AI-ready content, schema, citation ops and monthly AI visibility reporting across ChatGPT, Gemini, Perplexity, Copilot, Claude and Google AI Overviews. From £1,950/month.",
+                "Entity optimisation, AI-ready content, schema, citation ops and monthly AI visibility reporting across ChatGPT, Gemini, Perplexity, Copilot, Claude and Google AI Overviews. From £2,950/month.",
               provider: { "@id": `${site.url}/#organization` },
             },
             priceSpecification: {
               "@type": "PriceSpecification",
-              price: "1950",
+              price: "2950",
               priceCurrency: "GBP",
               unitText: "month",
             },
@@ -161,12 +161,12 @@ const homeGraph = {
               name: "Search Revenue Ownership",
               url: `${site.url}/services`,
               description:
-                "Google Ads and AEO unified into one compounding search strategy. Single monthly report, unified strategy across both channels. From £2,950/month.",
+                "Google Ads and AEO unified into one compounding search strategy. Single monthly report, unified strategy across both channels. From £3,950/month.",
               provider: { "@id": `${site.url}/#organization` },
             },
             priceSpecification: {
               "@type": "PriceSpecification",
-              price: "2950",
+              price: "3950",
               priceCurrency: "GBP",
               unitText: "month",
             },

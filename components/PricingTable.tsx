@@ -29,7 +29,7 @@ const tiers: Tier[] = [
   {
     name: "Search Revenue Ownership",
     tagline: "Both channels, one strategy.",
-    price: 2950,
+    price: 3950,
     recommended: true,
     features: [
       "Everything in both services",
@@ -41,7 +41,7 @@ const tiers: Tier[] = [
   {
     name: "AEO / AI Search",
     tagline: "Demand forming inside AI.",
-    price: 1950,
+    price: 2950,
     features: [
       "Full AI visibility audit",
       "Technical implementation — schema, llms.txt, entity clarity",
