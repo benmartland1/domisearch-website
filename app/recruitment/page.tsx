@@ -75,17 +75,6 @@ const SHOW_PLACEHOLDER_TESTIMONIAL =
   process.env.NEXT_PUBLIC_SHOW_PLACEHOLDER_TESTIMONIAL === "true" ||
   process.env.NODE_ENV === "development";
 
-/**
- * Jake joins the page when he has handed his notice in. Until then the live
- * page is Ben only.
- *
- * The two-person version is not a separate file; it is this one with the flag
- * on, so both variants stay in step as the page changes. To go live with Jake,
- * set NEXT_PUBLIC_SHOW_JAKE=true in Vercel and redeploy. To preview it locally,
- * run: NEXT_PUBLIC_SHOW_JAKE=true npm run dev
- */
-const SHOW_JAKE = process.env.NEXT_PUBLIC_SHOW_JAKE === "true";
-
 const SHOW_TERRITORIES =
   process.env.NEXT_PUBLIC_SHOW_TERRITORIES === "true" ||
   process.env.NODE_ENV === "development";
@@ -258,7 +247,7 @@ const ENGINE_SPEC = [
  * they are cropped to one ratio and share a saturation/contrast treatment;
  * combined with the gradient overlay, they read as one set.
  */
-const TEAM_ALL = [
+const TEAM = [
   {
     name: "Ben Martland",
     role: "Founder",
@@ -282,8 +271,6 @@ const TEAM_ALL = [
     bio: "Five years inside UK recruitment before DomiSearch. Jake knows the BD grind: the cold calls, the PSLs you cannot crack, the clients who cannot tell you from four other agencies. He maps your disciplines, your patch and your buyers.",
   },
 ];
-
-const TEAM = SHOW_JAKE ? TEAM_ALL : TEAM_ALL.filter((m) => m.variant === "ben");
 
 const FAQS: FaqItem[] = [
   {
@@ -752,31 +739,18 @@ export default function RecruitmentPage() {
         <div className="mx-auto max-w-3xl px-5 py-7 sm:px-6 sm:py-28">
           <SectionLabel>Who you&apos;ll work with</SectionLabel>
           <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
-            {SHOW_JAKE ? (
-              <>
-                Two of us.{" "}
-                <span className="text-[color:var(--color-ink-3)]">Both on every account.</span>
-              </>
-            ) : (
-              <>
-                You deal with me.{" "}
-                <span className="text-[color:var(--color-ink-3)]">Not an account manager.</span>
-              </>
-            )}
+            Two of us.{" "}
+            <span className="text-[color:var(--color-ink-3)]">Both on every account.</span>
           </h2>
           <p className="mt-5 text-[16px] leading-relaxed text-[color:var(--color-ink-2)] sm:text-[17px]">
-            {SHOW_JAKE
-              ? "DomiSearch is small and deliberately so. You get both of us on the work: the search side that gets you named inside AI answers, and the recruitment side that knows which conversations are worth winning. Not an account manager relaying it back a week late."
-              : "DomiSearch is small and deliberately so. You get the person doing the thinking, a plain English explanation of what we are doing and why, and a monthly number that either moved or it did not."}
+            DomiSearch is small and deliberately so. You get both of us on the work: the search side
+            that gets you named inside AI answers, and the recruitment side that knows which
+            conversations are worth winning. Not an account manager relaying it back a week late.
           </p>
 
-          <div
-            className={`mt-8 grid gap-9 sm:mt-12 sm:gap-10 ${
-              SHOW_JAKE ? "sm:grid-cols-2" : "sm:grid-cols-[auto_minmax(0,1fr)] sm:items-start"
-            }`}
-          >
+          <div className="mt-8 grid gap-9 sm:mt-12 sm:grid-cols-2 sm:gap-10">
             {TEAM.map((m) => (
-              <div key={m.name} className={SHOW_JAKE ? "" : "contents"}>
+              <div key={m.name}>
                 {/* Deliberately small. The source headshots are 400px and 800px
                     square, so anything wider than ~200px is upscaled on a retina
                     screen and goes soft. The shared saturation/contrast
@@ -815,23 +789,23 @@ export default function RecruitmentPage() {
                   />
                 </div>
 
-                <div className={SHOW_JAKE ? "" : "sm:pt-1"}>
-                  <p className="mt-9 text-[16px] font-bold leading-tight tracking-tight text-[color:var(--color-ink)] sm:mt-0">
+                <div className="mt-9">
+                  <p className="text-[16px] font-bold leading-tight tracking-tight text-[color:var(--color-ink)]">
                     {m.name}
                   </p>
                   <p className="mt-0.5 text-[13px] text-[color:var(--color-ink-3)]">{m.role}</p>
-                  <div className="mt-5">
-                    <ClampedText>{m.bio}</ClampedText>
-                  </div>
+                </div>
+
+                <div className="mt-5">
+                  <ClampedText>{m.bio}</ClampedText>
                 </div>
               </div>
             ))}
           </div>
 
           <p className="mt-12 border-l-2 border-[color:var(--color-pine)] pl-4 text-[17px] font-bold leading-snug tracking-tight text-[color:var(--color-ink)] sm:text-[19px]">
-            {SHOW_JAKE
-              ? "One of us has spent £3M+ making brands findable. One of us has sat in your seat. Most agencies bring neither."
-              : "£3M+ of managed search spend and three years scaling a service business. That is who is on your account every month, not a name on an org chart."}
+            One of us has spent £3M+ making brands findable. One of us has sat in your seat. Most
+            agencies bring neither.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
