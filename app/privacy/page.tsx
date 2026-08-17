@@ -34,8 +34,32 @@ export default function PrivacyPage() {
           <ul>
             <li>To respond to enquiries and provide proposals.</li>
             <li>To deliver services contracted between us and our clients.</li>
+            <li>To send marketing communications, including our weekly newsletter, to people who have previously enquired about our services.</li>
             <li>To improve our website and understand how visitors use it (in aggregate).</li>
           </ul>
+
+          <h2>Lawful bases</h2>
+          <ul>
+            <li><strong>Legitimate interests</strong> — responding to enquiries, marketing our services to past enquirers, and understanding how visitors use our website.</li>
+            <li><strong>Contract</strong> — delivering the services agreed between us and our clients.</li>
+            <li><strong>Legal obligation</strong> — keeping records we are required by law to retain.</li>
+          </ul>
+
+          <h2>Marketing communications</h2>
+          <p>
+            We may send marketing emails, including a weekly newsletter, to people who have
+            enquired about our services. We rely on the &ldquo;soft opt-in&rdquo; under PECR and on
+            legitimate interests under UK GDPR as our lawful basis for this.
+          </p>
+          <p>
+            These emails contain AI Search industry news, case studies, and information about our
+            services.
+          </p>
+          <p>
+            Every email includes an unsubscribe link. Opting out is free and takes effect promptly.
+            You can also opt out at any time by emailing {site.email} and we will remove you from
+            our marketing list.
+          </p>
 
           <h2>Who we share it with</h2>
           <p>
@@ -59,11 +83,15 @@ export default function PrivacyPage() {
 
           <h2>Contact</h2>
           <p>
-            Questions about privacy? Email {site.email} or write to DomiSearch, Manchester,
-            United Kingdom.
+            The data controller is {site.founder}, trading as {site.name}, a sole trader based in{" "}
+            {site.city}, {site.country}.
+          </p>
+          <p>
+            Questions about privacy? Email {site.email} or write to {site.name}, {site.city},{" "}
+            {site.country}.
           </p>
 
-          <p className="text-sm opacity-70">Last updated: {new Date().toISOString().slice(0, 10)}</p>
+          <p className="text-sm opacity-70">Last updated: 2026-08-17</p>
         </div>
       </ScrollReveal>
     </section>
