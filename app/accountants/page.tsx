@@ -346,17 +346,20 @@ const TAXD_AI = [
  * engine pointed at three territories instead of one. That is what makes it
  * cheap for us to deliver and what makes it work as an anchor: a buyer reading
  * the entry card now knows someone else could take their other patches.
+ *
+ * The entry tier carries the accent border. The anchor does its work by
+ * existing and by its price, so it sits quiet: no badge, no glow.
  */
 const PROGRAMMES = [
   {
     name: "AI Search for Accountants",
-    /** Reassurance, not a "most popular" badge — the emphasis ring is on tier 2. */
+    /** Rendered as a pill floating over the card's top edge, not inside it. */
     label: "Most firms start here.",
     price: "£2,995",
     cadence: "per month",
     term: "3 month initial term, then rolling monthly",
     tagline: "One practice per niche, per region.",
-    featured: false,
+    primary: true,
     blocks: [
       {
         heading: "Your first month",
@@ -387,13 +390,12 @@ const PROGRAMMES = [
     price: "£5,995",
     cadence: "per month",
     term: "3 month initial term, then rolling monthly",
-    tagline: "Up to three niches or regions, held exclusively.",
-    featured: true,
+    tagline: null,
+    primary: false,
     blocks: [
       {
         heading: "Everything in AI Search for Accountants, plus",
         items: [
-          "Coverage across up to 3 territories (niches or regions)",
           "20 content pieces built to be cited (12 new, 8 refreshed)",
           "Digital PR and authority campaign: 8+ third-party citation actions, press placements pitched monthly",
           "Weekly visibility tracking across 6 engines",
@@ -1106,7 +1108,11 @@ export default function AccountantsPage() {
           break and makes the commercial section read as a destination. The
           cards stay light so they lift off the dark ground. */}
       <section id="pricing" className="bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
-        <div className="mx-auto max-w-6xl px-5 py-7 sm:px-6 sm:py-28">
+        {/* One container for every block below — header, proof box, cards,
+            engine panel, guarantee and footnote all share these edges.
+            1100px: wide enough for two comfortable cards, narrow enough
+            that the full-width boxes do not run long. */}
+        <div className="mx-auto max-w-[68.75rem] px-5 py-7 sm:px-6 sm:py-28">
           <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-domigreen)]">
             <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-domigreen)]" />
             Pricing
@@ -1118,7 +1124,7 @@ export default function AccountantsPage() {
 
           {/* Buyer maths, promoted out of body copy into a stat block so the
               price is read against the lifetime value of one client. */}
-          <div className="mt-8 grid max-w-4xl gap-3 rounded-[1.5rem] border border-[color:var(--color-domigreen)]/25 bg-[color:var(--color-domigreen)]/[0.07] p-5 sm:mt-10 sm:grid-cols-[auto_1fr] sm:items-center sm:gap-8 sm:p-8">
+          <div className="mt-10 sm:mt-16 grid gap-3 rounded-[1.5rem] border border-[color:var(--color-domigreen)]/25 bg-[color:var(--color-domigreen)]/[0.07] p-5 sm:grid-cols-[auto_1fr] sm:items-center sm:gap-8 sm:p-8">
             <div>
               {/* PLACEHOLDER — £1.5k to £3k a year is a typical owner-managed
                   limited company fee, and practices routinely hold those
@@ -1144,22 +1150,27 @@ export default function AccountantsPage() {
             </div>
           </div>
 
-          {/* Two cards, side by side from md. The higher tier carries the ring:
-              its job on this page is to anchor the £2,995 and to make the
-              "someone else could hold my other patches" thought unavoidable.
-              Swap `featured` in PROGRAMMES to move the emphasis. */}
-          <div className="mx-auto mt-6 grid max-w-5xl items-stretch gap-4 sm:mt-12 sm:gap-6 md:grid-cols-2">
+          {/* Two cards, side by side from md, entry tier first so it also leads
+              on a stacked mobile view.
+
+              The accent belongs to the £2,995 card: it is the option we expect
+              most firms to take, and a buyer should not have to work out which
+              one is the normal one. Market Leader anchors purely on its price
+              and its scope, so it stays white and quiet — a second badge
+              competing for attention would flatten both. */}
+          <div className="mt-10 sm:mt-16 grid items-stretch gap-6 sm:gap-7 md:grid-cols-2">
             {PROGRAMMES.map((prog) => (
               <div
                 key={prog.name}
-                className={`relative flex h-full flex-col rounded-[1.5rem] bg-white p-5 sm:p-8 ${
-                  prog.featured
-                    ? "shadow-[0_30px_70px_-30px_rgba(1,232,144,0.35)] ring-2 ring-[color:var(--color-domigreen)]/60"
-                    : "ring-1 ring-black/[0.08]"
+                /* Not overflow-hidden: the floating label hangs past the top edge. */
+                className={`group/card relative flex h-full flex-col rounded-2xl bg-white p-8 transition-transform duration-300 ease-out hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-10 ${
+                  prog.primary
+                    ? "border-2 border-[color:var(--color-domigreen)] shadow-[0_34px_70px_-30px_rgba(1,232,144,0.45)]"
+                    : "border border-black/[0.08] shadow-[0_24px_60px_-34px_rgba(20,17,13,0.55)]"
                 }`}
               >
                 {prog.label ? (
-                  <span className="mb-3 inline-flex w-fit rounded-full bg-[color:var(--color-pine)]/[0.09] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-[color:var(--color-pine)]">
+                  <span className="absolute -top-3 left-8 inline-flex items-center rounded-full bg-[color:var(--color-domigreen)] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-charcoal)] shadow-[0_6px_18px_-6px_rgba(1,232,144,0.9)] sm:left-10">
                     {prog.label}
                   </span>
                 ) : null}
@@ -1167,67 +1178,98 @@ export default function AccountantsPage() {
                 <h3 className="text-[19px] font-bold tracking-tight text-[color:var(--color-ink)] sm:text-[21px]">
                   {prog.name}
                 </h3>
-                <div className="mt-4 flex items-baseline gap-2">
-                  <span className="text-[clamp(2rem,4vw,2.6rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-ink)]">
+
+                {/* Price block, closed off with a hairline so the feature list
+                    below reads as a separate thing to scan. */}
+                <div className="mt-5 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+                  <span
+                    className={`font-bold leading-none tracking-[-0.05em] text-[color:var(--color-ink)] ${
+                      prog.primary
+                        ? "text-[clamp(2.6rem,6vw,3.4rem)]"
+                        : "text-[clamp(2.4rem,5.4vw,3.1rem)]"
+                    }`}
+                  >
                     {prog.price}
                   </span>
-                  <span className="text-[13px] text-[color:var(--color-ink-3)]">
+                  <span className="text-[14px] font-semibold text-[color:var(--color-ink-3)]">
                     {prog.cadence}
                   </span>
                 </div>
-                <p className="mt-1.5 text-[12px] font-semibold text-[color:var(--color-ink-3)]">
+                <p className="mt-2.5 text-[12px] font-semibold text-[color:var(--color-ink-3)]">
                   {prog.term}
                 </p>
-                <p className="mt-4 text-[16px] font-bold tracking-tight text-[color:var(--color-pine)]">
-                  {prog.tagline}
-                </p>
+                <div aria-hidden className="mt-6 border-t border-black/[0.07]" />
 
-                <MobileCollapse label="See what&apos;s included" closeLabel="Hide details">
+                {prog.tagline ? (
+                  <p className="mt-5 text-[16px] font-bold leading-snug tracking-tight text-[color:var(--color-pine)]">
+                    {prog.tagline}
+                  </p>
+                ) : null}
+
+                <MobileCollapse
+                  label="See what&apos;s included"
+                  closeLabel="Hide details"
+                  className="md:!flex md:flex-1 md:flex-col"
+                >
                   {prog.blocks.map((block, bi) => (
-                    <div key={block.heading} className={bi === 0 ? "mt-6" : "mt-7"}>
-                      <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-ink-3)]">
+                    <div
+                      key={block.heading}
+                      className={`${bi === 0 ? "mt-6" : "mt-7"} ${
+                        prog.primary ? "" : "md:mt-auto"
+                      }`}
+                    >
+                      <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-ink-3)]">
+                        <span
+                          aria-hidden
+                          className="h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]"
+                        />
                         {block.heading}
                       </p>
-                      <ul className="mt-3 space-y-2.5">
+                      <ul className={`mt-3.5 ${prog.primary ? "space-y-2" : "space-y-2 md:space-y-3"}`}>
                         {block.items.map((f) => (
                           <li
                             key={f}
-                            className="flex gap-2.5 text-[14px] text-[color:var(--color-ink-2)]"
+                            className="flex gap-2.5 text-[14px] leading-[1.45] text-[color:var(--color-ink-2)]"
                           >
-                            <svg
-                              viewBox="0 0 24 24"
-                              className="mt-[3px] h-4 w-4 shrink-0 text-[color:var(--color-pine)]"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2.6"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
+                            <span
                               aria-hidden
+                              className="mt-px flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[color:var(--color-domigreen)]/15"
                             >
-                              <path d="m5 13 4 4L19 7" />
-                            </svg>
+                              <svg
+                                viewBox="0 0 24 24"
+                                className="h-[11px] w-[11px] text-[color:var(--color-pine)]"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="3.4"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              >
+                                <path d="m5 13 4 4L19 7" />
+                              </svg>
+                            </span>
                             {f}
                           </li>
                         ))}
                       </ul>
                     </div>
                   ))}
-                  <p className="mt-6 rounded-xl bg-[color:var(--color-pine)]/[0.08] px-3.5 py-3 text-[13px] font-semibold leading-relaxed text-[color:var(--color-pine)]">
+                  <p className="mt-6 rounded-xl bg-[color:var(--color-pine)]/[0.08] px-3.5 py-3 text-[13px] font-semibold leading-relaxed text-[color:var(--color-pine)] md:mt-auto md:pt-3">
                     {prog.territory}
                   </p>
                 </MobileCollapse>
 
-                {/* mt-auto so both buttons sit on the same line whatever the
-                    lists above do. Same wording on both: every route off this
-                    page is the call, never a checkout. */}
-                <Cta href={site.calendly} className="mt-7 w-full sm:mt-auto sm:pt-7" />
+                {/* The content region above grows, so both buttons land on the
+                    same baseline without a dead band above either. Same wording
+                    on both — every route off this page is the call, never a
+                    checkout. */}
+                <Cta href={site.calendly} className="mt-8 w-full" />
               </div>
             ))}
           </div>
 
           {/* The plumbing, collapsed. Native details/summary so it needs no JS
               and works on touch without a handler. */}
-          <details className="group mx-auto mt-4 max-w-4xl overflow-hidden rounded-[1.5rem] border border-white/12 bg-white/[0.04] sm:mt-5 [&_summary::-webkit-details-marker]:hidden">
+          <details className="group mt-10 sm:mt-16 overflow-hidden rounded-[1.5rem] border border-white/12 bg-white/[0.04] [&_summary::-webkit-details-marker]:hidden">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 sm:px-8">
               <span className="text-[15px] font-bold tracking-tight text-[color:var(--color-paper)] sm:text-[17px]">
                 What&apos;s inside the engine
@@ -1270,7 +1312,7 @@ export default function AccountantsPage() {
               page and should not read as small print. The second paragraph is
               not softening — it is what makes the promise enforceable, and an
               accountant will want to see it defined before they believe it. */}
-          <div className="mx-auto mt-4 max-w-4xl rounded-[1.5rem] border-2 border-[color:var(--color-domigreen)]/45 bg-[color:var(--color-domigreen)]/[0.09] p-5 text-center sm:mt-6 sm:p-8">
+          <div className="mt-10 sm:mt-16 rounded-[1.5rem] border-2 border-[color:var(--color-domigreen)]/45 bg-[color:var(--color-domigreen)]/[0.09] p-5 text-center sm:p-8">
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-domigreen)]">
               Our guarantee
             </span>
@@ -1285,7 +1327,7 @@ export default function AccountantsPage() {
             </p>
           </div>
 
-          <p className="mx-auto mt-4 max-w-4xl text-[13px] text-[color:var(--color-paper)]/45 sm:mt-6">
+          <p className="mt-10 sm:mt-16 text-[13px] text-[color:var(--color-paper)]/45">
             Both programmes are pure AI search, on a 3 month initial term and rolling monthly after
             that. Exclusivity means one practice per niche, per region: Market Leader simply holds up
             to three of those slots rather than one. AI visibility compounds, so we do not take
