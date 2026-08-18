@@ -170,7 +170,7 @@ const PROGRAMMES = [
   {
     name: "AI Search for Recruitment",
     /** Rendered as a pill floating over the card's top edge, not inside it. */
-    label: "Most firms start here.",
+    label: "Recommended for recruitment firms doing £1–10m revenue",
     price: "£2,995",
     cadence: "per month",
     term: "3 month initial term, then rolling monthly",
