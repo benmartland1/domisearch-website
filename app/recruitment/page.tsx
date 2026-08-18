@@ -917,7 +917,7 @@ Either programme pays for itself if it wins you a single extra client a
                 }`}
               >
                 {prog.label ? (
-                  <span className="absolute -top-3 left-8 inline-flex items-center rounded-full bg-[color:var(--color-domigreen)] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-charcoal)] shadow-[0_6px_18px_-6px_rgba(1,232,144,0.9)] sm:left-10">
+                  <span className="absolute top-0 left-8 inline-flex -translate-y-1/2 items-center rounded-full bg-[color:var(--color-domigreen)] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-charcoal)] shadow-[0_6px_18px_-6px_rgba(1,232,144,0.9)] sm:left-10">
                     {prog.label}
                   </span>
                 ) : null}
@@ -961,9 +961,10 @@ Either programme pays for itself if it wins you a single extra client a
                   {prog.blocks.map((block, bi) => (
                     <div
                       key={block.heading}
-                      className={`${bi === 0 ? "mt-6" : "mt-7"} ${
-                        prog.primary ? "" : "md:mt-auto"
-                      }`}
+                      /* No tagline above it, so the first group takes the
+                         tagline's own offset and both cards' first line after
+                         the divider sits at the same height. */
+                      className={bi === 0 ? (prog.tagline ? "mt-6" : "mt-5") : "mt-7"}
                     >
                       <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-ink-3)]">
                         <span
@@ -972,7 +973,7 @@ Either programme pays for itself if it wins you a single extra client a
                         />
                         {block.heading}
                       </p>
-                      <ul className={`mt-3.5 ${prog.primary ? "space-y-2" : "space-y-2 md:space-y-3"}`}>
+                      <ul className="mt-3.5 space-y-2">
                         {block.items.map((f) => (
                           <li
                             key={f}
@@ -1000,7 +1001,8 @@ Either programme pays for itself if it wins you a single extra client a
                       </ul>
                     </div>
                   ))}
-                  <p className="mt-6 rounded-xl bg-[color:var(--color-pine)]/[0.08] px-3.5 py-3 text-[13px] font-semibold leading-relaxed text-[color:var(--color-pine)] md:mt-auto md:pt-3">
+                  <div aria-hidden className="hidden grow md:block" />
+                  <p className="mt-6 rounded-xl bg-[color:var(--color-pine)]/[0.08] px-3.5 py-3 text-[13px] font-semibold leading-relaxed text-[color:var(--color-pine)]">
                     {prog.territory}
                   </p>
                 </MobileCollapse>
