@@ -323,8 +323,7 @@ const TESTIMONIALS = [
  * PAID is verified against the account and already published in the case study.
  * AI is the AEO result and still carries a PLACEHOLDER on the headline figure.
  * Keeping the two visibly separate is the whole credibility play: an accountant
- * reading this will spot a blended number immediately, and the honest-limit
- * panel further down depends on the split being real.
+ * reading this will spot a blended number immediately.
  */
 const TAXD_PAID = [
   { value: "26 → 607", label: "Monthly conversions", note: "Aug 2023 to Aug 2025" },
@@ -967,18 +966,6 @@ export default function AccountantsPage() {
             </div>
           ))}
         </div>
-
-        {/* Honest limit. An accountant will look for one, so we name it first
-            rather than let them find it. */}
-        <p className="mt-5 rounded-[1.25rem] border border-[color:var(--color-pine)]/25 bg-[color:var(--color-pine)]/[0.05] px-4 py-3.5 text-[14px] leading-relaxed text-[color:var(--color-ink-2)] sm:mt-6 sm:px-5 sm:py-4">
-          <span className="font-bold text-[color:var(--color-ink)]">
-            Straight answer on the evidence.
-          </span>{" "}
-          The paid search numbers above are three years old and verified against the account. The AI
-          search numbers are newer, because the engines are newer. Anyone selling you a decade of AEO
-          results is selling you something that did not exist. Ask us on the call which figures we
-          can show you live, and we will show you those and no others.
-        </p>
 
         {/* Testimonials */}
         <div className="mt-5 sm:mt-12">
