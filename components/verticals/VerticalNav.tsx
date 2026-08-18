@@ -15,7 +15,7 @@ const LINKS = [
   { label: "Pricing", href: "#pricing" },
 ];
 
-export function RecruitmentNav({
+export function VerticalNav({
   calendly,
   territories,
 }: {

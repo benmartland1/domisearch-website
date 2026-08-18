@@ -15,9 +15,10 @@ const BARE_ROUTES = [
   "/aesthetics",
   "/ai-visibility-roadmap",
   "/taxd-case-study",
-  // Vertical landing page — cream surface with its own light nav, so the dark
-  // global header would clash.
+  // Vertical landing pages — cream surfaces with their own light nav, so the
+  // dark global header would clash.
   "/recruitment",
+  "/accountants",
   // The CMS is a separate application that happens to share this deployment.
   "/cms",
 ];

@@ -2,6 +2,12 @@
 
 import { useState } from "react";
 import { VIEWS, type Shape, type ViewId, type Zone } from "./mapData";
+import {
+  RECRUITMENT_INDUSTRIES,
+  statusFor,
+  type Status,
+  type TerritoryIndustry,
+} from "./territoryData";
 
 /**
  * Availability map: location first, industry second, never more than two clicks.
@@ -18,102 +24,6 @@ import { VIEWS, type Shape, type ViewId, type Zone } from "./mapData";
  * ALL AVAILABILITY DATA IS PLACEHOLDER. See SHOW_TERRITORIES in the page for
  * the flag that keeps it out of production.
  */
-
-type Status = "held" | "limited" | "open";
-
-/**
- * PLACEHOLDER — invented. One config drives everything:
- * industry -> sub-sector -> regions held.
- * A region's status for an industry is derived: every sub-sector held is
- * "held", some held is "limited", none held is "open".
- */
-const INDUSTRIES = [
-  {
-    id: "construction",
-    name: "Construction",
-    subSectors: {
-      "Commercial build": ["north-west", "yorkshire", "france"],
-      "Civils and infrastructure": ["north-west", "yorkshire"],
-      Residential: ["north-west", "texas"],
-      "Fit out": ["north-west", "yorkshire"],
-    },
-  },
-  {
-    id: "technology",
-    name: "Technology",
-    subSectors: {
-      "Software engineering": ["london", "germany", "california"],
-      "Data and AI": ["london", "california"],
-      "Cyber security": ["london"],
-      "Data centres": ["ireland"],
-    },
-  },
-  {
-    id: "life-sciences",
-    name: "Life Sciences & Pharma",
-    subSectors: {
-      "Clinical research": ["east", "switzerland"],
-      "Regulatory affairs": ["switzerland"],
-      "Manufacturing and QA": ["ireland", "massachusetts"],
-    },
-  },
-  {
-    id: "healthcare",
-    name: "Healthcare",
-    subSectors: {
-      Nursing: ["north-east"],
-      "Allied health": [],
-      "Social care": ["north-east"],
-    },
-  },
-  {
-    id: "education",
-    name: "Education",
-    subSectors: {
-      "Primary and secondary": [],
-      "Further education": [],
-      SEN: ["west-midlands"],
-    },
-  },
-  {
-    id: "energy",
-    name: "Energy & Renewables",
-    subSectors: {
-      "Offshore wind": ["scotland", "north-east", "denmark"],
-      Solar: ["south-west", "spain"],
-      Nuclear: ["south-west"],
-      "Grid and transmission": ["scotland"],
-    },
-  },
-] as const;
-
-type Industry = (typeof INDUSTRIES)[number];
-
-function statusFor(industry: Industry, regionId: string) {
-  const entries = Object.entries(industry.subSectors) as [string, readonly string[]][];
-  const held = entries.filter(([, regions]) => regions.includes(regionId));
-  const open = entries.filter(([, regions]) => !regions.includes(regionId));
-  const status: Status = held.length === 0 ? "open" : open.length === 0 ? "held" : "limited";
-  return { status, openSubSectors: open.map(([name]) => name) };
-}
-
-/**
- * Counter. Only regions where at least one sub-sector is spoken for are counted,
- * so the denominator stays a number a person can hold in their head rather than
- * industries x every region on three continents.
- */
-const COUNTED = [
-  ...VIEWS.uk.shapes,
-  ...VIEWS.europe.shapes,
-  ...VIEWS["north-america"].shapes,
-];
-/** Held and limited both count as taken: that sub-sector is gone either way. */
-export const TERRITORIES_TAKEN = INDUSTRIES.reduce(
-  (n, i) => n + COUNTED.filter((r) => statusFor(i, r.id).status !== "open").length,
-  0,
-);
-/** PLACEHOLDER — the number of territories we intend to sell in total. */
-export const TERRITORIES_CAPACITY = 40;
 
 /** Label anchors on the world view, averaged from each zone's member shapes.
  *  Without these the UK is a few pixels of coastline and impossible to find. */
@@ -136,9 +46,16 @@ const ZONE_LABEL: Record<Zone, string> = {
   "north-america": "North America",
 };
 
-export function TerritoryMap() {
+export function TerritoryMap({
+  industries: INDUSTRIES = RECRUITMENT_INDUSTRIES,
+  /** Wording for the "not listed" reassurance and the picker prompt. */
+  noun = "sector",
+}: {
+  industries?: TerritoryIndustry[];
+  noun?: string;
+} = {}) {
   const [view, setView] = useState<ViewId>("uk");
-  const [industry, setIndustry] = useState<Industry>(INDUSTRIES[0]);
+  const [industry, setIndustry] = useState<TerritoryIndustry>(INDUSTRIES[0]);
   const [region, setRegion] = useState<Shape | null>(null);
   const [hover, setHover] = useState<Shape | null>(null);
   const [hoverZone, setHoverZone] = useState<Zone | null>(null);
@@ -372,7 +289,7 @@ export function TerritoryMap() {
           {isWorld ? (
             <>
               <h3 className="text-[16px] font-bold tracking-tight text-[color:var(--color-ink)]">
-                Where do you place?
+                Where do you work?
               </h3>
               <p className="mt-2 text-[14px] leading-relaxed text-[color:var(--color-ink-2)]">
                 Choose the United Kingdom, Europe or North America on the map, then pick your region.
@@ -384,7 +301,7 @@ export function TerritoryMap() {
                 Pick your region
               </h3>
               <p className="mt-2 text-[14px] leading-relaxed text-[color:var(--color-ink-2)]">
-                Select where you place on the map to see whether {industry.name} is still open there.
+                Select where you work on the map to see whether {industry.name} is still open there.
               </p>
             </>
           ) : (
@@ -426,7 +343,7 @@ export function TerritoryMap() {
           holds it. */}
       <p className="mt-5 rounded-[1.25rem] border border-[color:var(--color-pine)]/25 bg-[color:var(--color-pine)]/[0.05] px-4 py-3.5 sm:px-5 sm:py-4 text-[14px] leading-relaxed text-[color:var(--color-ink-2)]">
         <span className="font-bold text-[color:var(--color-ink)]">
-          Cannot see your sector on here?
+          Cannot see your {noun} on here?
         </span>{" "}
         That means nobody holds it. We only list the sub-sectors we already work
         in, so anything missing is wide open and yours to claim first.

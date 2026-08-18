@@ -7,25 +7,39 @@ import { useEffect, useState } from "react";
  * agency sites.
  *
  * Important: this shows *buyer prompts we track*, not fabricated client wins.
- * Until there is a real recruitment client producing real citation events,
- * inventing "Firm X was just cited" would be a fake receipt. When a recruitment
- * client is live, swap PROMPTS for real citation events from Searchable and
- * relabel the header.
+ * Until there is a real client in the vertical producing real citation events,
+ * inventing "Firm X was just cited" would be a fake receipt. Once one is live,
+ * swap the prompts for real citation events from Searchable and relabel the
+ * header.
  *
  * Behaviour: shows once per session, auto-retires after one cycle, and can be
  * dismissed. It previously looped indefinitely and sat over the body copy.
  */
-const PROMPTS = [
+export type TickerPrompt = { q: string; engine: string };
+
+/* Defaults are the recruitment vertical's copy. Other verticals pass their own. */
+const DEFAULT_PROMPTS: TickerPrompt[] = [
   { q: "best construction recruitment agency in Manchester", engine: "ChatGPT" },
   { q: "who recruits quantity surveyors in the North West", engine: "Perplexity" },
   { q: "top rated site manager recruiters UK", engine: "Gemini" },
   { q: "recruitment agency for civil engineering jobs Leeds", engine: "ChatGPT" },
 ];
 
-const SEEN_KEY = "domi-prompt-ticker-seen";
+const DEFAULT_SEEN_KEY = "domi-prompt-ticker-seen";
 const VISIBLE_MS = 6500;
 
-export function PromptTicker() {
+export function PromptTicker({
+  prompts: PROMPTS = DEFAULT_PROMPTS,
+  /** Session key. Give each vertical its own so one page does not suppress the
+   *  toast on another. */
+  storageKey: SEEN_KEY = DEFAULT_SEEN_KEY,
+  /** Trailing line under the prompt, e.g. "someone is hiring right now". */
+  note = "someone is hiring right now",
+}: {
+  prompts?: TickerPrompt[];
+  storageKey?: string;
+  note?: string;
+} = {}) {
   const [i, setI] = useState(0);
   const [shown, setShown] = useState(false);
   const [done, setDone] = useState(true);
@@ -68,7 +82,7 @@ export function PromptTicker() {
     });
 
     return () => timers.forEach((t) => window.clearTimeout(t));
-  }, []);
+  }, [SEEN_KEY]);
 
   if (done) return null;
 
@@ -116,7 +130,7 @@ export function PromptTicker() {
           &ldquo;{p.q}&rdquo;
         </p>
         <p className="mt-1.5 text-[11px] text-[color:var(--color-ink-3)]">
-          Asked on {p.engine} · someone is hiring right now
+          Asked on {p.engine} · {note}
         </p>
       </div>
     </div>

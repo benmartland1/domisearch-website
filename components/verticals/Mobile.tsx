@@ -186,7 +186,13 @@ export function Carousel({ children }: { children: React.ReactNode[] }) {
  * Slim sticky CTA, mobile only, revealed once the hero is scrolled past.
  * Padded for the iOS home indicator so it never sits under the safe area.
  */
-export function StickyCta({ href }: { href: string }) {
+export function StickyCta({
+  href,
+  line = "One firm per sub-sector, per region.",
+}: {
+  href: string;
+  line?: string;
+}) {
   const [past, setPast] = useState(false);
   const [atFoot, setAtFoot] = useState(false);
 
@@ -221,7 +227,7 @@ export function StickyCta({ href }: { href: string }) {
     >
       <div className="flex items-center gap-3 px-4 pt-2.5">
         <span className="min-w-0 flex-1 text-[12px] leading-tight text-[color:var(--color-ink-3)]">
-          One firm per sub-sector, per region.
+          {line}
         </span>
         <a
           href={href}

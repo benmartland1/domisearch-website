@@ -9,7 +9,7 @@ import { useState } from "react";
  */
 export type FaqItem = { q: string; a: string };
 
-export function RecruitmentFaq({ items }: { items: FaqItem[] }) {
+export function VerticalFaq({ items }: { items: FaqItem[] }) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (

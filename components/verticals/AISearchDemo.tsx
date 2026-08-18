@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 /**
  * The hero centrepiece: a stylised ChatGPT window that types a real buyer
@@ -17,9 +17,25 @@ import { useEffect, useRef, useState } from "react";
  * finished state under prefers-reduced-motion.
  */
 
-const QUERY = "best recruitment agency for construction in Manchester";
+export type AnswerPart = { text: string; brand?: boolean };
+export type ResultRow = { name: string; meta: string; you?: boolean };
 
-const ANSWER_PARTS: { text: string; brand?: boolean }[] = [
+export type AISearchDemoProps = {
+  /** The buyer question typed into the composer. */
+  query?: string;
+  /** The streamed answer, split so the client's name can be marked up. */
+  answerParts?: AnswerPart[];
+  /** Domains shown in the "searching the web" state. */
+  sources?: string[];
+  /** Ranked rows below the answer. Row 1 is the visitor's firm. */
+  results?: ResultRow[];
+};
+
+/* Defaults are the recruitment vertical's copy. Other verticals pass their own. */
+
+const DEFAULT_QUERY = "best recruitment agency for construction in Manchester";
+
+const DEFAULT_ANSWER_PARTS: AnswerPart[] = [
   {
     text: "For construction hiring in Manchester, the firm that comes up most consistently is",
   },
@@ -29,16 +45,10 @@ const ANSWER_PARTS: { text: string; brand?: boolean }[] = [
   },
 ];
 
-/** Flattened word stream, so the answer can be revealed word by word. */
-const WORDS: { text: string; brand: boolean; part: number }[] = ANSWER_PARTS.flatMap(
-  (part, i) =>
-    part.text.split(/\s+/).map((text) => ({ text, brand: Boolean(part.brand), part: i })),
-);
-
-const SOURCES = ["yourfirm.co.uk", "trustpilot.com", "constructionnews.co.uk"];
+const DEFAULT_SOURCES = ["yourfirm.co.uk", "trustpilot.com", "constructionnews.co.uk"];
 
 /** Rows 2 and 3 stay generic on purpose — we are not ranking real rivals. */
-const RESULTS = [
+const DEFAULT_RESULTS: ResultRow[] = [
   // Kept short: row 1 also carries the "Cited" chip, so it has the least room.
   { name: "Your Firm", meta: "Construction · Manchester", you: true },
   { name: "A regional competitor", meta: "Trades & labour · North West", you: false },
@@ -47,7 +57,21 @@ const RESULTS = [
 
 type Phase = "typing" | "sent" | "searching" | "answering" | "done";
 
-export function AISearchDemo() {
+export function AISearchDemo({
+  query: QUERY = DEFAULT_QUERY,
+  answerParts: ANSWER_PARTS = DEFAULT_ANSWER_PARTS,
+  sources: SOURCES = DEFAULT_SOURCES,
+  results: RESULTS = DEFAULT_RESULTS,
+}: AISearchDemoProps = {}) {
+  /** Flattened word stream, so the answer can be revealed word by word. */
+  const WORDS = useMemo(
+    () =>
+      ANSWER_PARTS.flatMap((part, i) =>
+        part.text.split(/\s+/).map((text) => ({ text, brand: Boolean(part.brand), part: i })),
+      ),
+    [ANSWER_PARTS],
+  );
+
   const [typed, setTyped] = useState(0);
   const [phase, setPhase] = useState<Phase>("typing");
   const [words, setWords] = useState(0);
@@ -156,7 +180,7 @@ export function AISearchDemo() {
       io.disconnect();
       clearAll();
     };
-  }, []);
+  }, [QUERY, WORDS.length, RESULTS.length]);
 
   const showBubble = phase !== "typing";
   const showAnswer = phase === "answering" || phase === "done";

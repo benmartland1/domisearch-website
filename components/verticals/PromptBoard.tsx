@@ -4,88 +4,89 @@ import { useState } from "react";
 
 /**
  * The "leaderboard" module — a stand-in for the live sales tables that make
- * proof-heavy agency sites feel alive. Here it shows what a recruitment firm's
- * AI-visibility audit actually looks like: the prompts their buyers ask, who
- * gets named today, and whether they appear at all.
+ * proof-heavy agency sites feel alive. Here it shows what a firm's AI-visibility
+ * audit actually looks like: the prompts their buyers ask, who gets named
+ * today, and whether they appear at all.
  *
  * Framed explicitly as an example audit. Competitor slots are generic
  * descriptors, never real firm names.
  */
 
-type Row = {
+export type PromptRow = {
   prompt: string;
-  sector: "Construction" | "Engineering" | "Trades";
+  /** Must match one of the tab labels (other than "All"). */
+  sector: string;
   engine: string;
   named: string;
-  cited: boolean;
 };
 
-const ROWS: Row[] = [
+/* Defaults are the recruitment vertical's copy. Other verticals pass their own. */
+
+const DEFAULT_ROWS: PromptRow[] = [
   {
     prompt: "best recruitment agency for construction in Manchester",
     sector: "Construction",
     engine: "ChatGPT",
     named: "3 national generalists",
-    cited: false,
   },
   {
     prompt: "who places quantity surveyors in the North West",
     sector: "Construction",
     engine: "Perplexity",
     named: "2 regional firms",
-    cited: false,
   },
   {
     prompt: "top site manager recruiters UK",
     sector: "Construction",
     engine: "Gemini",
     named: "1 job board, 2 agencies",
-    cited: false,
   },
   {
     prompt: "civil engineering recruitment agency Leeds",
     sector: "Engineering",
     engine: "ChatGPT",
     named: "2 national generalists",
-    cited: false,
   },
   {
     prompt: "best agency to hire structural engineers",
     sector: "Engineering",
     engine: "Copilot",
     named: "1 directory, 1 agency",
-    cited: false,
   },
   {
     prompt: "specialist M&E recruitment agencies near me",
     sector: "Engineering",
     engine: "Google AI",
     named: "3 regional firms",
-    cited: false,
   },
   {
     prompt: "recruitment agency for electricians Manchester",
     sector: "Trades",
     engine: "ChatGPT",
     named: "2 job boards",
-    cited: false,
   },
   {
     prompt: "best labour supply agency North West",
     sector: "Trades",
     engine: "Perplexity",
     named: "1 national, 1 regional",
-    cited: false,
   },
 ];
 
-const TABS = ["All", "Construction", "Engineering", "Trades"] as const;
+const DEFAULT_TABS = ["All", "Construction", "Engineering", "Trades"];
 
-export function PromptBoard() {
-  const [tab, setTab] = useState<(typeof TABS)[number]>("All");
+export function PromptBoard({
+  rows: ROWS = DEFAULT_ROWS,
+  tabs: TABS = DEFAULT_TABS,
+}: {
+  rows?: PromptRow[];
+  /** First entry is the "show everything" tab. */
+  tabs?: string[];
+} = {}) {
+  const [tab, setTab] = useState<string>(TABS[0]);
   /** Mobile shows the first four prompts; the rest are one tap away. */
   const [showAll, setShowAll] = useState(false);
-  const rows = tab === "All" ? ROWS : ROWS.filter((r) => r.sector === tab);
+  const rows = tab === TABS[0] ? ROWS : ROWS.filter((r) => r.sector === tab);
 
   return (
     <div className="overflow-hidden rounded-[1.5rem] border border-black/[0.08] bg-white shadow-[0_30px_70px_-40px_rgba(20,17,13,0.4)]">
