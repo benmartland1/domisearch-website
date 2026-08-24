@@ -8,6 +8,9 @@ export const dynamic = "force-dynamic";
 
 const schema = z.object({
   url: z.string().min(3).max(300),
+  name: z.string().min(1).max(120),
+  email: z.string().email().max(200),
+  phone: z.string().min(5).max(40),
   // Honeypot - must be empty.
   hp_company: z.string().optional(),
 });
@@ -35,11 +38,11 @@ export async function POST(request: Request) {
   const parsed = schema.safeParse(data);
   if (!parsed.success) {
     return NextResponse.json(
-      { error: "Please enter a valid website and email." },
+      { error: "Please enter your name, a valid email, phone number and website." },
       { status: 422 },
     );
   }
-  const { url, hp_company } = parsed.data;
+  const { url, name, email, phone, hp_company } = parsed.data;
 
   // Honeypot - pretend success, do nothing.
   if (hp_company) {
@@ -58,7 +61,7 @@ export async function POST(request: Request) {
   const notifyTo = process.env.CONTACT_TO_EMAIL ?? site.email;
 
   if (!apiKey) {
-    console.error("[audit-request] RESEND_API_KEY missing - request not delivered:", { website });
+    console.error("[audit-request] RESEND_API_KEY missing - request not delivered:", { website, email });
     // Don't fail the visitor; the lead is at least logged.
     return NextResponse.json({ ok: true });
   }
@@ -70,17 +73,24 @@ export async function POST(request: Request) {
     await resend.emails.send({
       from: `DomiSearch Website <${fromEmail}>`,
       to: [notifyTo],
-      subject: `AI visibility check request: ${cleanHost}`,
-      text: `New AI visibility audit request.
+      replyTo: email,
+      subject: `AI visibility check request: ${name} (${cleanHost})`,
+      text: `New AI visibility audit request (from the homepage).
 
+Name:    ${name}
 Website: ${website}
+Email:   ${email}
+Phone:   ${phone}
 
-Run the check and reach out with their audit.`,
+Run the check and reach out with their audit. Reply to this email to reach them.`,
       html: `
         <div style="font-family: -apple-system, system-ui, sans-serif; max-width: 560px; margin: 0 auto; padding: 32px; color: #1a1a1a;">
           <h2 style="margin: 0 0 16px; font-size: 20px; font-weight: 600;">New AI visibility audit request</h2>
-          <p style="line-height: 1.6; margin: 0 0 16px;"><strong>Website:</strong> <a href="${website}" style="color: #01a36b;">${website}</a></p>
-          <p style="line-height: 1.6; margin: 0; color: #666; font-size: 14px;">Run the check and reach out with their audit.</p>
+          <p style="line-height: 1.6; margin: 0 0 8px;"><strong>Name:</strong> ${name}</p>
+          <p style="line-height: 1.6; margin: 0 0 8px;"><strong>Website:</strong> <a href="${website}" style="color: #01a36b;">${website}</a></p>
+          <p style="line-height: 1.6; margin: 0 0 8px;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #01a36b;">${email}</a></p>
+          <p style="line-height: 1.6; margin: 0 0 16px;"><strong>Phone:</strong> <a href="tel:${phone}" style="color: #01a36b;">${phone}</a></p>
+          <p style="line-height: 1.6; margin: 0; color: #666; font-size: 14px;">From the homepage. Run the check and reach out with their audit.</p>
         </div>
       `,
     });
