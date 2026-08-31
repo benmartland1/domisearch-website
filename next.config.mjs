@@ -9,6 +9,8 @@ const nextConfig = {
       { protocol: "https", hostname: "domisearch.com" },
       { protocol: "https", hostname: "www.domisearch.com" },
       { protocol: "https", hostname: "images.unsplash.com" },
+      // Sanity's asset CDN — every image uploaded in the Studio is served here.
+      { protocol: "https", hostname: "cdn.sanity.io" },
     ],
   },
   experimental: {

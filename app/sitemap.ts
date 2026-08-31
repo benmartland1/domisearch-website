@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
-import { getAllPosts } from "@/lib/blog";
+import { getIndexablePosts } from "@/lib/posts";
 import { getAllCaseStudies } from "@/lib/case-studies";
 import { site } from "@/lib/site";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = site.url.replace(/\/$/, "");
   const now = new Date();
 
@@ -34,9 +34,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
           : 0.6,
   }));
 
-  const posts = getAllPosts().map((p) => ({
+  // Posts marked "Hide from search engines" in the Studio are excluded.
+  const posts = (await getIndexablePosts()).map((p) => ({
     url: `${base}/blog/${p.slug}`,
-    lastModified: new Date(p.date),
+    lastModified: new Date(p.publishedAt),
     changeFrequency: "yearly" as const,
     priority: 0.7,
   }));

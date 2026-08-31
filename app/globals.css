@@ -793,3 +793,28 @@ html:has([data-surface="paper"]) {
   color: color-mix(in oklab, var(--color-ink) 35%, transparent);
   pointer-events: none;
 }
+
+/* ====================================================================== */
+/* Callout block (Sanity)                                                 */
+/* A new body block type — no migrated post uses one, so this only ever    */
+/* affects posts written in the Studio from here on.                       */
+/* ====================================================================== */
+.prose-paper .callout-paper {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.9rem;
+  border: 1px solid color-mix(in oklab, var(--color-pine) 30%, transparent);
+  border-left-width: 3px;
+  border-left-color: var(--color-pine);
+  background: color-mix(in oklab, var(--color-domigreen) 10%, var(--color-paper));
+}
+.prose-paper .callout-paper p:last-child { margin-bottom: 0; }
+.prose-paper .callout-paper[data-tone="warning"] {
+  border-color: color-mix(in oklab, #b4541e 35%, transparent);
+  border-left-color: #b4541e;
+  background: color-mix(in oklab, #b4541e 8%, var(--color-paper));
+}
+.prose-paper .callout-paper[data-tone="tip"] {
+  border-color: color-mix(in oklab, var(--color-pine) 30%, transparent);
+  border-left-color: var(--color-pine);
+}
