@@ -115,12 +115,14 @@ Set in Vercel under **Settings → Environment Variables**, for Production, Prev
 
 | Variable | Value | Secret |
 |---|---|---|
-| `NEXT_PUBLIC_SANITY_PROJECT_ID` | The project ID from sanity.io/manage | No — ships in the browser bundle |
-| `NEXT_PUBLIC_SANITY_DATASET` | `production` | No |
+| `NEXT_PUBLIC_SANITY_PROJECT_ID` | The project ID from sanity.io/manage. **Required** | No — ships in the browser bundle |
+| `NEXT_PUBLIC_SANITY_DATASET` | `production`. Optional; defaults to `production` | No |
 | `SANITY_API_READ_TOKEN` | An **Editor** token from sanity.io/manage → API → Tokens | **Yes** |
 | `SANITY_REVALIDATE_SECRET` | Any random string; generate with `openssl rand -hex 32` | **Yes** |
 
-The build fails fast and loudly if the project ID or dataset is missing, which is deliberate — a site that built without them would silently serve a blog with no posts.
+The build fails fast and loudly if the project ID is missing, which is deliberate — a site that built without it would silently serve a blog with no posts. The error names the variable and says where to set it.
+
+**Set every variable for Production, Preview *and* Development.** Vercel scopes them per environment, and a branch push is a Preview build — setting Production alone makes preview deploys fail with a missing-variable error while production looks fine.
 
 ---
 
