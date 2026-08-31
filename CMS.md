@@ -12,7 +12,7 @@ Marketing pages (home, services, pricing, about, the vertical landing pages) are
 2. **Posts → Create new**.
 3. Fill in the three tabs:
 
-**Content** — title, URL, summary, main image, body, FAQs.
+**Content** — title, URL, summary, TL;DR, main image, body, FAQs.
 
 **Details** — author, category, tags, publish date, and the Featured toggle.
 
@@ -26,6 +26,7 @@ The post is live in a few seconds. You do not need a developer, and nothing need
 
 | Field | Why it matters |
 |---|---|
+| **TL;DR** | Two or three sentences answering the article's question outright, shown in the green box at the top. This is the block AI assistants quote most often, so lead with the answer instead of building up to it. The Studio nudges you if it is empty. |
 | **URL** | The address the post lives at. Once a post is live, **do not change it** — every link to it breaks and its search ranking resets. |
 | **Summary** | Read on the blog listing before someone decides to click, used as the fallback meta description, and quoted verbatim in `llms.txt`, which is what AI assistants read. It does more work than its size suggests. |
 | **FAQs** | Question and answer pairs. These render at the end of the post *and* generate FAQPage schema, which is what puts the post into AI answers and Google's FAQ results. Answer outright in the first sentence. |
@@ -49,6 +50,8 @@ Beyond normal text, headings and lists, the body supports:
 - **Image** — alt text is required, because it is not optional for accessibility or for search.
 - **Code block** — with syntax highlighting.
 - **Divider** — a horizontal rule between sections.
+
+The TL;DR is a field, not something you type into the body — fill in the **TL;DR** box on the Content tab and it appears in the green panel automatically. Writing `## TL;DR` into the body still works and still looks the same, but the field is preferred: it cannot be typo'd out of existence, and it is structured data the site can reuse elsewhere.
 
 Do not add a heading for the post title. The title field already is the page's H1; start your sections at **Heading** (H2).
 

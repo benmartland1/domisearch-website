@@ -71,6 +71,8 @@ export type PostSummary = {
 export type Faq = { question: string; answer: string };
 
 export type Post = PostSummary & {
+  /** The answer, stated outright. Rendered in the box at the top of the post. */
+  tldr?: string;
   body?: PortableTextBlock[];
   faqs?: Faq[];
   seo?: PostSeo;

@@ -44,6 +44,7 @@ export const allPostsQuery = groq`
 export const postBySlugQuery = groq`
   *[_type == "post" && slug.current == $slug][0]{
     ${summaryFields},
+    tldr,
     body,
     faqs[]{ question, answer },
     seo

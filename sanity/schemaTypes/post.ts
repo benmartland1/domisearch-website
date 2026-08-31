@@ -39,6 +39,23 @@ export const post = defineType({
       validation: (rule) => rule.required().max(400),
     }),
     defineField({
+      name: "tldr",
+      title: "TL;DR",
+      type: "text",
+      rows: 4,
+      group: "content",
+      description:
+        "The article's answer, in two or three sentences, stated outright. Shows in the green box at the top of the post. This is the block AI assistants quote most often, so lead with the answer rather than building up to it.",
+      validation: (rule) => [
+        rule.max(600).warning("Long enough that a reader will skip it. Aim for two or three sentences."),
+        rule.custom((value) =>
+          value && value.trim().length > 0
+            ? true
+            : "Every post should have a TL;DR — it is the most-cited part of the page.",
+        ).warning(),
+      ],
+    }),
+    defineField({
       name: "mainImage",
       title: "Main image",
       type: "image",

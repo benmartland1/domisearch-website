@@ -13,6 +13,7 @@ import {
 import { getAuthor } from "@/lib/authors";
 import { JsonLd } from "@/components/JsonLd";
 import { PortableTextBody } from "@/components/PortableTextBody";
+import { TldrCard } from "@/components/TldrCard";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { TableOfContents } from "@/components/TableOfContents";
@@ -201,6 +202,7 @@ export default async function BlogPostPage({ params }: Props) {
 
           <article className="min-w-0">
             <div className="prose-paper">
+              <TldrCard text={post.tldr} />
               <PortableTextBody value={post.body ?? []} />
             </div>
 
