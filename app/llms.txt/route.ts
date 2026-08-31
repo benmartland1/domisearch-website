@@ -1,11 +1,15 @@
-import { getAllPosts } from "@/lib/blog";
+import { getIndexablePosts } from "@/lib/posts";
 import { getAllCaseStudies } from "@/lib/case-studies";
 import { site } from "@/lib/site";
 
+/**
+ * Regenerated on demand when Sanity publishes — see app/api/revalidate.
+ * It is still fully static between those events.
+ */
 export const dynamic = "force-static";
 
-export function GET() {
-  const posts = getAllPosts();
+export async function GET() {
+  const posts = await getIndexablePosts();
   const studies = getAllCaseStudies();
 
   const lines: string[] = [];

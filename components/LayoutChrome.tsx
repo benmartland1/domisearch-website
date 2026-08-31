@@ -19,8 +19,8 @@ const BARE_ROUTES = [
   // dark global header would clash.
   "/recruitment",
   "/accountants",
-  // The CMS is a separate application that happens to share this deployment.
-  "/cms",
+  // Sanity Studio renders its own full-viewport UI.
+  "/studio",
 ];
 
 export function LayoutChrome({

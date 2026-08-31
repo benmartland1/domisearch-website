@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllPosts } from "@/lib/blog";
+import { getAllPosts, readingTimeFromWords } from "@/lib/posts";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { CTA } from "@/components/CTA";
 
@@ -23,9 +23,14 @@ function formatDate(iso: string) {
   }
 }
 
-export default function BlogIndexPage() {
-  const posts = getAllPosts();
-  const [featured, ...rest] = posts;
+export default async function BlogIndexPage() {
+  const posts = await getAllPosts();
+
+  // A post flagged "featured" in the Studio takes the large card; otherwise
+  // the newest post does, which is what this page did before Sanity.
+  const featuredIndex = Math.max(0, posts.findIndex((p) => p.featured));
+  const featured = posts[featuredIndex];
+  const rest = posts.filter((_, i) => i !== featuredIndex);
 
   return (
     <>
@@ -64,7 +69,7 @@ export default function BlogIndexPage() {
                     <div className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-[color:var(--color-domigreen)]">
                       <span>Featured</span>
                       <span className="h-px w-8 bg-[color:var(--color-domigreen)]/60" />
-                      <span className="text-[color:var(--color-fog)]/60">{featured.readingTimeText}</span>
+                      <span className="text-[color:var(--color-fog)]/60">{readingTimeFromWords(featured.wordCount)}</span>
                     </div>
                     <h2 className="display mt-6 text-balance text-3xl sm:text-4xl lg:text-5xl">
                       {featured.title}
@@ -73,9 +78,9 @@ export default function BlogIndexPage() {
                       {featured.excerpt}
                     </p>
                     <div className="mt-8 flex items-center gap-3 text-sm">
-                      <span className="text-[color:var(--color-fog)]/70">{formatDate(featured.date)}</span>
+                      <span className="text-[color:var(--color-fog)]/70">{formatDate(featured.publishedAt)}</span>
                       <span className="text-[color:var(--color-fog)]/30">·</span>
-                      <span className="text-[color:var(--color-fog)]/70">{featured.author}</span>
+                      <span className="text-[color:var(--color-fog)]/70">{featured.author?.name}</span>
                     </div>
                   </div>
                   <div className="hidden items-center justify-center lg:flex">
@@ -104,7 +109,7 @@ export default function BlogIndexPage() {
                   >
                     <div>
                       <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[color:var(--color-fog)]/60">
-                        {post.tags.slice(0, 2).map((tag) => (
+                        {(post.tags ?? []).slice(0, 2).map((tag) => (
                           <span key={tag} className="text-[color:var(--color-domigreen)]">
                             {tag}
                           </span>
@@ -118,8 +123,8 @@ export default function BlogIndexPage() {
                       </p>
                     </div>
                     <div className="flex items-center justify-between text-xs text-[color:var(--color-fog)]/65">
-                      <span>{formatDate(post.date)}</span>
-                      <span>{post.readingTimeText}</span>
+                      <span>{formatDate(post.publishedAt)}</span>
+                      <span>{readingTimeFromWords(post.wordCount)}</span>
                     </div>
                   </Link>
                 </ScrollReveal>

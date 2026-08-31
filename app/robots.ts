@@ -4,7 +4,9 @@ import { site } from "@/lib/site";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "*", allow: "/", disallow: ["/api/"] },
+      // /studio is the Sanity CMS: sign-in gated, and nothing there belongs in
+      // an index or in an AI assistant's training set.
+      { userAgent: "*", allow: "/", disallow: ["/api/", "/studio"] },
       { userAgent: "GPTBot", allow: "/" },
       { userAgent: "ChatGPT-User", allow: "/" },
       { userAgent: "OAI-SearchBot", allow: "/" },
