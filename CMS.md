@@ -1,6 +1,6 @@
 # The blog CMS
 
-The blog runs on [Sanity](https://www.sanity.io). Posts are written in a Studio built into this site at **[domisearch.com/studio](https://domisearch.com/studio)** — there is no separate application and no second repository.
+The blog runs on [Sanity](https://www.sanity.io). Posts are written in a Studio built into this site at **[www.domisearch.com/studio](https://www.domisearch.com/studio)** — there is no separate application and no second repository.
 
 Marketing pages (home, services, pricing, about, the vertical landing pages) are **not** in the CMS. They live in code and are changed by a developer.
 
@@ -94,7 +94,7 @@ Set up once, in [sanity.io/manage](https://sanity.io/manage) → **API → Webho
 | Setting | Value |
 |---|---|
 | Name | `Revalidate site` |
-| URL | `https://domisearch.com/api/revalidate` |
+| URL | `https://www.domisearch.com/api/revalidate` |
 | Dataset | `production` |
 | Trigger on | Create, Update, Delete |
 | Filter | `_type == "post" \|\| _type == "author" \|\| _type == "category"` |
@@ -105,7 +105,9 @@ Set up once, in [sanity.io/manage](https://sanity.io/manage) → **API → Webho
 
 The secret must match `SANITY_REVALIDATE_SECRET` in Vercel exactly. Sanity signs the request body with it, and the route rejects anything whose signature does not verify — so a mismatch shows up as published posts not appearing, and a `401` in the webhook's delivery log.
 
-To check the route is deployed at all, open `https://domisearch.com/api/revalidate` in a browser. It should return `{"ok":true,"configured":true}`.
+Use `www.domisearch.com`, not the bare `domisearch.com`. The bare domain 307-redirects to `www`, and a webhook that depends on its signature header surviving a redirect is a failure waiting to happen — point it at the canonical host directly.
+
+To check the route is deployed at all, open `https://www.domisearch.com/api/revalidate` in a browser. It should return `{"ok":true,"configured":true}`.
 
 ---
 
