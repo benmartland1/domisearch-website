@@ -690,6 +690,7 @@ html:has([data-surface="paper"]) {
   .spotlight::before { display: none; }
   .engine-pulse { animation: none; opacity: 0.6; }
   .report-float { animation: none; }
+  .watch-pulse { animation: none; }
   .cta-pulse { animation: none; }
   html { scroll-behavior: auto; }
 }
@@ -856,4 +857,22 @@ html:has([data-surface="paper"]) {
   line-height: 1.6;
   color: var(--color-ink);
   white-space: pre-line;
+}
+
+/* Post-booking VSL cue — a slow breathing glow on the "Watch this first" pill.
+   Loud enough to pull the eye to the video, quiet enough not to nag. */
+@keyframes watch-pulse {
+  0%, 100% {
+    box-shadow:
+      0 14px 44px -12px color-mix(in oklab, var(--color-domigreen) 55%, transparent),
+      0 0 0 0 color-mix(in oklab, var(--color-domigreen) 30%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 16px 50px -8px color-mix(in oklab, var(--color-domigreen) 85%, transparent),
+      0 0 0 8px color-mix(in oklab, var(--color-domigreen) 12%, transparent);
+  }
+}
+.watch-pulse {
+  animation: watch-pulse 2.6s ease-in-out infinite;
 }

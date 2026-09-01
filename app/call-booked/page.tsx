@@ -26,11 +26,11 @@ const NEXT_STEPS = [
   },
   {
     title: "Watch the video above",
-    body: "Ninety seconds on how the call runs and what to have to hand. It makes the 30 minutes we have together count.",
+    body: "Ninety seconds on how the call runs and what we'll cover. It makes the 30 minutes we have together count.",
   },
   {
-    title: "Come with your numbers",
-    body: "Rough monthly spend, your best-performing channel and the question you actually want answered. That's enough.",
+    title: "Come with one question",
+    body: "The thing you actually want answered about how you show up in Google and AI search. That's enough to work with.",
   },
 ];
 
