@@ -11,12 +11,23 @@ const TRUSTPILOT_GREEN = "#00B67A";
  */
 const TRUSTBOX_TEMPLATE = "56278e9abfbbba0bdcd568bc";
 
+/**
+ * We show the average of the actual review ratings, not Trustpilot's TrustScore.
+ *
+ * They are not the same number. TrustScore is time-weighted and pulled down by
+ * low review volume, so it currently reads 4.3 while every single review is a
+ * 5. Averaging the ratings themselves is the truthful version of what people
+ * have actually said, and `allFiveStar` lets us say so outright.
+ *
+ * If a sub-5 review ever lands, the average drops on its own and the "every one
+ * of them 5 stars" line disappears - nothing here needs revisiting.
+ */
+
 /** Snapshot taken 2026-09-01 - only used if the live fetch fails. */
 const FALLBACK = {
-  trustScore: 4.3,
-  stars: 4.5,
+  average: 5,
   total: 9,
-  starsString: "Excellent",
+  allFiveStar: true,
 };
 
 type Rating = typeof FALLBACK;
@@ -35,23 +46,39 @@ async function getRating(): Promise<Rating> {
 
     const data = (await res.json()) as {
       businessUnit?: {
-        trustScore?: number;
-        stars?: number;
-        numberOfReviews?: { total?: number };
+        numberOfReviews?: {
+          total?: number;
+          oneStar?: number;
+          twoStars?: number;
+          threeStars?: number;
+          fourStars?: number;
+          fiveStars?: number;
+        };
       };
-      starsString?: string;
     };
 
-    const unit = data.businessUnit;
-    if (typeof unit?.trustScore !== "number" || typeof unit.numberOfReviews?.total !== "number") {
-      return FALLBACK;
-    }
+    const counts = data.businessUnit?.numberOfReviews;
+    const total = counts?.total;
+    if (typeof total !== "number" || total < 1) return FALLBACK;
+
+    const byRating = [
+      counts?.oneStar ?? 0,
+      counts?.twoStars ?? 0,
+      counts?.threeStars ?? 0,
+      counts?.fourStars ?? 0,
+      counts?.fiveStars ?? 0,
+    ];
+
+    // The breakdown must actually add up, or we're averaging a partial picture.
+    const counted = byRating.reduce((a, b) => a + b, 0);
+    if (counted !== total) return FALLBACK;
+
+    const weighted = byRating.reduce((sum, n, i) => sum + n * (i + 1), 0);
 
     return {
-      trustScore: unit.trustScore,
-      stars: typeof unit.stars === "number" ? unit.stars : FALLBACK.stars,
-      total: unit.numberOfReviews.total,
-      starsString: data.starsString ?? FALLBACK.starsString,
+      average: weighted / total,
+      total,
+      allFiveStar: byRating[4] === total,
     };
   } catch {
     return FALLBACK;
@@ -103,7 +130,7 @@ function Stars({ stars }: { stars: number }) {
  * to the full profile where the individual reviews live.
  */
 export async function TrustpilotRating() {
-  const { trustScore, stars, total, starsString } = await getRating();
+  const { average, total, allFiveStar } = await getRating();
 
   return (
     <a
@@ -112,15 +139,16 @@ export async function TrustpilotRating() {
       rel="noopener noreferrer"
       className="group flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] px-8 py-7 text-center transition-colors duration-300 hover:border-[color:var(--color-domigreen)]/40 sm:flex-row sm:justify-center sm:gap-7 sm:text-left"
     >
-      <Stars stars={stars} />
+      <Stars stars={average} />
 
       <span className="flex flex-col gap-1 sm:border-l sm:border-white/10 sm:pl-7">
         <span className="text-[15px] font-[600] text-[color:var(--color-glacier)]">
-          {starsString} · {trustScore.toFixed(1)} out of 5
+          {allFiveStar
+            ? `${total} review${total === 1 ? "" : "s"}, every one of them 5 stars`
+            : `Rated ${average.toFixed(1)} out of 5 from ${total} review${total === 1 ? "" : "s"}`}
         </span>
         <span className="text-[13px] text-[color:var(--color-fog)]/65">
-          Based on {total} review{total === 1 ? "" : "s"} on{" "}
-          <span style={{ color: TRUSTPILOT_GREEN }}>Trustpilot</span>
+          Read them on <span style={{ color: TRUSTPILOT_GREEN }}>Trustpilot</span>
           <span
             aria-hidden
             className="ml-1.5 inline-block transition-transform duration-300 group-hover:translate-x-0.5"
