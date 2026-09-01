@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { DomiMark } from "@/components/landing/DomiMark";
+import Image from "next/image";
 import { TrackSchedule } from "@/components/landing/TrackSchedule";
 import { TrustpilotRating } from "@/components/landing/TrustpilotRating";
 import { VslPlayer } from "@/components/landing/VslPlayer";
@@ -93,12 +93,16 @@ export default async function ThankYouPage({
       {/* Fires the Meta `Schedule` conversion on load */}
       <TrackSchedule contentName="Discovery Call" />
 
-      <header className="mx-auto flex max-w-7xl items-center gap-2.5 px-6 py-7 lg:px-10">
-        <Link href="/" className="flex items-center gap-2.5">
-          <DomiMark className="h-7 w-7" />
-          <span className="text-[15px] font-bold tracking-tight text-[color:var(--color-glacier)]">
-            DomiSearch
-          </span>
+      <header className="mx-auto flex max-w-7xl items-center px-6 py-7 lg:px-10">
+        <Link href="/" aria-label="DomiSearch home" className="flex items-center">
+          <Image
+            src="/brand/logo.png"
+            alt="DomiSearch"
+            width={178}
+            height={28}
+            priority
+            className="logo-mark h-[22px] w-auto sm:h-7"
+          />
         </Link>
       </header>
 
