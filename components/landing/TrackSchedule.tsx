@@ -8,9 +8,14 @@ import { trackMeta } from "@/lib/meta";
  * (i.e. after a Calendly booking completes). The base pixel also records a
  * PageView for this URL automatically.
  */
-export function TrackSchedule() {
+export function TrackSchedule({
+  contentName = "AI Visibility Report",
+}: {
+  /** Which funnel the booking came from - reported as `content_name`. */
+  contentName?: string;
+} = {}) {
   useEffect(() => {
-    trackMeta("Schedule", { content_name: "AI Visibility Report" });
-  }, []);
+    trackMeta("Schedule", { content_name: contentName });
+  }, [contentName]);
   return null;
 }

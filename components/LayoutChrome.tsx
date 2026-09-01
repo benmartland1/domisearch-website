@@ -15,6 +15,8 @@ const BARE_ROUTES = [
   "/aesthetics",
   "/ai-visibility-roadmap",
   "/taxd-case-study",
+  // Post-booking page: no nav, nothing competing with the VSL.
+  "/call-booked",
   // Vertical landing pages — cream surfaces with their own light nav, so the
   // dark global header would clash.
   "/recruitment",

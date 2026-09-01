@@ -17,6 +17,8 @@ export const site = {
   country: "United Kingdom",
   calendly: "https://calendly.com/domisearch/discovery-call",
   trustpilot: "https://www.trustpilot.com/review/domisearch.com",
+  /** Trustpilot business unit id - used to pull the live aggregate rating. */
+  trustpilotBusinessUnitId: "68dbba86324bc49c44f09d0e",
   founder: "Ben Martland",
   social: {
     linkedin: "https://www.linkedin.com/company/domisearch",

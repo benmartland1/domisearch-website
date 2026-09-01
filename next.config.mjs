@@ -16,6 +16,14 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ["motion"],
   },
+  // /call-booked reads Calendly's query params, so it renders per-request rather
+  // than at build time. It still pulls the featured case study and the
+  // testimonial headshots off disk, and Next's tracer can't see runtime fs
+  // reads — without this the files are missing from the serverless bundle and
+  // those sections silently degrade.
+  outputFileTracingIncludes: {
+    "/call-booked": ["./content/case-studies/**/*", "./public/testimonials/**/*"],
+  },
   async redirects() {
     return [
       // Framer blog posts → closest current equivalent (recapture AI citations)
@@ -58,7 +66,10 @@ const nextConfig = {
       // Framer artefacts
       { source: "/old-home", destination: "/", permanent: true },
       { source: "/page", destination: "/", permanent: true },
-      { source: "/thank-you", destination: "/", permanent: true },
+      // Was a Framer artefact pointing at "/". Now a safety net for the
+      // post-booking page — kept temporary so browsers don't cache it, since
+      // the old 308 to "/" may still be cached from the Framer era.
+      { source: "/thank-you", destination: "/call-booked", permanent: false },
     ];
   },
 };
