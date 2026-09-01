@@ -29,8 +29,8 @@ const NEXT_STEPS = [
     body: "Ninety seconds on how the call runs and what we'll cover. It makes the 30 minutes we have together count.",
   },
   {
-    title: "Come with one question",
-    body: "The thing you actually want answered about how you show up in Google and AI search. That's enough to work with.",
+    title: "Have your competitors in mind",
+    body: "We'll run a check of how you show up in ChatGPT and Google against the firms you're up against. Knowing two or three names makes it far more useful.",
   },
 ];
 
