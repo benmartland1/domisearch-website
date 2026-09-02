@@ -1,7 +1,25 @@
 import type { Answers, AnswerValue, Row, UploadedFile } from "./types";
 
+/**
+ * A trimmed answer, for validating, summarising and storing.
+ *
+ * Never use this as the value of a controlled input. Trimming on every render
+ * deletes the space the moment it is typed, because a space is always trailing
+ * while someone is still typing — see `asRawText`.
+ */
 export function asText(value: AnswerValue): string {
   return typeof value === "string" ? value.trim() : "";
+}
+
+/**
+ * Exactly what the client has typed, untrimmed.
+ *
+ * This is what a controlled input must render. Whitespace is tidied later, at
+ * the point the answer is read, so the field never fights the person typing
+ * into it.
+ */
+export function asRawText(value: AnswerValue): string {
+  return typeof value === "string" ? value : "";
 }
 
 export function asList(value: AnswerValue): string[] {

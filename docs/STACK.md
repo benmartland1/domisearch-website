@@ -424,6 +424,18 @@ attempt time out, and undici reports the whole thing as `ETIMEDOUT`. Hosts that
 answer faster are unaffected, which is what makes it look host-specific and
 sends you hunting for an API key problem that isn't there.
 
+**A controlled input that trims its own value eats every space.** The text
+controls rendered `asText(value)`, which trims. A space is always trailing
+while someone is still typing, so React re-rendered with it removed and the
+field silently refused spaces — in *every* text field, not just the long ones.
+Controlled inputs now render `asRawText`, and trimming happens where the answer
+is read rather than where it is displayed.
+
+Worth knowing why the test suite missed it: every browser test used
+Playwright's `fill()`, which sets a value in one shot and never re-renders
+between characters. `e2e/typing.mjs` now types character by character through
+each control type. Any test of a controlled input has to type, not fill.
+
 **Check-then-act on the resume email sent it twice.** The save endpoint read
 "has the resume email gone?", then sent, then recorded it. Two saves a
 heartbeat apart both read "no" and the client got the same email twice — and

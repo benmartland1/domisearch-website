@@ -1,7 +1,7 @@
 "use client";
 
 import type { AnswerValue, Answers, Question } from "@/lib/onboarding/types";
-import { asFiles, asList, asRows, asText } from "@/lib/onboarding/validation";
+import { asFiles, asList, asRawText, asRows, asText } from "@/lib/onboarding/validation";
 import { AccessCard } from "./fields/AccessCard";
 import { ChoiceList } from "./fields/ChoiceList";
 import { FieldGroup } from "./fields/FieldGroup";
@@ -69,7 +69,7 @@ export function QuestionScreen({
       <div>
         {question.input.type === "text" && (
           <TextInput
-            value={asText(value)}
+            value={asRawText(value)}
             onChange={(next) => onAnswer(question.id, next)}
             onAdvance={onAdvance}
             inputType={question.input.inputType}
@@ -85,7 +85,7 @@ export function QuestionScreen({
 
         {question.input.type === "longtext" && (
           <LongText
-            value={asText(value)}
+            value={asRawText(value)}
             onChange={(next) => onAnswer(question.id, next)}
             onAdvance={onAdvance}
             placeholder={question.input.placeholder}
