@@ -6,9 +6,11 @@ import { divider } from "./divider";
 import { author } from "./author";
 import { category } from "./category";
 import { post } from "./post";
+import { onboardingSubmission } from "./onboardingSubmission";
 
 export const schemaTypes: SchemaTypeDefinition[] = [
   post,
+  onboardingSubmission,
   author,
   category,
   blockContent,

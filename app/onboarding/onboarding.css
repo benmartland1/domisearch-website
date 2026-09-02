@@ -1,0 +1,278 @@
+/*
+ * Onboarding controls.
+ *
+ * Scoped to the onboarding route rather than added to globals.css: nothing on
+ * the marketing site needs 64px-tall option cards, and the main stylesheet is
+ * already long. Every colour here is a token from globals.css, so this reads
+ * as the same brand without redefining it.
+ */
+
+.ob-shell {
+  --ob-line: color-mix(in oklab, var(--color-glacier) 12%, transparent);
+  --ob-line-strong: color-mix(in oklab, var(--color-glacier) 22%, transparent);
+  --ob-surface: color-mix(in oklab, var(--color-glacier) 4%, transparent);
+  --ob-surface-hover: color-mix(in oklab, var(--color-glacier) 7%, transparent);
+  --ob-muted: color-mix(in oklab, var(--color-fog) 62%, transparent);
+}
+
+/* ------------------------------------------------------------ typography */
+
+.ob-question {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  color: var(--color-glacier);
+  font-size: clamp(1.6rem, 5.4vw, 2.6rem);
+  text-wrap: balance;
+}
+
+.ob-helper {
+  color: var(--ob-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 46ch;
+  text-wrap: pretty;
+}
+
+.ob-index {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-domigreen);
+}
+
+/* ---------------------------------------------------------------- inputs */
+
+.ob-input,
+.ob-textarea {
+  display: block;
+  width: 100%;
+  background: var(--ob-surface);
+  border: 1px solid var(--ob-line);
+  border-radius: 1rem;
+  color: var(--color-glacier);
+  font-family: var(--font-body);
+  font-weight: 300;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ob-input {
+  min-height: 3.75rem;
+  padding: 0.9rem 1.15rem;
+  font-size: 1.2rem;
+}
+
+.ob-textarea {
+  padding: 1rem 1.15rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.ob-input::placeholder,
+.ob-textarea::placeholder {
+  color: color-mix(in oklab, var(--color-fog) 34%, transparent);
+}
+
+.ob-input:hover,
+.ob-textarea:hover {
+  border-color: var(--ob-line-strong);
+}
+
+.ob-input:focus-visible,
+.ob-textarea:focus-visible {
+  outline: none;
+  border-color: var(--color-domigreen);
+  background: var(--ob-surface-hover);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-domigreen) 22%, transparent);
+}
+
+.ob-input[aria-invalid="true"],
+.ob-textarea[aria-invalid="true"] {
+  border-color: #ff9d9d;
+}
+
+/* Compact variant for repeater rows and grouped sub-fields. */
+.ob-input--sm {
+  min-height: 3.25rem;
+  font-size: 1.02rem;
+  padding: 0.75rem 1rem;
+}
+
+.ob-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--color-fog) 66%, transparent);
+  margin-bottom: 0.5rem;
+}
+
+/* --------------------------------------------------------------- choices */
+
+.ob-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  width: 100%;
+  min-height: 3.75rem;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid var(--ob-line);
+  border-radius: 1rem;
+  background: var(--ob-surface);
+  color: var(--color-glacier);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+
+.ob-option:hover {
+  border-color: color-mix(in oklab, var(--color-domigreen) 40%, transparent);
+  background: var(--ob-surface-hover);
+}
+
+.ob-option:has(:focus-visible) {
+  outline: 2px solid var(--color-domigreen);
+  outline-offset: 3px;
+}
+
+.ob-option[data-selected="true"] {
+  border-color: var(--color-domigreen);
+  background: color-mix(in oklab, var(--color-domigreen) 12%, transparent);
+}
+
+.ob-option[data-disabled="true"] {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+/* The A / B / C key hint, which doubles as the tick when selected. */
+.ob-key {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--ob-line);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ob-muted);
+  transition: all 0.18s ease;
+}
+
+.ob-option[data-selected="true"] .ob-key {
+  background: var(--color-domigreen);
+  border-color: var(--color-domigreen);
+  color: var(--color-charcoal);
+}
+
+.ob-option-label { font-size: 1.05rem; }
+.ob-option-hint { font-size: 0.85rem; color: var(--ob-muted); margin-top: 0.15rem; }
+
+/* --------------------------------------------------------------- chrome */
+
+.ob-progress-track {
+  height: 3px;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--color-glacier) 9%, transparent);
+  overflow: hidden;
+}
+
+.ob-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--color-domigreen);
+  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ob-section-dot {
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: color-mix(in oklab, var(--color-fog) 42%, transparent);
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+.ob-section-dot[data-state="current"] { color: var(--color-domigreen); }
+.ob-section-dot[data-state="done"] { color: color-mix(in oklab, var(--color-fog) 78%, transparent); }
+
+.ob-icon-btn {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--ob-line);
+  color: var(--color-glacier);
+  background: transparent;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.ob-icon-btn:hover:not(:disabled) {
+  border-color: var(--color-domigreen);
+  color: var(--color-domigreen);
+}
+.ob-icon-btn:disabled { opacity: 0.3; cursor: default; }
+
+.ob-ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.05rem;
+  border-radius: 999px;
+  border: 1px dashed var(--ob-line-strong);
+  color: var(--ob-muted);
+  font-size: 0.92rem;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.ob-ghost-btn:hover {
+  border-color: var(--color-domigreen);
+  color: var(--color-domigreen);
+  border-style: solid;
+}
+
+.ob-card {
+  border: 1px solid var(--ob-line);
+  border-radius: 1.25rem;
+  background: var(--ob-surface);
+}
+
+.ob-error {
+  color: #ffb4b4;
+  font-size: 0.95rem;
+}
+
+/* Every interactive element gets the same visible ring. */
+.ob-shell :focus-visible {
+  outline: 2px solid var(--color-domigreen);
+  outline-offset: 3px;
+}
+
+/* The screen wrapper is focused on every transition so a screen reader
+   announces the new question and Tab resumes from the top of it. That is a
+   programmatic focus on a container, not something the client aimed at, so it
+   must not paint a ring around the whole page. Declared after the rule above
+   because it shares its specificity. */
+.ob-screen:focus,
+.ob-screen:focus-visible {
+  outline: none;
+}
+
+/* Anyone who has asked their system to stop moving things gets a plain
+   cross-fade instead of the slide, and no decorative motion at all. */
+@media (prefers-reduced-motion: reduce) {
+  .ob-progress-fill { transition: none; }
+  .ob-shell *,
+  .ob-shell *::before,
+  .ob-shell *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

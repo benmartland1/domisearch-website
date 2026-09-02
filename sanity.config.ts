@@ -36,6 +36,14 @@ export default defineConfig({
                   .defaultOrdering([{ field: "publishedAt", direction: "desc" }]),
               ),
             S.divider(),
+            S.listItem()
+              .title("Onboarding")
+              .child(
+                S.documentTypeList("onboardingSubmission")
+                  .title("Onboarding submissions")
+                  .defaultOrdering([{ field: "updatedAt", direction: "desc" }]),
+              ),
+            S.divider(),
             S.documentTypeListItem("author").title("Authors"),
             S.documentTypeListItem("category").title("Categories"),
           ]),

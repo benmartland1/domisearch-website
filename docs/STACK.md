@@ -91,6 +91,9 @@ standing risk on a production site.
 
 **CMS** — `/studio` (Sanity Studio)
 
+**Client onboarding** — `/onboarding`, served as the root of
+**onboarding.domisearch.com**. See section 18.
+
 **Generated** — `/sitemap.xml`, `/robots.txt`, `/llms.txt`
 
 `llms.txt` is a deliberate AEO artefact: a plain-text summary of the company,
@@ -100,7 +103,8 @@ services, case studies and every article, written for AI crawlers.
 
 `components/LayoutChrome.tsx` holds a `BARE_ROUTES` list. Routes on it render
 full-bleed with no global header or footer — the vertical landing pages, the
-paid-traffic funnels, and `/studio`. Everything else gets the standard chrome.
+paid-traffic funnels, `/studio`, and `/onboarding`. Everything else gets the
+standard chrome.
 
 ### Redirects
 
@@ -406,6 +410,43 @@ in the build machine's timezone, not ISO 8601.
 **Date-only values need a time.** Dates are stored at noon UTC so they render on
 the correct calendar day regardless of server timezone.
 
+**Node's `fetch` fails on a high-latency connection while `curl` succeeds.**
+Symptom: outbound API calls from the dev server die after almost exactly 510ms
+with `ETIMEDOUT`, but the same request over `curl` works, and a raw TCP connect
+from Node to the same IP works too. It hit Resend first, but it is not
+Resend-specific — it affects any host whose TCP handshake takes longer than
+250ms.
+
+Cause: Node's Happy Eyeballs implementation gives each address family an
+attempt timeout of **250ms** by default. On a connection where the handshake
+takes ~260ms — working from Bali, in this case — both the IPv6 and the IPv4
+attempt time out, and undici reports the whole thing as `ETIMEDOUT`. Hosts that
+answer faster are unaffected, which is what makes it look host-specific and
+sends you hunting for an API key problem that isn't there.
+
+**Check-then-act on the resume email sent it twice.** The save endpoint read
+"has the resume email gone?", then sent, then recorded it. Two saves a
+heartbeat apart both read "no" and the client got the same email twice — and
+the window got wider once sending moved into `after()`. The fix is to make the
+claim *be* the write: a query-scoped patch that only matches a document with no
+`resumeEmailSentTo` yet, and Sanity reports how many documents it touched. One
+means we won and should send; zero means somebody else did. Verified with six
+saves, five of them concurrent, producing exactly one email.
+
+**Testing against a real address floods a real inbox.** Every automated
+run-through creates a fresh submission, and a fresh submission legitimately
+sends one resume link — so a morning of testing put eighteen emails in
+`hi@domisearch.com`. The browser harnesses now type `delivered@resend.dev`,
+Resend's sink address, which is accepted and delivered to nobody. Use it for
+anything automated; bounced test mail to a domain that does not exist counts
+against the sending domain's reputation.
+
+Fix: `npm run dev` and `npm run start` set
+`NODE_OPTIONS=--network-family-autoselection-attempt-timeout=3000`. This is a
+**local-development concern only** — Vercel's network is low-latency and never
+hits it — so the flag is harmless in production and can be dropped if the repo
+is ever worked on exclusively from a low-latency connection.
+
 ---
 
 ## 15. Known limitations
@@ -490,3 +531,184 @@ delivery in the webhook log, not by assumption**.
   migration source. `scripts/new-post.ts` still generates MDX files nothing
   renders — a trap for future contributors.
 - Tailwind should move off beta before this pattern is sold to clients.
+
+---
+
+## 18. Client onboarding (onboarding.domisearch.com)
+
+A Typeform-style questionnaire that new AEO clients fill in after signing. One
+question per screen, about ten minutes, autosaved, resumable from an emailed
+link. It is the first thing a client does with us, so it is built as an
+experience rather than an admin form.
+
+### Why it lives in this repo
+
+The subdomain is added to the **same Vercel project** and served by a host
+rewrite in `middleware.ts`. A second project pointing at the same repo was the
+alternative; it would have meant two builds, two sets of environment variables,
+and two places for the design system to drift. Sharing the repo means the
+onboarding form uses the site's real tokens — Axiforma, `--color-domigreen`,
+`.btn`, `.card` — not a copy of them.
+
+`middleware.ts` rewrites any request on `onboarding.domisearch.com` to
+`/onboarding/*`, leaving `/api/*` alone so the form can post to
+`/api/onboarding/*` from its own origin. On the main domain, `/onboarding`
+307s to the subdomain so there is one address for it.
+
+### The questionnaire is data, not components
+
+`lib/onboarding/questions.ts` is the single source of truth: every screen, its
+control, its validation, and the condition that shows or hides it. The form,
+the notification email and the Sanity record are all rendered from it. Adding a
+question is a data change; there is no second place where the email could
+disagree with what was actually asked.
+
+| File | Holds |
+|---|---|
+| `lib/onboarding/questions.ts` | Screen order, sections, conditional logic |
+| `lib/onboarding/access.ts` | The six platforms, permission levels, per-CMS instructions |
+| `lib/onboarding/summary.ts` | Answers → the readable shape emails and Sanity share |
+| `lib/onboarding/email.ts` | The four email templates |
+| `lib/onboarding/store.ts` | Sanity reads and writes |
+| `lib/onboarding/token.ts` | HMAC-signed resume links |
+| `lib/onboarding/local.ts` | The localStorage fallback |
+| `components/onboarding/` | The controller, screens and field controls |
+| `app/onboarding/onboarding.css` | Controls, scoped to this route |
+
+### Conditional logic
+
+Three branches, all driven by earlier answers:
+
+- **Google Business Profile** access card — only when *Where do you serve
+  clients?* includes Local or Regional.
+- **Developer/agency contact** — only when *Who looks after the website?* is a
+  freelancer or an agency.
+- **Redesign detail** — only when a redesign is planned.
+
+The CMS access card is not a branch but is still dynamic: it shows the
+instructions for the platform the client picked, and generic instructions for
+a custom build or "not sure".
+
+`npm run check:onboarding` walks every branch in both directions, checks no
+path dead-ends before the review screen, and renders the four emails to
+`.onboarding-preview/` so they can be opened and read.
+
+### Saving and resuming
+
+Answers autosave 900ms after the last keystroke, and immediately on navigation.
+Three layers, in order of authority:
+
+1. **Sanity** — an `onboardingSubmission` document, created the first time the
+   client writes anything real. Not before: otherwise every bot that finds the
+   endpoint leaves an empty record behind.
+2. **A signed resume link** — emailed the first time a valid address appears
+   (not the literal first save, when only a name has been typed). The link is
+   `id.hmac`, verified before the document is read.
+3. **localStorage** — written on every save, including navigation. This is the
+   fallback for when email fails: the client returns to the same browser and
+   picks up where they left off, on the same screen.
+
+A submitted questionnaire cannot be reopened by a late autosave.
+
+### Access, not credentials
+
+Section 6 never asks for a password. Each platform card shows why we need it,
+the permission level, and numbered steps to add `aeo@domisearch.com` — with
+three answers: Done, I need help with this, or Not applicable. "Needs help" is
+a first-class answer, and it is what the notification email flags.
+
+### On submit
+
+- The full submission is stored as a Sanity `onboardingSubmission` — a rendered
+  section-by-section snapshot for reading in the Studio, plus the lossless JSON
+  the resume link restores from. Read-only in the Studio except an internal
+  notes field: the client owns those answers.
+- A notification goes to `hi@domisearch.com`, grouped by section, with clickable
+  file links, the access section as a checklist, and a deep link to the Sanity
+  document.
+- The client gets a confirmation, and can email themselves a copy of their
+  answers from the thank-you screen.
+
+Emails are best-effort and never fail the write. The answers are already safe
+in Sanity by the time any of them are sent.
+
+### Uploads
+
+Logo, brand guidelines and example content go straight from the browser to
+Vercel Blob via `@vercel/blob/client` — through our own API they would hit the
+serverless body limit, which a 25 MB PDF clears without trying.
+
+**The store is private.** Nothing a client uploads is readable from the
+internet, and the browser never holds a key that would make it readable. Files
+come back only through `/api/onboarding/file`, which checks an HMAC over the
+blob's pathname and streams the file. Those links are signed server-side at the
+moment the email or the Sanity record is written.
+
+The links do not expire, because a notification email gets opened weeks after
+it arrives — but every one of them dies the instant `ONBOARDING_SECRET` is
+rotated, which is a revocation lever an unguessable public URL would not have
+given us.
+
+Two things worth knowing if you touch this:
+
+- The client's own upload list shows a filename and a tick, **not a link**.
+  They uploaded it a second ago; what they need is confirmation it arrived and
+  a way to remove it, and giving the browser a signed link would defeat the
+  private store.
+- Do **not** add an `onUploadCompleted` handler to `app/api/onboarding/upload`.
+  Vercel Blob requires a publicly reachable callback URL for it, which
+  localhost cannot provide, so it breaks uploads in development outright. There
+  is nothing for it to do anyway — the browser hands the pathname to the form
+  and the next autosave stores it.
+
+Without `BLOB_READ_WRITE_TOKEN` the control tells the client to paste a link
+instead; nothing else breaks.
+
+### Prefill — and why company/website aren't questions
+
+`?client=acme-ltd` supplies the company name — from `CLIENT_PREFILLS` in
+`lib/onboarding/clients.ts` if there is a row, otherwise title-cased from the
+slug. `?name=` and `?email=` also work, for a mail merge.
+
+The form does **not** ask for company name or website. Both are known by the
+time a client signs, and asking again reads as not having listened. They come
+from the slug instead and still reach the Sanity record and the notification
+subject line.
+
+The trade: the client never sees those values, so a wrong slug is never
+corrected by them. If no slug is passed at all, the subject line and the Studio
+list fall back to the contact's name rather than showing "Unnamed company"
+against every submission. **Always send the onboarding link with `?client=`.**
+
+### Deploying the subdomain
+
+1. Vercel → the `domisearch-website` project → Settings → Domains → add
+   `onboarding.domisearch.com`. SSL is issued automatically.
+2. DNS is managed by Vercel, so the CNAME is added for you. If it ever moves,
+   point `onboarding` at `cname.vercel-dns.com`.
+3. Set `ONBOARDING_SECRET` and `SANITY_API_WRITE_TOKEN` for **Production,
+   Preview and Development** — a branch deploy is a Preview build and will fail
+   on a Production-only variable.
+4. Connect Vercel Blob storage to the project (Storage → Blob), which sets
+   `BLOB_READ_WRITE_TOKEN`.
+5. Verify `onboarding@domisearch.com` as a Resend sender, or point
+   `ONBOARDING_FROM_EMAIL` at an address that already is.
+
+### Known limitations
+
+- **The save endpoint is public.** It has to be: the form is opened from an
+  email link with nothing to sign in to. It is defended by a 256 KB payload
+  cap, a per-instance rate limit, and the rule that nothing is written until
+  the client has typed something. The rate limit is per serverless instance,
+  so it slows abuse rather than stopping it. If this ever gets found and
+  hammered, the fix is a signed token issued when the page loads.
+- **Uploaded files are served by a route with no rate limit worth the name.**
+  The store itself is private and the links are signed, so the exposure is one
+  signed link leaking rather than the whole store — but a leaked link stays
+  valid until `ONBOARDING_SECRET` is rotated, which invalidates every other
+  file link at the same time.
+- **`CLIENT_PREFILLS` is a hand-maintained table.** Fine at ten clients; if it
+  reaches a hundred, it should read from Sanity.
+- **A link sent without `?client=` produces a submission with no company name
+  or website**, because neither is asked. Recoverable — the contact name and
+  email are still there — but it makes the Studio list harder to scan.

@@ -23,6 +23,9 @@ const BARE_ROUTES = [
   "/accountants",
   // Sanity Studio renders its own full-viewport UI.
   "/studio",
+  // The onboarding questionnaire, served on onboarding.domisearch.com. It has
+  // its own chrome and must have nothing competing with the current question.
+  "/onboarding",
 ];
 
 export function LayoutChrome({

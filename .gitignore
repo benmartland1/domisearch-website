@@ -5,7 +5,17 @@ out
 .env
 .env.local
 .env.*.local
+# Timestamped backups taken before editing .env.local
+.env.local.bak-*
 *.log
 .vercel
 tsconfig.tsbuildinfo
 next-env.d.ts
+
+# Local email previews from scripts/check-onboarding.ts
+.onboarding-preview/
+
+# Added by `vercel link`. Broadened deliberately, but the example file is
+# documentation and has to stay in the repo.
+.env*
+!.env.example

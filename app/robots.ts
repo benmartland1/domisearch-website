@@ -6,7 +6,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       // /studio is the Sanity CMS: sign-in gated, and nothing there belongs in
       // an index or in an AI assistant's training set.
-      { userAgent: "*", allow: "/", disallow: ["/api/", "/studio"] },
+      // /onboarding is a client's own questionnaire, served on its own
+      // subdomain. Nothing there belongs in an index.
+      { userAgent: "*", allow: "/", disallow: ["/api/", "/studio", "/onboarding"] },
       { userAgent: "GPTBot", allow: "/" },
       { userAgent: "ChatGPT-User", allow: "/" },
       { userAgent: "OAI-SearchBot", allow: "/" },
