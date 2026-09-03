@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { AddToGoogleCalendar } from "@/components/landing/AddToGoogleCalendar";
 import { TrackSchedule } from "@/components/landing/TrackSchedule";
 import { TrustpilotRating } from "@/components/landing/TrustpilotRating";
 import { VslPlayer } from "@/components/landing/VslPlayer";
 import { CaseStudyCard } from "@/components/CaseStudyCard";
 import { Testimonials } from "@/components/Testimonials";
 import { getFeaturedCaseStudies } from "@/lib/case-studies";
+import { buildGoogleCalendarUrl } from "@/lib/google-calendar";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -19,16 +21,22 @@ const VSL_SRC = "/vsl/thank-you-vsl.mp4";
 const VSL_POSTER = "/vsl/thank-you-vsl-poster.jpg";
 const VSL_DURATION = "1:31";
 
+/** Anchor on the first step - the "Add to Google Calendar" fallback scrolls here. */
+const INBOX_STEP_ID = "check-your-inbox";
+
 const NEXT_STEPS = [
   {
+    id: INBOX_STEP_ID,
     title: "Check your inbox",
     body: "Your calendar invite and video link are already on their way. Accept it now so the slot is held.",
   },
   {
+    id: "watch-the-video",
     title: "Watch the video above",
     body: "Ninety seconds on how the call runs and what we'll cover. It makes the 30 minutes we have together count.",
   },
   {
+    id: "know-your-competitors",
     title: "Have your competitors in mind",
     body: "We'll run a check of how you show up in ChatGPT and Google against the firms you're up against. Knowing two or three names makes it far more useful.",
   },
@@ -69,6 +77,23 @@ function firstNameFrom(first?: string, full?: string): string | null {
   return clean.length > 1 ? clean : null;
 }
 
+/**
+ * Business name for the calendar event title.
+ *
+ * Calendly only forwards this if the booking form captures it, so treat it as
+ * optional and reject anything that looks like a pasted sentence or URL rather
+ * than putting it in front of the invitee.
+ */
+function businessNameFrom(...candidates: (string | undefined)[]): string | null {
+  for (const raw of candidates) {
+    const clean = (raw ?? "").replace(/\s+/g, " ").trim();
+    if (clean.length < 2 || clean.length > 40) continue;
+    if (/https?:|@|[<>{}]/.test(clean)) continue;
+    return clean;
+  }
+  return null;
+}
+
 /** Calendly may send a param once or repeated - we only ever want one value. */
 function one(value: string | string[] | undefined): string | undefined {
   return Array.isArray(value) ? value[0] : value;
@@ -85,6 +110,19 @@ export default async function ThankYouPage({
     one(params.invitee_full_name),
   );
   const bookedTime = formatBookedTime(one(params.event_start_time));
+
+  // Calendly's redirect carries no join link today, so `location` is read
+  // defensively - the description falls back to "it's in your email" without it.
+  const calendarUrl = buildGoogleCalendarUrl({
+    startRaw: one(params.event_start_time),
+    endRaw: one(params.event_end_time),
+    businessName: businessNameFrom(
+      one(params.business_name),
+      one(params.company),
+      one(params.company_name),
+    ),
+    meetingUrl: one(params.location) ?? one(params.event_location) ?? null,
+  });
 
   const [featuredCaseStudy] = getFeaturedCaseStudies(1);
 
@@ -166,6 +204,10 @@ export default async function ThankYouPage({
             trackingName="Thank You VSL"
           />
         </div>
+
+        <div className="mt-10">
+          <AddToGoogleCalendar href={calendarUrl} fallbackTargetId={INBOX_STEP_ID} />
+        </div>
       </section>
 
       {/* ---------- What happens next ---------- */}
@@ -173,7 +215,7 @@ export default async function ThankYouPage({
         <h2 className="eyebrow text-center">What happens next</h2>
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
           {NEXT_STEPS.map((step, i) => (
-            <div key={step.title} className="card h-full p-7">
+            <div key={step.title} id={step.id} className="card h-full p-7">
               <div className="display text-3xl text-[color:var(--color-domigreen)]">
                 0{i + 1}
               </div>

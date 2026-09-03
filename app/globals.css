@@ -691,6 +691,7 @@ html:has([data-surface="paper"]) {
   .engine-pulse { animation: none; opacity: 0.6; }
   .report-float { animation: none; }
   .watch-pulse { animation: none; }
+  .step-highlight { animation: none; border-color: color-mix(in oklab, var(--color-domigreen) 70%, transparent); }
   .cta-pulse { animation: none; }
   html { scroll-behavior: auto; }
 }
@@ -875,4 +876,20 @@ html:has([data-surface="paper"]) {
 }
 .watch-pulse {
   animation: watch-pulse 2.6s ease-in-out infinite;
+}
+
+/* Post-booking fallback — when we have no booked time to hand Google Calendar,
+   "Add to Google Calendar" scrolls to the inbox step and flashes it once. */
+@keyframes step-highlight {
+  0%, 100% {
+    border-color: color-mix(in oklab, var(--color-glacier) 8%, transparent);
+    box-shadow: 0 0 0 0 transparent;
+  }
+  15%, 65% {
+    border-color: color-mix(in oklab, var(--color-domigreen) 70%, transparent);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-domigreen) 14%, transparent);
+  }
+}
+.step-highlight {
+  animation: step-highlight 2.6s ease-in-out 1;
 }
