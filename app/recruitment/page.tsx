@@ -37,7 +37,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "AI Search Visibility for Recruitment Agencies · DomiSearch",
   description:
-    "Hiring managers now ask ChatGPT and Gemini which recruitment agency to use. DomiSearch makes your firm the one AI names, for your sectors and your cities.",
+    "Hiring managers now ask ChatGPT and Gemini which recruitment agency to use. DomiSearch works to make your firm the one AI names, for your sectors and your cities.",
   alternates: { canonical: "/recruitment" },
   openGraph: {
     title: "Be the recruitment firm AI recommends",
@@ -80,7 +80,7 @@ const SHOW_TERRITORIES =
   process.env.NODE_ENV === "development";
 
 const TICKER = [
-  "Google Partner & Shopify Partner agency",
+  "Google Partner agency",
   "Be the brand AI recommends",
   "Built for UK recruitment firms",
   "Tracking ChatGPT · Gemini · Perplexity · Copilot · Google AI",
@@ -94,13 +94,12 @@ const TICKER = [
 const STATS = [
   { value: "£3M+", label: "Ad spend managed", note: "Across live Google Ads accounts" },
   {
-    // PLACEHOLDER — confirm the current Taxd figure before publishing.
-    value: "200+",
-    label: "AI recommendations a week",
-    note: "Taxd, from a standing start",
+    value: "600+",
+    label: "AI mentions a month",
+    note: "Taxd, across every major engine",
   },
   { value: "5.0", label: "Trustpilot rating", note: "Verified client reviews" },
-  { value: "6", label: "AI engines tracked", note: "Monthly, prompt by prompt" },
+  { value: "5", label: "AI engines tracked", note: "Monthly, prompt by prompt" },
 ];
 
 const STEPS = [
@@ -173,7 +172,7 @@ const PROGRAMMES = [
     label: "Recommended for firms doing £1-10 million in revenue",
     price: "£2,995",
     cadence: "per month",
-    term: "3 month initial term, then rolling monthly",
+    term: "3 month minimum term (6 recommended), then rolling monthly",
     tagline: "One firm per sub-sector, per region.",
     primary: true,
     blocks: [
@@ -189,38 +188,37 @@ const PROGRAMMES = [
       {
         heading: "Every month after",
         items: [
-          // PLACEHOLDER — new/refresh split is indicative, adjust to how you deliver.
-          "10 content pieces built to be cited (6 new, 4 refreshed)",
-          "4 third-party citation actions: directory, listicle and press placements pitched on your behalf",
+          "Content built to be cited, new pieces and refreshes, agreed with you each month",
+          "Third-party citation actions: directory, listicle and press placements pitched on your behalf",
           "Review engine to turn client wins into visible proof",
-          "Visibility tracked across 6 engines, monthly report and call, quarterly re-audit",
+          "Visibility tracked across 5 engines, monthly report and call, quarterly re-audit",
         ],
       },
     ],
     territory:
-      "Covers one exclusive territory (your sub-sector and region). Additional territories agreed on the call.",
+      "Covers one exclusive territory (your sub-sector and region). We will never work with a competitor chasing the same prompts. Additional territories agreed on the call.",
   },
   {
     name: "AI Search: Market Leader",
     label: null,
     price: "£5,995",
     cadence: "per month",
-    term: "3 month initial term, then rolling monthly",
+    term: "3 month minimum term (6 recommended), then rolling monthly",
     tagline: null,
     primary: false,
     blocks: [
       {
         heading: "Everything in AI Search for Recruitment, plus",
         items: [
-          "20 content pieces built to be cited (12 new, 8 refreshed)",
-          "Digital PR and authority campaign: 8+ third-party citation actions, press placements pitched monthly",
-          "Weekly visibility tracking across 6 engines",
+          "A larger monthly content programme, built to be cited",
+          "Digital PR and authority campaign: an expanded citation push, press placements pitched monthly",
+          "Weekly visibility tracking across 5 engines",
           "Quarterly strategy session with your senior team",
         ],
       },
     ],
     territory:
-      "For firms who want to own the AI answer across their whole market, not just one patch.",
+      "For firms who want to own the AI answer across their whole market, not just one patch. Every territory you hold is still exclusive: we will never take on a competitor chasing the same prompts.",
   },
 ] as const;
 
@@ -252,12 +250,12 @@ const ENGINE_SPEC = [
   {
     area: "Content",
     detail:
-      "10 pieces a month written to be quoted rather than ranked: salary data, hiring guides and market commentary. 20 a month on Market Leader.",
+      "A monthly programme of pieces written to be quoted rather than ranked: salary data, hiring guides and market commentary. A larger volume on Market Leader.",
   },
   {
     area: "Citations",
     detail:
-      "4 third-party actions a month, or 8+ and a running digital PR campaign on Market Leader. Directory listings, listicle inclusion and press placements pitched on your behalf, because AI answers cite sources, not you.",
+      "Third-party actions every month, expanded into a running digital PR campaign on Market Leader. Directory listings, listicle inclusion and press placements pitched on your behalf, because AI answers cite sources, not you.",
   },
   {
     area: "Reviews",
@@ -267,7 +265,7 @@ const ENGINE_SPEC = [
   {
     area: "Reporting",
     detail:
-      "Territory Engine dashboard across 6 engines, a monthly report and call, and a full re-audit every quarter. Market Leader tracks weekly and adds a quarterly session with your senior team.",
+      "Territory Engine dashboard across 5 engines, a monthly report and call, and a full re-audit every quarter. Market Leader tracks weekly and adds a quarterly session with your senior team.",
   },
 ];
 
@@ -320,7 +318,7 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "How long does it take to appear in AI answers?",
-    a: "The foundations land in the first month. Movement on real buyer prompts typically starts showing between month two and month four, depending on how competitive your sub-sector is and how much authority your site already carries. It is slower than paid and faster than traditional SEO. That is why the programme runs a three month initial term and then rolls monthly: AI visibility compounds, and a single month proves nothing either way.",
+    a: "The foundations land in the first month. Movement on real buyer prompts typically starts showing between month two and month four, depending on how competitive your sub-sector is and how much authority your site already carries. It is slower than paid and faster than traditional SEO. That is why the programme runs a three month minimum term, six months recommended, and then rolls monthly: AI visibility compounds, and a single month proves nothing either way.",
   },
   {
     q: "Which sectors does this work best for?",
@@ -458,7 +456,7 @@ export default function RecruitmentPage() {
             <div className="mt-5 flex flex-wrap items-center gap-4 sm:mt-8">
               <TrustpilotCue />
               <span className="text-[13px] text-[color:var(--color-ink-3)]">
-                Google Partner · Shopify Partner
+                Google Partner
               </span>
             </div>
           </div>
@@ -699,13 +697,12 @@ export default function RecruitmentPage() {
             </div>
 
             <div className="grid grid-cols-2 gap-8 lg:w-72 lg:grid-cols-1 lg:gap-7 lg:border-l lg:border-white/10 lg:pl-12">
-              {/* PLACEHOLDER — re-verify both figures against Searchable before publishing. */}
               <div>
                 <div className="text-[clamp(2rem,4vw,2.8rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-domigreen)]">
-                  200+
+                  600+
                 </div>
                 <div className="mt-2 text-[13px] text-[color:var(--color-paper)]/60">
-                  AI recommendations a week
+                  AI mentions a month
                 </div>
               </div>
               <div>
@@ -875,13 +872,11 @@ export default function RecruitmentPage() {
               price is read against the value of one placement. */}
           <div className="mt-10 sm:mt-16 grid gap-3 rounded-[1.5rem] border border-[color:var(--color-domigreen)]/25 bg-[color:var(--color-domigreen)]/[0.07] p-5 sm:grid-cols-[auto_1fr] sm:items-center sm:gap-8 sm:p-8">
             <div>
-              {/* PLACEHOLDER — £8k to £12k is a typical construction perm fee at
-                  roughly 20% of salary; adjust to the disciplines you target. */}
               <div className="text-[clamp(2rem,5vw,2.9rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-domigreen)]">
-                £8k to £12k
+                £10k to £50k
               </div>
               <div className="mt-2 text-[13px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-paper)]/60">
-                One construction placement
+                Typical client placement range
               </div>
             </div>
             <div className="sm:border-l sm:border-white/10 sm:pl-8">
@@ -1072,12 +1067,44 @@ Either programme pays for itself if it wins you a single extra client a
             </p>
           </div>
 
+          {/* Sits directly under the guarantee because the two are the same
+              promise from opposite ends: we back the result, and we will not
+              sell the same result to the firm you are fighting. */}
+          <div className="mt-5 flex items-start gap-4 rounded-[1.5rem] border border-white/12 bg-white/[0.04] p-5 sm:mt-6 sm:p-8">
+            <span
+              aria-hidden
+              className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[color:var(--color-domigreen)]/15"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-[17px] w-[17px] text-[color:var(--color-domigreen)]"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 3l7.5 3v5.5c0 4.4-3 8.3-7.5 9.5-4.5-1.2-7.5-5.1-7.5-9.5V6z" />
+              </svg>
+            </span>
+            <div>
+              <p className="text-[16px] font-bold leading-snug tracking-tight text-[color:var(--color-paper)] sm:text-[18px]">
+                We will never work with a competitor competing for the same prompts.
+              </p>
+              <p className="mt-2 text-[14px] leading-relaxed text-[color:var(--color-paper)]/60">
+                Once your territory is held, that is it: we turn away any firm chasing the same
+                sub-sector and region, on either programme, for as long as you are with us. Winning
+                the answer is zero-sum, and we are not going to sell both sides of it.
+              </p>
+            </div>
+          </div>
+
           <p className="mt-10 sm:mt-16 text-[13px] text-[color:var(--color-paper)]/45">
-            Both programmes are pure AI search, on a 3 month initial term and rolling monthly after
-            that. Exclusivity means one firm per sub-sector, per region: Market Leader simply holds
-            up to three of those slots rather than one. AI visibility compounds, so we do not take
-            clients for a single month. Not ready to commit? We will run the visibility audit free on
-            a call so you can see where you stand first.
+            Both programmes are pure AI search, on a 3 month minimum term (6 months recommended) and
+            rolling monthly after that. Exclusivity means one firm per sub-sector, per region: Market
+            Leader simply holds up to three of those slots rather than one. AI visibility compounds,
+            so we do not take clients for a single month. Not ready to commit? We will run the
+            visibility audit free on a call so you can see where you stand first.
           </p>
         </div>
       </section>
