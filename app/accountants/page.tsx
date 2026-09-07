@@ -52,7 +52,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "AI Search Visibility for Accountants · DomiSearch",
   description:
-    "Business owners now ask ChatGPT and Gemini which accountant to use. DomiSearch makes your practice the one AI names, for your niches and your towns.",
+    "Business owners now ask ChatGPT and Gemini which accountant to use. DomiSearch works to make your practice the one AI names, for your niches and your towns.",
   alternates: { canonical: "/accountants" },
   openGraph: {
     title: "Be the accountancy firm AI recommends",
@@ -150,7 +150,7 @@ const NICHES: TerritoryIndustry[] = [
 const TERRITORIES_TAKEN = territoriesTaken(NICHES);
 
 const TICKER = [
-  "Google Partner & Shopify Partner agency",
+  "Google Partner agency",
   "Be the practice AI recommends",
   `${TAXD_YEARS_CAP} years inside UK accountancy`,
   "Tracking ChatGPT · Gemini · Perplexity · Copilot · Google AI",
@@ -169,10 +169,9 @@ const STATS = [
   },
   { value: "£3M+", label: "Ad spend managed", note: "Across live Google Ads accounts" },
   {
-    // PLACEHOLDER — confirm the current Taxd figure before publishing.
-    value: "200+",
-    label: "AI recommendations a week",
-    note: "Taxd, from a standing start",
+    value: "600+",
+    label: "AI mentions a month",
+    note: "Taxd, across every major engine",
   },
   { value: "5.0", label: "Trustpilot rating", note: "Verified client reviews" },
 ];
@@ -321,7 +320,7 @@ const TESTIMONIALS = [
  * The Taxd numbers, split by how well we can evidence them.
  *
  * PAID is verified against the account and already published in the case study.
- * AI is the AEO result and still carries a PLACEHOLDER on the headline figure.
+ * AI is the AEO result, confirmed against Searchable.
  * Keeping the two visibly separate is the whole credibility play: an accountant
  * reading this will spot a blended number immediately.
  */
@@ -333,8 +332,7 @@ const TAXD_PAID = [
 ];
 
 const TAXD_AI = [
-  // PLACEHOLDER — re-verify both figures against Searchable before publishing.
-  { value: "200+", label: "AI recommendations a week", note: "From a standing start" },
+  { value: "600+", label: "AI mentions a month", note: "Across every major engine" },
   { value: "2.7×", label: "Daily AI mentions", note: "Within a month of the work landing" },
 ];
 
@@ -377,7 +375,7 @@ const PROGRAMMES = [
           "10 content pieces built to be cited (6 new, 4 refreshed)",
           "4 third-party citation actions: directory, listicle and press placements pitched on your behalf",
           "Review engine to turn client wins into visible proof",
-          "Visibility tracked across 6 engines, monthly report and call, quarterly re-audit",
+          "Visibility tracked across 5 engines, monthly report and call, quarterly re-audit",
         ],
       },
     ],
@@ -398,7 +396,7 @@ const PROGRAMMES = [
         items: [
           "20 content pieces built to be cited (12 new, 8 refreshed)",
           "Digital PR and authority campaign: 8+ third-party citation actions, press placements pitched monthly",
-          "Weekly visibility tracking across 6 engines",
+          "Weekly visibility tracking across 5 engines",
           "Quarterly strategy session with your senior team",
         ],
       },
@@ -451,7 +449,7 @@ const ENGINE_SPEC = [
   {
     area: "Reporting",
     detail:
-      "Territory Engine dashboard across 6 engines, a monthly report and call, and a full re-audit every quarter. Market Leader tracks weekly and adds a quarterly session with your senior team.",
+      "Territory Engine dashboard across 5 engines, a monthly report and call, and a full re-audit every quarter. Market Leader tracks weekly and adds a quarterly session with your senior team.",
   },
 ];
 
@@ -618,7 +616,7 @@ export default function AccountantsPage() {
             <div className="mt-5 flex flex-wrap items-center gap-4 sm:mt-8">
               <TrustpilotCue />
               <span className="text-[13px] text-[color:var(--color-ink-3)]">
-                Google Partner · Shopify Partner
+                Google Partner
               </span>
             </div>
           </div>

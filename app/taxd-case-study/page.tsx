@@ -10,13 +10,13 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "How Taxd became the name AI recommends · DomiSearch",
   description:
-    "The full blueprint behind how Taxd went from 0 to 200+ AI recommendations every week: the technical work, the content and the strategy. Unlock the case study free.",
+    "The full blueprint behind how Taxd reached 600+ AI mentions a month: the technical work, the content and the strategy. Unlock the case study free.",
   alternates: { canonical: "/taxd-case-study" },
   robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
   openGraph: {
     title: "How Taxd became the name AI recommends",
     description:
-      "0 to 200+ AI recommendations every week. The exact AEO method, the winning prompts and why Taxd moved early. Unlock it free.",
+      "600+ AI mentions a month. The exact AEO method, the winning prompts and why Taxd moved early. Unlock it free.",
     url: `${site.url}/taxd-case-study`,
     images: [{ url: "/brand/taxd-founders.png", width: 1080, height: 1080, alt: "Taxd founders" }],
   },
@@ -29,7 +29,7 @@ const UNLOCK_LIST = [
   },
   {
     title: "The turnaround",
-    body: "0 to 200+ AI mentions every week. The growth curve, engine by engine.", // PLACEHOLDER stat
+    body: "600+ AI mentions a month. The growth curve, engine by engine.",
   },
   {
     title: "The exact AEO method",
@@ -116,11 +116,11 @@ export default function TaxdCaseStudyPage() {
           <TrustpilotCue />
 
           <h1 className="mx-auto mt-6 max-w-2xl text-balance text-[clamp(2rem,5.4vw,3.1rem)] font-bold leading-[1.12] tracking-tight text-[color:var(--color-ink)]">
-            How <TaxdChip /> went from{" "}
+            How <TaxdChip /> reached{" "}
             <span className="whitespace-nowrap underline decoration-[color:var(--color-pine)] decoration-[3px] underline-offset-[6px]">
-              0 to 200+
+              600+
             </span>{" "}
-            AI recommendations every week, and now gets found when customers ask{" "}
+            AI mentions a month, and now gets found when customers ask{" "}
             <span className="text-[color:var(--color-pine)]">ChatGPT for tax help</span>
           </h1>
 
@@ -166,8 +166,7 @@ export default function TaxdCaseStudyPage() {
               What&apos;s inside?
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-[color:var(--color-ink-2)] sm:text-lg">
-              See exactly how Taxd went from invisible in AI answers to 200+ recommendations every
-              week: the technical work, the content and the strategy behind it.
+              See exactly how Taxd reached 600+ AI mentions a month: the technical work, the content and the strategy behind it.
             </p>
           </div>
 
@@ -206,11 +205,14 @@ export default function TaxdCaseStudyPage() {
           >
             <path d="M9.5 6C6.5 7 5 9.5 5 13v5h6v-6H8c0-2 .8-3.4 2.6-4L9.5 6Zm9 0c-3 1-4.5 3.5-4.5 7v5h6v-6h-3c0-2 .8-3.4 2.6-4L18.5 6Z" />
           </svg>
-          {/* PLACEHOLDER quote — swap for the real one */}
+          {/* Verbatim from Eamon's published testimonial - do not paraphrase.
+              A named endorsement nobody actually gave is a fake review, which
+              the Digital Markets, Competition and Consumers Act 2024 prohibits
+              outright. Only ever swap this for another real, permissioned quote. */}
           <blockquote className="mx-auto mt-6 max-w-2xl text-balance text-[clamp(1.4rem,3.4vw,2.1rem)] font-semibold leading-[1.28] tracking-tight text-[color:var(--color-paper)]">
-            “Everyone&apos;s still fighting over Google rankings while their customers have already moved
-            to ChatGPT. We decided to be the answer instead of chasing the click, and it&apos;s been
-            the best growth decision we&apos;ve made.”
+            “We have been working with Ben and DomiSearch for nearly 3 years. A true expert in his
+            space. Taxd has grown a phenomenal customer base thanks to our fantastic search
+            acquisition strategy.”
           </blockquote>
           <div className="mt-8 flex items-center justify-center gap-3">
             <Image

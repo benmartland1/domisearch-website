@@ -7,7 +7,6 @@ import { site } from "@/lib/site";
 import { Counter } from "./Counter";
 import { VisibilityCheckForm } from "./VisibilityCheckForm";
 import { GooglePartnerBadge } from "./ui/GooglePartnerBadge";
-import { ShopifyPartnerBadge } from "./ui/ShopifyPartnerBadge";
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -40,7 +39,6 @@ export function Hero() {
             className="flex flex-wrap items-center gap-3"
           >
             <GooglePartnerBadge className="w-[178px]! sm:w-[210px]!" />
-            <ShopifyPartnerBadge className="w-[178px]! sm:w-[210px]!" />
           </motion.div>
 
           <h1 className="display mt-10 text-balance text-[clamp(2.5rem,5.4vw,4.5rem)]">

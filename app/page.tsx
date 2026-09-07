@@ -15,7 +15,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Google Ads & AEO Agency | DomiSearch - Manchester",
   description:
-    "Google Ads + AI Engine Optimisation (AEO). DomiSearch is the Google Partner and Shopify Partner agency helping brands win across Google, ChatGPT, Gemini and Perplexity.",
+    "Google Ads + AI Engine Optimisation (AEO). DomiSearch is the Google Partner agency helping brands win across Google, ChatGPT, Gemini and Perplexity.",
   alternates: { canonical: "/" },
 };
 
@@ -38,7 +38,7 @@ const homeFaqs = [
   {
     question: "Is DomiSearch a Google Partner?",
     answer:
-      "Yes. DomiSearch is a certified Google Partner and Shopify Partner, with over £3M in personally managed Google Ads spend.",
+      "Yes. DomiSearch is a certified Google Partner, with over £3M in personally managed Google Ads spend.",
   },
   {
     question: "Who runs DomiSearch?",
@@ -68,7 +68,7 @@ const homeGraph = {
       },
       image: `${site.url}/brand/logo.png`,
       description:
-        "DomiSearch is a Google Partner and Shopify Partner agency combining Google Ads with AI Engine Optimisation (AEO) so brands win across Google, ChatGPT, Gemini and Perplexity. Based in Manchester, UK.",
+        "DomiSearch is a Google Partner agency combining Google Ads with AI Engine Optimisation (AEO) so brands win across Google, ChatGPT, Gemini and Perplexity. Based in Manchester, UK.",
       slogan: "Be the brand AI recommends.",
       founder: {
         "@type": "Person",
@@ -113,7 +113,6 @@ const homeGraph = {
       ],
       sameAs: [
         "https://www.google.com/partners/agency",
-        "https://www.shopify.com/partners",
         site.trustpilot,
       ],
       hasOfferCatalog: {
@@ -235,7 +234,7 @@ const homeGraph = {
       url: site.url,
       name: "Google Ads & AEO Agency | DomiSearch - Manchester",
       description:
-        "DomiSearch is a Google Partner and Shopify Partner agency combining Google Ads with AEO. Be the brand AI recommends. Based in Manchester, UK.",
+        "DomiSearch is a Google Partner agency combining Google Ads with AEO. Be the brand AI recommends. Based in Manchester, UK.",
       isPartOf: { "@id": `${site.url}/#website` },
       about: { "@id": `${site.url}/#organization` },
       primaryImageOfPage: {

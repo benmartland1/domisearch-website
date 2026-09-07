@@ -216,7 +216,7 @@ export default function AiVisibilityRoadmapPage() {
       <section className="mx-auto max-w-5xl px-6 py-16 text-center sm:py-20">
         <p className="mx-auto max-w-2xl text-[clamp(1.3rem,3.2vw,1.9rem)] font-bold leading-snug tracking-tight text-[color:var(--color-ink)]">
           Taxd went from invisible to{" "}
-          <span className="text-[color:var(--color-pine)]">200+ AI mentions a month</span> across ChatGPT,
+          <span className="text-[color:var(--color-pine)]">600+ AI mentions a month</span> across ChatGPT,
           Claude, Perplexity and Gemini.
         </p>
         <p className="mt-10 text-[12px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink-3)]">

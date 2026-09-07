@@ -53,11 +53,11 @@ function VStart() {
   );
 }
 
-// 2 · jagged growth sparkline, 0 → 200+/wk
+// 2 · jagged growth sparkline, up to 600+/mo
 function VTurnaround() {
   return (
     <div className="flex h-full flex-col justify-between">
-      <div className="text-[9px] font-bold text-[color:var(--color-pine)]">0 → 200+/wk</div>
+      <div className="text-[9px] font-bold text-[color:var(--color-pine)]">600+/mo</div>
       <svg viewBox="0 0 120 46" className="h-[52px] w-full" preserveAspectRatio="none" aria-hidden>
         <defs>
           <linearGradient id="ucSpark" x1="0" y1="0" x2="0" y2="1">

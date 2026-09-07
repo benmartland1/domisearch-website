@@ -17,16 +17,16 @@ const principles = [
     body: "No junior pools. Everyone here owns client work end-to-end. If you want to hide inside a process, this won't fit.",
   },
   {
-    title: "Remote-first, Manchester-rooted",
-    body: "Work from wherever you think best. We meet in Manchester for strategy days every quarter.",
+    title: "Remote by default",
+    body: "No office, no forced hours. The team spans multiple time zones and works async. We care about the output, not where or when you produced it.",
   },
   {
     title: "Build in public",
     body: "We publish research, share playbooks and contribute to how the AEO industry develops. Your work gets attribution.",
   },
   {
-    title: "Fair and transparent pay",
-    body: "Fixed bands by role, published internally. No silly bonuses. We share the upside when the business grows.",
+    title: "Paid for expertise",
+    body: "We'd rather pay one experienced specialist properly than three juniors cheaply. Rates reflect the work you own, not hours on a timesheet.",
   },
 ];
 

@@ -5,8 +5,9 @@ import Image from "next/image";
  * deliverables. On large screens they fan out with depth + shadow; on mobile
  * they stack cleanly in a vertical column so nothing overlaps text.
  *
- * All card content is realistic PLACEHOLDER — swap the numbers/quotes for the
- * real ones. Placeholder spots are marked with {/* PLACEHOLDER *​/}.
+ * The figures and the quote are the real, evidenced Taxd ones. Anything put
+ * on these cards is a client-results claim, so only ever swap them for
+ * numbers you can show in Searchable and quotes the client actually gave.
  */
 
 function NumberBadge({ n }: { n: number }) {
@@ -39,18 +40,17 @@ function CardShell({
   );
 }
 
-/* 1 — Visibility dashboard: mention-growth curve 0 → 200+/week */
+/* 1 — Visibility dashboard: mention-growth curve up to 600+/month */
 function CardDashboard() {
   return (
-    <CardShell n={1} kicker="Weekly AI mentions">
+    <CardShell n={1} kicker="Monthly AI mentions">
       <div className="flex items-baseline justify-between">
         <div>
-          {/* PLACEHOLDER stat */}
           <div className="text-[2rem] font-bold leading-none tracking-tight text-[color:var(--color-ink)]">
-            214<span className="text-base font-semibold text-[color:var(--color-ink-3)]"> /wk</span>
+            600<span className="text-base font-semibold text-[color:var(--color-ink-3)]">+ /mo</span>
           </div>
           <div className="mt-1 text-[11px] font-medium text-[color:var(--color-pine)]">
-            ▲ from 0 in 90 days
+            ▲ over 90 days
           </div>
         </div>
         <span className="rounded-full bg-black/[0.05] px-2.5 py-1 text-[10px] font-semibold text-[color:var(--color-ink-3)]">
@@ -109,7 +109,7 @@ function CardChat() {
       </div>
       <div className="mt-auto flex items-center gap-1.5 pt-3 text-[10px] text-[color:var(--color-ink-3)]">
         <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-sage)]" />
-        Named in 200+ answers this week {/* PLACEHOLDER */}
+        Named in 600+ answers a month
       </div>
     </CardShell>
   );
@@ -151,7 +151,7 @@ function CardBeforeAfter() {
         <div>
           <div className="mb-1 flex justify-between text-[10px] font-medium text-[color:var(--color-ink-3)]">
             <span>Before</span>
-            <span>0 mentions</span>
+            <span>Barely present</span>
           </div>
           <div className="h-2.5 w-full rounded-full bg-[color:var(--color-paper-2)]">
             <div className="h-full w-[4%] rounded-full bg-[color:var(--color-ink-3)]" />
@@ -160,8 +160,7 @@ function CardBeforeAfter() {
         <div>
           <div className="mb-1 flex justify-between text-[10px] font-semibold text-[color:var(--color-pine)]">
             <span>After</span>
-            {/* PLACEHOLDER stat */}
-            <span>200+ / week</span>
+            <span>600+ / month</span>
           </div>
           <div className="h-2.5 w-full rounded-full bg-[color:var(--color-paper-2)]">
             <div className="h-full w-[92%] rounded-full bg-[color:var(--color-pine)]" />
@@ -201,9 +200,12 @@ function CardFounder() {
         </div>
       </div>
 
-      {/* PLACEHOLDER quote */}
+      {/* Verbatim from Eamon's published testimonial - do not paraphrase. A
+          named endorsement nobody actually gave is a fake review under the
+          Digital Markets, Competition and Consumers Act 2024. */}
       <p className="mt-3 border-l-2 border-[color:var(--color-pine)]/30 pl-3 text-[12.5px] font-medium italic leading-relaxed text-[color:var(--color-ink)]">
-        “We decided to be the answer instead of chasing the click.”
+        “Taxd has grown a phenomenal customer base thanks to our fantastic search acquisition
+        strategy.”
       </p>
     </CardShell>
   );

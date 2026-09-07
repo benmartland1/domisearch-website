@@ -1,25 +1,13 @@
 import Image from "next/image";
 
-// PLACEHOLDER — confirm Ben's real LinkedIn handle + headline + photo.
 const LINKEDIN_URL = "https://www.linkedin.com/in/benmartland";
 const HEADLINE = "Founder @ DomiSearch | AI Search & AEO";
-const FOLLOWERS = "8,040";
 
 /** LinkedIn "in" logo mark. */
 function LinkedInLogo({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} fill="#0A66C2" aria-hidden>
       <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
-    </svg>
-  );
-}
-
-/** LinkedIn-style verified badge (blue circle + tick). */
-function VerifiedBadge() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" aria-label="Verified">
-      <circle cx="12" cy="12" r="10" fill="#0A66C2" />
-      <path d="M8 12.2l2.6 2.6L16.2 9" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -61,19 +49,16 @@ export function LinkedInCard() {
           />
         </div>
 
-        {/* Name + verified */}
+        {/* Name */}
         <div className="flex items-center gap-1.5">
           <span className="text-[17px] font-semibold leading-tight text-[#1a1a1a]">Ben Martland</span>
-          <VerifiedBadge />
         </div>
 
         {/* Headline */}
         <p className="mt-0.5 text-[13.5px] leading-snug text-[#5f5f5f]">{HEADLINE}</p>
 
-        {/* Follower count + secondary line */}
-        <p className="mt-2 text-[12.5px] text-[#5f5f5f]">
-          <span className="font-semibold text-[#1a1a1a]">{FOLLOWERS}</span> followers · Posts daily about AI search
-        </p>
+        {/* Secondary line */}
+        <p className="mt-2 text-[12.5px] text-[#5f5f5f]">Posts daily about AI search</p>
       </div>
     </a>
   );

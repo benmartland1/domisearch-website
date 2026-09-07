@@ -4,7 +4,7 @@ import React, { MouseEvent, useEffect, useRef, useState } from "react";
 
 /**
  * A 3D-tilt "AI Search Coverage" badge. Same tilt / shine infrastructure as
- * the Google and Shopify partner badges, rendered as a silver-finish card
+ * the Google Partner badge, rendered as a silver-finish card
  * with a row of colour-coded AI-engine chips (ChatGPT, Gemini, Perplexity,
  * Claude, Copilot).
  */

@@ -34,7 +34,6 @@ export const metadata: Metadata = {
     "AI search",
     "Answer Engine Optimisation",
     "Google Partner",
-    "Shopify Partner",
     "ChatGPT visibility",
     "Perplexity visibility",
     "Gemini visibility",

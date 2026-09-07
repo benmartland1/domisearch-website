@@ -386,13 +386,13 @@ export function PlaybookCourse() {
       <section className="border-y border-black/[0.06] bg-[color:var(--color-paper-2)]">
         <div className="mx-auto max-w-5xl px-6 py-14 sm:py-16">
           <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-[color:var(--color-ink-3)]">Proof</p>
-          <h2 className="mt-3 text-balance text-[clamp(1.6rem,3.6vw,2.35rem)] font-bold leading-[1.12] tracking-tight text-[color:var(--color-ink)]">Taxd: from 0 to 200+ weekly AI mentions</h2>
+          <h2 className="mt-3 text-balance text-[clamp(1.6rem,3.6vw,2.35rem)] font-bold leading-[1.12] tracking-tight text-[color:var(--color-ink)]">Taxd: 600+ AI mentions a month</h2>
           <div className="mt-8 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="space-y-5">
               {[
                 ["Before", "Taxd, a UK tax platform, had no meaningful AI visibility across the commercial prompts that mattered. When people asked AI for tax help, competitors were named. Taxd wasn’t."],
                 ["The work", "Technical foundation. Entity clarity. Answer-led content mapped to real buyer questions. Citation building in the sources AI trusts. Continuous visibility tracking across every major platform."],
-                ["After", "200+ AI mentions every week, and climbing. Taxd now appears when buyers ask ChatGPT, Gemini and Perplexity for help with UK tax."],
+                ["After", "600+ AI mentions a month, and climbing. Taxd now appears when buyers ask ChatGPT, Gemini and Perplexity for help with UK tax."],
               ].map(([label, body]) => (
                 <div key={label} className="border-l-2 border-[color:var(--color-pine)]/30 pl-4">
                   <div className="text-[12px] font-semibold uppercase tracking-[0.16em] text-[color:var(--color-pine)]">{label}</div>
@@ -403,7 +403,7 @@ export function PlaybookCourse() {
             <div className="rounded-2xl border border-black/[0.08] bg-white p-6 shadow-[0_18px_44px_-30px_rgba(20,17,13,0.4)]">
               <div className="flex items-baseline justify-between">
                 <div>
-                  <div className="text-[2.4rem] font-bold leading-none tracking-tight text-[color:var(--color-ink)]">200+<span className="text-base font-semibold text-[color:var(--color-ink-3)]"> /week</span></div>
+                  <div className="text-[2.4rem] font-bold leading-none tracking-tight text-[color:var(--color-ink)]">600+<span className="text-base font-semibold text-[color:var(--color-ink-3)]"> /month</span></div>
                   <div className="mt-1.5 text-[12px] font-semibold text-[color:var(--color-pine)]">▲ from 0 in 90 days</div>
                 </div>
                 <span className="rounded-full bg-[color:var(--color-pine)]/[0.1] px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[color:var(--color-pine)]">Live</span>
@@ -425,7 +425,7 @@ export function PlaybookCourse() {
           <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-[color:var(--color-sage)]">Your move</p>
           <h2 className="mx-auto mt-4 max-w-2xl text-balance text-[clamp(1.8rem,4.6vw,2.7rem)] font-bold leading-[1.1] tracking-tight">Build it yourself, or shortcut the process</h2>
           <p className="mx-auto mt-5 max-w-xl text-pretty text-lg leading-relaxed text-[color:var(--color-paper)]/70">
-            You now have the full framework. You could run this playbook yourself over the next 90 days. Or let the team that took Taxd from 0 to 200+ weekly AI mentions show you exactly where your brand stands today.
+            You now have the full framework. You could run this playbook yourself over the next 90 days. Or let the team that took Taxd to 600+ AI mentions a month show you exactly where your brand stands today.
           </p>
           <div className="mt-9"><AuditCta heading="On your AI Visibility Audit, we’ll:" /></div>
           <p className="mt-10 text-[13px] text-[color:var(--color-paper)]/50">DomiSearch, the Search Growth Partner behind Taxd’s AI visibility.</p>

@@ -10,7 +10,7 @@ export const organizationSchema = {
   email: site.email,
   telephone: site.phone,
   description:
-    "DomiSearch is a Google Partner and Shopify Partner search agency based in Manchester, UK, specialising in Google Ads management and AI Engine Optimisation (AEO).",
+    "DomiSearch is a Google Partner search agency based in Manchester, UK, specialising in Google Ads management and AI Engine Optimisation (AEO).",
   sameAs: [site.social.linkedin, site.social.x, site.trustpilot],
   address: {
     "@type": "PostalAddress",

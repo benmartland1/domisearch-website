@@ -26,7 +26,8 @@ export default function PrivacyPage() {
           <h2>What we collect</h2>
           <ul>
             <li>Information you submit via our contact form (name, email, company, message).</li>
-            <li>Basic analytics data (pages visited, device type, referrer) via Vercel Analytics. We do not use third-party tracking cookies.</li>
+            <li>Basic analytics data (pages visited, device type, referrer) via Vercel Analytics.</li>
+            <li>Advertising and conversion data via the Meta Pixel, which sets third-party cookies and tells Meta which pages you viewed and which forms you submitted on this site. We use it to measure our advertising and to reach people who have visited us before.</li>
             <li>Information exchanged during client engagements, held securely in our internal systems.</li>
           </ul>
 
@@ -64,8 +65,10 @@ export default function PrivacyPage() {
           <h2>Who we share it with</h2>
           <p>
             We use Resend to deliver contact-form emails and Vercel to host our site. These
-            providers process limited data on our behalf under their own privacy terms. We do
-            not sell personal data.
+            providers process limited data on our behalf under their own privacy terms. The Meta
+            Pixel shares your browsing activity on this site with Meta Platforms Ireland, who use
+            it for advertising measurement and targeting under their own terms. We do not sell
+            personal data.
           </p>
 
           <h2>Your rights</h2>
@@ -91,7 +94,7 @@ export default function PrivacyPage() {
             {site.country}.
           </p>
 
-          <p className="text-sm opacity-70">Last updated: 2026-08-17</p>
+          <p className="text-sm opacity-70">Last updated: 2026-09-07</p>
         </div>
       </ScrollReveal>
     </section>

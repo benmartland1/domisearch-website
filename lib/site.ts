@@ -7,7 +7,7 @@ export const site = {
   name: "DomiSearch",
   tagline: "The search agency for the AI era.",
   description:
-    "DomiSearch is a Google Partner and Shopify Partner agency combining Google Ads with AI Engine Optimisation (AEO) so brands win across Google, ChatGPT, Gemini and Perplexity.",
+    "DomiSearch is a Google Partner agency combining Google Ads with AI Engine Optimisation (AEO) so brands win across Google, ChatGPT, Gemini and Perplexity.",
   url: canonicalUrl,
   email: "hi@domisearch.com",
   phone: "+44 7980 920 659",

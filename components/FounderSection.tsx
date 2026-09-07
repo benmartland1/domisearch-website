@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 const credentials = [
   "Four years running Google Ads",
   "£3M+ in managed ad spend, personally accountable",
-  "Google Partner & Shopify Partner",
+  "Google Partner",
   "Leads DomiSearch's AEO research programme",
   "Manchester-based, working UK, EU & US",
 ];

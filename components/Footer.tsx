@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { site } from "@/lib/site";
 import { GooglePartnerBadge } from "./ui/GooglePartnerBadge";
-import { ShopifyPartnerBadge } from "./ui/ShopifyPartnerBadge";
 
 export function Footer() {
   return (
@@ -24,7 +23,6 @@ export function Footer() {
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <GooglePartnerBadge className="w-[150px]! sm:w-[150px]!" />
-            <ShopifyPartnerBadge className="w-[150px]! sm:w-[150px]!" />
           </div>
         </div>
 

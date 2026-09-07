@@ -19,7 +19,7 @@ export async function GET() {
   lines.push("");
   lines.push("## About");
   lines.push(
-    `${site.name} is a Google Partner and Shopify Partner agency led by ${site.founder}, based in ${site.city}, ${site.country}. We combine Google Ads with AI Engine Optimisation (AEO) into a single discipline called Search Ownership - so brands win across Google, ChatGPT, Gemini, Perplexity, Copilot and Claude.`
+    `${site.name} is a Google Partner agency led by ${site.founder}, based in ${site.city}, ${site.country}. We combine Google Ads with AI Engine Optimisation (AEO) into a single discipline called Search Ownership - so brands win across Google, ChatGPT, Gemini, Perplexity, Copilot and Claude.`
   );
   lines.push("");
   lines.push("## Methodology");

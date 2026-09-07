@@ -105,12 +105,12 @@ const faqs = [
   {
     question: "How do you measure success?",
     answer:
-      "80–150 prompts tracked weekly across six engines. Reporting covers citation share of voice, sentiment, new placements and AI-referred traffic that converts. Benchmarked against your three closest competitors - not a vanity number.",
+      "Typically 50-75 prompts tracked, refreshed weekly, across six engines. Reporting covers citation share of voice, sentiment, new placements and AI-referred traffic that converts. Benchmarked against your three closest competitors - not a vanity number.",
   },
   {
     question: "How quickly will I see results?",
     answer:
-      "Early citation movement in 60–90 days. Meaningful share of voice in 3–6 months. If you're running Ads alongside, you'll see wins there inside two weeks.",
+      "Early citation movement may show in 60–90 days, and meaningful share of voice in 3–6 months, depending on how competitive your category is and what authority your site already carries. Google Ads works on a faster clock - we typically see early signals within the first few weeks.",
   },
   {
     question: "Which platforms do you optimise for?",
@@ -135,7 +135,7 @@ const faqs = [
   {
     question: "How does AEO compare to ranking on Google?",
     answer:
-      "Ranking aims to put your page on a results list. AEO ensures your brand appears inside the conversational answer - where faster decisions get made. We target citations and share-of-voice, not just clicks.",
+      "Ranking aims to put your page on a results list. AEO aims to get your brand named inside the conversational answer - where faster decisions get made. We target citations and share-of-voice, not just clicks.",
   },
   {
     question: "Do you work with any industry?",
@@ -217,7 +217,7 @@ export default function AEOPage() {
           </ScrollReveal>
           <ScrollReveal delay={260}>
             <p className="mt-6 text-xs uppercase tracking-[0.22em] text-[color:var(--color-fog)]/55">
-              Google Partner · Shopify Partner · UK-built
+              Google Partner · UK-built
             </p>
           </ScrollReveal>
         </div>

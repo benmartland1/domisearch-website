@@ -75,7 +75,7 @@ export function VerticalNav({
             <span className="hidden text-right text-[11px] leading-tight text-[color:var(--color-ink-3)] sm:block">
               Manchester based
               <br />
-              Google &amp; Shopify Partner
+              Google Partner
             </span>
           )}
           <a

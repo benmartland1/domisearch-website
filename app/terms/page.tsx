@@ -55,7 +55,11 @@ export default function TermsPage() {
           <h2>Contact</h2>
           <p>{site.email} · {site.city}, {site.country}</p>
 
-          <p className="text-sm opacity-70">Last updated: {new Date().toISOString().slice(0, 10)}</p>
+          {/* Hardcoded on purpose. Rendering today's date made the terms claim
+              they had been updated on whatever day the page was loaded, which
+              is untrue and destroys any record of which version applied when.
+              Update this by hand whenever the terms above actually change. */}
+          <p className="text-sm opacity-70">Last updated: 2026-09-07</p>
         </div>
       </ScrollReveal>
     </section>

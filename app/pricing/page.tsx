@@ -24,7 +24,7 @@ const faqs = [
   {
     question: "Is there a minimum commitment?",
     answer:
-      "Three months. That's how long it takes to restructure, learn your market, and show meaningful uplift. After month three, it's rolling — 30 days' notice either way.",
+      "Three months. That's how long it takes to restructure, learn your market, and give the work a fair chance to show. After month three, it's rolling — 30 days' notice either way.",
   },
   {
     question: "What's not included?",

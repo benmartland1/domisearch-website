@@ -61,7 +61,7 @@ const faqs = [
   {
     question: "Do you work on a contract?",
     answer:
-      "We agree an initial 3-month term to give the work time to compound — the first month is usually rebuild, the second is tuning, the third is where performance starts to pull. After that, you're on a 30-day rolling notice.",
+      "We agree an initial 3-month term to give the work time to compound — the first month is usually rebuild, the second is tuning, and by the third we may start to see performance pull. After that, you're on a 30-day rolling notice.",
   },
   {
     question: "How is your pricing structured?",

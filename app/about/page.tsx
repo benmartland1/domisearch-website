@@ -20,7 +20,7 @@ const aboutGraph = {
       logo: `${site.url}/brand/logo.png`,
       foundingDate: "2023",
       description:
-        "DomiSearch is a Manchester-based Google Ads and AI Engine Optimisation (AEO) agency. A certified Google Partner and Shopify Partner, DomiSearch helps e-commerce and service brands capture demand through Google Ads and engineer demand forming inside AI search engines including ChatGPT, Gemini, and Perplexity.",
+        "DomiSearch is a Manchester-based Google Ads and AI Engine Optimisation (AEO) agency. A certified Google Partner, DomiSearch helps e-commerce and service brands capture demand through Google Ads and engineer demand forming inside AI search engines including ChatGPT, Gemini, and Perplexity.",
       areaServed: ["United Kingdom", "European Union", "United States"],
       address: {
         "@type": "PostalAddress",
@@ -58,7 +58,7 @@ const aboutGraph = {
       name: "About DomiSearch",
       url: `${site.url}/about`,
       description:
-        "Learn about DomiSearch, a Manchester-based Google Ads and AEO agency founded in 2023 by Ben Martland. Google Partner, Shopify Partner, and one of the UK's first agencies to offer AI Engine Optimisation as a standalone service.",
+        "Learn about DomiSearch, a Manchester-based Google Ads and AEO agency founded in 2023 by Ben Martland. Google Partner, and one of the UK's first agencies to offer AI Engine Optimisation as a standalone service.",
       mainEntity: { "@type": "Organization", name: "DomiSearch" },
     },
   ],
@@ -67,7 +67,7 @@ const aboutGraph = {
 export const metadata: Metadata = {
   title: "About DomiSearch | Google Ads & AEO Agency - Manchester",
   description:
-    "DomiSearch is a Manchester-based Google Ads and AEO agency founded in 2023 by Ben Martland. Google Partner, Shopify Partner, £3M+ in personally managed ad spend.",
+    "DomiSearch is a Manchester-based Google Ads and AEO agency founded in 2023 by Ben Martland. Google Partner, £3M+ in personally managed ad spend.",
   alternates: { canonical: "/about" },
 };
 
@@ -162,8 +162,7 @@ export default function AboutPage() {
               <p className="mt-6 max-w-xl text-[color:var(--color-fog)]/85">
                 Ben Martland founded DomiSearch in 2023. With 5 years of experience managing
                 Google Ads for e-commerce and service brands — in-house and agency-side — he has
-                personally managed over £3M in Google Ads spend. He holds Google Partner and
-                Shopify Partner certification, and leads DomiSearch's monthly AEO research
+                personally managed over £3M in Google Ads spend. He holds Google Partner certification, and leads DomiSearch's monthly AEO research
                 programme.
               </p>
             </ScrollReveal>
@@ -191,7 +190,7 @@ export default function AboutPage() {
           <div className="card p-10">
             <div className="eyebrow">What sets us apart</div>
             <p className="mt-6 max-w-3xl text-[color:var(--color-fog)]/85">
-              DomiSearch is a certified Google Partner and Shopify Partner, with over £3M in
+              DomiSearch is a certified Google Partner, with over £3M in
               personally managed Google Ads spend. Founded in 2023 by Ben Martland in Manchester,
               DomiSearch is one of the UK's first search agencies to offer AI Engine Optimisation
               (AEO) as a standalone service. Unlike percentage-of-spend agencies, DomiSearch
@@ -200,7 +199,7 @@ export default function AboutPage() {
             <ul className="mt-8 grid gap-5 text-[color:var(--color-fog)]/85 sm:grid-cols-2">
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
-                <span><strong className="text-[color:var(--color-glacier)]">Google + Shopify Partners.</strong> Certified across the platforms that matter most for paid performance and e-commerce.</span>
+                <span><strong className="text-[color:var(--color-glacier)]">Google Partner.</strong> Certified on the platform that matters most for paid performance.</span>
               </li>
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
