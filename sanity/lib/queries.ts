@@ -47,7 +47,11 @@ export const postBySlugQuery = groq`
     tldr,
     body,
     faqs[]{ question, answer },
-    seo
+    seo,
+    pillarStatus,
+    pillarTopic,
+    pillarPage,
+    _updatedAt
   }
 `;
 

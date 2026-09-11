@@ -84,6 +84,12 @@ export function articleSchema(params: {
   description: string;
   slug: string;
   date: string;
+  /** Last edit. Falls back to the publish date. */
+  modified?: string;
+  /** Absolute URL. Google needs one for Article rich results. */
+  image?: string;
+  /** The post's pillar topic. */
+  section?: string;
   author: {
     name: string;
     role: string;
@@ -119,9 +125,11 @@ export function articleSchema(params: {
       logo: { "@type": "ImageObject", url: `${site.url}/brand/logo.png` },
     },
     datePublished: params.date,
-    dateModified: params.date,
+    dateModified: params.modified ?? params.date,
     mainEntityOfPage: url,
     url,
+    ...(params.image ? { image: params.image } : {}),
+    ...(params.section ? { articleSection: params.section } : {}),
     keywords: params.tags.join(", "),
   };
 }

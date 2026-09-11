@@ -49,6 +49,9 @@ export type PostCategory = {
 export type PostSeo = {
   metaTitle?: string;
   metaDescription?: string;
+  /** Link-preview overrides. Fall back to the search title and description. */
+  ogTitle?: string;
+  ogDescription?: string;
   canonicalUrl?: string;
   noIndex?: boolean;
 };
@@ -76,6 +79,10 @@ export type Post = PostSummary & {
   body?: PortableTextBlock[];
   faqs?: Faq[];
   seo?: PostSeo;
+  pillarStatus?: "pillar" | "cluster" | "standalone";
+  pillarTopic?: string;
+  pillarPage?: string;
+  _updatedAt?: string;
 };
 
 /**

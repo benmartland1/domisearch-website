@@ -205,8 +205,9 @@ is no stale window and no needless rebuilds.
 
 **`post`** — title, slug, excerpt, tldr, mainImage (alt required), body,
 author (ref), category (ref), tags (string array), publishedAt, featured,
+pillarStatus (pillar / cluster / standalone), pillarTopic, pillarPage,
 faqs (question/answer array), seo object (metaTitle, metaDescription,
-canonicalUrl, noIndex).
+ogTitle, ogDescription, canonicalUrl, noIndex).
 
 **`author`** — name, slug, role, image, bio, linkedinUrl, sameAs.
 

@@ -121,6 +121,42 @@ export const post = defineType({
       description: "Pins this post to the large card at the top of the blog index.",
       initialValue: false,
     }),
+    defineField({
+      name: "pillarStatus",
+      title: "Pillar status",
+      type: "string",
+      group: "meta",
+      description:
+        "Where this post sits in the topic cluster. A pillar is the definitive page on a topic; a cluster post covers one angle of it and links back to the pillar.",
+      options: {
+        list: [
+          { title: "Pillar", value: "pillar" },
+          { title: "Cluster", value: "cluster" },
+          { title: "Standalone", value: "standalone" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "standalone",
+    }),
+    defineField({
+      name: "pillarTopic",
+      title: "Pillar topic",
+      type: "string",
+      group: "meta",
+      description:
+        'The topic cluster this post belongs to, e.g. "AI search for recruitment firms". Use the same wording across every post in the cluster. Emitted as articleSection in Article schema.',
+      hidden: ({ document }) => document?.pillarStatus === "standalone",
+    }),
+    defineField({
+      name: "pillarPage",
+      title: "Pillar page",
+      type: "url",
+      group: "meta",
+      description:
+        "The pillar this post supports: another post or a landing page, e.g. /recruitment. The body should link to it.",
+      validation: (rule) => rule.uri({ allowRelative: true, scheme: ["https"] }),
+      hidden: ({ document }) => document?.pillarStatus !== "cluster",
+    }),
 
     defineField({
       name: "faqs",
@@ -178,6 +214,23 @@ export const post = defineType({
             "The grey text under the blue link. Leave blank to use the summary. Google cuts off past ~155 characters.",
           validation: (rule) =>
             rule.max(180).warning("Google usually truncates past 155 characters."),
+        }),
+        defineField({
+          name: "ogTitle",
+          title: "Social title",
+          type: "string",
+          description:
+            "The headline on LinkedIn, X and Slack link previews (Open Graph and Twitter card). Leave blank to use the search title.",
+          validation: (rule) => rule.max(95).warning("Most previews cut off past ~90 characters."),
+        }),
+        defineField({
+          name: "ogDescription",
+          title: "Social description",
+          type: "text",
+          rows: 2,
+          description:
+            "The line under the headline in link previews. Leave blank to use the search description.",
+          validation: (rule) => rule.max(200).warning("Most previews cut off past ~200 characters."),
         }),
         defineField({
           name: "canonicalUrl",

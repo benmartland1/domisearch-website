@@ -65,8 +65,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = post.seo?.metaTitle ?? post.title;
   const description = post.seo?.metaDescription ?? post.excerpt;
+  const socialTitle = post.seo?.ogTitle ?? title;
+  const socialDescription = post.seo?.ogDescription ?? description;
   const url = `/blog/${post.slug}`;
   const image = ogImageUrl(post.mainImage as never);
+  const imageAlt = post.mainImage?.alt ?? post.title;
 
   return {
     title,
@@ -75,19 +78,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ...(post.seo?.noIndex ? { robots: { index: false, follow: true } } : {}),
     openGraph: {
       type: "article",
-      title,
-      description,
+      title: socialTitle,
+      description: socialDescription,
       url,
+      siteName: site.name,
+      locale: "en_GB",
       publishedTime: post.publishedAt,
+      ...(post._updatedAt ? { modifiedTime: post._updatedAt } : {}),
       authors: [post.author?.name ?? "DomiSearch Team"],
+      ...(post.pillarTopic ? { section: post.pillarTopic } : {}),
       tags: post.tags ?? [],
-      ...(image ? { images: [{ url: image, width: 1200, height: 630, alt: post.title }] } : {}),
+      ...(image ? { images: [{ url: image, width: 1200, height: 630, alt: imageAlt }] } : {}),
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
-      ...(image ? { images: [image] } : {}),
+      site: `@${site.social.x.split("/").pop()}`,
+      title: socialTitle,
+      description: socialDescription,
+      ...(image ? { images: [{ url: image, alt: imageAlt }] } : {}),
     },
   };
 }
@@ -123,6 +131,9 @@ export default async function BlogPostPage({ params }: Props) {
             description: post.excerpt,
             slug: post.slug,
             date: post.publishedAt,
+            modified: post._updatedAt,
+            image: ogImageUrl(post.mainImage as never),
+            section: post.pillarTopic,
             author: {
               name: author.name,
               role: author.role,

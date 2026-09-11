@@ -14,9 +14,9 @@ Marketing pages (home, services, pricing, about, the vertical landing pages) are
 
 **Content** — title, URL, summary, TL;DR, main image, body, FAQs.
 
-**Details** — author, category, tags, publish date, and the Featured toggle.
+**Details** — author, category, tags, publish date, the Featured toggle, and the pillar fields.
 
-**SEO** — search title, search description, canonical URL, and the hide-from-search switch. All four are optional; leave them blank and sensible defaults are used.
+**SEO** — search title, search description, social title, social description, canonical URL, and the hide-from-search switch. All are optional; leave them blank and sensible defaults are used.
 
 4. Click **Publish**.
 
@@ -32,6 +32,11 @@ The post is live in a few seconds. You do not need a developer, and nothing need
 | **FAQs** | Question and answer pairs. These render at the end of the post *and* generate FAQPage schema, which is what puts the post into AI answers and Google's FAQ results. Answer outright in the first sentence. |
 | **Tags** | The first tag labels the post's card elsewhere on the site. Reuse existing tags rather than inventing near-duplicates. |
 | **Featured** | Pins the post to the large card at the top of `/blog`. If nothing is flagged, the newest post takes that slot. |
+| **Main image** | Not shown on the page itself. It is the link-preview image on LinkedIn, X and Slack, and the `image` in Article schema, which Google needs before it will show an Article rich result. Upload at 1200×630. |
+| **Social title / description** | What LinkedIn, X and Slack show in a link preview (Open Graph and the Twitter card). Can be punchier than the search title, because nobody is scanning ten blue links. Blank falls back to the search title and description. |
+| **Pillar status** | *Pillar* is the definitive page on a topic. *Cluster* covers one angle of a pillar topic and links back to it. *Standalone* belongs to no cluster. Editorial only, except that it controls which of the next two fields show. |
+| **Pillar topic** | The cluster's name, worded identically on every post in it. Emitted as `articleSection` in Article schema and `article:section` in Open Graph. |
+| **Pillar page** | For cluster posts: the pillar they support, either a post or a landing page such as `/recruitment`. Link to it from the body, because the field on its own does not create a link. |
 
 ### Drafts
 
