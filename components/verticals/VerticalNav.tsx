@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { DomiMark } from "@/components/landing/DomiMark";
 import { MobileSectors, SectorsMenu } from "@/components/SectorsMenu";
 import { site } from "@/lib/site";
 
@@ -61,11 +61,18 @@ export function VerticalNav({
             : "border border-transparent bg-transparent"
         }`}
       >
-        <Link href="/" aria-label="DomiSearch home" className="flex shrink-0 items-center gap-2">
-          <DomiMark className="h-6 w-6" />
-          <span className="text-[14px] font-bold tracking-tight text-[color:var(--color-ink)]">
-            DomiSearch
-          </span>
+        {/* The brand logo recoloured for light grounds: the wordmark and the
+            white end of the dot ring become ink, so the ring still fades from
+            Domigreen into the wordmark colour as it does on the dark site. */}
+        <Link href="/" aria-label="DomiSearch home" className="flex shrink-0 items-center pl-1">
+          <Image
+            src="/brand/logo-dark.png"
+            alt="DomiSearch"
+            width={178}
+            height={28}
+            priority
+            className="h-[22px] w-auto sm:h-6"
+          />
         </Link>
 
         <div className="ml-2 hidden items-center gap-1 lg:flex">

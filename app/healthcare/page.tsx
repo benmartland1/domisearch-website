@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import Image from "next/image";
-import { DomiMark } from "@/components/landing/DomiMark";
 import { JsonLd } from "@/components/JsonLd";
 import { AISearchDemo, type AnswerPart, type ResultRow } from "@/components/verticals/AISearchDemo";
 import { PromptBoard, type PromptRow } from "@/components/verticals/PromptBoard";
@@ -1297,10 +1296,16 @@ export default function HealthcarePage() {
       <footer className="bg-[color:var(--color-ink)] text-[color:var(--color-paper)]/55">
         <div className="mx-auto max-w-5xl px-5 py-10 sm:px-6 sm:py-14">
           <div className="flex flex-col items-center gap-3 text-center">
-            <div className="flex items-center gap-2">
-              <DomiMark className="h-5 w-5" />
-              <span className="text-[13px] font-semibold text-[color:var(--color-paper)]/80">
-                DomiSearch {new Date().getFullYear()}
+            <div className="flex items-center gap-3">
+              <Image
+                src="/brand/logo.png"
+                alt="DomiSearch"
+                width={178}
+                height={28}
+                className="h-5 w-auto"
+              />
+              <span className="text-[13px] font-semibold text-[color:var(--color-paper)]/60">
+                &copy; {new Date().getFullYear()}
               </span>
             </div>
             <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[13px]">
