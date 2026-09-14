@@ -24,9 +24,18 @@ export const site = {
     linkedin: "https://www.linkedin.com/company/domisearch",
     x: "https://x.com/domisearch",
   },
+  /** Sector landing pages, listed in the header's Sectors dropdown. Care homes
+   *  live on the sister brand's own domain, so that entry is an external link. */
+  sectors: [
+    { label: "Recruitment", href: "/recruitment", note: "Recruitment agencies" },
+    { label: "Accountants", href: "/accountants", note: "Accountancy practices" },
+    { label: "Healthcare", href: "/healthcare", note: "Private clinics and practices" },
+    { label: "Care homes", href: "https://www.domicare.ai", note: "Via DomiCare, our care brand" },
+  ],
   nav: [
     { label: "Google Ads", href: "/services/google-ads" },
     { label: "AI Search", href: "/services/aeo" },
+    { label: "Sectors", sectors: true },
     { label: "About", href: "/about" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },

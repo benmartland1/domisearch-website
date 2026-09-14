@@ -427,7 +427,7 @@ export default function RecruitmentPage() {
     <div
       id="top"
       data-surface="paper"
-      className="min-h-screen overflow-x-hidden bg-[color:var(--color-paper)] text-[color:var(--color-ink-2)]"
+      className="min-h-screen overflow-x-clip bg-[color:var(--color-paper)] text-[color:var(--color-ink-2)]"
     >
       <JsonLd data={[faqSchema]} />
       <PromptTicker />
@@ -1216,8 +1216,8 @@ Either programme pays for itself if it wins you a single extra client a
               <a href="/services/aeo" className="hover:text-[color:var(--color-paper)]">
                 AI Search
               </a>
-              <a href="/case-studies" className="hover:text-[color:var(--color-paper)]">
-                Case studies
+              <a href="/case-studies/taxd" className="hover:text-[color:var(--color-paper)]">
+                Case study
               </a>
               <a href="/contact" className="hover:text-[color:var(--color-paper)]">
                 Contact

@@ -21,6 +21,7 @@ const BARE_ROUTES = [
   // dark global header would clash.
   "/recruitment",
   "/accountants",
+  "/healthcare",
   // Sanity Studio renders its own full-viewport UI.
   "/studio",
   // The onboarding questionnaire, served on onboarding.domisearch.com. It has

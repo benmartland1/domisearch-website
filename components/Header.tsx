@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { site } from "@/lib/site";
 import { MagneticButton } from "./MagneticButton";
+import { MobileSectors, SectorsMenu } from "./SectorsMenu";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -46,6 +47,7 @@ export function Header() {
 
         <nav className="hidden items-center gap-8 lg:flex">
           {site.nav.map((item) => {
+            if ("sectors" in item) return <SectorsMenu key={item.label} label={item.label} tone="dark" />;
             const active = isActive(item.href);
             return (
               <Link
@@ -109,16 +111,20 @@ export function Header() {
       >
         <div className="min-h-0 overflow-hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-4">
-            {site.nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="py-3 text-base text-[color:var(--color-glacier)] hover:text-[color:var(--color-domigreen)]"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {site.nav.map((item) =>
+              "sectors" in item ? (
+                <MobileSectors key={item.label} label={item.label} tone="dark" onNavigate={() => setOpen(false)} />
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="py-3 text-base text-[color:var(--color-glacier)] hover:text-[color:var(--color-domigreen)]"
+                >
+                  {item.label}
+                </Link>
+              ),
+            )}
             <Link
               href={site.calendly}
               target="_blank"

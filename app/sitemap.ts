@@ -13,6 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/services/aeo",
     "/recruitment",
     "/accountants",
+    "/healthcare",
     "/pricing",
     "/about",
     "/careers",
@@ -29,7 +30,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         ? 1
         : path.startsWith("/services") ||
           path === "/recruitment" ||
-          path === "/accountants"
+          path === "/accountants" ||
+          path === "/healthcare"
           ? 0.9
           : 0.6,
   }));
