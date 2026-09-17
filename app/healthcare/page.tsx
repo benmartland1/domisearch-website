@@ -7,10 +7,10 @@ import { PromptTicker, type TickerPrompt } from "@/components/verticals/PromptTi
 import { VerticalNav } from "@/components/verticals/VerticalNav";
 import { VerticalFaq, type FaqItem } from "@/components/verticals/VerticalFaq";
 import { Cta, CtaBlock } from "@/components/verticals/Cta";
+import { PricingCard, type PricingPlan } from "@/components/verticals/PricingCard";
 import {
   Carousel,
   ClampedText,
-  MobileCollapse,
   StepsAccordion,
   StickyCta,
 } from "@/components/verticals/Mobile";
@@ -318,65 +318,38 @@ const TRANSFERS = [
 ];
 
 /**
- * Two programmes at one price each, sold on territory rather than deliverable
- * volume. Same shape and prices as /recruitment; see the note there.
+ * One programme, sold on territory rather than deliverable volume. The scarce
+ * thing is the exclusivity slot, so it sits right under the price. The price
+ * and the monthly or upfront billing options are the same on every vertical,
+ * so they live in PricingCard rather than here.
  */
-const PROGRAMMES = [
-  {
-    name: "AI Search for Healthcare",
-    /** Rendered as a pill floating over the card's top edge, not inside it. */
-    label: "Most clinics start here.",
-    price: "£2,995",
-    cadence: "per month",
-    term: "3 month minimum term (6 recommended), then rolling monthly",
-    tagline: "One clinic per specialty, per region.",
-    primary: true,
-    blocks: [
-      {
-        heading: "Your first month",
-        items: [
-          "Full prompt audit, visibility scorecard and 90 day roadmap",
-          "Baseline capture and competitor citation benchmark",
-          "Technical foundations: schema, llms.txt and an AI-readable site structure",
-          "Entity pass across your regulator listings, review platforms and the directories AI reads",
-        ],
-      },
-      {
-        heading: "Every month after",
-        items: [
-          "Content built to be cited, new pieces and refreshes, agreed with you each month",
-          "Third-party citation actions: directory, listicle and press placements pitched on your behalf",
-          "Review engine to turn patient feedback into visible proof",
-          "Visibility tracked across 5 engines, monthly report and call, quarterly re-audit",
-        ],
-      },
-    ],
-    territory:
-      "Covers one exclusive territory (your specialty and region). We will never work with a competitor chasing the same prompts. Additional territories agreed on the call.",
-  },
-  {
-    name: "AI Search: Market Leader",
-    label: null,
-    price: "£5,995",
-    cadence: "per month",
-    term: "3 month minimum term (6 recommended), then rolling monthly",
-    tagline: null,
-    primary: false,
-    blocks: [
-      {
-        heading: "Everything in AI Search for Healthcare, plus",
-        items: [
-          "A larger monthly content programme, built to be cited",
-          "Digital PR and authority campaign: an expanded citation push, press placements pitched monthly",
-          "Weekly visibility tracking across 5 engines",
-          "Quarterly strategy session with your senior team",
-        ],
-      },
-    ],
-    territory:
-      "For multi-site groups who want to own the AI answer across their whole market, not just one patch. Every territory you hold is still exclusive: we will never take on a competitor chasing the same prompts.",
-  },
-] as const;
+const PLAN: PricingPlan = {
+  name: "AI Search for Healthcare",
+  label: "Most clinics start here.",
+  tagline: "One clinic per specialty, per region.",
+  blocks: [
+    {
+      heading: "Your first month",
+      items: [
+        "Full prompt audit, visibility scorecard and 90 day roadmap",
+        "Baseline capture and competitor citation benchmark",
+        "Technical foundations: schema, llms.txt and an AI-readable site structure",
+        "Entity pass across your regulator listings, review platforms and the directories AI reads",
+      ],
+    },
+    {
+      heading: "Every month after",
+      items: [
+        "Content built to be cited, new pieces and refreshes, agreed with you each month",
+        "Third-party citation actions: directory, listicle and press placements pitched on your behalf",
+        "Review engine to turn patient feedback into visible proof",
+        "Visibility tracked across 5 engines, monthly report and call, quarterly re-audit",
+      ],
+    },
+  ],
+  territory:
+    "Covers one exclusive territory (your specialty and region). We will never work with a competitor chasing the same prompts. Additional territories agreed on the call.",
+};
 
 /**
  * The technical detail, moved off the card into a collapsed panel. Buyers who
@@ -406,12 +379,12 @@ const ENGINE_SPEC = [
   {
     area: "Content",
     detail:
-      "A monthly programme of pieces written to be quoted rather than ranked: treatment explainers, recovery and aftercare, costs and finance, and the questions patients ask before booking. Signed off by your clinicians before anything publishes. A larger volume on Market Leader.",
+      "A monthly programme of pieces written to be quoted rather than ranked: treatment explainers, recovery and aftercare, costs and finance, and the questions patients ask before booking. Signed off by your clinicians before anything publishes.",
   },
   {
     area: "Citations",
     detail:
-      "Third-party actions every month, expanded into a running digital PR campaign on Market Leader. Healthcare directory listings, listicle inclusion and press placements pitched on your behalf, because AI answers cite sources, not you.",
+      "Third-party actions every month: healthcare directory listings, listicle inclusion and press placements pitched on your behalf, because AI answers cite sources, not you.",
   },
   {
     area: "Reviews",
@@ -421,7 +394,7 @@ const ENGINE_SPEC = [
   {
     area: "Reporting",
     detail:
-      "Territory Engine dashboard across 5 engines, a monthly report and call, and a full re-audit every quarter. Market Leader tracks weekly and adds a quarterly session with your senior team.",
+      "Territory Engine dashboard across 5 engines, a monthly report and call, and a full re-audit every quarter.",
   },
 ];
 
@@ -1007,7 +980,7 @@ export default function HealthcarePage() {
             Pricing
           </span>
           <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-paper)]">
-            Two programmes. One goal.{" "}
+            One programme. One goal.{" "}
             <span className="text-[color:var(--color-paper)]/55">Your patch held exclusively.</span>
           </h2>
 
@@ -1029,7 +1002,7 @@ export default function HealthcarePage() {
               <p className="text-[16px] leading-relaxed text-[color:var(--color-paper)]/85 sm:text-[17px]">
                 And that is one treatment, for one patient, before the check-ups, the hygienist and
                 the family they bring with them. In most specialties a handful of extra patients a
-                month covers either programme. We will do the maths on your own treatment mix on the
+                month covers the programme. We will do the maths on your own treatment mix on the
                 call.
               </p>
               <p className="mt-3 text-[14px] leading-relaxed text-[color:var(--color-paper)]/55">
@@ -1039,108 +1012,10 @@ export default function HealthcarePage() {
             </div>
           </div>
 
-          {/* Two cards, side by side from md, entry tier first so it also leads
-              on a stacked mobile view. The accent belongs to the entry card. */}
-          <div className="mt-10 grid items-stretch gap-6 sm:mt-16 sm:gap-7 md:grid-cols-2">
-            {PROGRAMMES.map((prog) => (
-              <div
-                key={prog.name}
-                /* Not overflow-hidden: the floating label hangs past the top edge. */
-                className={`group/card relative flex h-full flex-col rounded-2xl bg-white p-8 transition-transform duration-300 ease-out hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-10 ${
-                  prog.primary
-                    ? "border-2 border-[color:var(--color-domigreen)] shadow-[0_34px_70px_-30px_rgba(1,232,144,0.45)]"
-                    : "border border-black/[0.08] shadow-[0_24px_60px_-34px_rgba(20,17,13,0.55)]"
-                }`}
-              >
-                {prog.label ? (
-                  <span className="absolute left-8 top-0 inline-flex -translate-y-1/2 items-center rounded-full bg-[color:var(--color-domigreen)] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-charcoal)] shadow-[0_6px_18px_-6px_rgba(1,232,144,0.9)] sm:left-10">
-                    {prog.label}
-                  </span>
-                ) : null}
-
-                <h3 className="text-[19px] font-bold tracking-tight text-[color:var(--color-ink)] sm:text-[21px]">
-                  {prog.name}
-                </h3>
-
-                <div className="mt-5 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-                  <span
-                    className={`font-bold leading-none tracking-[-0.05em] text-[color:var(--color-ink)] ${
-                      prog.primary
-                        ? "text-[clamp(2.6rem,6vw,3.4rem)]"
-                        : "text-[clamp(2.4rem,5.4vw,3.1rem)]"
-                    }`}
-                  >
-                    {prog.price}
-                  </span>
-                  <span className="text-[14px] font-semibold text-[color:var(--color-ink-3)]">
-                    {prog.cadence}
-                  </span>
-                </div>
-                <p className="mt-2.5 text-[12px] font-semibold text-[color:var(--color-ink-3)]">
-                  {prog.term}
-                </p>
-                <div aria-hidden className="mt-6 border-t border-black/[0.07]" />
-
-                {prog.tagline ? (
-                  <p className="mt-5 text-[16px] font-bold leading-snug tracking-tight text-[color:var(--color-pine)]">
-                    {prog.tagline}
-                  </p>
-                ) : null}
-
-                <MobileCollapse
-                  label="See what&apos;s included"
-                  closeLabel="Hide details"
-                  className="md:!flex md:flex-1 md:flex-col"
-                >
-                  {prog.blocks.map((block, bi) => (
-                    <div
-                      key={block.heading}
-                      className={bi === 0 ? (prog.tagline ? "mt-6" : "mt-5") : "mt-7"}
-                    >
-                      <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-ink-3)]">
-                        <span
-                          aria-hidden
-                          className="h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]"
-                        />
-                        {block.heading}
-                      </p>
-                      <ul className="mt-3.5 space-y-2">
-                        {block.items.map((f) => (
-                          <li
-                            key={f}
-                            className="flex gap-2.5 text-[14px] leading-[1.45] text-[color:var(--color-ink-2)]"
-                          >
-                            <span
-                              aria-hidden
-                              className="mt-px flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[color:var(--color-domigreen)]/15"
-                            >
-                              <svg
-                                viewBox="0 0 24 24"
-                                className="h-[11px] w-[11px] text-[color:var(--color-pine)]"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="3.4"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              >
-                                <path d="m5 13 4 4L19 7" />
-                              </svg>
-                            </span>
-                            {f}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                  <div aria-hidden className="hidden grow md:block" />
-                  <p className="mt-6 rounded-xl bg-[color:var(--color-pine)]/[0.08] px-3.5 py-3 text-[13px] font-semibold leading-relaxed text-[color:var(--color-pine)]">
-                    {prog.territory}
-                  </p>
-                </MobileCollapse>
-
-                <Cta href={site.calendly} className="mt-8 w-full" />
-              </div>
-            ))}
+          {/* One programme, two ways to pay, across the full container: price
+              and exclusivity on the left, what is included on the right. */}
+          <div className="mt-10 sm:mt-16">
+            <PricingCard plan={PLAN} href={site.calendly} />
           </div>
 
           {/* The plumbing, collapsed. Native details/summary so it needs no JS
@@ -1151,7 +1026,7 @@ export default function HealthcarePage() {
                 What&apos;s inside the engine
               </span>
               <span className="flex items-center gap-2 text-[13px] text-[color:var(--color-paper)]/50">
-                <span className="hidden sm:inline">Full technical breakdown, both tiers</span>
+                <span className="hidden sm:inline">Full technical breakdown</span>
                 <svg
                   viewBox="0 0 24 24"
                   className="h-4 w-4 shrink-0 transition-transform duration-300 group-open:rotate-180"
@@ -1225,18 +1100,18 @@ export default function HealthcarePage() {
               </p>
               <p className="mt-2 text-[14px] leading-relaxed text-[color:var(--color-paper)]/60">
                 Once your territory is held, that is it: we turn away any clinic chasing the same
-                specialty and region, on either programme, for as long as you are with us. Winning
+                specialty and region, for as long as you are with us. Winning
                 the answer is zero-sum, and we are not going to sell both sides of it.
               </p>
             </div>
           </div>
 
           <p className="mt-10 text-[13px] text-[color:var(--color-paper)]/45 sm:mt-16">
-            Both programmes are pure AI search, on a 3 month minimum term (6 months recommended) and
-            rolling monthly after that. Exclusivity means one clinic per specialty, per region:
-            Market Leader simply holds up to three of those slots rather than one. AI visibility
-            compounds, so we do not take clients for a single month. Not ready to commit? We will run
-            the visibility audit free on a call so you can see where you stand first.
+            The programme is pure AI search, on a 3 month minimum term (6 months recommended) and
+            rolling monthly after that, paid monthly or with the first 3 months upfront. Exclusivity
+            means one clinic per specialty, per region. AI visibility compounds, so we do not take clients for
+            a single month. Not ready to commit? We will run the visibility audit free on a call so you
+            can see where you stand first.
           </p>
         </div>
       </section>

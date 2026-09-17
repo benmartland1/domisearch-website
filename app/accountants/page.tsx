@@ -7,10 +7,10 @@ import { PromptTicker, type TickerPrompt } from "@/components/verticals/PromptTi
 import { VerticalNav } from "@/components/verticals/VerticalNav";
 import { VerticalFaq, type FaqItem } from "@/components/verticals/VerticalFaq";
 import { Cta, CtaBlock } from "@/components/verticals/Cta";
+import { PricingCard, type PricingPlan } from "@/components/verticals/PricingCard";
 import {
   Carousel,
   ClampedText,
-  MobileCollapse,
   StepsAccordion,
   StickyCta,
 } from "@/components/verticals/Mobile";
@@ -336,74 +336,39 @@ const TAXD_AI = [
 ];
 
 /**
- * Two programmes at one price each, sold on territory rather than deliverable
- * volume. The scarce thing is the exclusivity slot, so it leads both cards.
- *
- * The second tier is not really a bigger version of the first — it is the same
- * engine pointed at three territories instead of one. That is what makes it
- * cheap for us to deliver and what makes it work as an anchor: a buyer reading
- * the entry card now knows someone else could take their other patches.
- *
- * The entry tier carries the accent border. The anchor does its work by
- * existing and by its price, so it sits quiet: no badge, no glow.
+ * One programme, sold on territory rather than deliverable volume. The scarce
+ * thing is the exclusivity slot, so it sits right under the price. The price
+ * and the monthly or upfront billing options are the same on every vertical,
+ * so they live in PricingCard rather than here.
  */
-const PROGRAMMES = [
-  {
-    name: "AI Search for Accountants",
-    /** Rendered as a pill floating over the card's top edge, not inside it. */
-    label: "Most firms start here.",
-    price: "£2,995",
-    cadence: "per month",
-    term: "3 month initial term, then rolling monthly",
-    tagline: "One practice per niche, per region.",
-    primary: true,
-    blocks: [
-      {
-        heading: "Your first month",
-        items: [
-          "Full prompt audit, visibility scorecard and 90 day roadmap",
-          "Baseline capture and competitor citation benchmark, agreed in writing",
-          "Technical foundations: schema, llms.txt and an AI-readable site structure",
-          "Entity pass across Companies House, professional body and software advisor directories",
-        ],
-      },
-      {
-        heading: "Every month after",
-        items: [
-          // PLACEHOLDER — new/refresh split is indicative, adjust to how you deliver.
-          "10 content pieces built to be cited (6 new, 4 refreshed)",
-          "4 third-party citation actions: directory, listicle and press placements pitched on your behalf",
-          "Review engine to turn client wins into visible proof",
-          "Visibility tracked across 5 engines, monthly report and call, quarterly re-audit",
-        ],
-      },
-    ],
-    territory:
-      "Covers one exclusive territory (your niche and region). Additional territories agreed on the call.",
-  },
-  {
-    name: "AI Search: Market Leader",
-    label: null,
-    price: "£5,995",
-    cadence: "per month",
-    term: "3 month initial term, then rolling monthly",
-    tagline: null,
-    primary: false,
-    blocks: [
-      {
-        heading: "Everything in AI Search for Accountants, plus",
-        items: [
-          "20 content pieces built to be cited (12 new, 8 refreshed)",
-          "Digital PR and authority campaign: 8+ third-party citation actions, press placements pitched monthly",
-          "Weekly visibility tracking across 5 engines",
-          "Quarterly strategy session with your senior team",
-        ],
-      },
-    ],
-    territory:
-      "For firms who want to own the AI answer across their whole market, not just one patch.",
-  },
-] as const;
+const PLAN: PricingPlan = {
+  name: "AI Search for Accountants",
+  label: "Most firms start here.",
+  tagline: "One practice per niche, per region.",
+  blocks: [
+    {
+      heading: "Your first month",
+      items: [
+        "Full prompt audit, visibility scorecard and 90 day roadmap",
+        "Baseline capture and competitor citation benchmark, agreed in writing",
+        "Technical foundations: schema, llms.txt and an AI-readable site structure",
+        "Entity pass across Companies House, professional body and software advisor directories",
+      ],
+    },
+    {
+      heading: "Every month after",
+      items: [
+        // PLACEHOLDER — new/refresh split is indicative, adjust to how you deliver.
+        "10 content pieces built to be cited (6 new, 4 refreshed)",
+        "4 third-party citation actions: directory, listicle and press placements pitched on your behalf",
+        "Review engine to turn client wins into visible proof",
+        "Visibility tracked across 5 engines, monthly report and call, quarterly re-audit",
+      ],
+    },
+  ],
+  territory:
+    "Covers one exclusive territory (your niche and region). Additional territories agreed on the call.",
+};
 
 /**
  * The technical detail, moved off the card into a collapsed panel. Buyers who
@@ -433,12 +398,12 @@ const ENGINE_SPEC = [
   {
     area: "Content",
     detail:
-      "10 pieces a month written to be quoted rather than ranked: deadline guidance, allowable expenses, Making Tax Digital, and the tax questions your specific clients ask. 20 a month on Market Leader.",
+      "10 pieces a month written to be quoted rather than ranked: deadline guidance, allowable expenses, Making Tax Digital, and the tax questions your specific clients ask.",
   },
   {
     area: "Citations",
     detail:
-      "4 third-party actions a month, or 8+ and a running digital PR campaign on Market Leader. Directory listings, listicle inclusion and press placements pitched on your behalf, because AI answers cite sources, not you.",
+      "4 third-party actions a month: directory listings, listicle inclusion and press placements pitched on your behalf, because AI answers cite sources, not you.",
   },
   {
     area: "Reviews",
@@ -448,7 +413,7 @@ const ENGINE_SPEC = [
   {
     area: "Reporting",
     detail:
-      "Territory Engine dashboard across 5 engines, a monthly report and call, and a full re-audit every quarter. Market Leader tracks weekly and adds a quarterly session with your senior team.",
+      "Territory Engine dashboard across 5 engines, a monthly report and call, and a full re-audit every quarter.",
   },
 ];
 
@@ -1115,7 +1080,7 @@ export default function AccountantsPage() {
             Pricing
           </span>
           <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-paper)]">
-            Two programmes. One goal.{" "}
+            One programme. One goal.{" "}
             <span className="text-[color:var(--color-paper)]/55">Your patch held exclusively.</span>
           </h2>
 
@@ -1147,123 +1112,10 @@ export default function AccountantsPage() {
             </div>
           </div>
 
-          {/* Two cards, side by side from md, entry tier first so it also leads
-              on a stacked mobile view.
-
-              The accent belongs to the £2,995 card: it is the option we expect
-              most firms to take, and a buyer should not have to work out which
-              one is the normal one. Market Leader anchors purely on its price
-              and its scope, so it stays white and quiet — a second badge
-              competing for attention would flatten both. */}
-          <div className="mt-10 sm:mt-16 grid items-stretch gap-6 sm:gap-7 md:grid-cols-2">
-            {PROGRAMMES.map((prog) => (
-              <div
-                key={prog.name}
-                /* Not overflow-hidden: the floating label hangs past the top edge. */
-                className={`group/card relative flex h-full flex-col rounded-2xl bg-white p-8 transition-transform duration-300 ease-out hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:p-10 ${
-                  prog.primary
-                    ? "border-2 border-[color:var(--color-domigreen)] shadow-[0_34px_70px_-30px_rgba(1,232,144,0.45)]"
-                    : "border border-black/[0.08] shadow-[0_24px_60px_-34px_rgba(20,17,13,0.55)]"
-                }`}
-              >
-                {prog.label ? (
-                  <span className="absolute top-0 left-8 inline-flex -translate-y-1/2 items-center rounded-full bg-[color:var(--color-domigreen)] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-charcoal)] shadow-[0_6px_18px_-6px_rgba(1,232,144,0.9)] sm:left-10">
-                    {prog.label}
-                  </span>
-                ) : null}
-
-                <h3 className="text-[19px] font-bold tracking-tight text-[color:var(--color-ink)] sm:text-[21px]">
-                  {prog.name}
-                </h3>
-
-                {/* Price block, closed off with a hairline so the feature list
-                    below reads as a separate thing to scan. */}
-                <div className="mt-5 flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-                  <span
-                    className={`font-bold leading-none tracking-[-0.05em] text-[color:var(--color-ink)] ${
-                      prog.primary
-                        ? "text-[clamp(2.6rem,6vw,3.4rem)]"
-                        : "text-[clamp(2.4rem,5.4vw,3.1rem)]"
-                    }`}
-                  >
-                    {prog.price}
-                  </span>
-                  <span className="text-[14px] font-semibold text-[color:var(--color-ink-3)]">
-                    {prog.cadence}
-                  </span>
-                </div>
-                <p className="mt-2.5 text-[12px] font-semibold text-[color:var(--color-ink-3)]">
-                  {prog.term}
-                </p>
-                <div aria-hidden className="mt-6 border-t border-black/[0.07]" />
-
-                {prog.tagline ? (
-                  <p className="mt-5 text-[16px] font-bold leading-snug tracking-tight text-[color:var(--color-pine)]">
-                    {prog.tagline}
-                  </p>
-                ) : null}
-
-                <MobileCollapse
-                  label="See what&apos;s included"
-                  closeLabel="Hide details"
-                  className="md:!flex md:flex-1 md:flex-col"
-                >
-                  {prog.blocks.map((block, bi) => (
-                    <div
-                      key={block.heading}
-                      /* No tagline above it, so the first group takes the
-                         tagline's own offset and both cards' first line after
-                         the divider sits at the same height. */
-                      className={bi === 0 ? (prog.tagline ? "mt-6" : "mt-5") : "mt-7"}
-                    >
-                      <p className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.16em] text-[color:var(--color-ink-3)]">
-                        <span
-                          aria-hidden
-                          className="h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]"
-                        />
-                        {block.heading}
-                      </p>
-                      <ul className="mt-3.5 space-y-2">
-                        {block.items.map((f) => (
-                          <li
-                            key={f}
-                            className="flex gap-2.5 text-[14px] leading-[1.45] text-[color:var(--color-ink-2)]"
-                          >
-                            <span
-                              aria-hidden
-                              className="mt-px flex h-[18px] w-[18px] shrink-0 items-center justify-center rounded-full bg-[color:var(--color-domigreen)]/15"
-                            >
-                              <svg
-                                viewBox="0 0 24 24"
-                                className="h-[11px] w-[11px] text-[color:var(--color-pine)]"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="3.4"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              >
-                                <path d="m5 13 4 4L19 7" />
-                              </svg>
-                            </span>
-                            {f}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                  <div aria-hidden className="hidden grow md:block" />
-                  <p className="mt-6 rounded-xl bg-[color:var(--color-pine)]/[0.08] px-3.5 py-3 text-[13px] font-semibold leading-relaxed text-[color:var(--color-pine)]">
-                    {prog.territory}
-                  </p>
-                </MobileCollapse>
-
-                {/* The content region above grows, so both buttons land on the
-                    same baseline without a dead band above either. Same wording
-                    on both — every route off this page is the call, never a
-                    checkout. */}
-                <Cta href={site.calendly} className="mt-8 w-full" />
-              </div>
-            ))}
+          {/* One programme, two ways to pay, across the full container: price
+              and exclusivity on the left, what is included on the right. */}
+          <div className="mt-10 sm:mt-16">
+            <PricingCard plan={PLAN} href={site.calendly} />
           </div>
 
           {/* The plumbing, collapsed. Native details/summary so it needs no JS
@@ -1274,7 +1126,7 @@ export default function AccountantsPage() {
                 What&apos;s inside the engine
               </span>
               <span className="flex items-center gap-2 text-[13px] text-[color:var(--color-paper)]/50">
-                <span className="hidden sm:inline">Full technical breakdown, both tiers</span>
+                <span className="hidden sm:inline">Full technical breakdown</span>
                 <svg
                   viewBox="0 0 24 24"
                   className="h-4 w-4 shrink-0 transition-transform duration-300 group-open:rotate-180"
@@ -1327,11 +1179,11 @@ export default function AccountantsPage() {
           </div>
 
           <p className="mt-10 sm:mt-16 text-[13px] text-[color:var(--color-paper)]/45">
-            Both programmes are pure AI search, on a 3 month initial term and rolling monthly after
-            that. Exclusivity means one practice per niche, per region: Market Leader simply holds up
-            to three of those slots rather than one. AI visibility compounds, so we do not take
-            clients for a single month. Not ready to commit? We will run the visibility audit free on
-            a call so you can see where you stand first.
+            The programme is pure AI search, on a 3 month minimum term (6 months recommended) and
+            rolling monthly after that, paid monthly or with the first 3 months upfront. Exclusivity
+            means one practice per niche, per region. AI visibility compounds, so we do not take clients for
+            a single month. Not ready to commit? We will run the visibility audit free on a call so you
+            can see where you stand first.
           </p>
         </div>
       </section>
