@@ -21,10 +21,10 @@ function servesLocally(answers: Answers): boolean {
   return areas.includes("Local") || areas.includes("Regional");
 }
 
-/** Answered "International" or "Other" — they need somewhere to name the countries. */
-function servesBeyondUk(answers: Answers): boolean {
+/** Answered "International" — they need somewhere to name the countries. */
+function servesInternationally(answers: Answers): boolean {
   const areas = asList(answers.serviceAreas);
-  return areas.includes("International") || areas.includes("Other");
+  return areas.includes("International");
 }
 
 /** Someone outside the business looks after the site, so we need their details. */
@@ -114,10 +114,9 @@ export const QUESTIONS: Question[] = [
       type: "multi",
       options: [
         { value: "Local", label: "Local", hint: "One town or city" },
-        { value: "Regional", label: "Regional", hint: "A county or a few counties" },
-        { value: "National (UK)", label: "National (UK)" },
-        { value: "International", label: "International" },
-        { value: "Other", label: "Something else", hint: "Tell us on the next screen" },
+        { value: "Regional", label: "Regional", hint: "A few counties, states or regions" },
+        { value: "National", label: "National", hint: "Your whole country" },
+        { value: "International", label: "International", hint: "More than one country" },
       ],
     },
   },
@@ -128,12 +127,12 @@ export const QUESTIONS: Question[] = [
     emailLabel: "Countries and areas served",
     helper:
       "Name them if you can — AI answers are location-aware, so we track your visibility country by country.",
-    when: servesBeyondUk,
+    when: servesInternationally,
     input: {
       type: "longtext",
       rows: 4,
       maxLength: 1000,
-      placeholder: "UK, Ireland and the Netherlands. Occasional work in the UAE…",
+      placeholder: "Singapore, Malaysia and Indonesia. Occasional work in Australia…",
     },
   },
   {
@@ -158,7 +157,7 @@ export const QUESTIONS: Question[] = [
     input: {
       type: "group",
       fields: [
-        { id: "one", label: "One", placeholder: "The only UK supplier with…" },
+        { id: "one", label: "One", placeholder: "The only supplier in our market with…" },
         { id: "two", label: "Two", placeholder: "48-hour turnaround as standard" },
         { id: "three", label: "Three", placeholder: "In-house engineers, no subcontracting" },
       ],

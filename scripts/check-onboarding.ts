@@ -49,21 +49,21 @@ function ids(answers: Answers): string[] {
 console.log("\nConditional logic");
 
 // --- Google Business Profile: shown only for Local or Regional -------------
-for (const areas of [["Local"], ["Regional"], ["Local", "International"], ["Regional", "National (UK)"]]) {
+for (const areas of [["Local"], ["Regional"], ["Local", "International"], ["Regional", "National"]]) {
   check(`GBP shown for ${areas.join("+")}`, ids({ serviceAreas: areas }).includes("accessBusinessProfile"));
 }
-for (const areas of [[], ["National (UK)"], ["International"], ["National (UK)", "International"]]) {
+for (const areas of [[], ["National"], ["International"], ["National", "International"]]) {
   check(
     `GBP hidden for ${areas.join("+") || "no answer"}`,
     !ids({ serviceAreas: areas }).includes("accessBusinessProfile"),
   );
 }
 
-// --- Countries box: shown only for International or Other ------------------
-for (const areas of [["International"], ["Other"], ["Local", "International"]]) {
+// --- Countries box: shown only for International ---------------------------
+for (const areas of [["International"], ["Local", "International"], ["National", "International"]]) {
   check(`countries box shown for ${areas.join("+")}`, ids({ serviceAreas: areas }).includes("serviceAreaDetail"));
 }
-for (const areas of [[], ["Local"], ["Local", "Regional", "National (UK)"]]) {
+for (const areas of [[], ["Local"], ["Local", "Regional", "National"]]) {
   check(
     `countries box hidden for ${areas.join("+") || "no answer"}`,
     !ids({ serviceAreas: areas }).includes("serviceAreaDetail"),
@@ -88,7 +88,7 @@ check("redesign detail hidden when unanswered", !ids({}).includes("plannedChange
 
 // --- No dead ends: every branch reaches review then done ------------------
 const branchMatrix: Answers[] = [];
-for (const areas of [["Local"], ["National (UK)"], []]) {
+for (const areas of [["Local"], ["National"], []]) {
   for (const owner of ["In-house", "Agency"]) {
     for (const planned of ["Yes", "No"]) {
       branchMatrix.push({ serviceAreas: areas, websiteOwner: owner, plannedChanges: planned });
