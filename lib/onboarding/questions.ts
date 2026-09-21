@@ -125,8 +125,7 @@ export const QUESTIONS: Question[] = [
     section: "business",
     label: "Which countries?",
     emailLabel: "Countries and areas served",
-    helper:
-      "Name them if you can — AI answers are location-aware, so we track your visibility country by country.",
+    helper: "Name them if you can — AI answers are location-aware, so the more precise the better.",
     when: servesInternationally,
     input: {
       type: "longtext",
