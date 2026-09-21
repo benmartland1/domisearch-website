@@ -21,6 +21,12 @@ function servesLocally(answers: Answers): boolean {
   return areas.includes("Local") || areas.includes("Regional");
 }
 
+/** Answered "International" or "Other" — they need somewhere to name the countries. */
+function servesBeyondUk(answers: Answers): boolean {
+  const areas = asList(answers.serviceAreas);
+  return areas.includes("International") || areas.includes("Other");
+}
+
 /** Someone outside the business looks after the site, so we need their details. */
 function hasExternalDeveloper(answers: Answers): boolean {
   const owner = asText(answers.websiteOwner);
@@ -111,7 +117,23 @@ export const QUESTIONS: Question[] = [
         { value: "Regional", label: "Regional", hint: "A county or a few counties" },
         { value: "National (UK)", label: "National (UK)" },
         { value: "International", label: "International" },
+        { value: "Other", label: "Something else", hint: "Tell us on the next screen" },
       ],
+    },
+  },
+  {
+    id: "serviceAreaDetail",
+    section: "business",
+    label: "Which countries?",
+    emailLabel: "Countries and areas served",
+    helper:
+      "Name them if you can — AI answers are location-aware, so we track your visibility country by country.",
+    when: servesBeyondUk,
+    input: {
+      type: "longtext",
+      rows: 4,
+      maxLength: 1000,
+      placeholder: "UK, Ireland and the Netherlands. Occasional work in the UAE…",
     },
   },
   {
@@ -148,7 +170,7 @@ export const QUESTIONS: Question[] = [
     label: "What proof can we use?",
     emailLabel: "Proof points",
     helper:
-      "Awards, accreditations, notable clients, results, years in business, team size, reviews. AI engines cite specifics, so the more concrete the better.",
+      "Awards, accreditations, notable clients, results, years in business, team size, reviews. AI engines cite specifics, so the more concrete the better. If you've got a lot, summarise it or give us a handful to get the ball rolling — we'll ask for the rest if we need it.",
     input: {
       type: "longtext",
       rows: 7,
@@ -157,18 +179,21 @@ export const QUESTIONS: Question[] = [
     },
     attachments: { key: "proofPointsFiles", label: "Attach anything that backs this up" },
   },
+  // Claims and off-limits topics were two questions. They were answered as one
+  // thing — "here's what we can't say" — so they are asked as one.
   {
     id: "restrictions",
     section: "business",
-    label: "Is there anything we must not say or claim?",
-    emailLabel: "Claims and phrases to avoid",
+    label: "Is there anything we must not say, claim or write about?",
+    emailLabel: "Claims, phrases and topics to avoid",
     helper:
-      "Regulatory rules, phrases to avoid, sensitive topics. Especially important for regulated sectors — tell us now and we'll build the guardrails in from day one.",
+      "Regulatory rules, phrases to avoid, sensitive or off-limits topics. Especially important for regulated sectors — tell us now and we'll build the guardrails in from day one.",
     input: {
       type: "longtext",
-      rows: 6,
+      rows: 7,
       maxLength: 3000,
-      placeholder: "We can't use the word 'guaranteed' about returns. No naming clients in healthcare…",
+      placeholder:
+        "We can't use the word 'guaranteed' about returns. No naming clients in healthcare. Nothing on pricing, and steer clear of anything political…",
     },
   },
 
@@ -176,7 +201,7 @@ export const QUESTIONS: Question[] = [
   {
     id: "competitors",
     section: "competitors",
-    label: "Who are your main competitors?",
+    label: "Who would you say are your main competitors?",
     emailLabel: "Competitors",
     helper: "Three to five is ideal. We track how you show up against them in AI answers.",
     input: {
@@ -233,18 +258,6 @@ export const QUESTIONS: Question[] = [
     emailLabel: "Content we should feel like",
     helper: "Competitors, publications, someone in a completely different sector. Paste the links.",
     input: { type: "links", addLabel: "Add another link", max: 6, placeholder: "stripe.com/blog" },
-  },
-  {
-    id: "offLimitsTopics",
-    section: "content",
-    label: "Any topics that are off-limits?",
-    emailLabel: "Off-limits topics",
-    input: {
-      type: "longtext",
-      rows: 5,
-      maxLength: 2000,
-      placeholder: "Nothing on pricing. Steer clear of anything political…",
-    },
   },
 
   // --------------------------------------------- 5. Website and technical

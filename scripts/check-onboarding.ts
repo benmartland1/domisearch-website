@@ -59,6 +59,17 @@ for (const areas of [[], ["National (UK)"], ["International"], ["National (UK)",
   );
 }
 
+// --- Countries box: shown only for International or Other ------------------
+for (const areas of [["International"], ["Other"], ["Local", "International"]]) {
+  check(`countries box shown for ${areas.join("+")}`, ids({ serviceAreas: areas }).includes("serviceAreaDetail"));
+}
+for (const areas of [[], ["Local"], ["Local", "Regional", "National (UK)"]]) {
+  check(
+    `countries box hidden for ${areas.join("+") || "no answer"}`,
+    !ids({ serviceAreas: areas }).includes("serviceAreaDetail"),
+  );
+}
+
 // --- Developer contact: shown only for freelance or agency -----------------
 for (const owner of ["Freelance developer", "Agency"]) {
   check(`developer contact shown for "${owner}"`, ids({ websiteOwner: owner }).includes("developerContact"));
@@ -143,14 +154,15 @@ const filled: Answers = {
   stakeholders: [{ name: "Tom Rees", role: "MD", email: "tom@northgatejoinery.co.uk" }, {}],
   companyName: "Northgate Joinery",
   websiteUrl: "https://northgatejoinery.co.uk",
-  serviceAreas: ["Local", "Regional"],
+  serviceAreas: ["Local", "Regional", "International"],
+  serviceAreaDetail: "UK mainly. Some work in Ireland and the Netherlands.",
   idealClient: "Main contractors on commercial fit-outs in the North West.\nUsually a project manager under time pressure.",
   differentiators: { one: "Own workshop", two: "Six-week lead time", three: "FSC certified throughout" },
   proofPoints: "Constructionline Gold. 42 years trading. 18 joiners on the books.",
   proofPointsFiles: [
     { name: "accreditations.pdf", pathname: "accreditations-x7Fq2.pdf", size: 482000, type: "application/pdf" },
   ],
-  restrictions: "Never say 'fireproof'. 'Fire-rated to spec' only.",
+  restrictions: "Never say 'fireproof'. 'Fire-rated to spec' only. Nothing on pricing.",
   competitors: [
     { name: "Baxter Joinery", website: "baxterjoinery.co.uk" },
     { name: "Kingsmill", website: "https://kingsmill.com" },
@@ -160,7 +172,6 @@ const filled: Answers = {
   brandAssets: "Guidelines are from 2021 but still current.",
   brandAssetLinks: ["northgatejoinery.co.uk/about"],
   contentInspiration: ["stripe.com/blog"],
-  offLimitsTopics: "Nothing on pricing.",
   platform: "WordPress",
   websiteOwner: "Agency",
   developerContact: { name: "Sam at Northgate Digital", email: "sam@northgate.digital" },
