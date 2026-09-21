@@ -89,7 +89,7 @@ export const ACCESS_PLATFORMS: AccessPlatform[] = [
   {
     id: "accessAnalytics",
     name: "Google Analytics 4",
-    why: "So we can measure traffic arriving from AI platforms and prove the impact.",
+    why: "So we can see the traffic arriving on your site from AI assistants.",
     permission: "Editor, at property level",
     link: { href: "https://analytics.google.com", label: "Open Google Analytics" },
     steps: () => [

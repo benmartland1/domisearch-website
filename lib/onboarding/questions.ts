@@ -201,7 +201,7 @@ export const QUESTIONS: Question[] = [
     section: "competitors",
     label: "Who would you say are your main competitors?",
     emailLabel: "Competitors",
-    helper: "Three to five is ideal. We track how you show up against them in AI answers.",
+    helper: "Three to five is ideal — the ones you'd hate to lose a deal to.",
     input: {
       type: "repeater",
       addLabel: "Add another competitor",
@@ -348,7 +348,7 @@ export const QUESTIONS: Question[] = [
     section: "website",
     label: "Tell us more.",
     emailLabel: "Planned change — detail",
-    helper: "What's changing, roughly when, and who's doing it. Migrations are the single biggest risk to AI visibility, so timing matters.",
+    helper: "What's changing, roughly when, and who's doing it. Migrations are one of the biggest risks to AI visibility, so timing matters.",
     when: (a) => asText(a.plannedChanges) === "Yes",
     input: {
       type: "longtext",

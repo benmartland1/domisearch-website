@@ -32,8 +32,8 @@ export function WelcomeScreen({
           email you a link back in.
         </p>
         <p>
-          None of it is admin for the sake of it. It feeds straight into your first 30 days: the visibility
-          baseline, the technical groundwork, and the first content we put in front of AI engines.
+          None of it is admin for the sake of it. It feeds straight into the work: the visibility baseline,
+          the technical groundwork, and the first content we put in front of AI engines.
         </p>
       </div>
 
@@ -115,7 +115,9 @@ export function ReviewScreen({
       {missing.length > 0 && (
         <div className="ob-card p-5">
           <p className="mb-3 text-[color:var(--color-fog)]">
-            Two or three still need an answer before we can take it:
+            {missing.length === 1
+              ? "One answer is still missing before we can take it:"
+              : `${missing.length} answers are still missing before we can take it:`}
           </p>
           <ul className="flex flex-col gap-2">
             {missing.map((item) => (
