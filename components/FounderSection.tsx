@@ -3,12 +3,15 @@ import Image from "next/image";
 import { ScrollReveal } from "./ScrollReveal";
 import { site } from "@/lib/site";
 
+/*
+ * Every line here is a verified biographical fact. Search marketing is kept
+ * as supporting experience; the lead is the AI search work Ben does today.
+ */
 const credentials = [
-  "Four years running Google Ads",
-  "£3M+ in managed ad spend, personally accountable",
-  "Google Partner",
-  "Leads DomiSearch's AEO research programme",
-  "Manchester-based, working UK, EU & US",
+  "Founded DomiSearch in 2023",
+  "Leads DomiSearch's AI search research and client delivery",
+  "Five years in search marketing before that, in-house and agency-side",
+  "Works with UK service businesses, with recruitment agencies a core focus",
 ];
 
 export function FounderSection() {
@@ -56,7 +59,7 @@ export function FounderSection() {
                     </div>
                   </div>
                   <div className="text-[10px] uppercase tracking-[0.18em] text-[color:var(--color-fog)]/60">
-                    Manchester, UK
+                    {site.city}, UK
                   </div>
                 </div>
               </div>
@@ -76,16 +79,18 @@ export function FounderSection() {
           </ScrollReveal>
           <ScrollReveal delay={160}>
             <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-[color:var(--color-fog)]/85">
-              I'm Ben - DomiSearch's founder. I started this agency because I was tired of watching good
-              brands hand retainers to agencies that wouldn't pick up the phone. Every client account
-              here is personally reviewed by me, every month. No junior pool. No disappearing act.
+              I&apos;m Ben, DomiSearch&apos;s founder. Most of my week is spent looking at what
+              ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews say when someone researches
+              a service business, and working out why one firm gets named and another does not.
+              That evidence is where every client programme starts.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={220}>
             <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[color:var(--color-fog)]/85">
-              Five years running Google Ads for e-commerce and service brands - in-house, then
-              agency-side. I lead our AEO research because the next five years of search are being
-              rewritten right now, and most agencies are pretending they aren't.
+              I came to this from five years in search marketing, running paid search for e-commerce
+              and service brands in-house and then agency-side. It taught me to work from measured
+              results rather than opinion. Today the work is AI search visibility, and I review
+              every client account personally.
             </p>
           </ScrollReveal>
 

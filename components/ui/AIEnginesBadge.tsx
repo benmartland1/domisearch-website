@@ -6,7 +6,7 @@ import React, { MouseEvent, useEffect, useRef, useState } from "react";
  * A 3D-tilt "AI Search Coverage" badge. Same tilt / shine infrastructure as
  * the Google Partner badge, rendered as a silver-finish card
  * with a row of colour-coded AI-engine chips (ChatGPT, Gemini, Perplexity,
- * Claude, Copilot).
+ * Claude, Google AI Overviews).
  */
 
 type Props = {
@@ -44,7 +44,7 @@ const engines = [
   { name: "Gemini", src: "/engines/gemini.png" },
   { name: "Perplexity", src: "/engines/perplexity.png" },
   { name: "Claude", src: "/engines/claude.png" },
-  { name: "Copilot", src: "/engines/copilot.png" },
+  { name: "Google AI Overviews", src: "/engines/google.png" },
 ];
 
 export function AIEnginesBadge({ link, className }: Props) {

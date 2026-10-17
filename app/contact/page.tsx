@@ -9,7 +9,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact - Talk to DomiSearch",
   description:
-    "Reach out to DomiSearch. Email, phone, or book a free 30-minute audit call with our founder Ben.",
+    "Talk to DomiSearch about your AI search visibility. Email, phone, or book a free 30-minute discovery call with our founder Ben.",
   alternates: { canonical: "/contact" },
 };
 
@@ -31,15 +31,15 @@ export default function ContactPage() {
           <ScrollReveal as="span" className="eyebrow">Get in touch</ScrollReveal>
           <ScrollReveal delay={60}>
             <h1 className="display mt-5 max-w-4xl text-balance text-[clamp(2.5rem,6vw,5rem)]">
-              Let's talk about what
+              Let's talk about where
               <br />
-              <span className="text-[color:var(--color-domigreen)]">search can do for you.</span>
+              <span className="text-[color:var(--color-domigreen)]">you stand in AI search.</span>
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={160}>
             <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-fog)]/85">
-              Send us a message, email, or book a free 30-minute call with Ben. We reply to every
-              enquiry within one working day.
+              Send us a message, email, or book a free 30-minute discovery call with Ben. We reply
+              to every enquiry within one working day. Google Ads enquiries are welcome too.
             </p>
           </ScrollReveal>
         </div>
@@ -56,7 +56,7 @@ export default function ContactPage() {
               <div className="card p-8">
                 <div className="eyebrow">Straight to Ben</div>
                 <p className="mt-4 text-[color:var(--color-fog)]/85">
-                  Prefer to skip the form? Book a free 30-minute audit call.
+                  Prefer to skip the form? Book a free 30-minute discovery call about your AI search visibility.
                 </p>
                 <Link
                   href={site.calendly}

@@ -69,7 +69,7 @@ export async function POST(request: Request) {
         <h2 style="margin: 0 0 16px; font-size: 22px; font-weight: 600;">You're in.</h2>
         <p style="line-height: 1.6; margin: 0 0 16px;">
           Thanks for subscribing to the DomiSearch newsletter. You'll get monthly research, playbooks
-          and field notes on Google Ads and AI Engine Optimisation - no fluff, no filler.
+          and field notes on AI search visibility - no fluff, no filler.
         </p>
         <p style="line-height: 1.6; margin: 0 0 16px;">
           If you ever want to chat about your account or AI visibility specifically,
@@ -83,7 +83,7 @@ export async function POST(request: Request) {
     `;
     const welcomeText = `You're in.
 
-Thanks for subscribing to the DomiSearch newsletter. You'll get monthly research, playbooks and field notes on Google Ads and AI Engine Optimisation - no fluff, no filler.
+Thanks for subscribing to the DomiSearch newsletter. You'll get monthly research, playbooks and field notes on AI search visibility - no fluff, no filler.
 
 If you ever want to chat about your account or AI visibility specifically, book a call: ${site.calendly}
 

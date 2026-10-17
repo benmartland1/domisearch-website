@@ -20,7 +20,7 @@ const aboutGraph = {
       logo: `${site.url}/brand/logo.png`,
       foundingDate: "2023",
       description:
-        "DomiSearch is a Manchester-based Google Ads and AI Engine Optimisation (AEO) agency. A certified Google Partner, DomiSearch helps e-commerce and service brands capture demand through Google Ads and engineer demand forming inside AI search engines including ChatGPT, Gemini, and Perplexity.",
+        "DomiSearch is a Manchester-based AI search visibility (Answer Engine Optimisation) agency for service businesses. It helps brands get discovered, mentioned and cited across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews, with recruitment agencies a core focus. DomiSearch also manages Google Ads for a smaller number of clients.",
       areaServed: ["United Kingdom", "European Union", "United States"],
       address: {
         "@type": "PostalAddress",
@@ -51,23 +51,23 @@ const aboutGraph = {
         addressCountry: "GB",
       },
       description:
-        "Ben Martland is the founder of DomiSearch, a Manchester-based Google Ads and AEO agency. He has 5 years of experience managing Google Ads for e-commerce and service brands, with over £3M in personally managed ad spend. He holds Google Partner certification and leads DomiSearch's monthly AEO research programme.",
+        "Ben Martland is the founder of DomiSearch, an AI search visibility (AEO) agency for service businesses. He leads DomiSearch's AI search research and client delivery, and came to it from five years in search marketing, running paid search for e-commerce and service brands in-house and agency-side.",
     },
     {
       "@type": "AboutPage",
       name: "About DomiSearch",
       url: `${site.url}/about`,
       description:
-        "Learn about DomiSearch, a Manchester-based Google Ads and AEO agency founded in 2023 by Ben Martland. Google Partner, and one of the UK's first agencies to offer AI Engine Optimisation as a standalone service.",
+        "Learn about DomiSearch, an AI search visibility (AEO) agency for service businesses founded in 2023 by Ben Martland and based in Manchester.",
       mainEntity: { "@type": "Organization", name: "DomiSearch" },
     },
   ],
 };
 
 export const metadata: Metadata = {
-  title: "About DomiSearch | Google Ads & AEO Agency - Manchester",
+  title: "About DomiSearch | AI Search Visibility Agency - Manchester",
   description:
-    "DomiSearch is a Manchester-based Google Ads and AEO agency founded in 2023 by Ben Martland. Google Partner, £3M+ in personally managed ad spend.",
+    "DomiSearch is an AI search visibility (AEO) agency for service businesses, founded in 2023 by Ben Martland and based in Manchester. Research-led, tracked daily, reported monthly.",
   alternates: { canonical: "/about" },
 };
 
@@ -85,8 +85,8 @@ const values = [
     body: "We turn down more work than we take on. Fit matters more than fee - it's the only way we stay sharp.",
   },
   {
-    title: "Built for what's next",
-    body: "AI search is changing how people find brands. We're building for the search engines that will exist in two years, not the ones we knew two years ago.",
+    title: "Evidence over opinion",
+    body: "We look at what AI answers actually say about your market before we recommend anything, and we tell you what the measurement can and cannot show.",
   },
 ];
 
@@ -109,15 +109,18 @@ export default function AboutPage() {
           <ScrollReveal as="span" className="eyebrow">About</ScrollReveal>
           <ScrollReveal delay={60}>
             <h1 className="display mt-5 max-w-4xl text-balance text-[clamp(2.5rem,6vw,5rem)]">
-              A small, senior team - built for the way search is moving.
+              An AI search visibility agency for service businesses.
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={160}>
             <p className="mt-8 max-w-3xl text-lg text-[color:var(--color-fog)]/85 sm:text-xl">
-              DomiSearch is a Manchester-based search agency combining Google Ads and AI Engine
-              Optimisation (AEO) into a single discipline we call{" "}
-              <span className="text-[color:var(--color-glacier)]">Search Ownership</span>. We work
-              with e-commerce and service brands across the UK, EU and US.
+              DomiSearch helps service businesses improve how they are discovered, mentioned and
+              cited across{" "}
+              <span className="text-[color:var(--color-glacier)]">
+                ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews
+              </span>
+              . Recruitment agencies are a core focus. We work with clients across the UK, EU and
+              US, and still manage Google Ads for a smaller number of them.
             </p>
           </ScrollReveal>
         </div>
@@ -160,15 +163,15 @@ export default function AboutPage() {
             </ScrollReveal>
             <ScrollReveal delay={140}>
               <p className="mt-6 max-w-xl text-[color:var(--color-fog)]/85">
-                Ben Martland founded DomiSearch in 2023. With 5 years of experience managing
-                Google Ads for e-commerce and service brands — in-house and agency-side — he has
-                personally managed over £3M in Google Ads spend. He holds Google Partner certification, and leads DomiSearch's monthly AEO research
-                programme.
+                Ben Martland founded DomiSearch in 2023 and leads its AI search research and client
+                delivery: the buyer-question research, the visibility tracking and the review of
+                every client account. Before that he spent five years in search marketing, running
+                paid search for e-commerce and service brands in-house and then agency-side.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={200}>
               <p className="mt-4 max-w-xl text-[color:var(--color-fog)]/80">
-                Based in Manchester, working with brands across the UK, EU and US.
+                The agency is based in Manchester and works with clients across the UK, EU and US.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={260}>
@@ -188,44 +191,44 @@ export default function AboutPage() {
       <section className="relative mx-auto mt-24 max-w-7xl px-6 lg:px-10">
         <ScrollReveal delay={120}>
           <div className="card p-10">
-            <div className="eyebrow">What sets us apart</div>
+            <div className="eyebrow">How we work</div>
             <p className="mt-6 max-w-3xl text-[color:var(--color-fog)]/85">
-              DomiSearch is a certified Google Partner, with over £3M in
-              personally managed Google Ads spend. Founded in 2023 by Ben Martland in Manchester,
-              DomiSearch is one of the UK's first search agencies to offer AI Engine Optimisation
-              (AEO) as a standalone service. Unlike percentage-of-spend agencies, DomiSearch
-              charges flat monthly retainers with no setup fees and no hidden costs.
+              Every programme starts with evidence: where you, your competitors and the cited
+              sources appear today for the questions your potential clients ask AI. That baseline
+              decides the work. We then improve the technical foundations, service pages and
+              content, with your team's expertise and approval, and track the agreed questions
+              daily so the monthly review is about what changed, not what we hoped would.
             </p>
             <ul className="mt-8 grid gap-5 text-[color:var(--color-fog)]/85 sm:grid-cols-2">
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
-                <span><strong className="text-[color:var(--color-glacier)]">Google Partner.</strong> Certified on the platform that matters most for paid performance.</span>
+                <span><strong className="text-[color:var(--color-glacier)]">Research first.</strong> Buyer questions, competitor appearances and cited sources, recorded before any work starts.</span>
               </li>
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
-                <span><strong className="text-[color:var(--color-glacier)]">£3M+ managed spend.</strong> Pattern recognition at a scale a junior freelancer can't match.</span>
+                <span><strong className="text-[color:var(--color-glacier)]">Daily tracking, monthly review.</strong> The same questions, the same platforms, so periods can be compared fairly.</span>
               </li>
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
-                <span><strong className="text-[color:var(--color-glacier)]">AEO-first positioning.</strong> We publish original research on AI engine visibility monthly.</span>
+                <span><strong className="text-[color:var(--color-glacier)]">Your expertise, our structure.</strong> Content is built with your team and approved by you before publication.</span>
               </li>
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
-                <span><strong className="text-[color:var(--color-glacier)]">Flat monthly fees.</strong> No percentage-of-spend incentives. No smoke.</span>
+                <span><strong className="text-[color:var(--color-glacier)]">Honest about limits.</strong> We cannot control which brands an AI platform recommends, and we say so.</span>
               </li>
             </ul>
             <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm font-medium text-[color:var(--color-domigreen)]">
               <Link
-                href="/services/google-ads"
-                className="inline-flex items-center gap-2 transition-transform duration-300 hover:translate-x-0.5"
-              >
-                Learn more about our Google Ads service <span aria-hidden>→</span>
-              </Link>
-              <Link
                 href="/services/aeo"
                 className="inline-flex items-center gap-2 transition-transform duration-300 hover:translate-x-0.5"
               >
-                Learn more about our AEO service <span aria-hidden>→</span>
+                Our AI search programme <span aria-hidden>→</span>
+              </Link>
+              <Link
+                href="/services/google-ads"
+                className="inline-flex items-center gap-2 text-[color:var(--color-fog)]/70 transition-transform duration-300 hover:translate-x-0.5"
+              >
+                Google Ads management <span aria-hidden>→</span>
               </Link>
             </div>
           </div>
@@ -237,24 +240,25 @@ export default function AboutPage() {
           <ScrollReveal>
             <div className="eyebrow">The thesis</div>
             <h2 className="display mt-4 text-balance text-4xl sm:text-5xl lg:text-[3.5rem]">
-              Search Ownership.
+              Reverse engineer the answer.
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={120}>
             <div className="space-y-5 text-[color:var(--color-fog)]/85">
               <p>
-                Search today isn't just Google. It's ChatGPT, Gemini, Perplexity, Copilot and
-                the handful of engines coming next. Your buyers don't care which surface
-                delivers the answer - only that your brand is in it.
+                A growing share of buyers now research a service business by asking an AI tool
+                before they visit a website or make a call. The answer they get back is their
+                first shortlist. Your brand is either in it or it is not.
               </p>
               <p>
-                Search Ownership is the discipline of showing up, consistently, across every
-                surface they use. Paid covers the demand that exists today. AEO engineers the
-                demand forming inside AI answers. Together, they compound. In isolation, they
-                each do real work - which is why we sell them that way too.
+                We do not guess at why one firm is named and another is not. We look at the
+                answers themselves: which brands appear, which sources are cited and how each
+                business is described. Then we work backwards from that evidence to the website
+                changes, content and credibility work most likely to move it, and we keep
+                measuring to see whether it did.
               </p>
               <p className="text-[color:var(--color-glacier)]">
-                We built the whole agency around making them run as one.
+                Evidence in, work out, measured against the same questions every day.
               </p>
             </div>
           </ScrollReveal>
@@ -278,7 +282,7 @@ export default function AboutPage() {
 
       <LogoWall />
 
-      <CTA heading="Work with a team that does the actual work." sub="If you're tired of agencies who talk more than they ship, book a 30-minute call. We'll tell you honestly whether we can help." />
+      <CTA heading="Find out where you stand in AI search." sub="Book a 30-minute discovery call. We will look at how your business appears in AI answers today and tell you honestly whether we can help." />
     </>
   );
 }

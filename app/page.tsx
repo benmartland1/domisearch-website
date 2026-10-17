@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import { ClientMarquee } from "@/components/ClientMarquee";
-import { ServicesGrid } from "@/components/ServicesGrid";
-import { CaseStudiesSection } from "@/components/CaseStudiesSection";
+import { ProgrammeSection } from "@/components/ProgrammeSection";
+import { ProofSection } from "@/components/ProofSection";
 import { FounderSection } from "@/components/FounderSection";
 import { Testimonials } from "@/components/Testimonials";
 import { CTA } from "@/components/CTA";
@@ -11,37 +11,47 @@ import { faqSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Google Ads & AEO Agency | DomiSearch - Manchester",
+  title: "AI Search Visibility (AEO) Agency for Service Businesses | DomiSearch",
   description:
-    "Google Ads + AI Engine Optimisation (AEO). DomiSearch is the Google Partner agency helping brands win across Google, ChatGPT, Gemini and Perplexity.",
+    "DomiSearch helps service businesses get discovered, mentioned and cited in ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews. Research-led AEO, tracked daily.",
   alternates: { canonical: "/" },
 };
 
+const platforms = site.platforms.join(", ");
+
+/*
+ * Written to support an AI search buying decision. Every answer is qualified:
+ * no promised rankings, recommendations, leads or results timeline.
+ */
 const homeFaqs = [
   {
-    question: "What is AI Engine Optimisation (AEO)?",
+    question: "What is Answer Engine Optimisation (AEO)?",
     answer:
-      "AEO is the practice of optimising your brand's content and technical setup so AI assistants like ChatGPT, Gemini, and Perplexity extract, cite, and recommend your brand in their responses.",
+      "Answer Engine Optimisation is work that improves how a business is discovered, mentioned and cited in AI-generated answers, on platforms such as ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews. It overlaps with established SEO fundamentals, such as accessible pages, clear business information and useful content, and adds research into the questions buyers ask AI and the sources those answers reference.",
   },
   {
     question: "What does DomiSearch do?",
     answer:
-      "DomiSearch is a Manchester-based search agency offering Google Ads management and AI Engine Optimisation (AEO). We help brands capture demand that exists today through Google Ads, and engineer demand forming inside AI search through AEO.",
+      "DomiSearch is an AI search visibility agency for service businesses, with recruitment agencies a core focus. We research the questions your potential clients ask AI tools, examine which brands and sources appear in those answers, and use that evidence to guide website improvements, content and ongoing measurement. We also manage Google Ads for a smaller number of clients.",
   },
   {
-    question: "How much does DomiSearch charge?",
-    answer:
-      "Google Ads management starts from £1,500/month. AEO / AI Search starts from £2,950/month. The combined Search Revenue Ownership package starts from £3,950/month. All retainers are monthly with a three-month minimum and no setup fees.",
+    question: "Which AI platforms do you track?",
+    answer: `We track an agreed set of buyer questions daily across ${platforms}. We add platforms as they earn real usage among the buyers our clients care about.`,
   },
   {
-    question: "Is DomiSearch a Google Partner?",
+    question: "What does the programme involve?",
     answer:
-      "Yes. DomiSearch is a certified Google Partner, with over £3M in personally managed Google Ads spend.",
+      "It starts with an AI visibility and competitor baseline and research into relevant buyer questions and cited sources. We then work through technical foundations and structured data, service-page improvements and content that answers the questions in the research, with your team's expertise and approval. Throughout, we track the agreed questions daily and review progress in a monthly report and strategy call.",
   },
   {
-    question: "Who runs DomiSearch?",
+    question: "How do you measure progress?",
     answer:
-      "DomiSearch was founded in 2023 by Ben Martland, a Manchester-based search specialist with 5 years of Google Ads experience across e-commerce and service brands.",
+      "Against the baseline, on the same tracked questions. We report how often your business is named, which sources the answers cite, how you compare with tracked competitors and how AI describes you. Where tracking allows, we also review AI referral traffic and relevant enquiries. The figures describe the tracked set, not every AI conversation.",
+  },
+  {
+    question: "How quickly might we see results?",
+    answer:
+      "There is no reliable date we can promise for a particular AI recommendation. Our standard initial programme runs for 90 days, which gives a defined period to deliver the agreed work, track changes and review what the evidence shows. Your starting position, competition and the pace of approvals all affect how quickly visibility moves.",
   },
 ];
 
@@ -65,9 +75,14 @@ const homeGraph = {
         height: 60,
       },
       image: `${site.url}/brand/logo.png`,
-      description:
-        "DomiSearch is a Google Partner agency combining Google Ads with AI Engine Optimisation (AEO) so brands win across Google, ChatGPT, Gemini and Perplexity. Based in Manchester, UK.",
+      description: `${site.description} Based in Manchester, UK.`,
       slogan: "Be the brand AI recommends.",
+      knowsAbout: [
+        "Answer Engine Optimisation",
+        "AI search visibility",
+        "Generative Engine Optimisation",
+        "Google Ads management",
+      ],
       founder: {
         "@type": "Person",
         name: site.founder,
@@ -109,10 +124,7 @@ const homeGraph = {
           availableLanguage: "en-GB",
         },
       ],
-      sameAs: [
-        "https://www.google.com/partners/agency",
-        site.trustpilot,
-      ],
+      sameAs: [site.social.linkedin, site.trustpilot],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "DomiSearch Services",
@@ -121,51 +133,21 @@ const homeGraph = {
             "@type": "Offer",
             itemOffered: {
               "@type": "Service",
+              name: "AI Search Visibility (Answer Engine Optimisation)",
+              url: `${site.url}/services/aeo`,
+              description: `AI visibility and competitor baseline, buyer-question and cited-source research, technical foundations and structured data, service-page improvements, content, and daily tracking with monthly reporting across ${platforms}.`,
+              provider: { "@id": `${site.url}/#organization` },
+            },
+          },
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
               name: "Google Ads Management",
               url: `${site.url}/services/google-ads`,
               description:
-                "End-to-end Google Ads management run by a Google Partner. Account restructure, Search, PMax, Demand Gen, landing page CRO, and transparent weekly reporting. From £1,500/month.",
+                "Google Ads account management for existing clients and suitable inbound enquiries: account restructure, Search, PMax, Demand Gen, landing page CRO and transparent reporting.",
               provider: { "@id": `${site.url}/#organization` },
-            },
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              price: "1500",
-              priceCurrency: "GBP",
-              unitText: "month",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "AI Engine Optimisation (AEO)",
-              url: `${site.url}/services/aeo`,
-              description:
-                "Entity optimisation, AI-ready content, schema, citation ops and monthly AI visibility reporting across ChatGPT, Gemini, Perplexity, Copilot, Claude and Google AI Overviews. From £2,950/month.",
-              provider: { "@id": `${site.url}/#organization` },
-            },
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              price: "2950",
-              priceCurrency: "GBP",
-              unitText: "month",
-            },
-          },
-          {
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: "Search Revenue Ownership",
-              url: `${site.url}/services`,
-              description:
-                "Google Ads and AEO unified into one compounding search strategy. Single monthly report, unified strategy across both channels. From £3,950/month.",
-              provider: { "@id": `${site.url}/#organization` },
-            },
-            priceSpecification: {
-              "@type": "PriceSpecification",
-              price: "3950",
-              priceCurrency: "GBP",
-              unitText: "month",
             },
           },
         ],
@@ -189,11 +171,11 @@ const homeGraph = {
         {
           "@type": "Review",
           reviewBody:
-            "Ben from DomiSearch has made my life easy... Anything and I mean anything to do with Google Ads, this guy knows. The guy tells you what works, makes it work and over delivers.",
+            "We brought Ben in to support not just with Google Ads, but also landing pages, copy, and AEO. This helped boost conversions at every stage of the funnel - more clicks from ads and more customers converting. What we value most is his ability to provide clear insights, suggest improvements, and execute independently.",
           author: {
             "@type": "Person",
-            name: "Angellos Koulli",
-            jobTitle: "CEO, Alphaveata",
+            name: "Arjun Kumar",
+            jobTitle: "Founder, Taxd",
           },
           reviewRating: {
             "@type": "Rating",
@@ -214,7 +196,7 @@ const homeGraph = {
       "@id": `${site.url}/#website`,
       url: site.url,
       name: site.name,
-      description: "Google Ads and AI Engine Optimisation agency. Manchester, UK.",
+      description: "AI search visibility (AEO) agency for service businesses. Manchester, UK.",
       publisher: { "@id": `${site.url}/#organization` },
       inLanguage: "en-GB",
       potentialAction: {
@@ -230,9 +212,8 @@ const homeGraph = {
       "@type": "WebPage",
       "@id": `${site.url}/#webpage`,
       url: site.url,
-      name: "Google Ads & AEO Agency | DomiSearch - Manchester",
-      description:
-        "DomiSearch is a Google Partner agency combining Google Ads with AEO. Be the brand AI recommends. Based in Manchester, UK.",
+      name: "AI Search Visibility (AEO) Agency for Service Businesses | DomiSearch",
+      description: `DomiSearch helps service businesses get discovered, mentioned and cited across ${platforms}. Be the brand AI recommends. Based in Manchester, UK.`,
       isPartOf: { "@id": `${site.url}/#website` },
       about: { "@id": `${site.url}/#organization` },
       primaryImageOfPage: {
@@ -267,14 +248,15 @@ export default function HomePage() {
       <div className="mt-6 lg:mt-16">
         <ClientMarquee />
       </div>
-      <ServicesGrid />
-      <CaseStudiesSection />
+      <ProgrammeSection />
+      <ProofSection />
       <FounderSection />
-      <Testimonials showBookCall />
+      <Testimonials showBookCall only={["Eamon Shahir", "Arjun Kumar", "Sam Barraclough"]} />
       <FAQ items={homeFaqs} heading="Common questions." />
       <CTA
-        heading="Own every surface your buyers search."
-        sub="Book a free 30-minute call with Ben. We'll walk through your Google Ads account and how you're showing up across ChatGPT, Gemini and Perplexity - then tell you the three highest-leverage moves you can make next."
+        heading="Find out where you stand in AI search."
+        sub="Request a free AI visibility check, or book a 30-minute call to talk through an AI search roadmap for your business. We'll show you where you appear today, who is being recommended instead, and what we would work on first."
+        secondary={{ label: "Check my AI visibility", href: "/#visibility-check" }}
       />
     </>
   );

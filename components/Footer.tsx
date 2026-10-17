@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { site } from "@/lib/site";
-import { GooglePartnerBadge } from "./ui/GooglePartnerBadge";
 
 export function Footer() {
   return (
@@ -18,19 +17,26 @@ export function Footer() {
             />
           </Link>
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-[color:var(--color-fog)]/80">
-            Google Ads and AI Engine Optimisation - engineered to make your brand the
-            answer AI recommends.
+            AI search visibility for service businesses. We help brands get discovered,
+            mentioned and cited across {site.platforms.join(", ")}.
           </p>
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            <GooglePartnerBadge className="w-[150px]! sm:w-[150px]!" />
-          </div>
         </div>
 
         <div>
           <h4 className="eyebrow mb-4 text-[color:var(--color-glacier)]">Services</h4>
           <ul className="space-y-3 text-sm">
-            <li><Link href="/services/google-ads" className="hover:text-[color:var(--color-domigreen)]">Google Ads</Link></li>
-            <li><Link href="/services/aeo" className="hover:text-[color:var(--color-domigreen)]">AI Search (AEO)</Link></li>
+            <li><Link href="/services/aeo" className="hover:text-[color:var(--color-domigreen)]">AI Search Visibility (AEO)</Link></li>
+            <li><Link href="/services/google-ads" className="hover:text-[color:var(--color-domigreen)]">Google Ads Management</Link></li>
+          </ul>
+          <h4 className="eyebrow mb-4 mt-10 text-[color:var(--color-glacier)]">Sectors</h4>
+          <ul className="space-y-3 text-sm">
+            {site.sectors.map((s) =>
+              s.href.startsWith("http") ? (
+                <li key={s.href}><a href={s.href} target="_blank" rel="noopener" className="hover:text-[color:var(--color-domigreen)]">{s.label}</a></li>
+              ) : (
+                <li key={s.href}><Link href={s.href} className="hover:text-[color:var(--color-domigreen)]">{s.label}</Link></li>
+              ),
+            )}
           </ul>
         </div>
 

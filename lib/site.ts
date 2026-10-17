@@ -5,9 +5,11 @@ const canonicalUrl = rawUrl.replace(/^https?:\/\/(?!www\.)domisearch\.com/, "htt
 
 export const site = {
   name: "DomiSearch",
-  tagline: "The search agency for the AI era.",
+  tagline: "Be the brand AI recommends.",
   description:
-    "DomiSearch is a Google Partner agency combining Google Ads with AI Engine Optimisation (AEO) so brands win across Google, ChatGPT, Gemini and Perplexity.",
+    "DomiSearch is an AI search visibility (AEO) agency for service businesses. We help brands get discovered, mentioned and cited across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews.",
+  /** The platforms the programme tracks. Worded identically everywhere it appears. */
+  platforms: ["ChatGPT", "Gemini", "Perplexity", "Claude", "Google AI Overviews"],
   url: canonicalUrl,
   email: "hi@domisearch.com",
   phone: "+44 7980 920 659",
@@ -32,8 +34,8 @@ export const site = {
     { label: "Healthcare", href: "/healthcare", note: "Private clinics and practices" },
     { label: "Care homes", href: "https://www.domicare.ai", note: "Via DomiCare, our care brand" },
   ],
+  /** Google Ads is deliberately absent here: it is a secondary service, reached from the footer. */
   nav: [
-    { label: "Google Ads", href: "/services/google-ads" },
     { label: "AI Search", href: "/services/aeo" },
     { label: "Sectors", sectors: true },
     { label: "About", href: "/about" },

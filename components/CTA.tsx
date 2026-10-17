@@ -2,10 +2,13 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 import { ScrollReveal } from "./ScrollReveal";
 
+type Action = { label: string; href: string };
+
 export function CTA({
   heading = "Ready to be the brand AI recommends?",
-  sub = "Book a free 30-minute audit with Ben. We'll show you exactly where your brand is winning - and where it's invisible.",
-}: { heading?: string; sub?: string } = {}) {
+  sub = "Book a free 30-minute discovery call with Ben. We'll show you where your brand appears in AI answers today, and where it does not.",
+  secondary = { label: "Contact us", href: "/contact" },
+}: { heading?: string; sub?: string; secondary?: Action } = {}) {
   return (
     <section className="relative mx-auto mt-32 max-w-7xl px-6 lg:px-10">
       <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-[color:var(--color-pine)]/30 via-[color:var(--color-charcoal)] to-[color:var(--color-charcoal)] p-10 sm:p-16">
@@ -27,7 +30,7 @@ export function CTA({
                 Book a call
                 <span aria-hidden>→</span>
               </Link>
-              <Link href="/contact" className="btn btn-ghost">Contact us</Link>
+              <Link href={secondary.href} className="btn btn-ghost">{secondary.label}</Link>
             </div>
           </ScrollReveal>
         </div>

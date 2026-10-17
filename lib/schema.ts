@@ -10,7 +10,7 @@ export const organizationSchema = {
   email: site.email,
   telephone: site.phone,
   description:
-    "DomiSearch is a Google Partner search agency based in Manchester, UK, specialising in Google Ads management and AI Engine Optimisation (AEO).",
+    "DomiSearch is an AI search visibility (Answer Engine Optimisation) agency for service businesses, based in Manchester, UK. It helps brands get discovered, mentioned and cited across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews, and also manages Google Ads.",
   sameAs: [site.social.linkedin, site.social.x, site.trustpilot],
   address: {
     "@type": "PostalAddress",
@@ -37,10 +37,8 @@ export const professionalServiceSchema = {
   },
   areaServed: ["GB", "US", "EU"],
   makesOffer: [
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI search visibility (Answer Engine Optimisation)" } },
     { "@type": "Offer", itemOffered: { "@type": "Service", name: "Google Ads management" } },
-    { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Engine Optimisation (AEO)" } },
-    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Search Revenue Ownership" } },
-    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Landing page CRO" } },
   ],
   sameAs: [site.social.linkedin, site.social.x, site.trustpilot],
 };

@@ -409,12 +409,12 @@ function serviceCopy(service: string): { body: string } {
     case "AEO":
       return {
         body:
-          "Entity work, AI-citable content, schema, and citation ops across ChatGPT, Gemini, Perplexity, Copilot and Claude.",
+          "AI search visibility: a tracked baseline, buyer-question research, technical foundations, service-page improvements and content, across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews.",
       };
     case "Integrated":
       return {
         body:
-          "Ads and AEO run as a single compounding system. Every AI citation lowers branded CPC; every Quality Score win frees budget for more content.",
+          "Google Ads and AI search work run for the same client, each measured against its own objectives.",
       };
     default:
       return { body: "" };

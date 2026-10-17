@@ -19,17 +19,17 @@ export async function GET() {
   lines.push("");
   lines.push("## About");
   lines.push(
-    `${site.name} is a Google Partner agency led by ${site.founder}, based in ${site.city}, ${site.country}. We combine Google Ads with AI Engine Optimisation (AEO) into a single discipline called Search Ownership - so brands win across Google, ChatGPT, Gemini, Perplexity, Copilot and Claude.`
+    `${site.name} is an AI search visibility (Answer Engine Optimisation, AEO) agency led by ${site.founder}, based in ${site.city}, ${site.country}. We help service businesses - recruitment agencies in particular - get discovered, mentioned and cited across ${site.platforms.join(", ")}. We also manage Google Ads for clients who need it.`
   );
   lines.push("");
   lines.push("## Methodology");
   lines.push(
-    "The DomiSearch Search Ownership Operating System - a 5-stage framework for running Ads and AEO as a single compounding system: Map → Plan → Ship → Compound → Report."
+    "We examine which brands and sources appear in the AI answers a client's potential customers are reading, then use that evidence to guide the work: an AI visibility and competitor baseline, buyer-question and cited-source research, technical foundations and structured data, service-page improvements, content that answers buyer questions, and daily tracking with monthly reporting. We do not claim to know exact AI prompt volumes or to control which brands an AI platform recommends."
   );
   lines.push("");
   lines.push("## Services");
-  lines.push(`- [Google Ads Management](${site.url}/services/google-ads): End-to-end Google Ads management run by a Google Partner. Restructure, creative, CRO and transparent reporting.`);
-  lines.push(`- [AI Engine Optimisation (AEO)](${site.url}/services/aeo): Entity optimisation, AI-ready content, schema, citation ops and monthly AI visibility reporting across ChatGPT, Gemini, Perplexity, Copilot, Claude and Google AI Overviews.`);
+  lines.push(`- [AI Search Visibility (AEO)](${site.url}/services/aeo): Our primary service. Visibility baseline, buyer-question research, technical foundations, service-page improvements, content and daily tracking across ${site.platforms.join(", ")}, with monthly reporting.`);
+  lines.push(`- [Google Ads Management](${site.url}/services/google-ads): A secondary service for existing clients and suitable inbound enquiries. Account restructure, creative, CRO and transparent reporting, run by a Google Partner.`);
   lines.push("");
   if (studies.length > 0) {
     lines.push("## Case studies");

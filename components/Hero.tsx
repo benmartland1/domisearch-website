@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { site } from "@/lib/site";
 import { Counter } from "./Counter";
 import { VisibilityCheckForm } from "./VisibilityCheckForm";
-import { GooglePartnerBadge } from "./ui/GooglePartnerBadge";
+import { AIEnginesBadge } from "./ui/AIEnginesBadge";
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -38,7 +38,7 @@ export function Hero() {
             transition={{ duration: 0.6 }}
             className="flex flex-wrap items-center gap-3"
           >
-            <GooglePartnerBadge className="w-[178px]! sm:w-[210px]!" />
+            <AIEnginesBadge className="w-[240px]! sm:w-[280px]!" />
           </motion.div>
 
           <h1 className="display mt-10 text-balance text-[clamp(2.5rem,5.4vw,4.5rem)]">
@@ -56,9 +56,11 @@ export function Hero() {
             transition={{ delay: 0.55, duration: 0.8 }}
             className="mt-8 max-w-2xl text-pretty text-base leading-relaxed text-[color:var(--color-fog)]/85 sm:text-lg"
           >
-            We run Google Ads to capture the demand that exists today - and AEO to engineer
-            the demand forming inside ChatGPT, Gemini and Perplexity. One discipline:{" "}
-            <span className="text-[color:var(--color-glacier)]">Search Ownership.</span>
+            We help service businesses improve their visibility across{" "}
+            <span className="text-[color:var(--color-glacier)]">
+              ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews
+            </span>
+            , so potential clients can discover them when researching who to work with.
           </motion.p>
 
           <motion.div
@@ -66,6 +68,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.75, duration: 0.8 }}
             className="mt-10"
+            id="visibility-check"
           >
             <VisibilityCheckForm />
             <p className="mt-4 text-sm text-[color:var(--color-fog)]/65">
@@ -89,16 +92,12 @@ export function Hero() {
             className="mt-20 grid max-w-xl grid-cols-2 gap-x-10 gap-y-10"
           >
             {[
-              { value: 3, prefix: "£", suffix: "M+", label: "Managed ad spend" },
+              { value: 5, label: "AI platforms tracked daily" },
               { value: 50, suffix: "+", label: "Brands served" },
             ].map((item) => (
               <div key={item.label}>
                 <dt className="display text-[2rem] text-[color:var(--color-domigreen)] sm:text-[2.75rem]">
-                  <Counter
-                    value={item.value}
-                    prefix={item.prefix}
-                    suffix={item.suffix}
-                  />
+                  <Counter value={item.value} suffix={item.suffix} />
                 </dt>
                 <dd className="mt-2 text-sm uppercase tracking-[0.18em] text-[color:var(--color-fog)]/70">
                   {item.label}

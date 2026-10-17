@@ -157,11 +157,18 @@ function Avatar({
 type TestimonialsProps = {
   /** Render a "Book a call" button next to the Trustpilot CTA. Defaults to false. */
   showBookCall?: boolean;
+  /**
+   * Names of the people whose quotes to show. Defaults to every quote. The
+   * homepage and AI Search page pass the AEO and service-quality quotes;
+   * the Google Ads page keeps the Ads-specific ones.
+   */
+  only?: string[];
 };
 
-export function Testimonials({ showBookCall = false }: TestimonialsProps = {}) {
-  const featured = testimonials.find((t) => t.featured) ?? testimonials[0];
-  const others = testimonials.filter((t) => t !== featured);
+export function Testimonials({ showBookCall = false, only }: TestimonialsProps = {}) {
+  const pool = only ? testimonials.filter((t) => only.includes(t.name)) : testimonials;
+  const featured = pool.find((t) => t.featured) ?? pool[0];
+  const others = pool.filter((t) => t !== featured);
 
   return (
     <section className="relative mx-auto mt-32 max-w-7xl px-6 lg:px-10">

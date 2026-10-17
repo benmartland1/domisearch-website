@@ -18,12 +18,12 @@ import { getCaseStudiesByService } from "@/lib/case-studies";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "AEO - Become the Brand AI Recommends | DomiSearch",
+  title: "AI Search Visibility (AEO) for Service Businesses | DomiSearch",
   description:
-    "Get your brand cited in ChatGPT, Gemini, Perplexity, Copilot, Claude and Google AI Overviews. Prompt-level tracking, weekly reports, no jargon.",
+    "Research-led AEO for service businesses: a visibility baseline, buyer-question research, technical foundations, service pages, content and daily tracking across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews.",
   alternates: { canonical: "/services/aeo" },
   openGraph: {
-    title: "AEO - Become the Brand AI Recommends · DomiSearch",
+    title: "AI Search Visibility (AEO) for Service Businesses · DomiSearch",
     url: "/services/aeo",
   },
 };
@@ -40,51 +40,45 @@ const trafficStats = [
   { stat: "47%", label: "Of B2B buyers start research in ChatGPT", source: "Position Digital, 2026" },
 ];
 
-// 6 deliverables straight from the DomiSearch AEO package.
+// The six deliverables of the programme as it is sold today. Keep in step with
+// components/ProgrammeSection.tsx and the "What does an AEO agency do?" post.
 const whatWeDo = [
   {
-    tag: "Pages",
-    title: "Service page optimisation",
+    tag: "Baseline",
+    title: "AI visibility and competitor baseline",
     body:
-      "Most sites have one vague page listing everything. When a buyer asks ChatGPT about a specific service, there's nothing targeted to cite. We build one dedicated page per service - clear H1, summary, structured body, FAQ - so AI can extract you by name.",
+      "During onboarding we agree the buyer questions to track and record where you, your competitors and the cited sources appear today across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews. We include questions that do not name you, so we can measure discovery as well as how you are described. If visibility has never been tracked, the starting point is unknown until measured, not zero.",
+  },
+  {
+    tag: "Research",
+    title: "Buyer-question and cited-source research",
+    body:
+      "We research the questions your potential clients ask before choosing a provider, in the words they use, and which websites the AI answers reference. That evidence decides the priorities for the website, content and credibility work.",
   },
   {
     tag: "Technical",
-    title: "Schema implementation",
+    title: "Technical foundations and structured data",
     body:
-      "Invisible code that tells ChatGPT exactly who you are, where you are and what you do. Most sites have none. It's one of the highest-leverage fixes we make - permanent, and it takes effect quickly.",
+      "We audit access, indexing, page structure and business information, then agree the fixes. Structured data is implemented where it is appropriate and matches the visible content. It is one part of the work, not a shortcut: Google says no special markup is required for its AI features.",
   },
   {
-    tag: "Entity",
-    title: "About page & entity clarity",
+    tag: "Pages",
+    title: "Service-page improvements",
     body:
-      "AI won't recommend what it can't identify. If your About page doesn't clearly state your name, location, who you help and what you specialise in, you're anonymous to ChatGPT. We make it unambiguous - and consistent across every page.",
-  },
-  {
-    tag: "Questions",
-    title: "FAQ & buying-question content",
-    body:
-      "We research 20–30 of the exact questions your buyers ask AI, then build structured Q&A across your pages. If someone asks ChatGPT a question you should be the answer to, your site will actually answer it.",
+      "A potential client, or an AI answer, should be able to understand who you help, where you operate, the services you cover and the evidence behind your claims. We improve priority service and sector pages so that is unambiguous, and review the enquiry journey so the next step is easy.",
   },
   {
     tag: "Content",
-    title: "AI-citable content",
+    title: "Content that answers buyer questions",
     body:
-      "There's a specific way to write content AI extracts and cites - and most site copy isn't written like that. Two to four pieces a month, engineered to be picked up in AI answers about your sector and location.",
+      "Our standard 90-day programme includes 36 new or refreshed content pieces, with the mix agreed after the audit. Guides, service explanations, specialist market content and case studies built on evidence you can share. Your team supplies the expertise and approves everything before publication.",
   },
   {
-    tag: "Local",
-    title: "Google Business Profile optimisation",
+    tag: "Tracking",
+    title: "Daily tracking and monthly review",
     body:
-      "Your GBP isn't just for Maps anymore - Google AI pulls from it when someone asks for a recommendation in your area. Wrong categories, empty Q&A, missing services = invisible. We fix the profile and run a monthly post cadence from the same content pipeline.",
+      "We track the agreed questions daily and review progress in a monthly report and strategy call: how often you are named, which sources are cited, how you compare with tracked competitors and how AI describes you. Where tracking allows, we also review AI referral traffic and relevant enquiries.",
   },
-];
-
-const measurement = [
-  { label: "Prompts tracked / mo", value: "80–150" },
-  { label: "Engines covered", value: "6" },
-  { label: "Re-runs per prompt", value: "20+" },
-  { label: "Sentiment scoring", value: "Per cite" },
 ];
 
 const engines = [
@@ -92,55 +86,54 @@ const engines = [
   { name: "Gemini", src: "/engines/gemini.png" },
   { name: "Perplexity", src: "/engines/perplexity.png" },
   { name: "Claude", src: "/engines/claude.png" },
-  { name: "Copilot", src: "/engines/copilot.png" },
   { name: "Google AI Overviews", src: "/engines/google.png" },
 ];
 
 const faqs = [
   {
-    question: "Is this just organic search work with a new name?",
+    question: "Is this just SEO with a new name?",
     answer:
-      "About 70–80% overlaps with classic organic work - clean architecture, helpful content, real authority. The new 20–30% - prompt tracking, llms.txt, citation ops, model-specific content patterns - is where the new leverage sits. We'll tell you exactly what each of your problems actually is.",
+      "There is real overlap: accessible pages, clear business information and useful content matter for both, and Google says its established guidance still applies to its AI features. What is different is the research and measurement: tracking the questions buyers ask AI, seeing which brands and sources appear in the answers, and using that evidence to decide the work. If you have an SEO provider, we agree responsibilities with them rather than duplicating effort.",
   },
   {
-    question: "How do you measure success?",
+    question: "How do you measure progress?",
     answer:
-      "Typically 50-75 prompts tracked, refreshed weekly, across six engines. Reporting covers citation share of voice, sentiment, new placements and AI-referred traffic that converts. Benchmarked against your three closest competitors - not a vanity number.",
+      "Against the baseline, on the same agreed questions, tracked daily across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews. The monthly report covers how often you are named, which sources the answers cite, your share of voice against tracked competitors and how AI describes you, alongside the work completed. The figures describe the tracked set of questions and platforms, not every AI conversation.",
   },
   {
-    question: "How quickly will I see results?",
+    question: "How quickly might we see results?",
     answer:
-      "Early citation movement may show in 60–90 days, and meaningful share of voice in 3–6 months, depending on how competitive your category is and what authority your site already carries. Google Ads works on a faster clock - we typically see early signals within the first few weeks.",
+      "We cannot promise a date for a particular AI recommendation, and we would be wary of anyone who does. The standard initial programme runs for 90 days, which gives a defined period to deliver the agreed work, track changes against the baseline and review what the evidence shows. Your starting position, competition, website condition and the pace of approvals all affect how quickly visibility moves.",
   },
   {
-    question: "Which platforms do you optimise for?",
+    question: "Which AI platforms do you track?",
     answer:
-      "Google Search + AI Overviews, Gemini, ChatGPT, Perplexity, Microsoft Copilot and Claude. We add new engines as they earn real user share.",
+      "ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews. We add platforms as they earn real usage among the buyers our clients care about.",
   },
   {
-    question: "What happens when the LLMs change?",
+    question: "What happens when the AI platforms change?",
     answer:
-      "They change weekly. Our method focuses on fundamentals that survive every update - entity clarity, structured answers, source coverage, authority. Tactics that depend on gaming a specific model rarely survive the next release.",
+      "They change often, which is why the work is built on fundamentals: clear business information, pages that answer real buyer questions, evidence of your track record and presence in the sources AI already cites. Daily tracking means we see changes as they happen and can adjust the priorities rather than guess.",
   },
   {
-    question: "Can I do this myself?",
+    question: "Can we do this ourselves?",
     answer:
-      "Some of it. Schema, FAQ formatting and llms.txt are all DIY-able. The cross-platform prompt tracking, entity graph work, citation ops and measurement stack is where most clients come to us.",
+      "Some of it, yes. Clear service pages, FAQs and structured data are all within reach of a capable in-house team. The research, the daily cross-platform tracking and the discipline of acting on the evidence each month is where most clients want help, and we will tell you on the discovery call if we think you do not need us.",
   },
   {
     question: "Do you also manage Google Ads?",
     answer:
-      "Yes. Ads + AEO is how most of our clients work with us. Ads captures demand that exists today; AEO captures demand forming inside AI answers. Running both means today's numbers and tomorrow's moat.",
+      "Yes, for a smaller number of clients. It is a separate service with its own objectives, not a default part of the AI search programme. If paid search is relevant to your plan we will say so, and the two pieces of work are coordinated rather than bundled.",
   },
   {
-    question: "How does AEO compare to ranking on Google?",
+    question: "How is this different from ranking on Google?",
     answer:
-      "Ranking aims to put your page on a results list. AEO aims to get your brand named inside the conversational answer - where faster decisions get made. We target citations and share-of-voice, not just clicks.",
+      "Ranking puts a page on a results list. AI search visibility is about whether your business is named, and how it is described, inside the answer a buyer reads. A brand mention and a source citation are different things: an answer can name you while citing a third-party page, so we track and report both.",
   },
   {
-    question: "Do you work with any industry?",
+    question: "Which businesses do you work with?",
     answer:
-      "We're strongest in e-commerce, B2B SaaS and professional services. The principles work anywhere buyers search online. If we're not a fit we'll say so in the first call.",
+      "Service businesses whose clients research before they buy. Recruitment agencies are a core focus, and we also work with accountancy practices, healthcare providers and other professional services. If we are not a fit we will say so on the first call.",
   },
 ];
 
@@ -151,9 +144,9 @@ export default function AEOPage() {
       <JsonLd
         data={[
           serviceSchema({
-            name: "AI Engine Optimisation (AEO)",
+            name: "AI Search Visibility (Answer Engine Optimisation)",
             description:
-              "Prompt-level AEO so brands get cited in ChatGPT, Google AI Overviews, Perplexity, Gemini, Copilot and Claude.",
+              "Research-led AEO for service businesses: visibility baseline, buyer-question research, technical foundations, service-page improvements, content and daily tracking across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews.",
             url: `${site.url}/services/aeo`,
             serviceType: "AI search optimisation",
           }),
@@ -161,7 +154,7 @@ export default function AEOPage() {
           breadcrumbSchema([
             { name: "Home", url: site.url },
             { name: "Services", url: `${site.url}/services/aeo` },
-            { name: "AEO", url: `${site.url}/services/aeo` },
+            { name: "AI Search Visibility", url: `${site.url}/services/aeo` },
           ]),
         ]}
       />
@@ -199,9 +192,11 @@ export default function AEOPage() {
           </ScrollReveal>
           <ScrollReveal delay={140}>
             <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-fog)]/85 sm:text-xl">
-              Get your brand cited in <strong className="text-[color:var(--color-glacier)]">ChatGPT,
-              Gemini, Perplexity, Copilot, Claude and Google AI Overviews</strong>. Tracked weekly.
-              Reported without jargon.
+              We help service businesses get discovered, mentioned and cited across{" "}
+              <strong className="text-[color:var(--color-glacier)]">
+                ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews
+              </strong>
+              . Research-led, tracked daily, reported monthly in plain English.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={200}>
@@ -217,7 +212,7 @@ export default function AEOPage() {
           </ScrollReveal>
           <ScrollReveal delay={260}>
             <p className="mt-6 text-xs uppercase tracking-[0.22em] text-[color:var(--color-fog)]/55">
-              Google Partner · UK-built
+              UK-built · For service businesses · Recruitment a core focus
             </p>
           </ScrollReveal>
         </div>
@@ -298,15 +293,15 @@ export default function AEOPage() {
                 <ul className="mt-4 space-y-3 text-[color:var(--color-fog)]">
                   <li className="flex gap-3">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
-                    <span>Buyers arrive pre-sold - already recommended to you by AI before the first call.</span>
+                    <span>Buyers arrive having already seen your name in the answer, before the first call.</span>
                   </li>
                   <li className="flex gap-3">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
-                    <span>You're cited alongside - or ahead of - the competitors that used to beat you.</span>
+                    <span>Your services, markets and evidence are described accurately, alongside the competitors you are measured against.</span>
                   </li>
                   <li className="flex gap-3">
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
-                    <span>AI-referred visitors convert at 3–4× the rate of classic organic traffic.</span>
+                    <span>You can see, month by month, how often you are named and which sources the answers rely on.</span>
                   </li>
                 </ul>
               </div>
@@ -320,7 +315,7 @@ export default function AEOPage() {
       {/* -------------------- ENGINES -------------------- */}
       <section className="relative mx-auto mt-24 max-w-7xl px-6 lg:px-10">
         <ScrollReveal>
-          <div className="eyebrow">Engines we optimise for</div>
+          <div className="eyebrow">Platforms we track daily</div>
         </ScrollReveal>
         <div className="mt-8 flex flex-wrap gap-3">
           {engines.map((e, i) => (
@@ -353,9 +348,9 @@ export default function AEOPage() {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-12">
           <div>
             <SectionHeader
-              eyebrow="The deliverables"
-              title="Six disciplines. One retainer."
-              description="Every activity we ship each month. Named, scoped, and in the contract."
+              eyebrow="The programme"
+              title="We don't guess. We reverse engineer."
+              description="We examine which brands and sources appear in the AI answers your potential clients read, then use that evidence to guide six areas of work. Each is named, scoped and agreed before we start."
             />
             <div className="mt-14 grid gap-4">
               {whatWeDo.map((c, i) => (
@@ -376,7 +371,7 @@ export default function AEOPage() {
           <ConsultationRail
             eyebrow="Arrange a call about AEO"
             ctaLabel="Book a 30-min AEO call"
-            founderQuote="You'll speak to me - not a sales pod. If AEO isn't right for you I'll say so on the call."
+            founderQuote="You'll speak to me, not a sales pod. If AI search isn't the right priority for you yet, I'll say so on the call."
             className="lg:sticky lg:top-28 lg:self-start"
           />
         </div>
@@ -388,34 +383,37 @@ export default function AEOPage() {
           <ScrollReveal>
             <div className="eyebrow">Who we work best with</div>
             <h2 className="display mt-4 text-3xl sm:text-4xl">
-              High-consideration buyers. Category authority at stake.
+              Service businesses whose clients research before they buy.
             </h2>
             <p className="mt-5 text-[color:var(--color-fog)]/85">
-              AEO works hardest when buyers research before they buy.
+              The work pays off where a buyer compares providers before making contact, and where
+              your expertise and track record give an AI answer something real to cite.
             </p>
           </ScrollReveal>
           <ScrollReveal delay={100}>
             <ul className="space-y-5">
               <li>
-                <div className="text-lg font-[600] text-[color:var(--color-glacier)]">B2B SaaS</div>
+                <div className="text-lg font-[600] text-[color:var(--color-glacier)]">
+                  <Link href="/recruitment" className="hover:text-[color:var(--color-domigreen)]">Recruitment agencies</Link>
+                </div>
                 <p className="mt-1 text-sm text-[color:var(--color-fog)]/80">
-                  89% of B2B buyers research with AI before a sales call. Every invisible prompt is a deal already lost.
+                  Hiring managers now ask AI which agencies specialise in their sector and region. Our core focus.
                 </p>
               </li>
               <li>
                 <div className="text-lg font-[600] text-[color:var(--color-glacier)]">
-                  Professional & financial services
+                  <Link href="/accountants" className="hover:text-[color:var(--color-domigreen)]">Accountancy and professional services</Link>
                 </div>
                 <p className="mt-1 text-sm text-[color:var(--color-fog)]/80">
-                  Regulated categories reward the brand AI deems trustworthy.
+                  Considered, often regulated decisions where clear evidence and specialisms matter.
                 </p>
               </li>
               <li>
                 <div className="text-lg font-[600] text-[color:var(--color-glacier)]">
-                  Considered e-commerce
+                  <Link href="/healthcare" className="hover:text-[color:var(--color-domigreen)]">Healthcare and clinics</Link>
                 </div>
                 <p className="mt-1 text-sm text-[color:var(--color-fog)]/80">
-                  DTC, premium and technical categories where buyers compare before checkout.
+                  Patients research treatments and providers in AI before they book.
                 </p>
               </li>
             </ul>
@@ -427,7 +425,7 @@ export default function AEOPage() {
         <section className="relative mx-auto mt-32 max-w-7xl px-6 lg:px-10">
           <SectionHeader
             eyebrow="Proof"
-            title="AEO in the wild."
+            title="AI search work for a client."
           />
           <div
             className={
@@ -448,12 +446,13 @@ export default function AEOPage() {
         </section>
       )}
 
-      <Testimonials showBookCall />
+      <Testimonials showBookCall only={["Eamon Shahir", "Arjun Kumar", "Sam Barraclough"]} />
 
-      <FAQ items={faqs} heading="AEO - frequently asked" />
+      <FAQ items={faqs} heading="AI search visibility, frequently asked" />
       <CTA
-        heading="See where you rank in ChatGPT today."
-        sub="Free prompt-level audit: we run 20 queries your buyers ask AI and show you exactly where you're cited, where your competitors are, and the three highest-leverage fixes in your account."
+        heading="Find out where you stand in AI search."
+        sub="Book a free discovery call. If there is a fit, we research your current AI visibility and walk you through an audit and a proposed 90-day roadmap: the buyer questions, who is being recommended today, the gaps and the work we would do first."
+        secondary={{ label: "Request a visibility check", href: "/#visibility-check" }}
       />
     </>
   );
