@@ -44,6 +44,7 @@ export function Footer() {
           <h4 className="eyebrow mb-4 text-[color:var(--color-glacier)]">Company</h4>
           <ul className="space-y-3 text-sm">
             <li><Link href="/about" className="hover:text-[color:var(--color-domigreen)]">About</Link></li>
+            <li><Link href="/pricing" className="hover:text-[color:var(--color-domigreen)]">Pricing</Link></li>
             <li><Link href="/blog" className="hover:text-[color:var(--color-domigreen)]">Blog</Link></li>
             <li><Link href="/careers" className="hover:text-[color:var(--color-domigreen)]">Careers</Link></li>
             <li><Link href="/contact" className="hover:text-[color:var(--color-domigreen)]">Contact</Link></li>

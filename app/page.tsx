@@ -9,6 +9,7 @@ import { CTA } from "@/components/CTA";
 import { FAQ } from "@/components/FAQ";
 import { faqSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
+import { aeoPricingSentence } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "AI Search Visibility (AEO) Agency for Service Businesses | DomiSearch",
@@ -47,6 +48,10 @@ const homeFaqs = [
     question: "How do you measure progress?",
     answer:
       "Against the baseline, on the same tracked questions. We report how often your business is named, which sources the answers cite, how you compare with tracked competitors and how AI describes you. Where tracking allows, we also review AI referral traffic and relevant enquiries. The figures describe the tracked set, not every AI conversation.",
+  },
+  {
+    question: "What does DomiSearch charge?",
+    answer: `${aeoPricingSentence} Google Ads management is scoped and quoted separately on a call.`,
   },
   {
     question: "How quickly might we see results?",

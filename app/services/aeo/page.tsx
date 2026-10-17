@@ -16,6 +16,7 @@ import { AIEnginesBadge } from "@/components/ui/AIEnginesBadge";
 import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
 import { getCaseStudiesByService } from "@/lib/case-studies";
 import { site } from "@/lib/site";
+import { aeoPricingSentence } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "AI Search Visibility (AEO) for Service Businesses | DomiSearch",
@@ -131,6 +132,10 @@ const faqs = [
       "Ranking puts a page on a results list. AI search visibility is about whether your business is named, and how it is described, inside the answer a buyer reads. A brand mention and a source citation are different things: an answer can name you while citing a third-party page, so we track and report both.",
   },
   {
+    question: "What does it cost?",
+    answer: `${aeoPricingSentence} Pricing covers one business and its agreed services and markets; additional territories are agreed on the call. Full details are on the pricing page.`,
+  },
+  {
     question: "Which businesses do you work with?",
     answer:
       "Service businesses whose clients research before they buy. Recruitment agencies are a core focus, and we also work with accountancy practices, healthcare providers and other professional services. If we are not a fit we will say so on the first call.",
@@ -205,8 +210,8 @@ export default function AEOPage() {
                 Book a call
                 <span aria-hidden>→</span>
               </Link>
-              <Link href="/blog/how-to-measure-aeo-metrics-that-matter" className="btn btn-ghost">
-                How we measure it
+              <Link href="/pricing" className="btn btn-ghost">
+                See pricing
               </Link>
             </div>
           </ScrollReveal>

@@ -6,45 +6,50 @@ import { FAQ } from "@/components/FAQ";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
+import { aeoPricingSentence } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Pricing · DomiSearch",
   description:
-    "Transparent monthly retainers for Google Ads, AEO, and combined Search Revenue Ownership engagements. Three-month minimum. No setup fees.",
+    "AI search visibility programme pricing: £2,995 a month on a 3-month minimum, or £7,500 for the first 3 months paid upfront. No setup fees. Google Ads is scoped separately.",
   alternates: { canonical: "/pricing" },
   openGraph: {
     title: "Pricing · DomiSearch",
     description:
-      "Monthly retainers from £1,500. Google Ads, AEO, or both under one strategy.",
+      "One AI search programme, two ways to pay. £2,995 a month or £7,500 for the first three months upfront.",
     url: "/pricing",
   },
 };
 
 const faqs = [
   {
+    question: "What does the programme cost?",
+    answer: aeoPricingSentence,
+  },
+  {
     question: "Is there a minimum commitment?",
     answer:
-      "Three months. That's how long it takes to restructure, learn your market, and give the work a fair chance to show. After month three, it's rolling — 30 days' notice either way.",
+      "Three months, and we recommend six. The first 90 days is a defined delivery period: baseline, audit, technical foundations, service-page work and the agreed content, with daily tracking throughout. After the minimum term it is rolling monthly, with 30 days' notice either way.",
   },
   {
-    question: "What's not included?",
+    question: "What is not included?",
     answer:
-      "Ad spend (paid directly to Google), third-party tools you already use (GA4, Looker, Ahrefs, etc.), and paid media outside Google. If a client wants Meta or LinkedIn ads, we partner - we don't pretend to do it ourselves.",
+      "Ad spend of any kind, third-party tools you already pay for, and any outreach, original research or paid placements. If any of those are relevant to your plan, they are scoped and priced separately so nothing is implied that is not in the proposal.",
   },
   {
-    question: "Do prices scale with ad spend?",
+    question: "What does the price cover?",
     answer:
-      "Yes. The 'from' price covers accounts up to ~£15k/month ad spend. Above that, fees scale with account complexity - typically £3,500–£6,000/month for mid-sized accounts, custom for anything above £50k/month. No percentage-of-spend pricing: it's a conflict of interest.",
+      "One business, its agreed services and the markets we research and track for it. A group of companies, or a second territory with its own buyer questions and competitors, is agreed on the call.",
   },
   {
-    question: "Why bundle Google Ads and AEO?",
+    question: "Do you publish Google Ads pricing?",
     answer:
-      "Because search is one behaviour now. Buyers start in ChatGPT or Google, click a paid result, compare in Gemini, search your brand, then convert. Running both channels under one strategy compounds - you capture demand that exists today and engineer the demand forming inside AI answers, with a single reporting view.",
+      "No. Google Ads management is a secondary service for existing clients and suitable inbound enquiries, and the fee depends on the account. If you want to talk about it, book a call and we will scope it with you.",
   },
   {
-    question: "Can I talk to you before committing?",
+    question: "Can we talk to you before committing?",
     answer:
-      "Yes - and most clients do. Book a 30-minute call with Ben and we'll walk through your account, your AI visibility position, and whether we're the right fit. No pressure, no proposal deck.",
+      "Yes, and everyone does. The first step is a free discovery call. If there is a fit, we research your current AI visibility and walk you through an audit and a proposed 90-day roadmap before you decide anything.",
   },
 ];
 
@@ -82,7 +87,7 @@ export default function PricingPage() {
           </ScrollReveal>
           <ScrollReveal delay={60}>
             <h1 className="display mt-5 text-balance text-[clamp(2.5rem,6vw,5rem)]">
-              Senior work.{" "}
+              One programme.{" "}
               <span className="text-[color:var(--color-domigreen)]">
                 Plain pricing.
               </span>
@@ -90,9 +95,9 @@ export default function PricingPage() {
           </ScrollReveal>
           <ScrollReveal delay={140}>
             <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-fog)]/85 sm:text-xl">
-              Monthly retainers, three-month minimum, no setup fees.
-              Published starting rates so you can qualify yourself before
-              the call.
+              The AI search visibility programme, priced in full so you can qualify
+              yourself before the call. Pay monthly, or pay the first three months
+              upfront and save. No setup fees.
             </p>
           </ScrollReveal>
         </div>
@@ -107,13 +112,13 @@ export default function PricingPage() {
       <section className="relative mx-auto mt-6 max-w-7xl px-6 lg:px-10">
         <ScrollReveal>
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/55">
-            <span>3-month minimum</span>
+            <span>3-month minimum, 6 recommended</span>
             <span className="hidden h-1 w-1 rounded-full bg-[color:var(--color-fog)]/30 sm:block" />
             <span>No setup fees</span>
             <span className="hidden h-1 w-1 rounded-full bg-[color:var(--color-fog)]/30 sm:block" />
-            <span>No % of ad spend</span>
+            <span>Daily tracking, monthly review</span>
             <span className="hidden h-1 w-1 rounded-full bg-[color:var(--color-fog)]/30 sm:block" />
-            <span>Rolling after month 3</span>
+            <span>Rolling after the minimum term</span>
           </div>
         </ScrollReveal>
       </section>
@@ -123,15 +128,15 @@ export default function PricingPage() {
         <ScrollReveal>
           <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.02] p-10 text-center">
             <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-domigreen)]">
-              Beyond the ranges
+              Outside the standard programme
             </div>
             <h2 className="display mt-4 text-balance text-2xl sm:text-3xl">
-              Ad spend above £50k/month, multi-region, or AEO-only mandates?
+              A group of businesses, several territories, or Google Ads as well?
             </h2>
             <p className="mt-5 text-[color:var(--color-fog)]/80">
-              We custom-scope any engagement that doesn't fit the standard
-              brackets above. Tell us about the account - we'll come back
-              within 48 hours with a realistic scope and fee.
+              We scope those on a call rather than publishing a figure that would be
+              wrong for half the people reading it. Tell us about the business and we
+              will come back within two working days with a realistic scope and fee.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link
@@ -151,7 +156,7 @@ export default function PricingPage() {
         </ScrollReveal>
       </section>
 
-      <FAQ items={faqs} heading="The practical stuff." />
+      <FAQ items={faqs} heading="The practical questions." />
 
       <div className="pb-32" />
     </>

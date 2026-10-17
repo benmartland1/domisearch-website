@@ -1,54 +1,40 @@
-"use client";
-
 import Link from "next/link";
 import { ScrollReveal } from "./ScrollReveal";
 import { site } from "@/lib/site";
+import { AEO_PRICING, aeoUpfrontEffectiveMonthly, aeoUpfrontSaving, gbp } from "@/lib/pricing";
 
-type Tier = {
-  name: string;
-  tagline?: string;
-  price: number;
-  recommended?: boolean;
-  features: string[];
-  cta: { label: string; href: string; external?: boolean };
-};
+/*
+ * The AI search programme, two ways to pay. Google Ads is deliberately not
+ * priced here or anywhere else on the site: it is scoped on a call.
+ */
+const included = [
+  "AI visibility and competitor baseline across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews",
+  "Buyer-question and cited-source research",
+  "Technical foundations and structured data",
+  "Service-page improvements",
+  "36 new or refreshed content pieces in the first 90 days, approved by you",
+  "Daily tracking of the agreed questions, monthly report and strategy call",
+];
 
-const tiers: Tier[] = [
+const options = [
   {
-    name: "Google Ads",
-    tagline: "Demand that exists today.",
-    price: 1500,
-    features: [
-      "AI-assisted daily account monitoring",
-      "Human-led strategy and optimisation",
-      "Campaign management across all active campaigns",
-      "Monthly performance report and strategy call",
-    ],
-    cta: { label: "Book a call", href: site.calendly, external: true },
+    id: "monthly",
+    name: "Monthly",
+    tagline: "Start, review at 90 days, continue month to month.",
+    price: gbp(AEO_PRICING.monthly),
+    cadence: "per month",
+    term: `${AEO_PRICING.minimumMonths}-month minimum term (${AEO_PRICING.recommendedMonths} recommended), then rolling monthly.`,
+    highlight: false,
   },
   {
-    name: "Search Revenue Ownership",
-    tagline: "Both channels, one strategy.",
-    price: 3950,
-    recommended: true,
-    features: [
-      "Everything in both services",
-      "Unified strategy across both channels",
-      "Single monthly report covering Google Ads and AI visibility",
-    ],
-    cta: { label: "Book a call", href: site.calendly, external: true },
-  },
-  {
-    name: "AEO / AI Search",
-    tagline: "Demand forming inside AI.",
-    price: 2950,
-    features: [
-      "Full AI visibility audit",
-      "Technical implementation — schema, llms.txt, entity clarity",
-      "Monthly AI-citable content production",
-      "Monthly visibility monitoring across ChatGPT, Claude and Perplexity",
-    ],
-    cta: { label: "Book a call", href: site.calendly, external: true },
+    id: "upfront",
+    name: `${AEO_PRICING.upfrontMonths} months upfront`,
+    tagline: "The first programme paid in one go.",
+    price: gbp(AEO_PRICING.upfront),
+    cadence: "one payment",
+    term: `${gbp(aeoUpfrontEffectiveMonthly)} a month effective rate for the first ${AEO_PRICING.upfrontMonths} months, then rolling monthly at the standard rate.`,
+    highlight: true,
+    badge: `Save ${gbp(aeoUpfrontSaving)}`,
   },
 ];
 
@@ -62,104 +48,89 @@ function Check({ muted = false }: { muted?: boolean }) {
       aria-hidden
       className={`mt-[3px] shrink-0 ${muted ? "text-[color:var(--color-fog)]/60" : "text-[color:var(--color-domigreen)]"}`}
     >
-      <path
-        d="M3.5 9.5l3.2 3.2 7.8-7.8"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M3.5 9.5l3.2 3.2 7.8-7.8" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
 
 export function PricingTable() {
   return (
-    <div className="relative grid items-stretch gap-6 lg:grid-cols-3 lg:gap-5">
-      {tiers.map((tier, idx) => {
-        const rec = !!tier.recommended;
-        return (
-          <ScrollReveal key={tier.name} delay={idx * 100}>
+    <div className="grid gap-6 lg:grid-cols-[1.1fr_1fr] lg:gap-8">
+      {/* What the programme includes */}
+      <ScrollReveal>
+        <div className="card h-full p-8 sm:p-10">
+          <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-domigreen)]">
+            AI search visibility programme
+          </div>
+          <h2 className="display mt-4 text-3xl sm:text-4xl">One programme. Two ways to pay.</h2>
+          <p className="mt-4 text-[color:var(--color-fog)]/80">
+            Every client gets the same programme, scoped to their services and markets. The
+            price covers one business; additional territories or group companies are agreed on
+            the call.
+          </p>
+          <div className="hairline mt-8" />
+          <ul className="mt-8 space-y-4 text-[0.95rem] leading-relaxed text-[color:var(--color-fog)]/90">
+            {included.map((item) => (
+              <li key={item} className="flex gap-3">
+                <Check />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-8 text-sm text-[color:var(--color-fog)]/60">
+            Not included: ad spend of any kind, third-party tools you already pay for, and any
+            outreach, original research or paid placements, which are scoped separately if they
+            are relevant.
+          </p>
+        </div>
+      </ScrollReveal>
+
+      {/* The two billing options */}
+      <div className="grid gap-6">
+        {options.map((o, idx) => (
+          <ScrollReveal key={o.id} delay={idx * 100}>
             <div
-              className={`relative flex h-full flex-col rounded-[1.5rem] border p-8 transition-colors sm:p-10 ${
-                rec
+              className={`relative flex h-full flex-col rounded-[1.5rem] border p-8 transition-colors ${
+                o.highlight
                   ? "border-[color:var(--color-domigreen)]/50 bg-[color:color-mix(in_oklab,var(--color-domigreen)_6%,transparent)]"
                   : "border-white/10 bg-white/[0.02] hover:border-white/20"
               }`}
             >
-              {rec && (
-                <>
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute -inset-10 -z-10 rounded-[2.5rem] opacity-70"
-                    style={{
-                      background:
-                        "radial-gradient(ellipse at 50% 0%, color-mix(in oklab, var(--color-domigreen) 35%, transparent), transparent 65%)",
-                      filter: "blur(40px)",
-                    }}
-                  />
-                  <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[color:var(--color-domigreen)]/50 bg-[color:var(--color-charcoal)] px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-domigreen)]">
-                    ★ Recommended
-                  </span>
-                </>
+              {o.highlight && o.badge && (
+                <span className="absolute left-8 top-0 -translate-y-1/2 rounded-full border border-[color:var(--color-domigreen)]/50 bg-[color:var(--color-charcoal)] px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-domigreen)]">
+                  {o.badge}
+                </span>
               )}
-
               <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-fog)]/65">
-                {tier.name}
+                {o.name}
               </div>
-
-              {tier.tagline && (
-                <p className="mt-3 text-sm text-[color:var(--color-fog)]/75">
-                  {tier.tagline}
-                </p>
-              )}
-
-              <div className="mt-10">
-                <div className="text-[10px] font-medium uppercase tracking-[0.28em] text-[color:var(--color-fog)]/55">
-                  From
-                </div>
-                <div className="mt-2 flex items-baseline gap-2">
-                  <span
-                    className={`display leading-none text-[3.25rem] sm:text-[3.75rem] ${
-                      rec
-                        ? "text-[color:var(--color-domigreen)]"
-                        : "text-[color:var(--color-glacier)]"
-                    }`}
-                  >
-                    £{tier.price.toLocaleString()}
-                  </span>
-                  <span className="text-sm text-[color:var(--color-fog)]/70">
-                    / month
-                  </span>
-                </div>
-              </div>
-
-              <div className="hairline mt-10" />
-
-              <ul className="mt-8 flex-1 space-y-4 text-[0.95rem] leading-relaxed text-[color:var(--color-fog)]/90">
-                {tier.features.map((feature) => (
-                  <li key={feature} className="flex gap-3">
-                    <Check muted={!rec} />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-10">
-                <Link
-                  href={tier.cta.href}
-                  target={tier.cta.external ? "_blank" : undefined}
-                  rel={tier.cta.external ? "noopener" : undefined}
-                  className={`btn w-full justify-center ${rec ? "btn-primary" : "btn-ghost"}`}
+              <p className="mt-3 text-sm text-[color:var(--color-fog)]/75">{o.tagline}</p>
+              <div className="mt-8 flex items-baseline gap-2">
+                <span
+                  className={`display leading-none text-[3rem] sm:text-[3.5rem] ${
+                    o.highlight ? "text-[color:var(--color-domigreen)]" : "text-[color:var(--color-glacier)]"
+                  }`}
                 >
-                  {tier.cta.label}
+                  {o.price}
+                </span>
+                <span className="text-sm text-[color:var(--color-fog)]/70">{o.cadence}</span>
+              </div>
+              <p className="mt-4 flex-1 text-sm leading-relaxed text-[color:var(--color-fog)]/80">{o.term}</p>
+              <div className="mt-8">
+                <Link
+                  href={site.calendly}
+                  target="_blank"
+                  rel="noopener"
+                  className={`btn w-full justify-center ${o.highlight ? "btn-primary" : "btn-ghost"}`}
+                >
+                  Book a discovery call
                   <span aria-hidden>→</span>
                 </Link>
               </div>
             </div>
           </ScrollReveal>
-        );
-      })}
+        ))}
+      </div>
     </div>
   );
 }

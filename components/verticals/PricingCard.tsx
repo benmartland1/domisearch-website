@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Cta } from "./Cta";
 import { MobileCollapse } from "./Mobile";
+import { AEO_PRICING, gbp } from "@/lib/pricing";
 
 /**
  * The single programme card on the vertical pages: what it costs on the left,
@@ -23,11 +24,7 @@ export type PricingPlan = {
   territory: string;
 };
 
-const MONTHLY = 2995;
-const UPFRONT = 7500;
-const UPFRONT_MONTHS = 3;
-
-const gbp = (n: number) => `£${n.toLocaleString("en-GB")}`;
+const { monthly: MONTHLY, upfront: UPFRONT, upfrontMonths: UPFRONT_MONTHS } = AEO_PRICING;
 
 /** Derived, so the saving and effective rate can never disagree with the prices. */
 const BILLING = [

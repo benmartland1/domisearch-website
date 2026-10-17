@@ -1,6 +1,7 @@
 import { getIndexablePosts } from "@/lib/posts";
 import { getAllCaseStudies } from "@/lib/case-studies";
 import { site } from "@/lib/site";
+import { aeoPricingSentence } from "@/lib/pricing";
 
 /**
  * Regenerated on demand when Sanity publishes — see app/api/revalidate.
@@ -41,7 +42,7 @@ export async function GET() {
   lines.push("## Key pages");
   lines.push(`- [Home](${site.url}/)`);
   lines.push(`- [About](${site.url}/about)`);
-  lines.push(`- [Pricing](${site.url}/pricing)`);
+  lines.push(`- [Pricing](${site.url}/pricing): ${aeoPricingSentence}`);
   lines.push(`- [Contact](${site.url}/contact): Email ${site.email}, phone ${site.phone}, or book a call at ${site.calendly}`);
   lines.push(`- [Careers](${site.url}/careers)`);
   lines.push(`- [Blog](${site.url}/blog)`);
