@@ -138,7 +138,7 @@ const faqs = [
   {
     question: "Which businesses do you work with?",
     answer:
-      "Service businesses whose clients research before they buy. Recruitment agencies are a core focus, and we also work with accountancy practices, healthcare providers, commercial finance brokers and other professional services. If we are not a fit we will say so on the first call.",
+      "Service businesses whose clients research before they buy. Recruitment agencies are a core focus, and we also work with accountancy practices, healthcare providers and other professional services. If we are not a fit we will say so on the first call.",
   },
 ];
 
@@ -419,14 +419,6 @@ export default function AEOPage() {
                 </div>
                 <p className="mt-1 text-sm text-[color:var(--color-fog)]/80">
                   Patients research treatments and providers in AI before they book.
-                </p>
-              </li>
-              <li>
-                <div className="text-lg font-[600] text-[color:var(--color-glacier)]">
-                  <Link href="/commercial-finance" className="hover:text-[color:var(--color-domigreen)]">Commercial finance brokers</Link>
-                </div>
-                <p className="mt-1 text-sm text-[color:var(--color-fog)]/80">
-                  Business owners ask AI who can arrange asset, vehicle and invoice finance before they call a broker.
                 </p>
               </li>
             </ul>
