@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import { ClientMarquee } from "@/components/ClientMarquee";
-import { ProgrammeSection } from "@/components/ProgrammeSection";
+import { HowItWorks } from "@/components/HowItWorks";
 import { ProofSection } from "@/components/ProofSection";
 import { FounderSection } from "@/components/FounderSection";
 import { Testimonials } from "@/components/Testimonials";
@@ -253,7 +253,7 @@ export default function HomePage() {
       <div className="mt-6 lg:mt-16">
         <ClientMarquee />
       </div>
-      <ProgrammeSection />
+      <HowItWorks />
       <ProofSection />
       <FounderSection />
       <Testimonials showBookCall only={["Eamon Shahir", "Arjun Kumar", "Sam Barraclough"]} />
