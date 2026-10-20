@@ -62,11 +62,6 @@ export function ProofSection() {
                   track for them, Taxd was named 689 times in AI answers in the 30 days to 16 October
                   2026, on ChatGPT, Perplexity and Google AI Overviews.
                 </p>
-                <p className="mt-4 max-w-2xl text-sm text-[color:var(--color-fog)]/60">
-                  Measured in Searchable. The figures describe the tracked set of questions and
-                  platforms, not every AI conversation, and are not a guarantee of what another
-                  business would see.
-                </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link href="/taxd-case-study" className="btn btn-primary">
                     How Taxd did it
