@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { ScrollReveal } from "./ScrollReveal";
 import { SectionHeader } from "./SectionHeader";
+import { SectionIntro, lightCard } from "./light/Primitives";
 import { site } from "@/lib/site";
 
 const TRUSTPILOT_GREEN = "#00B67A";
@@ -118,9 +119,11 @@ function initials(name: string): string {
 function Avatar({
   testimonial,
   size,
+  light = false,
 }: {
   testimonial: Testimonial;
   size: "sm" | "md" | "lg";
+  light?: boolean;
 }) {
   const photo = resolvePhoto(testimonial.photoSlug);
   const px = size === "lg" ? 52 : size === "md" ? 44 : 36;
@@ -138,7 +141,7 @@ function Avatar({
         alt={testimonial.name}
         width={px}
         height={px}
-        className={`${className} shrink-0 rounded-full object-cover object-center ring-1 ring-white/10`}
+        className={`${className} shrink-0 rounded-full object-cover object-center ring-1 ${light ? "ring-black/10" : "ring-white/10"}`}
         sizes={`${px}px`}
       />
     );
@@ -146,7 +149,7 @@ function Avatar({
 
   return (
     <span
-      className={`${className} grid shrink-0 place-items-center rounded-full border border-white/10 text-sm font-[600]`}
+      className={`${className} grid shrink-0 place-items-center rounded-full border text-sm font-[600] ${light ? "border-black/10" : "border-white/10"}`}
       style={{ color: testimonial.accent }}
     >
       {initials(testimonial.name)}
@@ -163,12 +166,20 @@ type TestimonialsProps = {
    * the Google Ads page keeps the Ads-specific ones.
    */
   only?: string[];
+  /** Dark is the inner-site treatment; light is the paper homepage. */
+  tone?: "dark" | "light";
 };
 
-export function Testimonials({ showBookCall = false, only }: TestimonialsProps = {}) {
+export function Testimonials({ showBookCall = false, only, tone = "dark" }: TestimonialsProps = {}) {
   const pool = only ? testimonials.filter((t) => only.includes(t.name)) : testimonials;
   const featured = pool.find((t) => t.featured) ?? pool[0];
   const others = pool.filter((t) => t !== featured);
+
+  if (tone === "light") {
+    return (
+      <LightTestimonials featured={featured} others={others} showBookCall={showBookCall} />
+    );
+  }
 
   return (
     <section className="relative mx-auto mt-32 max-w-7xl px-6 lg:px-10">
@@ -310,6 +321,140 @@ export function Testimonials({ showBookCall = false, only }: TestimonialsProps =
               aria-hidden
               className="transition-transform duration-300 group-hover:translate-x-0.5"
             >
+              →
+            </span>
+          </a>
+        )}
+      </ScrollReveal>
+    </section>
+  );
+}
+
+/* ---------- paper variant ---------- */
+
+function LightTestimonials({
+  featured,
+  others,
+  showBookCall,
+}: {
+  featured: Testimonial;
+  others: Testimonial[];
+  showBookCall: boolean;
+}) {
+  return (
+    <section className="relative mx-auto mt-24 max-w-6xl px-5 sm:px-6 lg:mt-32">
+      <SectionIntro
+        label="Testimonials"
+        title="What clients say about working with us."
+        description="Verbatim from clients, with their names attached. More on Trustpilot."
+      />
+
+      <ScrollReveal className="mt-12">
+        <figure className={`${lightCard} relative overflow-hidden p-7 sm:p-12`}>
+          <span
+            aria-hidden
+            className="absolute inset-y-0 left-0 w-[4px]"
+            style={{ background: featured.accent }}
+          />
+          <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div>
+              <span className="flex gap-0.5" aria-hidden>
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <svg key={i} viewBox="0 0 24 24" className="h-4 w-4" fill={TRUSTPILOT_GREEN}>
+                    <path d="M12 2l2.9 6.88 7.1.55-5.4 4.69 1.6 6.88L12 17.3l-6.2 3.7 1.6-6.88L2 9.43l7.1-.55L12 2z" />
+                  </svg>
+                ))}
+              </span>
+              <blockquote className="mt-5 max-w-3xl text-balance text-[clamp(1.25rem,2.6vw,1.85rem)] font-semibold leading-[1.35] tracking-[-0.02em] text-[color:var(--color-ink)]">
+                &ldquo;{featured.quote}&rdquo;
+              </blockquote>
+              <figcaption className="mt-7 flex items-center gap-4">
+                <Avatar testimonial={featured} size="lg" light />
+                <div>
+                  <div className="text-[15px] font-bold tracking-tight text-[color:var(--color-ink)]">
+                    {featured.name}
+                  </div>
+                  <div className="text-[13px] text-[color:var(--color-ink-3)]">
+                    {featured.role}, {featured.company}
+                  </div>
+                </div>
+              </figcaption>
+            </div>
+            {featured.logo && (
+              <div className="flex items-end lg:justify-end">
+                <Image
+                  src={featured.logo}
+                  alt={featured.company}
+                  width={120}
+                  height={40}
+                  className="h-7 w-auto opacity-70 brightness-0"
+                  sizes="120px"
+                />
+              </div>
+            )}
+          </div>
+        </figure>
+      </ScrollReveal>
+
+      <div className="mt-5 grid gap-5 lg:grid-cols-2">
+        {others.map((t, i) => (
+          <ScrollReveal key={t.name} delay={(i % 2) * 100}>
+            <figure className={`${lightCard} flex h-full flex-col p-6 sm:p-8`}>
+              <blockquote className="flex-1 text-[15px] leading-relaxed text-[color:var(--color-ink-2)] sm:text-[16px]">
+                &ldquo;{t.quote}&rdquo;
+              </blockquote>
+              <figcaption className="mt-6 flex items-center gap-3 border-t border-black/[0.07] pt-5">
+                <Avatar testimonial={t} size="md" light />
+                <div>
+                  <div className="text-[14px] font-bold tracking-tight text-[color:var(--color-ink)]">
+                    {t.name}
+                  </div>
+                  <div className="text-[12px] text-[color:var(--color-ink-3)]">
+                    {t.role}, {t.company}
+                  </div>
+                </div>
+              </figcaption>
+            </figure>
+          </ScrollReveal>
+        ))}
+      </div>
+
+      <ScrollReveal
+        delay={80}
+        className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center"
+      >
+        <a
+          href={site.trustpilot}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex h-14 items-center justify-center gap-3 rounded-full px-7 text-[15px] font-bold text-white transition-transform duration-300 hover:-translate-y-0.5"
+          style={{ backgroundColor: TRUSTPILOT_GREEN }}
+        >
+          <TrustpilotStars />
+          <span className="whitespace-nowrap">See our reviews on Trustpilot</span>
+          <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">
+            →
+          </span>
+        </a>
+
+        {showBookCall && (
+          <a
+            href={site.calendly}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex h-14 items-center justify-center gap-3 rounded-full border border-black/[0.12] bg-white py-2 pl-2 pr-6 text-[15px] font-bold text-[color:var(--color-ink)] transition-[transform,border-color] duration-300 hover:-translate-y-0.5 hover:border-[color:var(--color-pine)]"
+          >
+            <Image
+              src="/brand/founder-cta.png"
+              alt="Ben Martland"
+              width={48}
+              height={48}
+              sizes="48px"
+              className="h-10 w-10 shrink-0 rounded-full object-cover object-center"
+              style={{ objectPosition: "center 15%" }}
+            />
+            <span className="whitespace-nowrap">Book a call</span>
+            <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">
               →
             </span>
           </a>

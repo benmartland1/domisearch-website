@@ -1,19 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import { JsonLd } from "@/components/JsonLd";
-import { AISearchDemo } from "@/components/verticals/AISearchDemo";
 import { PromptBoard } from "@/components/verticals/PromptBoard";
-import { PromptTicker } from "@/components/verticals/PromptTicker";
 import { VerticalNav } from "@/components/verticals/VerticalNav";
+import { AnswerCard, NotMentioned } from "@/components/light/AnswerCard";
+import { IllustratedSteps, type IllustratedStep } from "@/components/light/IllustratedSteps";
+import { Mark, SectionLabel } from "@/components/light/Primitives";
+import { EnquiryVisual, ReportVisual, WebsiteVisual } from "@/components/light/StepVisuals";
 import { VerticalFaq, type FaqItem } from "@/components/verticals/VerticalFaq";
 import { Cta, CtaBlock } from "@/components/verticals/Cta";
 import { PricingCard, type PricingPlan } from "@/components/verticals/PricingCard";
-import {
-  Carousel,
-  ClampedText,
-  StepsAccordion,
-  StickyCta,
-} from "@/components/verticals/Mobile";
+import { Carousel, ClampedText, StickyCta } from "@/components/verticals/Mobile";
 import { Signature } from "@/components/verticals/Signature";
 import { TerritoryMap } from "@/components/verticals/TerritoryMap";
 import {
@@ -80,53 +77,120 @@ const SHOW_TERRITORIES =
   process.env.NEXT_PUBLIC_SHOW_TERRITORIES === "true" ||
   process.env.NODE_ENV === "development";
 
-const TICKER = [
-  "Google Partner agency",
-  "Be the brand AI recommends",
-  "Built for UK recruitment firms",
-  "Tracking ChatGPT · Gemini · Perplexity · Copilot · Google AI",
-  "Manchester based, working UK-wide",
+/**
+ * The verified result, from Searchable (the tracking tool on the Taxd account)
+ * for the 30 days to 16 October 2026: 689 Taxd brand mentions across 1,080 AI
+ * answers checked, on ChatGPT, Perplexity and Google AI Overviews. The figures
+ * describe the tracked prompt set only. Re-verify before changing them.
+ */
+const TAXD_PERIOD = "30 days to 16 October 2026";
+const TAXD_FIGURES = [
+  {
+    value: "689",
+    label: "Times Taxd was named in AI answers",
+    note: `${TAXD_PERIOD}, across the questions we track for them.`,
+  },
+  {
+    value: "1,080",
+    label: "AI answers checked in that period",
+    note: "Same 30 days, on ChatGPT, Perplexity and Google AI Overviews.",
+  },
 ];
 
 /**
- * Every figure here is one we can evidence today.
- * PLACEHOLDER markers flag anything to re-verify before this page goes live.
+ * How it works, in plain English, with recruitment examples. Every screen is
+ * an illustration, tagged as such; no figures, no real firms.
  */
-const STATS = [
-  { value: "£3M+", label: "Ad spend managed", note: "Across live Google Ads accounts" },
+const STEPS: IllustratedStep[] = [
   {
-    value: "600+",
-    label: "AI mentions a month",
-    note: "Taxd, across every major engine",
-  },
-  { value: "5.0", label: "Trustpilot rating", note: "Verified client reviews" },
-  { value: "5", label: "AI engines tracked", note: "Monthly, prompt by prompt" },
-];
-
-const STEPS = [
-  {
-    n: "01",
-    title: "Prompt audit",
-    summary: "What every engine answers about your patch today.",
-    body: "We map the questions your buyers actually type, by sector, by discipline and by city, then check what every major AI engine answers today. You see exactly who gets named instead of you.",
-  },
-  {
-    n: "02",
-    title: "Entity foundations",
-    summary: "The plumbing that decides whether a model can cite you.",
-    body: "Schema, llms.txt, consistent entity data and a site structure AI can parse. This is the plumbing that decides whether a model can cite you at all. Most recruitment sites fail here.",
+    title: "Find the questions hiring managers ask.",
+    body: "We map what employers type into ChatGPT, Gemini and Perplexity when they need a recruiter: by discipline, by sector and by city. Then we check which firms get named today, and whether yours is one of them.",
+    alt: "An AI search window answering “Which recruitment agencies cover construction roles in Manchester?” with three other firms named, and a note that your firm is not mentioned.",
+    visual: (
+      <AnswerCard
+        query="Which recruitment agencies cover construction roles in Manchester?"
+        lead="A few agencies place construction roles in Manchester:"
+        rows={[
+          { name: "A national generalist", meta: "Multi-sector · UK-wide" },
+          { name: "A regional competitor", meta: "Trades & labour · North West" },
+          { name: "A job board", meta: "Listings · UK-wide" },
+        ]}
+        sources={["industry directory", "client reviews", "a news site"]}
+        footer={<NotMentioned name="Your firm" />}
+      />
+    ),
   },
   {
-    n: "03",
-    title: "Citable content",
-    summary: "Pages written to be quoted, not ranked.",
-    body: "Sector and city pages written to be quoted, not ranked: salary data, hiring guides, market commentary. Specific enough that a model reaches for you over a national generalist.",
+    title: "Make your website and content the answer.",
+    body: "We fix the technical details that decide whether AI can read your site at all, then make your disciplines, regions and placements clear on the pages that matter. We add salary guides and hiring advice worth quoting, and get you listed and reviewed on the sources AI reads.",
+    alt: "A construction recruitment service page and a salary guide on your firm's website, leading to an AI answer that recommends your firm.",
+    visual: (
+      <WebsiteVisual
+        domain="yourfirm.co.uk"
+        pageKicker="Service"
+        pageTitle="Construction recruitment in Manchester"
+        pageIntro="Site managers, quantity surveyors and project managers for main contractors across the North West."
+        bullets={[
+          "Shortlist within ten working days",
+          "Permanent and contract placements",
+          "Site teams placed for main contractors and subcontractors",
+        ]}
+        quote="They had three strong QS candidates with us inside a week."
+        guideKicker="Salary guide"
+        guideTitle="Quantity surveyor salaries in the North West"
+        guideBlurb="What QS roles pay this year across Manchester and the North West, and what pushes a package above the going rate."
+        answer={
+          <>
+            For construction hiring in Manchester, <Mark>Your firm</Mark> comes up consistently.
+            They cover site managers, quantity surveyors and project managers across the North
+            West and publish current salary data.
+          </>
+        }
+      />
+    ),
   },
   {
-    n: "04",
-    title: "Tracked monthly",
-    summary: "Movement reported every month, engine by engine.",
-    body: "The Territory Engine dashboard monitors your prompts across ChatGPT, Gemini, Perplexity, Copilot and Google AI, and reports movement every month. Visibility, share of voice, and which sources the models pulled from. You see the same screen we do.",
+    title: "Turn interested employers into enquiries.",
+    body: "A hiring manager who finds you through an AI answer still checks you out before they call. Clear service pages, recent placements and a short enquiry form make that next step easy.",
+    alt: "A website enquiry form leading to an email from a head of construction asking to speak this week about an urgent quantity surveyor role in Salford.",
+    visual: (
+      <EnquiryVisual
+        name="Sarah Whitfield"
+        role="Head of Construction"
+        subject="Urgent QS role, Salford"
+        body="Hi, we need a quantity surveyor for a Salford site starting next month. Your firm came up when we were researching recruiters. Can we speak this week?"
+        signoff="Sarah"
+        formLine="We need a QS in Salford, starting next month…"
+      />
+    ),
+  },
+  {
+    title: "Track daily, report monthly, keep improving.",
+    body: "We track your prompts every day across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews, record each change we make and review what happened afterwards. Your monthly report shows what was published, where you appeared and what we will do next. You see the same screen we do.",
+    alt: "A simple monthly report showing what was published, where the firm appeared and the next action, with a note that each change is dated in Domi Studio.",
+    visual: (
+      <ReportVisual
+        company="Your firm"
+        period="This month"
+        rows={[
+          {
+            label: "Published",
+            body: "Quantity surveyor salaries in the North West",
+            note: "Salary guide, with the construction service page updated to match.",
+          },
+          {
+            label: "Appeared in",
+            body: "ChatGPT and Perplexity",
+            note: "Named when asked which agencies cover construction roles in Manchester.",
+          },
+          {
+            label: "Next",
+            body: "Add two recent placements to the service page",
+            note: "So the answer has results to point to.",
+          },
+        ]}
+      />
+    ),
   },
 ];
 
@@ -274,7 +338,7 @@ const UPDATED = lastUpdated("app/recruitment/page.tsx");
  * match the pricing cards and stats below.
  */
 const SUMMARY =
-  "DomiSearch is a specialist AI search (AEO) agency for UK recruitment firms, based in Manchester. We make recruitment agencies the firms ChatGPT, Gemini and Perplexity name when hiring managers ask which recruiter to use - tracked monthly across five AI engines, priced from £2,995/month.";
+  "DomiSearch is a specialist AI search (AEO) agency for UK recruitment firms, based in Manchester. We make recruitment agencies the firms ChatGPT, Gemini and Perplexity name when hiring managers ask which recruiter to use - tracked daily across five AI platforms, priced from £2,995/month.";
 
 const FAQS: FaqItem[] = [
   {
@@ -283,15 +347,14 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "Do hiring managers really use AI to find recruitment agencies?",
-    // SOURCE CHECK — verify the Forrester figures and the two survey stats
-    // below before launch. They are stated with attribution, so they need to be
-    // right.
-    a: "The hard numbers are about B2B buying generally, and the people hiring you are B2B buyers. Forrester surveyed 18,000 of them and found 94% used AI somewhere in their most recent purchase. More than half now begin their research with an AI chatbot rather than Google, and around a third have bought from a vendor they had never heard of because AI put it in front of them. Rather than quote industry averages at you, we would rather run your own prompts on a call and show you what the engines say about your firm today.",
+    // Source: Forrester, Buyers' Journey Survey 2025 (nearly 18,000 B2B
+    // buyers), published January 2026. Only the figures in that report are
+    // quoted here.
+    a: "The hard numbers are about B2B buying generally, and the people hiring you are B2B buyers. Forrester's Buyers' Journey Survey 2025, covering nearly 18,000 B2B buyers, found that 94% used AI tools during their most recent purchase, and that twice as many buyers called generative AI a more meaningful source of information than any other source. Rather than quote industry averages at you, we would rather run your own prompts on a call and show you what the engines say about your firm today.",
   },
   {
     q: "Our clients come through PSLs and referrals. Does this still matter?",
-    // SOURCE CHECK — verify the 63% figure before launch.
-    a: "Yes, because PSLs leak. Roughly 63% of hiring managers regularly engage agencies outside their preferred supplier list, usually for urgent or niche roles, and that is exactly the moment they go looking. Referred buyers check you out before they call, too. AI answers are part of that silent research whether the introduction came from a person or not.",
+    a: "Yes, because PSLs leak. Hiring managers regularly go outside their preferred supplier list for urgent or niche roles, and that is exactly the moment they go looking. Referred buyers check you out before they call, too. AI answers are part of that silent research whether the introduction came from a person or not.",
   },
   {
     q: "How long does it take to appear in AI answers?",
@@ -307,7 +370,7 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "How do you prove it is working?",
-    a: "Monthly tracking across ChatGPT, Gemini, Perplexity, Copilot and Google AI on your specific prompts, showing whether you were mentioned, where you ranked in the answer, and which sources the model cited. It is the Territory Engine dashboard, and you see the same screen we do.",
+    a: "Daily tracking across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews on your specific prompts, showing whether you were mentioned, where you ranked in the answer and which sources the model cited, reported every month. You see the same screen we do.",
   },
   {
     // Written to be lifted whole: 40-60 words, names the firm, both people and
@@ -321,25 +384,6 @@ const FAQS: FaqItem[] = [
 /* -------------------------------------------------------------------------- */
 /* Small presentational pieces                                                 */
 /* -------------------------------------------------------------------------- */
-
-function Ticker() {
-  const items = [...TICKER, ...TICKER];
-  return (
-    <div className="hidden overflow-hidden bg-[color:var(--color-ink)] py-2.5 sm:block">
-      <div className="ticker-track">
-        {items.map((t, i) => (
-          <span
-            key={i}
-            className="flex shrink-0 items-center gap-8 whitespace-nowrap px-8 text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-paper)]/70"
-          >
-            {t}
-            <span className="text-[color:var(--color-domigreen)]">/</span>
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 function TrustpilotCue() {
   return (
@@ -358,15 +402,6 @@ function TrustpilotCue() {
       </span>
       <span className="font-semibold">Rated 5 stars on Trustpilot</span>
     </a>
-  );
-}
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-pine)]">
-      <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-pine)]" />
-      {children}
-    </span>
   );
 }
 
@@ -394,9 +429,7 @@ export default function RecruitmentPage() {
       className="min-h-screen overflow-x-clip bg-[color:var(--color-paper)] text-[color:var(--color-ink-2)]"
     >
       <JsonLd data={[faqSchema]} />
-      <PromptTicker />
       <StickyCta href={site.calendly} />
-      <Ticker />
       <VerticalNav
         calendly={site.calendly}
         territories={
@@ -408,23 +441,19 @@ export default function RecruitmentPage() {
 
       {/* ===================== 1 · HERO ===================== */}
       <section className="relative">
-        <div aria-hidden className="pointer-events-none absolute inset-0 grid-backdrop-light" />
-        {/* minmax(0,1fr) rather than 1fr: grid tracks default to min-width:auto,
-            which lets the demo's content widen the column as the answer streams
-            in. Capping the minimum at 0 keeps the window a constant width. */}
-        <div className="relative mx-auto grid max-w-6xl items-center gap-7 px-5 pb-10 pt-5 sm:gap-12 sm:px-6 sm:pb-16 sm:pt-14 lg:grid-cols-[1.02fr_minmax(0,1fr)] lg:gap-14 lg:pb-24">
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-14 pt-6 sm:px-6 sm:pb-16 sm:pt-12 lg:grid-cols-[1.05fr_minmax(0,1fr)] lg:gap-16 lg:pb-24">
           {/* Copy */}
           <div>
             <SectionLabel>AEO for recruitment</SectionLabel>
 
-            <h1 className="mt-3.5 text-balance text-[clamp(1.85rem,7.2vw,3.6rem)] font-bold leading-[1.02] tracking-[-0.035em] text-[color:var(--color-ink)] sm:mt-5">
+            <h1 className="mt-4 text-balance text-[clamp(2.2rem,6.2vw,3.7rem)] font-bold leading-[1.04] tracking-[-0.035em] text-[color:var(--color-ink)] sm:mt-5">
               Be the recruitment firm{" "}
-              <span className="text-[color:var(--color-ink-3)]">AI recommends</span>
+              <span className="text-[color:var(--color-pine)]">AI recommends</span>.
             </h1>
 
-            <p className="mt-3.5 max-w-xl text-pretty text-[15px] leading-relaxed text-[color:var(--color-ink-2)] sm:mt-6 sm:text-[19px]">
+            <p className="mt-5 max-w-xl text-pretty text-[16px] leading-relaxed text-[color:var(--color-ink-2)] sm:mt-6 sm:text-[19px]">
               When a hiring manager asks ChatGPT for the best construction recruiter in Manchester,
-              one firm gets named. Right now it isn&apos;t yours. We fix that.
+              one firm gets named. Right now it isn&apos;t yours. We work to change that.
             </p>
 
             {/* One button on mobile so the CTA clears the fold; the secondary
@@ -447,9 +476,33 @@ export default function RecruitmentPage() {
             </div>
           </div>
 
-          {/* The demo */}
-          <div className="min-w-0 lg:pl-2">
-            <AISearchDemo />
+          {/* The outcome, shown finished: your firm named and cited */}
+          <div className="min-w-0">
+            <AnswerCard
+              query="best recruitment agency for construction in Manchester"
+              lead={
+                <>
+                  For construction hiring in Manchester, the firm that comes up most consistently is{" "}
+                  <Mark>Your firm</Mark>. They cover site managers, quantity surveyors and project
+                  managers across the North West, and are repeatedly rated for speed of placement.
+                </>
+              }
+              rows={[
+                { name: "Your firm", meta: "Construction · Manchester", you: true },
+                { name: "A regional competitor", meta: "Trades & labour · North West" },
+                { name: "A national generalist", meta: "Multi-sector · UK-wide" },
+              ]}
+              sources={["yourfirm.co.uk", "client reviews", "industry news"]}
+              footer={
+                <p className="flex flex-wrap items-center gap-2 text-[12.5px] text-[color:var(--color-ink-3)]">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--color-ink)] px-3 py-1.5 text-[11px] font-bold tracking-tight text-[color:var(--color-paper)]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-domigreen)]" />
+                    That&apos;s your firm
+                  </span>
+                  Named first, cited, inside the answer.
+                </p>
+              }
+            />
           </div>
         </div>
       </section>
@@ -470,60 +523,41 @@ export default function RecruitmentPage() {
         </div>
       </section>
 
-      {/* ===================== 2 · STATS ===================== */}
-      <section className="border-y border-black/[0.06] bg-[color:var(--color-paper-2)]">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 px-5 py-6 sm:px-6 sm:py-10 lg:grid-cols-4">
-          {STATS.map((s, i) => (
-            <div
-              key={s.label}
-              className={`px-2 py-2.5 sm:px-6 sm:py-4 ${
-                i % 2 === 1 ? "border-l border-black/[0.07] pl-3 sm:pl-6" : ""
-              } ${i > 1 ? "mt-3 border-t border-black/[0.07] pt-4 sm:mt-6 sm:pt-8 lg:mt-0 lg:border-t-0 lg:pt-4" : ""} ${
-                i > 0 ? "lg:border-l lg:border-black/[0.07]" : ""
-              }`}
-            >
-              <div className="text-[clamp(1.6rem,6vw,3rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-ink)]">
-                {s.value}
-              </div>
-              <div className="mt-1.5 text-[13px] font-semibold tracking-tight text-[color:var(--color-ink)] sm:mt-3 sm:text-[14px]">
-                {s.label}
-              </div>
-              <div className="mt-0.5 text-[11px] leading-snug text-[color:var(--color-ink-3)] sm:mt-1 sm:text-[12px]">{s.note}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ===================== 3 · THE PROBLEM ===================== */}
       <section id="problem" className="mx-auto max-w-6xl px-5 py-7 sm:px-6 sm:py-28">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           {/* Left column carries the headline and the two stats, so it is not a
               headline sitting over empty space beside six paragraphs. */}
           <div>
-            <h2 className="text-balance text-[clamp(1.7rem,4.4vw,3.2rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
-              Your next client is asking an AI which agency to use{" "}
-              <span className="text-[color:var(--color-ink-3)]">and you never see the question</span>
+            <SectionLabel>The problem</SectionLabel>
+            <h2 className="mt-4 text-balance text-[clamp(1.85rem,4.2vw,2.9rem)] font-bold leading-[1.08] tracking-[-0.03em] text-[color:var(--color-ink)]">
+              Your next client is asking an AI which agency to use.{" "}
+              <span className="text-[color:var(--color-ink-3)]">You never see the question.</span>
             </h2>
 
-            {/* SOURCE CHECK — verify the 70-80% and 95% figures before launch. */}
-            <div className="mt-7 grid grid-cols-2 gap-x-4 border-t border-black/[0.08] pt-6 sm:mt-12 sm:gap-x-10 sm:pt-8">
+            {/* Source: Forrester, Buyers' Journey Survey 2025 (nearly 18,000
+                B2B buyers), published January 2026. Attributed on the page. */}
+            <div className="mt-8 grid grid-cols-2 gap-x-4 border-t border-black/[0.08] pt-6 sm:mt-12 sm:gap-x-10 sm:pt-8">
               <div>
-                <div className="text-[clamp(1.55rem,5vw,2.8rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-ink)]">
-                  70 to 80%
+                <div className="text-[clamp(1.75rem,5vw,2.8rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-ink)]">
+                  94%
                 </div>
                 <div className="mt-2 text-[13px] leading-snug text-[color:var(--color-ink-2)] sm:mt-3 sm:text-[14px]">
-                  of buyer research happens before anyone gets contacted
+                  of B2B buyers used AI tools during their most recent purchase
                 </div>
               </div>
               <div className="border-l border-black/[0.08] pl-4 sm:pl-10">
-                <div className="text-[clamp(1.55rem,5vw,2.8rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-ink)]">
-                  95%
+                <div className="text-[clamp(1.75rem,5vw,2.8rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-ink)]">
+                  2×
                 </div>
                 <div className="mt-2 text-[13px] leading-snug text-[color:var(--color-ink-2)] sm:mt-3 sm:text-[14px]">
-                  of the time, the firm already on the shortlist wins
+                  as many buyers called generative AI a more meaningful source than any other
                 </div>
               </div>
             </div>
+            <p className="mt-4 text-[12px] leading-relaxed text-[color:var(--color-ink-3)]">
+              Source: Forrester, Buyers&apos; Journey Survey 2025, nearly 18,000 B2B buyers.
+            </p>
           </div>
 
           <div className="text-[16px] leading-relaxed text-[color:var(--color-ink-2)] sm:text-[17px]">
@@ -616,19 +650,20 @@ export default function RecruitmentPage() {
       <section id="system" className="border-y border-black/[0.06] bg-[color:var(--color-paper-2)]">
         <div className="mx-auto max-w-6xl px-5 py-7 sm:px-6 sm:py-28">
           <SectionLabel>How it works</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
-            The Territory Engine.{" "}
-            <span className="text-[color:var(--color-ink-3)]">
-              Four moves, run every month until you&apos;re the answer.
-            </span>
+          <h2 className="mt-4 max-w-3xl text-balance text-[clamp(1.85rem,4.2vw,2.9rem)] font-bold leading-[1.08] tracking-[-0.03em] text-[color:var(--color-ink)]">
+            How we make your firm the one AI names.
           </h2>
+          <p className="mt-5 max-w-2xl text-pretty text-[16px] leading-relaxed text-[color:var(--color-ink-2)] sm:text-[18px]">
+            Four steps, run every month, each shown with a recruitment example. The screens are
+            illustrations of the work, not real client results.
+          </p>
 
-          <div className="mt-5 sm:mt-14">
-            <StepsAccordion steps={STEPS} />
+          <div className="mt-14 lg:mt-20">
+            <IllustratedSteps steps={STEPS} />
           </div>
 
           <div className="hidden sm:block">
-            <CtaBlock href={site.calendly} line="Thirty minutes to see what the Territory Engine would work on first for your firm." />
+            <CtaBlock href={site.calendly} line="Thirty minutes to see what we would work on first for your firm." />
           </div>
         </div>
       </section>
@@ -664,14 +699,15 @@ export default function RecruitmentPage() {
 
       {/* ===================== 5 · PROOF ===================== */}
       <section id="proof" className="mx-auto max-w-6xl px-5 py-7 sm:px-6 sm:py-28">
-        <SectionLabel>Proof</SectionLabel>
-        <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
-          We&apos;ve done this outside recruitment{" "}
-          <span className="text-[color:var(--color-ink-3)]">and we&apos;ll show you the work</span>
+        <SectionLabel>Verified result</SectionLabel>
+        <h2 className="mt-4 max-w-3xl text-balance text-[clamp(1.85rem,4.2vw,2.9rem)] font-bold leading-[1.08] tracking-[-0.03em] text-[color:var(--color-ink)]">
+          We&apos;ve done this outside recruitment.{" "}
+          <span className="text-[color:var(--color-ink-3)]">Here is the work.</span>
         </h2>
-        <p className="mt-5 max-w-2xl text-[16px] leading-relaxed text-[color:var(--color-ink-2)] sm:text-[17px]">
+        <p className="mt-5 max-w-2xl text-pretty text-[16px] leading-relaxed text-[color:var(--color-ink-2)] sm:text-[18px]">
           Straight answer: recruitment is a new vertical for us. The method isn&apos;t. Here is what it
-          did for a UK tax platform competing against far larger, far older brands.
+          did for a UK tax platform competing against far larger, far older brands. Each number says
+          what it measures and the period it covers.
         </p>
 
         {/* Featured case study */}
@@ -686,8 +722,11 @@ export default function RecruitmentPage() {
                 className="h-7 w-auto"
               />
               <p className="mt-6 text-balance text-[clamp(1.5rem,3.2vw,2.2rem)] font-bold leading-[1.15] tracking-[-0.03em]">
-                From invisible in AI answers to the name ChatGPT gives when someone asks for tax
-                help.
+                Named in 689 AI answers in a month when UK taxpayers ask about tax help.
+              </p>
+              <p className="mt-4 max-w-md text-[14px] leading-relaxed text-[color:var(--color-paper)]/60">
+                Figures from Searchable, the tracking tool we use, for the questions we track for
+                Taxd. They describe that tracked set, not every AI conversation.
               </p>
               <a
                 href="/taxd-case-study"
@@ -698,23 +737,20 @@ export default function RecruitmentPage() {
               </a>
             </div>
 
-            <div className="grid grid-cols-2 gap-8 lg:w-72 lg:grid-cols-1 lg:gap-7 lg:border-l lg:border-white/10 lg:pl-12">
-              <div>
-                <div className="text-[clamp(2rem,4vw,2.8rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-domigreen)]">
-                  600+
+            <div className="grid grid-cols-2 gap-8 lg:w-80 lg:grid-cols-1 lg:gap-7 lg:border-l lg:border-white/10 lg:pl-12">
+              {TAXD_FIGURES.map((f) => (
+                <div key={f.label}>
+                  <div className="text-[clamp(2rem,4vw,2.8rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-domigreen)]">
+                    {f.value}
+                  </div>
+                  <div className="mt-2 text-[14px] font-semibold text-[color:var(--color-paper)]">
+                    {f.label}
+                  </div>
+                  <div className="mt-1 text-[12.5px] leading-relaxed text-[color:var(--color-paper)]/55">
+                    {f.note}
+                  </div>
                 </div>
-                <div className="mt-2 text-[13px] text-[color:var(--color-paper)]/60">
-                  AI mentions a month
-                </div>
-              </div>
-              <div>
-                <div className="text-[clamp(2rem,4vw,2.8rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-domigreen)]">
-                  2.7×
-                </div>
-                <div className="mt-2 text-[13px] text-[color:var(--color-paper)]/60">
-                  Daily AI mentions, within a month
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -766,7 +802,7 @@ export default function RecruitmentPage() {
       <section id="team" className="border-y border-black/[0.06] bg-[color:var(--color-paper-2)]">
         <div className="mx-auto max-w-3xl px-5 py-7 sm:px-6 sm:py-28">
           <SectionLabel>Who you&apos;ll work with</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
+          <h2 className="mt-4 max-w-3xl text-balance text-[clamp(1.85rem,4.2vw,2.9rem)] font-bold leading-[1.08] tracking-[-0.03em] text-[color:var(--color-ink)]">
             Two of us.{" "}
             <span className="text-[color:var(--color-ink-3)]">Both on every account.</span>
           </h2>
@@ -1030,11 +1066,10 @@ The programme pays for itself if it wins you a single extra client a
 
       {/* ===================== 9 · FINAL CTA ===================== */}
       <section className="relative bg-[color:var(--color-paper)]">
-        <div aria-hidden className="pointer-events-none absolute inset-0 grid-backdrop-light" />
-        <div className="relative mx-auto max-w-3xl px-5 py-10 text-center sm:px-6 sm:py-32">
-          <h2 className="mx-auto max-w-2xl text-balance text-[clamp(2rem,5vw,3.4rem)] font-bold leading-[1.04] tracking-[-0.035em] text-[color:var(--color-ink)]">
-            Find out what AI says about your firm{" "}
-            <span className="text-[color:var(--color-ink-3)]">before your competitor does</span>
+        <div className="relative mx-auto max-w-3xl px-5 py-16 text-center sm:px-6 sm:py-32">
+          <h2 className="mx-auto max-w-2xl text-balance text-[clamp(2rem,5vw,3.3rem)] font-bold leading-[1.05] tracking-[-0.035em] text-[color:var(--color-ink)]">
+            Find out what AI says about your firm.{" "}
+            <span className="text-[color:var(--color-ink-3)]">Before your competitor does.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-pretty text-[17px] leading-relaxed text-[color:var(--color-ink-2)]">
             Thirty minutes. We run your real buyer prompts live on the call, no deck, and you see

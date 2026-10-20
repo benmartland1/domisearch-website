@@ -6,7 +6,8 @@ import { trackMeta } from "@/lib/meta";
 
 type Step = "lead" | "booking";
 
-export function VisibilityCheckForm() {
+export function VisibilityCheckForm({ tone = "dark" }: { tone?: "dark" | "light" } = {}) {
+  const light = tone === "light";
   const [url, setUrl] = useState("");
   const [invalid, setInvalid] = useState(false);
   const [honeypot, setHoneypot] = useState("");
@@ -110,7 +111,13 @@ export function VisibilityCheckForm() {
 
   if (done) {
     return (
-      <div className="max-w-xl rounded-2xl border border-[color:var(--color-domigreen)]/40 bg-[color:var(--color-domigreen)]/10 px-5 py-4 text-sm text-[color:var(--color-glacier)]">
+      <div
+        className={`max-w-xl rounded-2xl border px-5 py-4 text-sm ${
+          light
+            ? "border-[color:var(--color-pine)]/35 bg-[color:var(--color-pine)]/[0.06] text-[color:var(--color-ink)]"
+            : "border-[color:var(--color-domigreen)]/40 bg-[color:var(--color-domigreen)]/10 text-[color:var(--color-glacier)]"
+        }`}
+      >
         Got it - Ben will run your AI search visibility check personally and follow up with a
         short audit.
       </div>
@@ -148,15 +155,26 @@ export function VisibilityCheckForm() {
             if (invalid) setInvalid(false);
           }}
           placeholder="yourcompany.com"
-          className={`flex-1 rounded-full border bg-black/30 px-5 py-3 text-base text-[color:var(--color-glacier)] outline-none transition-colors placeholder:text-white/35 focus:border-[color:var(--color-domigreen)] ${invalid ? "border-red-400" : "border-white/10"}`}
+          className={
+            light
+              ? `flex-1 rounded-full border bg-white px-5 py-3.5 text-base text-[color:var(--color-ink)] outline-none transition-colors placeholder:text-black/35 focus:border-[color:var(--color-pine)] ${invalid ? "border-red-500" : "border-black/[0.14]"}`
+              : `flex-1 rounded-full border bg-black/30 px-5 py-3 text-base text-[color:var(--color-glacier)] outline-none transition-colors placeholder:text-white/35 focus:border-[color:var(--color-domigreen)] ${invalid ? "border-red-400" : "border-white/10"}`
+          }
         />
-        <button type="submit" className="btn btn-primary justify-center whitespace-nowrap">
-          Check Your AI Search Visibility
+        <button
+          type="submit"
+          className={
+            light
+              ? "group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[color:var(--color-ink)] px-6 py-3.5 text-[15px] font-bold tracking-tight text-[color:var(--color-paper)] shadow-[0_16px_36px_-18px_rgba(20,17,13,0.8)] transition-all duration-200 hover:-translate-y-px hover:bg-[color:var(--color-domigreen)] hover:text-[color:var(--color-charcoal)] motion-reduce:transition-none"
+              : "btn btn-primary justify-center whitespace-nowrap"
+          }
+        >
+          {light ? "Check my AI visibility" : "Check Your AI Search Visibility"}
           <span aria-hidden>→</span>
         </button>
       </form>
 
-      <p className="mt-3 text-xs text-[color:var(--color-fog)]/55">
+      <p className={`mt-3 text-xs ${light ? "text-[color:var(--color-ink-3)]" : "text-[color:var(--color-fog)]/55"}`}>
         We&apos;ll check where you show up across ChatGPT, Gemini &amp; Perplexity and send back a
         short audit.
       </p>
