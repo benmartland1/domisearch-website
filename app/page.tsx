@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import { ClientMarquee } from "@/components/ClientMarquee";
 import { ProgrammeSection } from "@/components/ProgrammeSection";
-import { StudioSection } from "@/components/StudioSection";
 import { ProofSection } from "@/components/ProofSection";
 import { FounderSection } from "@/components/FounderSection";
 import { Testimonials } from "@/components/Testimonials";
@@ -43,12 +42,12 @@ const homeFaqs = [
   {
     question: "What does the programme involve?",
     answer:
-      "It starts with an AI visibility and competitor baseline and research into relevant buyer questions and cited sources. We then work through technical foundations and structured data, service-page improvements and content that answers the questions in the research, with your team's expertise and approval. Throughout, we track the agreed questions daily, record when each change goes live, review what happened next and use the findings to set the next priorities, reported monthly with a strategy call.",
+      "It starts with an AI visibility and competitor baseline and research into relevant buyer questions and cited sources. We then work through technical foundations and structured data, service-page improvements and content that answers the questions in the research, with your team's expertise and approval. Throughout, we track the agreed questions daily and review progress in a monthly report and strategy call.",
   },
   {
     question: "How do you measure progress?",
     answer:
-      "Against the baseline, on the same tracked questions. We track daily, and when a piece of content goes live or a technical fix is completed we record the date in Domi Studio, our own software, and review what happened to visibility on the questions it targeted. The monthly report covers how often your business is named, which sources the answers cite, how you compare with tracked competitors, how AI describes you, the work completed and what we observed. The figures describe the tracked set, not every AI conversation.",
+      "Against the baseline, on the same tracked questions. We report how often your business is named, which sources the answers cite, how you compare with tracked competitors and how AI describes you, alongside the work completed. Domi Studio, our own software, connects that completed work with the visibility data so we can review what changed and what happened next. The figures describe the tracked set, not every AI conversation.",
   },
   {
     question: "What does DomiSearch charge?",
@@ -255,7 +254,6 @@ export default function HomePage() {
         <ClientMarquee />
       </div>
       <ProgrammeSection />
-      <StudioSection />
       <ProofSection />
       <FounderSection />
       <Testimonials showBookCall only={["Eamon Shahir", "Arjun Kumar", "Sam Barraclough"]} />

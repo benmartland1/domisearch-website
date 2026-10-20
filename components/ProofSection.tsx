@@ -10,38 +10,8 @@ import { SectionHeader } from "./SectionHeader";
  *   - tracked on ChatGPT, Perplexity and Google AI Overviews
  * They describe the tracked prompt set only. Re-verify before changing them,
  * and never present Google Ads results here as evidence of AI search work.
- *
- * The four-step record below is supported by:
- *   - the crawler/indexability SOP (sitemap on the API subdomain, llms.txt
- *     pointing at a missing sitemap path) and the schema + llms.txt work
- *     already published on the gated case study page
- *   - Searchable daily data for April 2026: 12-16 brand mentions a day in
- *     the first week (30-36 answers checked daily), high twenties to high
- *     thirties in the last week, on the same 11 unbranded questions
- *   - Searchable prompt data (Oct 2026): sole-trader, expat and partnership
- *     filing questions still return no Taxd mention
- * Do not attribute the April rise to a single change; content work overlapped.
  */
 const TAXD_BLUE = "#1E40FF";
-
-const record = [
-  {
-    label: "What we found",
-    body: "Taxd's sitemap lived on an API subdomain while the canonical site was on www, and its llms.txt pointed at a sitemap path that did not exist, so AI crawlers could not read the site consistently. In the first week of April 2026, Taxd was named in 12 to 16 of the 30 to 36 answers checked each day.",
-  },
-  {
-    label: "What we changed",
-    body: "Fixed crawler access, the sitemap and llms.txt as one consistent set, added Organisation and FAQ structured data, and then published content answering the self-assessment questions in the research, approved by the Taxd team.",
-  },
-  {
-    label: "What we observed",
-    body: "By the last week of April, daily mentions on the same questions were in the high twenties to high thirties, and 689 in the 30 days to 16 October 2026. A small tracked set on three platforms, so we read the trend, not any single day.",
-  },
-  {
-    label: "What we did next",
-    body: "Kept tracking the same questions daily and moved the priorities to where Taxd is still absent: sole-trader, expat and partnership filing questions where the answers name other providers.",
-  },
-];
 
 const figures = [
   { value: "689", label: "Times Taxd was named in AI answers" },
@@ -133,51 +103,6 @@ export function ProofSection() {
             </div>
           </article>
         </div>
-      </ScrollReveal>
-
-      {/* The record behind the figure: found → changed → observed → next */}
-      <ScrollReveal delay={120}>
-        <div className="mt-6 flex items-center gap-4">
-          <span className="h-px w-10 bg-[color:var(--color-domigreen)]/70" />
-          <span className="eyebrow">The record behind the figure</span>
-        </div>
-      </ScrollReveal>
-      <ol className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {record.map((r, i) => (
-          <ScrollReveal key={r.label} as="li" delay={160 + i * 80} className="relative">
-            <div className="h-full rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-              <div className="flex items-center gap-3">
-                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/15 text-[11px] font-semibold text-[color:var(--color-fog)]/80">
-                  {i + 1}
-                </span>
-                <h4
-                  className="text-[11px] uppercase tracking-[0.18em]"
-                  style={{ color: `color-mix(in oklab, ${TAXD_BLUE} 45%, var(--color-glacier))` }}
-                >
-                  {r.label}
-                </h4>
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-[color:var(--color-fog)]/85">{r.body}</p>
-            </div>
-            {i < record.length - 1 && (
-              <span
-                aria-hidden
-                className="absolute right-[-10px] top-1/2 hidden -translate-y-1/2 text-[color:var(--color-fog)]/40 lg:block"
-              >
-                →
-              </span>
-            )}
-          </ScrollReveal>
-        ))}
-      </ol>
-      <ScrollReveal delay={480}>
-        <p className="mt-6 max-w-3xl text-sm text-[color:var(--color-fog)]/60">
-          Technical and content work overlapped during April, so no single change explains the
-          rise. Monthly mentions have since stayed in a range of roughly 600 to 1,050 on the same
-          tracked questions, and the questions where Taxd is still not named are the ones we are
-          working on now. Recorded from the tracking tool&apos;s daily data; Domi Studio now logs each
-          change date so reviews like this compare the same questions before and after.
-        </p>
       </ScrollReveal>
     </section>
   );
