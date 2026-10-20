@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ScrollReveal } from "./ScrollReveal";
 import { SectionHeader } from "./SectionHeader";
 import { SpotlightCard } from "./SpotlightCard";
+import { MethodLoop } from "./MethodLoop";
 import { site } from "@/lib/site";
 
 /**
@@ -38,7 +39,7 @@ const deliverables = [
   {
     n: "06",
     title: "Ongoing tracking and reporting",
-    body: "Daily tracking of the agreed questions, then monthly reporting and a strategy call covering your visibility, competitor appearances, cited sources and the next priorities.",
+    body: "Daily tracking of the agreed questions. Each completed change is logged in Domi Studio and reviewed against subsequent visibility, then a monthly report and strategy call cover the work completed, what we observed and the next priorities.",
   },
 ];
 
@@ -48,10 +49,21 @@ export function ProgrammeSection() {
       <SectionHeader
         eyebrow="Our AI search programme"
         title="We don't guess. We reverse engineer."
-        description="We examine which brands and sources appear in the AI answers your potential clients are reading, then use that evidence to decide what to fix, build and publish."
+        description="We examine which brands and sources appear in the AI answers your potential clients are reading, use that evidence to decide what to fix, build and publish, record when it goes live, and review what happens next."
       />
 
-      <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-14">
+        <MethodLoop />
+      </div>
+
+      <ScrollReveal delay={120}>
+        <div className="mt-20 flex items-center gap-4">
+          <span className="h-px w-10 bg-[color:var(--color-domigreen)]/70" />
+          <span className="eyebrow">What the programme delivers</span>
+        </div>
+      </ScrollReveal>
+
+      <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {deliverables.map((d, i) => (
           <ScrollReveal key={d.n} delay={i * 70}>
             <SpotlightCard as="article" className="card h-full p-8">

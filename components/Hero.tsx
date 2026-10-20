@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { site } from "@/lib/site";
 import { Counter } from "./Counter";
 import { VisibilityCheckForm } from "./VisibilityCheckForm";
 import { AIEnginesBadge } from "./ui/AIEnginesBadge";
+import { StudioHeroVisual } from "./StudioHeroVisual";
 
 export function Hero() {
   const reduce = useReducedMotion();
@@ -30,7 +30,7 @@ export function Hero() {
         style={{ width: 420, height: 420, background: "var(--color-pine)", bottom: -200, right: "-10%", opacity: 0.5 }}
       />
 
-      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-8 pt-20 lg:grid-cols-[1fr_1fr] lg:items-center lg:px-10 lg:pb-24 lg:pt-28">
+      <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-8 pt-20 lg:grid-cols-[1.05fr_1fr] lg:items-start lg:px-10 lg:pb-24 lg:pt-28">
         <div>
           <motion.div
             initial={{ opacity: 0, y: 8 }}
@@ -56,11 +56,9 @@ export function Hero() {
             transition={{ delay: 0.55, duration: 0.8 }}
             className="mt-8 max-w-2xl text-pretty text-base leading-relaxed text-[color:var(--color-fog)]/85 sm:text-lg"
           >
-            We help service businesses improve their visibility across{" "}
-            <span className="text-[color:var(--color-glacier)]">
-              ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews
-            </span>
-            , so potential clients can discover them when researching who to work with.
+            We study which brands and sources AI recommends, use that evidence to improve your
+            website, and track what happens next. Every stage helps us make better decisions about
+            how potential clients discover you.
           </motion.p>
 
           <motion.div
@@ -111,17 +109,9 @@ export function Hero() {
           initial={{ opacity: 0, y: reduce ? 0 : 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 1, ease: [0.2, 0.8, 0.2, 1] }}
-          className="hidden lg:flex lg:justify-center"
+          className="flex justify-center lg:justify-end"
         >
-          <Image
-            src="/brand/hero.png"
-            alt="DomiSearch: ChatGPT and Google search results on mobile"
-            width={1080}
-            height={1080}
-            priority
-            sizes="(max-width: 1023px) 0px, (max-width: 1280px) 50vw, 660px"
-            className="h-auto w-full max-w-[660px]"
-          />
+          <StudioHeroVisual />
         </motion.div>
       </div>
     </section>

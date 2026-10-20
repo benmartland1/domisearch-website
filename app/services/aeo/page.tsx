@@ -76,9 +76,9 @@ const whatWeDo = [
   },
   {
     tag: "Tracking",
-    title: "Daily tracking and monthly review",
+    title: "Daily tracking, change reviews and monthly reporting",
     body:
-      "We track the agreed questions daily and review progress in a monthly report and strategy call: how often you are named, which sources are cited, how you compare with tracked competitors and how AI describes you. Where tracking allows, we also review AI referral traffic and relevant enquiries.",
+      "We track the agreed questions daily. When content goes live or a technical fix is completed, we record the date in Domi Studio, our own software, and review what happened to visibility on the questions that work targeted, comparing the weeks before with the weeks after. Those reviews guide what we deliver next. Each month you get a report and strategy call covering how often you are named, which sources are cited, how you compare with tracked competitors, how AI describes you, the work completed, what we observed and the next priorities. Where tracking allows, we also review AI referral traffic and relevant enquiries.",
   },
 ];
 
@@ -99,7 +99,7 @@ const faqs = [
   {
     question: "How do you measure progress?",
     answer:
-      "Against the baseline, on the same agreed questions, tracked daily across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews. The monthly report covers how often you are named, which sources the answers cite, your share of voice against tracked competitors and how AI describes you, alongside the work completed. The figures describe the tracked set of questions and platforms, not every AI conversation.",
+      "At three levels. Daily, we track the same agreed questions across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews. After each significant change, such as a new piece of content or a technical fix, we record the live date in Domi Studio, our own software, and review subsequent visibility on the questions it targeted against the weeks before. Monthly, you get a report and strategy call covering how often you are named, which sources the answers cite, your share of voice against tracked competitors, how AI describes you, the work completed and what we observed. The benefit is clearer priorities, visibility into the work done and decisions informed by observed results rather than assumptions. The figures describe the tracked set of questions and platforms, not every AI conversation.",
   },
   {
     question: "How quickly might we see results?",
@@ -119,7 +119,7 @@ const faqs = [
   {
     question: "Can we do this ourselves?",
     answer:
-      "Some of it, yes. Clear service pages, FAQs and structured data are all within reach of a capable in-house team. The research, the daily cross-platform tracking and the discipline of acting on the evidence each month is where most clients want help, and we will tell you on the discovery call if we think you do not need us.",
+      "Some of it, yes. Clear service pages, FAQs and structured data are all within reach of a capable in-house team. The research, the daily cross-platform tracking, the review of each change against what happened next and the discipline of acting on that evidence is where most clients want help, and we will tell you on the discovery call if we think you do not need us.",
   },
   {
     question: "Do you also manage Google Ads?",
@@ -138,7 +138,7 @@ const faqs = [
   {
     question: "Which businesses do you work with?",
     answer:
-      "Service businesses whose clients research before they buy. Recruitment agencies are a core focus, and we also work with accountancy practices, healthcare providers and other professional services. If we are not a fit we will say so on the first call.",
+      "Service businesses whose clients research before they buy. Recruitment agencies are a core focus, and we also work with accountancy practices, healthcare providers, commercial finance brokers and other professional services. If we are not a fit we will say so on the first call.",
   },
 ];
 
@@ -419,6 +419,14 @@ export default function AEOPage() {
                 </div>
                 <p className="mt-1 text-sm text-[color:var(--color-fog)]/80">
                   Patients research treatments and providers in AI before they book.
+                </p>
+              </li>
+              <li>
+                <div className="text-lg font-[600] text-[color:var(--color-glacier)]">
+                  <Link href="/commercial-finance" className="hover:text-[color:var(--color-domigreen)]">Commercial finance brokers</Link>
+                </div>
+                <p className="mt-1 text-sm text-[color:var(--color-fog)]/80">
+                  Business owners ask AI who can arrange asset, vehicle and invoice finance before they call a broker.
                 </p>
               </li>
             </ul>

@@ -25,7 +25,7 @@ export async function GET() {
   lines.push("");
   lines.push("## Methodology");
   lines.push(
-    "We examine which brands and sources appear in the AI answers a client's potential customers are reading, then use that evidence to guide the work: an AI visibility and competitor baseline, buyer-question and cited-source research, technical foundations and structured data, service-page improvements, content that answers buyer questions, and daily tracking with monthly reporting. We do not claim to know exact AI prompt volumes or to control which brands an AI platform recommends."
+    "We examine which brands and sources appear in the AI answers a client's potential customers are reading, then use that evidence to guide the work: an AI visibility and competitor baseline, buyer-question and cited-source research, technical foundations and structured data, service-page improvements, content that answers buyer questions, and daily tracking with monthly reporting. Our in-house software, Domi Studio, records when each change goes live and connects those delivery records with subsequent AI-search performance data, so reviews of completed work guide the next priorities. We do not claim to know exact AI prompt volumes or to control which brands an AI platform recommends."
   );
   lines.push("");
   lines.push("## Services");
