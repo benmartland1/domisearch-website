@@ -1,25 +1,15 @@
-import type { Metadata, Viewport } from "next";
-import { HomeHero } from "@/components/home/HomeHero";
-import { LogoRow } from "@/components/home/LogoRow";
+import type { Metadata } from "next";
+import { Hero } from "@/components/Hero";
+import { ClientMarquee } from "@/components/ClientMarquee";
 import { HowItWorks } from "@/components/HowItWorks";
-import { Evidence } from "@/components/home/Evidence";
-import { FounderLight } from "@/components/home/FounderLight";
+import { ProofSection } from "@/components/ProofSection";
+import { FounderSection } from "@/components/FounderSection";
 import { Testimonials } from "@/components/Testimonials";
-import { FinalCta } from "@/components/home/FinalCta";
+import { CTA } from "@/components/CTA";
 import { FAQ } from "@/components/FAQ";
 import { faqSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 import { aeoPricingSentence } from "@/lib/pricing";
-
-/**
- * The homepage is a paper surface. The root layout's charcoal theme-color
- * would show as a black browser chrome on mobile, so it is overridden here.
- */
-export const viewport: Viewport = {
-  themeColor: "#f5f2ec",
-  width: "device-width",
-  initialScale: 1,
-};
 
 export const metadata: Metadata = {
   title: "AI Search Visibility (AEO) Agency for Service Businesses | DomiSearch",
@@ -259,23 +249,20 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeGraph) }}
       />
-      <div
-        data-surface="paper"
-        className="overflow-x-clip bg-[color:var(--color-paper)] text-[color:var(--color-ink-2)]"
-      >
-        <HomeHero />
-        <LogoRow />
-        <HowItWorks />
-        <Evidence />
-        <FounderLight />
-        <Testimonials
-          tone="light"
-          showBookCall
-          only={["Eamon Shahir", "Arjun Kumar", "Sam Barraclough"]}
-        />
-        <FAQ tone="light" items={homeFaqs} heading="Common questions." />
-        <FinalCta />
+      <Hero />
+      <div className="mt-6 lg:mt-16">
+        <ClientMarquee />
       </div>
+      <HowItWorks />
+      <ProofSection />
+      <FounderSection />
+      <Testimonials showBookCall only={["Eamon Shahir", "Arjun Kumar", "Sam Barraclough"]} />
+      <FAQ items={homeFaqs} heading="Common questions." />
+      <CTA
+        heading="Find out where you stand in AI search."
+        sub="Request a free AI visibility check, or book a 30-minute call to talk through an AI search roadmap for your business. We'll show you where you appear today, who is being recommended instead, and what we would work on first."
+        secondary={{ label: "Check my AI visibility", href: "/#visibility-check" }}
+      />
     </>
   );
 }

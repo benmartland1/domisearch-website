@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { isPaperRoute } from "@/lib/surfaces";
 
 /**
  * Renders the global site chrome (header/footer/padding) on normal routes,
@@ -48,15 +47,11 @@ export function LayoutChrome({
     return <main className="relative z-10">{children}</main>;
   }
 
-  // Paper routes close on a full-bleed dark section, so the footer's usual
-  // top margin would leave a band of paper between two dark blocks.
-  const paper = isPaperRoute(pathname);
-
   return (
     <>
       {header}
       <main className="relative z-10 pt-24">{children}</main>
-      <div className={paper ? "[&>footer]:mt-0" : undefined}>{footer}</div>
+      {footer}
     </>
   );
 }
