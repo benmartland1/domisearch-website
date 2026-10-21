@@ -103,7 +103,7 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
               </div>
               <figure className="ds-phones ds-hero-phones">
                 <Image
-                  src="/brand/hero-phones-2026.png"
+                  src="/brand/hero-phones-2026b.png"
                   alt="Three phones showing Gemini, ChatGPT and Google AI Overviews answering questions about which business to choose"
                   width={1254}
                   height={1254}
