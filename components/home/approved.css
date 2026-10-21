@@ -666,3 +666,20 @@
  .ds-site .ds-note-form{position:static;margin:0 0 12px 4px}
  .ds-site .ds-note-form-arrow{display:none}
 }
+
+/* ---- Taxd panel: platforms the figures cover ---- */
+.ds-site .ds-case-tracked{margin-top:24px;padding-top:20px;border-top:1px solid #487160}
+.ds-site .ds-case-tracked-label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#cadcd1;margin-bottom:14px}
+.ds-site .ds-case-tracked-row{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:12px 0}
+.ds-site .ds-case-tracked-row li{display:flex;align-items:center;gap:10px;padding:0 26px 0 0;margin-right:26px;border-right:1px solid #487160;font-size:13px;font-weight:500;color:var(--ds-paper);white-space:nowrap}
+.ds-site .ds-case-tracked-row li:last-child{border-right:0;padding-right:0;margin-right:0}
+.ds-site .ds-case-tracked-row img{width:28px;height:28px;object-fit:contain;display:block}
+.ds-site .ds-case-tracked-row img.ds-mono-white{filter:brightness(0) invert(1)}
+.ds-site .ds-case-intro h2{margin-bottom:0}
+@media(max-width:700px){
+ .ds-site .ds-case-tracked{margin-top:20px;padding-top:18px}
+ .ds-site .ds-case-tracked-row{gap:14px 22px}
+ .ds-site .ds-case-tracked-row li{border-right:0;padding-right:0;margin-right:0}
+ .ds-site .ds-case-tracked-row img{width:26px;height:26px}
+}
+.ds-site .ds-case-topline img.ds-taxd-white{filter:none}

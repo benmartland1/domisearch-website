@@ -22,6 +22,13 @@ import { SiteNav } from "@/components/SiteNav";
  * logos, Ben's photo and the Taxd founders' headshots.
  */
 
+/** The three platforms in the Taxd reporting data. Not the full five the programme tracks. */
+const TAXD_PLATFORMS = [
+  { name: "ChatGPT", icon: "/engines/openai.svg", mono: true },
+  { name: "Perplexity", icon: "/engines/perplexity.svg", mono: true },
+  { name: "Google AI Overviews", icon: "/engines/google.svg", mono: false },
+];
+
 const ENGINES = [
   { name: "ChatGPT", icon: "/engines/openai.svg" },
   { name: "Gemini", icon: "/engines/gemini.svg" },
@@ -172,12 +179,11 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                 A measurable presence.
               </h2>
             </div>
-            <p>For Taxd, we track whether the brand is appearing in the AI answers that matter to its market.</p>
           </div>
           <div className="ds-case">
             <div className="ds-case-result">
               <div className="ds-case-topline">
-                <Image src="/clients/taxd.png" alt="Taxd" width={111} height={41} />
+                <Image src="/clients/taxd-white.png" alt="Taxd" width={111} height={41} className="ds-taxd-white" />
                 <span>UK tax software</span>
               </div>
               <div className="ds-case-number">689</div>
@@ -190,9 +196,18 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                 <span>
                   <b>1,080</b>AI answers checked
                 </span>
-                <span>
-                  <b>3</b>AI platforms measured
-                </span>
+              </div>
+              {/* The platforms the Taxd figures actually cover (Searchable, 30 days to 16 Oct 2026). */}
+              <div className="ds-case-tracked">
+                <span className="ds-case-tracked-label">Tracked across</span>
+                <ul className="ds-case-tracked-row">
+                  {TAXD_PLATFORMS.map((p) => (
+                    <li key={p.name}>
+                      <Image src={p.icon} alt="" width={28} height={28} className={p.mono ? "ds-mono-white" : undefined} />
+                      <span>{p.name}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
             <div className="ds-case-quote">
