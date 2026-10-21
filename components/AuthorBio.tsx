@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "@/components/Icons";
 import Image from "next/image";
 import type { Author } from "@/lib/authors";
 import { site } from "@/lib/site";
@@ -66,7 +67,7 @@ export function AuthorBio({ author, variant = "dark" }: Props) {
                   : "text-[color:var(--color-forest)] hover:text-[color:var(--color-ink)]"
               }
             >
-              About →
+              About <ArrowRight />
             </Link>
             <Link
               href={site.calendly}
@@ -78,7 +79,7 @@ export function AuthorBio({ author, variant = "dark" }: Props) {
                   : "text-[color:var(--color-forest)] hover:text-[color:var(--color-ink)]"
               }
             >
-              Book a call →
+              Book a call <ArrowRight />
             </Link>
             {author.sameAs[0] && (
               <Link
@@ -91,7 +92,7 @@ export function AuthorBio({ author, variant = "dark" }: Props) {
                     : "text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)]"
                 }
               >
-                LinkedIn →
+                LinkedIn <ArrowRight />
               </Link>
             )}
           </div>

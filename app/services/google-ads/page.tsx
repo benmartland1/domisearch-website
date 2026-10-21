@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowRight } from "@/components/Icons";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -136,7 +137,7 @@ export default function GoogleAdsPage() {
             <div className="mt-10 flex flex-wrap gap-3">
               <Link href={site.calendly} target="_blank" rel="noopener" className="btn btn-primary">
                 Book a call
-                <span aria-hidden>→</span>
+                <span aria-hidden><ArrowRight /></span>
               </Link>
               <Link href="/contact" className="btn btn-ghost">
                 Ask a question
@@ -212,7 +213,7 @@ export default function GoogleAdsPage() {
               href="/services/aeo"
               className="inline-flex items-center gap-2 text-[color:var(--color-forest)]"
             >
-              Explore AEO →
+              Explore AEO <ArrowRight />
             </Link>
           </div>
         </ScrollReveal>

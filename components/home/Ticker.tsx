@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Pause, Play } from "@/components/Icons";
 
 const ITEMS = [
   { value: "50+", label: "brands served" },
@@ -38,7 +39,7 @@ export function Ticker() {
         aria-label={paused ? "Play agency information banner" : "Pause agency information banner"}
         onClick={() => setPaused((p) => !p)}
       >
-        {paused ? "▶" : "Ⅱ"}
+        {paused ? <Play size={12} /> : <Pause size={12} />}
       </button>
     </div>
   );

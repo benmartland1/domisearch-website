@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowLeft } from "@/components/Icons";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -119,7 +120,7 @@ export default async function CaseStudyPage({ params }: Props) {
               href="/"
               className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-forest)]"
             >
-              ← Back to home
+              <ArrowLeft /> Back to home
             </Link>
           </ScrollReveal>
 

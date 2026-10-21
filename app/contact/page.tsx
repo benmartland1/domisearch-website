@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowRight } from "@/components/Icons";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { ContactForm } from "@/components/ContactForm";
@@ -65,7 +66,7 @@ export default function ContactPage() {
                   className="btn btn-primary mt-6"
                 >
                   Book a call
-                  <span aria-hidden>→</span>
+                  <span aria-hidden><ArrowRight /></span>
                 </Link>
               </div>
 

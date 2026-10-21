@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { ArrowUpRight } from "@/components/Icons";
 import { site } from "@/lib/site";
 import { trackMeta } from "@/lib/meta";
 
@@ -110,7 +111,7 @@ export function VisibilityReviewForm() {
         />
       </label>
       <button className="ds-button ds-button-green" type="submit" disabled={sending}>
-        {sending ? "Sending…" : "Request my free review"} <span className="ds-arrow">↗</span>
+        {sending ? "Sending…" : "Request my free review"} <span className="ds-arrow"><ArrowUpRight /></span>
       </button>
       <p className="ds-form-note">
         We’ll use these details to respond to your request.{" "}
@@ -126,7 +127,7 @@ export function VisibilityReviewForm() {
             {" "}
             Prefer to talk it through?{" "}
             <a href={site.calendly} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>
-              Book a 30-minute call ↗
+              Book a 30-minute call <ArrowUpRight />
             </a>
           </>
         ) : null}

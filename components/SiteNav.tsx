@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { ArrowUpRight, Menu } from "@/components/Icons";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
@@ -45,13 +46,13 @@ export function SiteNav() {
           ),
         )}
         <Link className="ds-button" href={CTA.href}>
-          {CTA.label} <span className="ds-arrow">↗</span>
+          {CTA.label} <span className="ds-arrow"><ArrowUpRight /></span>
         </Link>
       </nav>
 
       <details className="ds-mobile-nav" ref={menu}>
         <summary>
-          Menu <span className="ds-arrow">☰</span>
+          Menu <span className="ds-arrow"><Menu size={18} /></span>
         </summary>
         <nav className="ds-mobile-menu" aria-label="Mobile navigation">
           {links.map((item) =>
@@ -69,7 +70,7 @@ export function SiteNav() {
             ),
           )}
           <Link href={CTA.href} onClick={() => menu.current?.removeAttribute("open")}>
-            {CTA.label} ↗
+            {CTA.label} <ArrowUpRight />
           </Link>
         </nav>
       </details>

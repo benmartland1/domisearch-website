@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowRight } from "@/components/Icons";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionHeader } from "@/components/SectionHeader";
@@ -83,7 +84,7 @@ export default function CareersPage() {
                 className="btn btn-primary"
               >
                 Introduce yourself
-                <span aria-hidden>→</span>
+                <span aria-hidden><ArrowRight /></span>
               </Link>
             </div>
           </ScrollReveal>

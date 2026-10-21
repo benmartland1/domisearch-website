@@ -54,7 +54,7 @@
 .ds-site .ds-ticker-group{display:flex;align-items:center;gap:32px;flex-shrink:0;padding:0 16px}
 .ds-site .ds-ticker-item{display:flex;align-items:center;gap:10px;white-space:nowrap;font-size:11px}
 .ds-site .ds-ticker-item b{font-size:27px;font-weight:700;line-height:1.2;letter-spacing:-1px}
-.ds-site .ds-ticker-item::after{content:'✳';font-size:18px;margin-left:20px;font-weight:400}
+.ds-site .ds-ticker-item::after{content:'';display:inline-block;width:14px;height:14px;margin-left:20px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2317271f' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M12 4v16M5 8l14 8M19 8 5 16'/%3E%3C/svg%3E") center/contain no-repeat}
 .ds-site .ds-ticker-pause{border:0;border-left:1px solid #00b67d;background:var(--ds-green);color:var(--ds-ink);min-width:48px;font-size:17px;padding:0 14px}
 .ds-site .ds-ticker.is-paused .ds-ticker-track{animation-play-state:paused}
 @keyframes ds-home-ticker{to{transform:translateX(-50%)}}
@@ -190,7 +190,7 @@
 .ds-site .ds-review-copy>p{font-size:14px;line-height:1.85;color:#cadcd1;margin-top:25px;max-width:380px}
 .ds-site .ds-review-checks{list-style:none;padding:0;margin:27px 0 0;font-size:12px;line-height:1.75;color:#e2ebe5}
 .ds-site .ds-review-checks li{position:relative;padding:10px 0 10px 27px;border-bottom:1px solid #487160}
-.ds-site .ds-review-checks li::before{content:'↗';position:absolute;left:0;color:var(--ds-green);font-size:18px}
+.ds-site .ds-review-checks li::before{content:'';position:absolute;left:0;top:11px;width:16px;height:16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300dc98' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17 17 7M9 7h8v8'/%3E%3C/svg%3E") center/contain no-repeat}
 .ds-site .ds-form{background:var(--ds-paper);color:var(--ds-ink);padding:33px 31px;border-radius:4px}
 .ds-site .ds-form h3{font-size:22px;margin-bottom:6px}
 .ds-site .ds-form>p{font-size:12px;color:var(--ds-muted);margin-bottom:22px}
@@ -361,7 +361,7 @@
 .ds-site .ds-ticker-group{gap:35px;padding:0 22px}
 .ds-site .ds-ticker-item{font-size:11px;gap:7px;font-weight:500;line-height:1.5}
 .ds-site .ds-ticker-item b{font-size:15px;letter-spacing:-.4px;line-height:1.3}
-.ds-site .ds-ticker-item::after{font-size:13px;margin-left:28px;content:'✳'}
+.ds-site .ds-ticker-item::after{width:11px;height:11px;margin-left:28px}
 .ds-site .ds-ticker-pause{min-height:34px;min-width:34px;width:34px;padding:0 9px;font-size:12px}
 .ds-site .ds-brand-lockup{position:relative;display:block;width:155px}
 .ds-site .ds-logo-solid{position:absolute;inset:0 auto 0 0;width:22px;background:var(--ds-green);mask-image:var(--ds-logo-mask);mask-size:155px auto;mask-repeat:no-repeat;-webkit-mask-image:var(--ds-logo-mask);-webkit-mask-size:155px auto;-webkit-mask-repeat:no-repeat}
@@ -597,3 +597,25 @@
 .ds-site .ds-hero-ink{box-shadow:none;background-image:linear-gradient(var(--ds-green),var(--ds-green));background-repeat:no-repeat;background-position:0 100%;background-size:0% .17em;animation:ds-hero-ink .6s cubic-bezier(.2,.8,.2,1) 1000ms forwards}
 .ds-site .ds-hero-phones{opacity:0;animation:ds-hero-phones 1s cubic-bezier(.2,.8,.2,1) 350ms forwards}
 @media(prefers-reduced-motion:reduce){.ds-site .ds-hero-word,.ds-site .ds-hero-fade,.ds-site .ds-hero-phones{opacity:1;transform:none;animation:none}.ds-site .ds-hero-ink{animation:none;background-size:100% .17em}}
+
+.ds-site .ds-arrow svg{width:1.05em;height:1.05em;vertical-align:-0.15em}
+.ds-site .ds-icon svg{width:1em;height:1em}
+.ds-site .ds-email-actions span svg{width:13px;height:13px;margin-right:4px;vertical-align:-2px}
+.ds-site .ds-review-stars>span svg{width:12px;height:12px;display:block}
+
+/* ---- Client logos: grid from tablet up, continuous scroll on phones ---- */
+@keyframes ds-logo-scroll{to{transform:translateX(-50%)}}
+.ds-site .ds-logo-marquee{display:none}
+@media(max-width:700px){
+ .ds-site .ds-client-logos{display:none}
+ .ds-site .ds-logo-marquee{display:block;overflow:hidden;margin:0 -6vw;padding:0 6vw;-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
+ .ds-site .ds-logo-track{display:flex;width:max-content;animation:ds-logo-scroll 28s linear infinite}
+ .ds-site .ds-logo-group{display:flex;align-items:center;gap:36px;padding-right:36px;flex-shrink:0}
+ .ds-site .ds-logo-group img{width:auto;height:26px;max-width:120px;object-fit:contain;filter:brightness(0);opacity:.88}
+ /* AI platforms on one line: Perplexity is dropped at this width */
+ .ds-site .ds-engines{flex-wrap:nowrap;justify-content:space-between;gap:8px}
+ .ds-site .ds-engine{font-size:10.5px;gap:5px;white-space:nowrap}
+ .ds-site .ds-engine img{width:18px;height:18px}
+ .ds-site .ds-engine-perplexity{display:none}
+}
+@media(prefers-reduced-motion:reduce){.ds-site .ds-logo-marquee{display:none}.ds-site .ds-client-logos{display:grid}}

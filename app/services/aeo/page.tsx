@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowRight } from "@/components/Icons";
 import Image from "next/image";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -208,7 +209,7 @@ export default function AEOPage() {
             <div className="mt-10 flex flex-wrap gap-3">
               <Link href={site.calendly} target="_blank" rel="noopener" className="btn btn-primary">
                 Book a call
-                <span aria-hidden>→</span>
+                <span aria-hidden><ArrowRight /></span>
               </Link>
               <Link href="/pricing" className="btn btn-ghost">
                 See pricing

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowUpRight } from "@/components/Icons";
 import { site } from "@/lib/site";
 import { ScrollReveal } from "./ScrollReveal";
 
@@ -25,10 +26,10 @@ export function CTA({
         <ScrollReveal delay={120}>
           <div className="flex flex-wrap gap-3 lg:justify-end">
             <Link href={site.calendly} target="_blank" rel="noopener" className="ds-button ds-button-green">
-              Book a call <span className="ds-arrow">↗</span>
+              Book a call <span className="ds-arrow"><ArrowUpRight /></span>
             </Link>
             <Link href={secondary.href} className="ds-button ds-button-outline">
-              {secondary.label} <span className="ds-arrow">↗</span>
+              {secondary.label} <span className="ds-arrow"><ArrowUpRight /></span>
             </Link>
           </div>
         </ScrollReveal>

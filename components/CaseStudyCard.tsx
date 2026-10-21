@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "@/components/Icons";
 import Image from "next/image";
 import type { CaseStudy } from "@/lib/case-studies";
 
@@ -132,7 +133,7 @@ export function CaseStudyCard({ caseStudy, variant = "default" }: Props) {
           color: isFeatured ? "var(--color-ink)" : "var(--color-forest)",
         }}
       >
-        Read case study →
+        Read case study <ArrowRight />
       </div>
     </Link>
   );

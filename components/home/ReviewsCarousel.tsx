@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Pause, Play, Star } from "@/components/Icons";
 import { useEffect, useRef, useState } from "react";
 import { formatReviewDate, type TrustpilotReview } from "@/lib/trustpilot";
 
@@ -59,7 +60,7 @@ function ReviewCard({ review }: { review: TrustpilotReview }) {
       <span className="ds-review-stars" role="img" aria-label={`Rated ${review.rating} out of 5`}>
         {[0, 1, 2, 3, 4].map((i) => (
           <span key={i} aria-hidden="true" style={i < review.rating ? undefined : { opacity: 0.3 }}>
-            ★
+            <Star size={12} />
           </span>
         ))}
       </span>
@@ -69,7 +70,7 @@ function ReviewCard({ review }: { review: TrustpilotReview }) {
         ))}
       </blockquote>
       <a className="ds-review-link" href={review.url} target="_blank" rel="noopener noreferrer">
-        Read on Trustpilot ↗<span className="sr-only"> (review by {review.name}, opens in a new tab)</span>
+        Read on Trustpilot <ArrowUpRight /><span className="sr-only"> (review by {review.name}, opens in a new tab)</span>
       </a>
     </article>
   );
@@ -196,10 +197,10 @@ export function ReviewsCarousel({ reviews }: { reviews: TrustpilotReview[] }) {
 
       <div className="ds-reviews-controls">
         <button type="button" onClick={() => step(-1)} aria-label="Previous review">
-          ←
+          <ArrowLeft size={16} />
         </button>
         <button type="button" onClick={() => step(1)} aria-label="Next review">
-          →
+          <ArrowRight size={16} />
         </button>
         <button
           type="button"
@@ -208,7 +209,7 @@ export function ReviewsCarousel({ reviews }: { reviews: TrustpilotReview[] }) {
           aria-label={userPaused ? "Play automatic scrolling" : "Pause automatic scrolling"}
           disabled={reduced}
         >
-          <span aria-hidden="true">{userPaused ? "▶" : "Ⅱ"}</span>
+          <span aria-hidden="true">{userPaused ? <Play size={14} /> : <Pause size={14} />}</span>
           {userPaused ? "Play" : "Pause"}
         </button>
         <span className="ds-reviews-status" aria-live="polite">

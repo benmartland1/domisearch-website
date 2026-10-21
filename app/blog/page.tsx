@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowUpRight } from "@/components/Icons";
 import Link from "next/link";
 import { getAllPosts, readingTimeFromWords } from "@/lib/posts";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -90,7 +91,7 @@ export default async function BlogIndexPage() {
                         aria-hidden
                       />
                       <div className="relative grid h-full w-full place-items-center rounded-full border border-[color:var(--color-line)] bg-white">
-                        <span className="display text-6xl text-[color:var(--color-forest)]">→</span>
+                        <span className="display text-[color:var(--color-forest)]"><ArrowUpRight size={64} /></span>
                       </div>
                     </div>
                   </div>

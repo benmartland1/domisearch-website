@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowUpRight } from "@/components/Icons";
 import Image from "next/image";
 import { site } from "@/lib/site";
 import { ScrollReveal } from "./ScrollReveal";
@@ -27,7 +28,7 @@ export function BookCallCTA({ label = "Book a call", eyebrow = "Meet Ben", class
           <span className="text-sm font-[500] text-[color:var(--color-ink)] sm:text-[15px]">{label}</span>
         </span>
         <span aria-hidden className="ml-1 grid h-8 w-8 place-items-center rounded-[3px] bg-[color:var(--color-ink)] text-white transition-transform duration-300 group-hover:translate-x-0.5 sm:ml-2">
-          ↗
+          <ArrowUpRight />
         </span>
       </Link>
     </ScrollReveal>

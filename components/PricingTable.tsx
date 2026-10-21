@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "@/components/Icons";
 import { ScrollReveal } from "./ScrollReveal";
 import { site } from "@/lib/site";
 import { AEO_PRICING, aeoUpfrontEffectiveMonthly, aeoUpfrontSaving, gbp } from "@/lib/pricing";
@@ -124,7 +125,7 @@ export function PricingTable() {
                   className={`btn w-full justify-center ${o.highlight ? "btn-primary" : "btn-ghost"}`}
                 >
                   Book a discovery call
-                  <span aria-hidden>→</span>
+                  <span aria-hidden><ArrowRight /></span>
                 </Link>
               </div>
             </div>

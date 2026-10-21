@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowRight } from "@/components/Icons";
 import Image from "next/image";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
@@ -177,7 +178,7 @@ export default function AboutPage() {
             <ScrollReveal delay={260}>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link href={site.calendly} target="_blank" rel="noopener" className="btn btn-primary">
-                  Book a call →
+                  Book a call <ArrowRight />
                 </Link>
                 <Link href={site.social.linkedin} target="_blank" rel="noopener" className="btn btn-ghost">
                   LinkedIn
@@ -222,13 +223,13 @@ export default function AboutPage() {
                 href="/services/aeo"
                 className="inline-flex items-center gap-2 transition-transform duration-300 hover:translate-x-0.5"
               >
-                Our AI search programme <span aria-hidden>→</span>
+                Our AI search programme <span aria-hidden><ArrowRight /></span>
               </Link>
               <Link
                 href="/services/google-ads"
                 className="inline-flex items-center gap-2 text-[color:var(--color-muted)] transition-transform duration-300 hover:translate-x-0.5"
               >
-                Google Ads management <span aria-hidden>→</span>
+                Google Ads management <span aria-hidden><ArrowRight /></span>
               </Link>
             </div>
           </div>

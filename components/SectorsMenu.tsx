@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ArrowRight, ArrowUpRight } from "@/components/Icons";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
@@ -187,7 +188,7 @@ export function SectorsMenu({ label, tone }: { label: string; tone: Tone }) {
                   <span className={`mt-0.5 block text-xs ${t.note}`}>{sector.note}</span>
                 </span>
                 <span aria-hidden className={`transition-all group-hover:translate-x-0.5 ${t.arrow}`}>
-                  {isExternal(sector) ? "↗" : "→"}
+                  {isExternal(sector) ? <ArrowUpRight /> : <ArrowRight />}
                 </span>
               </SectorLink>
             </li>
@@ -240,7 +241,7 @@ export function MobileSectors({
               >
                 {sector.label}
                 <span aria-hidden className={t.mobileArrow}>
-                  {isExternal(sector) ? "↗" : "→"}
+                  {isExternal(sector) ? <ArrowUpRight /> : <ArrowRight />}
                 </span>
               </SectorLink>
             </li>

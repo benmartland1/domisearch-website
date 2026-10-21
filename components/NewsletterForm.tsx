@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ArrowRight } from "@/components/Icons";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -85,7 +86,7 @@ export function NewsletterForm() {
                 disabled={status === "sending"}
               >
                 {status === "sending" ? "Subscribing…" : "Subscribe"}
-                <span aria-hidden>→</span>
+                <span aria-hidden><ArrowRight /></span>
               </button>
             </form>
           )}

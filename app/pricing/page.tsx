@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowRight } from "@/components/Icons";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { PricingTable } from "@/components/PricingTable";
@@ -146,7 +147,7 @@ export default function PricingPage() {
                 className="btn btn-primary"
               >
                 Book a call
-                <span aria-hidden>→</span>
+                <span aria-hidden><ArrowRight /></span>
               </Link>
               <Link href="/contact" className="btn btn-ghost">
                 Ask a question

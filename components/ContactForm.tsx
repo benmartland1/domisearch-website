@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ArrowRight } from "@/components/Icons";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -82,7 +83,7 @@ export function ContactForm() {
         </p>
         <button type="submit" className="btn btn-primary" disabled={status === "sending"}>
           {status === "sending" ? "Sending…" : "Send message"}
-          <span aria-hidden>→</span>
+          <span aria-hidden><ArrowRight /></span>
         </button>
       </div>
 

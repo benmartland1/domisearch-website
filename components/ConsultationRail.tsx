@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "@/components/Icons";
 import Image from "next/image";
 import { site } from "@/lib/site";
 
@@ -38,7 +39,7 @@ export function ConsultationRail({
           className="btn btn-primary w-full justify-center"
         >
           {ctaLabel}
-          <span aria-hidden>→</span>
+          <span aria-hidden><ArrowRight /></span>
         </Link>
 
         <a

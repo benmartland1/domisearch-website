@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowLeft } from "@/components/Icons";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -163,7 +164,7 @@ export default async function BlogPostPage({ params }: Props) {
               href="/blog"
               className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-forest)]"
             >
-              ← Back to blog
+              <ArrowLeft /> Back to blog
             </Link>
           </ScrollReveal>
 

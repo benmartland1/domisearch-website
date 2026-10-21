@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArrowUpRight } from "@/components/Icons";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { site } from "@/lib/site";
@@ -33,14 +34,14 @@ export function Footer({ note }: { note?: string }) {
           <Link href="/services/aeo">AI Search Visibility</Link>
           <Link href="/services/google-ads">Google Ads Management</Link>
           <Link href="/#results">Client results</Link>
-          <Link href="/#visibility-check">Get a visibility review ↗</Link>
+          <Link href="/#visibility-check">Get a visibility review <ArrowUpRight /></Link>
         </div>
         <div className="ds-footer-links">
           <strong>Sectors</strong>
           {site.sectors.map((s) =>
             s.href.startsWith("http") ? (
               <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer">
-                {s.label} ↗
+                {s.label} <ArrowUpRight />
               </a>
             ) : (
               <Link key={s.href} href={s.href}>
@@ -65,7 +66,7 @@ export function Footer({ note }: { note?: string }) {
           <Link href="/privacy">Privacy</Link>
           <Link href="/terms">Terms</Link>
           <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer">
-            LinkedIn ↗
+            LinkedIn <ArrowUpRight />
           </a>
         </div>
       </div>

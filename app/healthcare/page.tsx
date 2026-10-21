@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { ArrowRight } from "@/components/Icons";
 import Image from "next/image";
 import { JsonLd } from "@/components/JsonLd";
 import { Ticker } from "@/components/home/Ticker";
@@ -766,7 +767,7 @@ export default function HealthcarePage() {
                 className="mt-7 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-domigreen)] px-5 py-3 text-[14px] font-bold tracking-tight text-[color:var(--color-charcoal)] transition-transform hover:-translate-y-px"
               >
                 Read the full blueprint
-                <span aria-hidden>→</span>
+                <span aria-hidden><ArrowRight /></span>
               </a>
             </div>
 

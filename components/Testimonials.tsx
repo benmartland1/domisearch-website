@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArrowRight } from "@/components/Icons";
 import fs from "node:fs";
 import path from "node:path";
 import { ScrollReveal } from "./ScrollReveal";
@@ -285,7 +286,7 @@ export function Testimonials({ showBookCall = false, only }: TestimonialsProps =
             aria-hidden
             className="transition-transform duration-300 group-hover:translate-x-0.5"
           >
-            →
+            <ArrowRight />
           </span>
         </a>
 
@@ -310,7 +311,7 @@ export function Testimonials({ showBookCall = false, only }: TestimonialsProps =
               aria-hidden
               className="transition-transform duration-300 group-hover:translate-x-0.5"
             >
-              →
+              <ArrowRight />
             </span>
           </a>
         )}

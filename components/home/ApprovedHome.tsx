@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArrowDown, ArrowUpRight, Forward, Reply } from "@/components/Icons";
 import type { CSSProperties } from "react";
 import { site } from "@/lib/site";
 import type { TrustpilotReview } from "@/lib/trustpilot";
@@ -6,6 +7,7 @@ import { homeFaqs } from "./faqs";
 import { ReviewsCarousel } from "./ReviewsCarousel";
 import { Ticker } from "./Ticker";
 import { VisibilityReviewForm } from "./VisibilityReviewForm";
+import { ClientLogos } from "@/components/ClientLogos";
 import { Footer } from "@/components/Footer";
 import { SiteNav } from "@/components/SiteNav";
 
@@ -27,20 +29,6 @@ const ENGINES = [
   { name: "Google AI\nOverviews", icon: "/engines/google.svg" },
 ];
 
-/** Mockup order. Files are the site's existing client logos. */
-const CLIENTS = [
-  { name: "Taxd", logo: "/clients/taxd.png", w: 120, h: 44 },
-  { name: "Rooftop Saunas", logo: "/clients/rooftop_saunas.png", w: 135, h: 31 },
-  { name: "Fueled", logo: "/clients/fueled.png", w: 120, h: 28 },
-  { name: "Netil360", logo: "/clients/netil360.png", w: 120, h: 23 },
-  { name: "Garside Waddingham", logo: "/clients/garside_waddingham.png", w: 135, h: 52 },
-  { name: "Mighty Student Living", logo: "/clients/mighty_student_living.png", w: 120, h: 44 },
-  { name: "Lancashire Smiles", logo: "/clients/lancashire_smiles.png", w: 120, h: 44 },
-  { name: "David Farrer", logo: "/clients/david_farrer.png", w: 120, h: 44 },
-  { name: "The Birds Nest", logo: "/clients/birds_nest.png", w: 120, h: 44 },
-  { name: "Typo", logo: "/clients/typo.png", w: 120, h: 44 },
-];
-
 const SECTORS = [
   { label: "Recruitment agencies", note: "Help employers find your specialist expertise.", href: "/recruitment" },
   { label: "Accountancy practices", note: "Answer the questions that lead to a client relationship.", href: "/accountants" },
@@ -49,8 +37,12 @@ const SECTORS = [
   { label: "Other service businesses", note: "Let’s look at how your potential clients search.", href: "#visibility-check" },
 ];
 
-function Arrow({ children = "↗" }: { children?: string }) {
-  return <span className="ds-arrow">{children}</span>;
+function Arrow() {
+  return (
+    <span className="ds-arrow">
+      <ArrowUpRight />
+    </span>
+  );
 }
 
 function ExternalLink({ href, className, children }: { href: string; className?: string; children: React.ReactNode }) {
@@ -106,15 +98,15 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                   style={{ marginTop: 17, "--d": "1250ms" } as CSSProperties}
                   href="#results"
                 >
-                  See the Taxd result <span>↓</span>
+                  See the Taxd result <span className="ds-icon"><ArrowDown /></span>
                 </a>
               </div>
               <figure className="ds-phones ds-hero-phones">
                 <Image
                   src="/brand/hero.png"
-                  alt="DomiSearch’s phone imagery showing ChatGPT and Google search"
-                  width={700}
-                  height={700}
+                  alt="Three phones showing Gemini, ChatGPT and Google AI Overviews answering questions about which business to choose"
+                  width={1254}
+                  height={1254}
                   priority
                   sizes="(max-width: 700px) 340px, (max-width: 1400px) 45vw, 640px"
                 />
@@ -133,7 +125,7 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                 </span>
                 <div className="ds-engines">
                   {ENGINES.map((e) => (
-                    <span key={e.name} className="ds-engine">
+                    <span key={e.name} className={`ds-engine${e.name === "Perplexity" ? " ds-engine-perplexity" : ""}`}>
                       <Image src={e.icon} alt="" width={23} height={23} />
                       {e.name.includes("\n") ? (
                         <>
@@ -157,11 +149,7 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
         {/* ===== Client strip ===== */}
         <section className="ds-client-strip ds-wrap" aria-label="Selected client brands">
           <span className="ds-eyebrow">Some of the businesses we’ve worked with</span>
-          <div className="ds-client-logos">
-            {CLIENTS.map((c) => (
-              <Image key={c.name} src={c.logo} alt={c.name} width={c.w} height={c.h} sizes="160px" />
-            ))}
-          </div>
+          <ClientLogos />
         </section>
 
         {/* ===== The evidence ===== */}
@@ -326,7 +314,7 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                     <i />
                   </span>
                   <span>yourcompany.co.uk</span>
-                  <span aria-hidden="true">↗</span>
+                  <span aria-hidden="true"><ArrowUpRight /></span>
                 </div>
                 <div className="ds-demo-content">
                   <span className="ds-demo-kicker">Expert insight · Hiring guide</span>
@@ -349,7 +337,7 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                   <div className="ds-demo-service">
                     <span>Specialist service page</span>
                     <strong>
-                      Sales director recruitment <span>↗</span>
+                      Sales director recruitment <span className="ds-icon"><ArrowUpRight /></span>
                     </strong>
                   </div>
                 </div>
@@ -391,8 +379,8 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                     James
                   </p>
                   <div className="ds-email-actions" aria-hidden="true">
-                    <span>↩ &nbsp; Reply</span>
-                    <span>↪ &nbsp; Forward</span>
+                    <span><Reply /> Reply</span>
+                    <span><Forward /> Forward</span>
                   </div>
                 </div>
               </div>
@@ -503,7 +491,7 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
               review; they aren’t a deadline for a guaranteed recommendation.
             </p>
             <a className="ds-text-link" href="#visibility-check">
-              Find your starting point <span>↗</span>
+              Find your starting point <span className="ds-icon"><ArrowUpRight /></span>
             </a>
           </div>
         </section>
@@ -585,10 +573,10 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
             </div>
             <div className="ds-actions">
               <ExternalLink className="ds-text-link" href={site.calendly}>
-                Book a call with us <span>↗</span>
+                Book a call with us <span className="ds-icon"><ArrowUpRight /></span>
               </ExternalLink>
               <a className="ds-text-link" href="/about">
-                More about the agency <span>↗</span>
+                More about the agency <span className="ds-icon"><ArrowUpRight /></span>
               </a>
             </div>
           </div>
@@ -610,7 +598,7 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
               <strong>
                 {reviewCount} {reviewCount === 1 ? "review" : "reviews"}
               </strong>
-              <span>Read them on Trustpilot ↗</span>
+              <span>Read them on Trustpilot <ArrowUpRight /></span>
             </ExternalLink>
           </div>
           <ReviewsCarousel reviews={reviews} />
@@ -654,7 +642,7 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
             </ul>
             <p className="ds-talk-option">
               Prefer to talk first?{" "}
-              <ExternalLink href={site.calendly}>Book a 30-minute call ↗</ExternalLink>
+              <ExternalLink href={site.calendly}>Book a 30-minute call <ArrowUpRight /></ExternalLink>
             </p>
           </div>
           <VisibilityReviewForm />
