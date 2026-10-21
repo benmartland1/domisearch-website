@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import { site } from "@/lib/site";
 import type { TrustpilotReview } from "@/lib/trustpilot";
 import { homeFaqs } from "./faqs";
@@ -73,28 +74,42 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
         <section aria-label="Search in the real world hero">
           <div className="ds-page ds-hero-stage">
             <div className="ds-wrap ds-hero-grid">
-              <div className="ds-hero-copy">
-                <span className="ds-eyebrow">AI search visibility for service businesses</span>
+              <div className="ds-hero-copy ds-hero-animate">
+                <span className="ds-eyebrow ds-hero-fade" style={{ "--d": "0ms" } as CSSProperties}>
+                  AI search visibility for service businesses
+                </span>
+                {/* Each word rises in on its own, then the underline draws across. */}
                 <h1>
-                  Be the brand{" "}
+                  <span className="ds-hero-word" style={{ "--d": "120ms" } as CSSProperties}>Be</span>{" "}
+                  <span className="ds-hero-word" style={{ "--d": "200ms" } as CSSProperties}>the</span>{" "}
+                  <span className="ds-hero-word" style={{ "--d": "280ms" } as CSSProperties}>brand</span>{" "}
                   <br />
-                  AI <span className="ds-underlined">recommends.</span>
+                  <span className="ds-hero-word" style={{ "--d": "400ms" } as CSSProperties}>AI</span>{" "}
+                  <span className="ds-underlined ds-hero-ink">
+                    <span className="ds-hero-word" style={{ "--d": "480ms" } as CSSProperties}>recommends.</span>
+                  </span>
                 </h1>
-                <p className="ds-lead">
+                <p className="ds-lead ds-hero-fade" style={{ "--d": "900ms" } as CSSProperties}>
                   Your next client is asking AI who to trust. We help your business become part of the
                   answer.
                 </p>
-                <div className="ds-actions">
+                <div className="ds-actions ds-hero-fade" style={{ "--d": "1050ms" } as CSSProperties}>
                   <a className="ds-button" href="#visibility-check">
                     Request my AI visibility review <Arrow />
                   </a>
                 </div>
-                <p className="ds-hero-note">Free check across ChatGPT, Gemini &amp; Perplexity.</p>
-                <a className="ds-text-link" style={{ marginTop: 17 }} href="#results">
+                <p className="ds-hero-note ds-hero-fade" style={{ "--d": "1150ms" } as CSSProperties}>
+                  Free check across ChatGPT, Gemini &amp; Perplexity.
+                </p>
+                <a
+                  className="ds-text-link ds-hero-fade"
+                  style={{ marginTop: 17, "--d": "1250ms" } as CSSProperties}
+                  href="#results"
+                >
                   See the Taxd result <span>↓</span>
                 </a>
               </div>
-              <figure className="ds-phones">
+              <figure className="ds-phones ds-hero-phones">
                 <Image
                   src="/brand/hero.png"
                   alt="DomiSearch’s phone imagery showing ChatGPT and Google search"
