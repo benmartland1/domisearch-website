@@ -6,6 +6,7 @@ import type { TrustpilotReview } from "@/lib/trustpilot";
 import { homeFaqs } from "./faqs";
 import { ReviewsCarousel } from "./ReviewsCarousel";
 import { Ticker } from "./Ticker";
+import { ArrowDownWobble, ArrowHook, ArrowSwoop, Note } from "./Note";
 import { VisibilityReviewForm } from "./VisibilityReviewForm";
 import { ClientLogos } from "@/components/ClientLogos";
 import { Footer } from "@/components/Footer";
@@ -102,6 +103,10 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                 </a>
               </div>
               <figure className="ds-phones ds-hero-phones">
+                <div className="ds-note-hero">
+                  <Note rotate={-3}>Before they even visit your website.</Note>
+                  <ArrowSwoop className="ds-note-hero-arrow" />
+                </div>
                 <Image
                   src="/brand/hero-phones-2026b.png"
                   alt="Three phones showing Gemini, ChatGPT and Google AI Overviews answering questions about which business to choose"
@@ -259,6 +264,9 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
               <span className="ds-journey-takeaway">Start with how your buyers actually search.</span>
             </div>
             <div className="ds-journey-art ds-art-search">
+              <Note rotate={2} className="ds-note-research">
+                Questions first. Content second.
+              </Note>
               <div className="ds-search-demo">
                 <div className="ds-demo-brand">
                   <Image src="/engines/openai.svg" alt="" width={25} height={25} />
@@ -383,6 +391,10 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                     <span><Forward /> Forward</span>
                   </div>
                 </div>
+              </div>
+              <div className="ds-note-enquiry">
+                <ArrowHook className="ds-note-enquiry-arrow" />
+                <Note rotate={-2}>From a question to an enquiry.</Note>
               </div>
             </div>
           </article>
@@ -544,6 +556,9 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
               Ben Martland
               <small>Founder, DomiSearch · Manchester, UK</small>
             </figcaption>
+            <Note tone="paper" rotate={-3} className="ds-note-founder">
+              Ben
+            </Note>
           </figure>
           <div className="ds-founder-copy">
             <span className="ds-eyebrow">Meet the founder</span>
@@ -645,7 +660,13 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
               <ExternalLink href={site.calendly}>Book a 30-minute call <ArrowUpRight /></ExternalLink>
             </p>
           </div>
-          <VisibilityReviewForm />
+          <div className="ds-form-column">
+            <div className="ds-note-form">
+              <Note tone="paper" rotate={1.5}>Find out who AI recommends.</Note>
+              <ArrowDownWobble className="ds-note-form-arrow" />
+            </div>
+            <VisibilityReviewForm />
+          </div>
         </section>
 
       </main>
