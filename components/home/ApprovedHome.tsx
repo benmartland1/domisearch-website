@@ -104,7 +104,11 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
               </div>
               <figure className="ds-phones ds-hero-phones">
                 <div className="ds-note-hero">
-                  <Note rotate={-3}>Before they even visit your website.</Note>
+                  <Note rotate={-3}>
+                    Before they even visit
+                    <br />
+                    your website.
+                  </Note>
                   <ArrowSwoop className="ds-note-hero-arrow" />
                 </div>
                 <Image
@@ -263,10 +267,15 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
               </p>
               <span className="ds-journey-takeaway">Start with how your buyers actually search.</span>
             </div>
-            <div className="ds-journey-art ds-art-search">
-              <Note rotate={2} className="ds-note-research">
-                Questions first. Content second.
-              </Note>
+            <div className="ds-art-wrap">
+              <div className="ds-note-research">
+                <Note rotate={2}>
+                  Questions first.
+                  <br />
+                  Content second.
+                </Note>
+              </div>
+              <div className="ds-journey-art ds-art-search">
               <div className="ds-search-demo">
                 <div className="ds-demo-brand">
                   <Image src="/engines/openai.svg" alt="" width={25} height={25} />
@@ -294,6 +303,7 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                 <Image src="/engines/claude.svg" alt="Claude" width={20} height={20} />
                 <Image src="/engines/google.svg" alt="Google" width={20} height={20} />
                 <span>Research across the engines your clients use.</span>
+              </div>
               </div>
             </div>
           </article>
@@ -364,7 +374,8 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
               </p>
               <span className="ds-journey-takeaway">Give interested people a clear next step.</span>
             </div>
-            <div className="ds-journey-art ds-art-enquiry">
+            <div className="ds-art-wrap">
+              <div className="ds-journey-art ds-art-enquiry">
               <div className="ds-email-demo">
                 <div className="ds-demo-brand ds-gmail-brand">
                   <Image src="/engines/gmail.svg" alt="" width={28} height={22} />
@@ -391,6 +402,7 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                     <span><Forward /> Forward</span>
                   </div>
                 </div>
+              </div>
               </div>
               <div className="ds-note-enquiry">
                 <ArrowHook className="ds-note-enquiry-arrow" />

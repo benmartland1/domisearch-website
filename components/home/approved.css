@@ -622,20 +622,24 @@
 
 /* ---- Handwritten margin notes ---- */
 @font-face{font-family:"DSNote";src:url('/fonts/Caveat-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
-.ds-site .ds-note{font-family:"DSNote","Caveat",cursive;font-weight:500;font-size:26px;line-height:1.15;letter-spacing:.01em;display:inline-block;transform:rotate(var(--rot,-2deg));transform-origin:50% 60%;white-space:nowrap;pointer-events:auto}
+.ds-site .ds-note{font-family:"DSNote","Caveat",cursive;font-weight:500;font-size:26px;line-height:1.15;letter-spacing:.01em;display:inline-block;transform:rotate(var(--rot,-2deg));transform-origin:50% 60%;white-space:nowrap}
 .ds-site .ds-note-ink{color:var(--ds-forest)}
 .ds-site .ds-note-paper{color:var(--ds-paper)}
-.ds-site .ds-note-arrow{display:block;width:72px;height:auto;color:inherit}
-/* 1 · hero: top-left of the phones, arrow swooping to the left-hand screen */
-.ds-site .ds-note-hero{position:absolute;left:-2%;top:1%;z-index:2;width:220px;color:var(--ds-forest)}
-.ds-site .ds-note-hero .ds-note{white-space:normal;max-width:200px}
-.ds-site .ds-note-hero-arrow{width:92px;margin:2px 0 0 56px}
-/* 2 · research: perched on the top edge of the illustration panel */
-.ds-site .ds-art-search{position:relative}
-.ds-site .ds-note-research{position:absolute;top:-16px;right:26px;z-index:2;padding:0 8px;background:var(--ds-paper)}
-/* 3 · enquiry: beneath the email, hook pointing back up at it */
-.ds-site .ds-note-enquiry{display:flex;align-items:flex-end;gap:10px;margin:14px 0 -4px 8px;color:var(--ds-forest)}
-.ds-site .ds-note-enquiry-arrow{width:48px;flex-shrink:0;margin-bottom:6px}
+.ds-site .ds-note-arrow{display:block;height:auto;color:inherit;overflow:visible}
+.ds-site .ds-art-wrap{min-width:0}
+/* 1 · hero: in the open space above the phones, left of the image column.
+   The phones start ~10% (centre) and ~18% (left) down the figure, so the note
+   sits above the figure's top edge and the arrow ends short of the centre phone. */
+.ds-site .ds-phones{overflow:visible}
+.ds-site .ds-note-hero{position:absolute;left:1%;top:-44px;z-index:2;color:var(--ds-forest)}
+.ds-site .ds-note-hero-arrow{position:absolute;left:198px;top:30px;width:86px}
+/* 2 · research: in flow above the panel, right-aligned to the panel's inset */
+.ds-site .ds-note-research{text-align:right;padding:0 26px 18px 0}
+.ds-site .ds-note-research .ds-note{white-space:normal;text-align:right}
+/* 3 · enquiry: in flow below the panel, under its right-hand side, hook pointing back up */
+.ds-site .ds-note-enquiry{display:flex;justify-content:flex-end;align-items:flex-start;gap:10px;padding:14px 22px 0 0;color:var(--ds-forest)}
+.ds-site .ds-note-enquiry-arrow{width:36px;flex-shrink:0;margin-top:-6px}
+.ds-site .ds-note-enquiry .ds-note{margin-top:14px}
 /* 4 · founder: signature-style name, lower right of the photo */
 .ds-site .ds-note-founder{position:absolute;right:30px;bottom:26px;font-size:34px;text-shadow:0 1px 6px rgba(0,0,0,.45)}
 /* 5 · form: note above the card, arrow down to the fields */
@@ -644,19 +648,19 @@
 .ds-site .ds-note-form-arrow{width:22px;margin-top:4px}
 @media(max-width:1000px){
  .ds-site .ds-note{font-size:23px}
- .ds-site .ds-note-hero{left:0;top:-6px;width:200px}
- .ds-site .ds-note-hero-arrow{width:70px;margin-left:40px}
+ .ds-site .ds-note-hero{left:0;top:-46px}
+ .ds-site .ds-note-hero-arrow{left:150px;top:26px;width:66px}
  .ds-site .ds-note-founder{font-size:30px}
 }
 @media(max-width:700px){
  .ds-site .ds-note{font-size:21px}
  /* hero: into the flow above the phones, arrow dropped */
- .ds-site .ds-note-hero{position:static;width:auto;text-align:center;margin:0 0 6px}
- .ds-site .ds-note-hero .ds-note{max-width:none;white-space:nowrap}
+ .ds-site .ds-note-hero{position:static;text-align:center;margin:0 0 10px}
  .ds-site .ds-note-hero-arrow{display:none}
- .ds-site .ds-note-research{top:-14px;right:14px}
- .ds-site .ds-note-enquiry{margin:12px 0 -2px 2px;gap:8px}
- .ds-site .ds-note-enquiry-arrow{width:36px}
+ .ds-site .ds-note-research{padding:0 12px 10px 0}
+ .ds-site .ds-note-enquiry{padding:10px 10px 0 0;gap:8px}
+ .ds-site .ds-note-enquiry-arrow{width:30px}
+ .ds-site .ds-note-enquiry .ds-note{margin-top:12px}
  .ds-site .ds-note-founder{right:18px;bottom:16px;font-size:27px}
  /* form: into the flow above the card, arrow dropped */
  .ds-site .ds-note-form{position:static;margin:0 0 12px 4px}

@@ -36,22 +36,22 @@ const stroke = {
   strokeLinejoin: "round" as const,
 };
 
-/** Long curve that swoops down and to the right (hero). */
+/** Curve that runs right and bends down, ending just above the central phone (hero). */
 export function ArrowSwoop({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 120 90" className={`ds-note-arrow ${className}`} aria-hidden="true" focusable="false" {...stroke}>
-      <path d="M6 8c20 4 46 16 62 34 13 15 22 27 28 39" />
-      <path d="M86 70l10 12 5-15" />
+    <svg viewBox="0 0 100 76" className={`ds-note-arrow ${className}`} aria-hidden="true" focusable="false" {...stroke}>
+      <path d="M4 10c26-6 52 2 68 20 8 9 13 20 16 34" />
+      <path d="M79 54l9 12 6-14" />
     </svg>
   );
 }
 
-/** Short hook curving up and to the right (enquiry). */
+/** Short hook rising from the note back up to the illustration above (enquiry). */
 export function ArrowHook({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 70 60" className={`ds-note-arrow ${className}`} aria-hidden="true" focusable="false" {...stroke}>
-      <path d="M6 54c6-18 16-32 36-40 7-3 13-4 20-4" />
-      <path d="M52 4l12 5-7 11" />
+    <svg viewBox="0 0 44 64" className={`ds-note-arrow ${className}`} aria-hidden="true" focusable="false" {...stroke}>
+      <path d="M8 60c-3-16 2-32 16-46" />
+      <path d="M13 18l12-6 1 13" />
     </svg>
   );
 }
