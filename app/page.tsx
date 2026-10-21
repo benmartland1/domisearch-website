@@ -1,15 +1,19 @@
-import type { Metadata } from "next";
-import { Hero } from "@/components/Hero";
-import { ClientMarquee } from "@/components/ClientMarquee";
-import { HowItWorks } from "@/components/HowItWorks";
-import { ProofSection } from "@/components/ProofSection";
-import { FounderSection } from "@/components/FounderSection";
-import { Testimonials } from "@/components/Testimonials";
-import { CTA } from "@/components/CTA";
-import { FAQ } from "@/components/FAQ";
+import type { Metadata, Viewport } from "next";
+import { ApprovedHome } from "@/components/home/ApprovedHome";
+import { homeFaqs } from "@/components/home/faqs";
 import { faqSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
-import { aeoPricingSentence } from "@/lib/pricing";
+import { getTrustpilotReviewCount, trustpilotReviews } from "@/lib/trustpilot";
+
+/**
+ * The homepage is the approved light design, so the root layout's charcoal
+ * theme-color (a black browser chrome on mobile) is overridden here.
+ */
+export const viewport: Viewport = {
+  themeColor: "#f8f7f1",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "AI Search Visibility (AEO) Agency for Service Businesses | DomiSearch",
@@ -19,46 +23,6 @@ export const metadata: Metadata = {
 };
 
 const platforms = site.platforms.join(", ");
-
-/*
- * Written to support an AI search buying decision. Every answer is qualified:
- * no promised rankings, recommendations, leads or results timeline.
- */
-const homeFaqs = [
-  {
-    question: "What is Answer Engine Optimisation (AEO)?",
-    answer:
-      "Answer Engine Optimisation is work that improves how a business is discovered, mentioned and cited in AI-generated answers, on platforms such as ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews. It overlaps with established SEO fundamentals, such as accessible pages, clear business information and useful content, and adds research into the questions buyers ask AI and the sources those answers reference.",
-  },
-  {
-    question: "What does DomiSearch do?",
-    answer:
-      "DomiSearch is an AI search visibility agency for service businesses, with recruitment agencies a core focus. We research the questions your potential clients ask AI tools, examine which brands and sources appear in those answers, and use that evidence to guide website improvements, content and ongoing measurement. We also manage Google Ads for a smaller number of clients.",
-  },
-  {
-    question: "Which AI platforms do you track?",
-    answer: `We track an agreed set of buyer questions daily across ${platforms}. We add platforms as they earn real usage among the buyers our clients care about.`,
-  },
-  {
-    question: "What does the programme involve?",
-    answer:
-      "It starts with an AI visibility and competitor baseline and research into relevant buyer questions and cited sources. We then work through technical foundations and structured data, service-page improvements and content that answers the questions in the research, with your team's expertise and approval. Throughout, we track the agreed questions daily and review progress in a monthly report and strategy call.",
-  },
-  {
-    question: "How do you measure progress?",
-    answer:
-      "Against the baseline, on the same tracked questions. We report how often your business is named, which sources the answers cite, how you compare with tracked competitors and how AI describes you, alongside the work completed. Domi Studio, our own software, connects that completed work with the visibility data so we can review what changed and what happened next. The figures describe the tracked set, not every AI conversation.",
-  },
-  {
-    question: "What does DomiSearch charge?",
-    answer: `${aeoPricingSentence} Google Ads management is scoped and quoted separately on a call.`,
-  },
-  {
-    question: "How quickly might we see results?",
-    answer:
-      "There is no reliable date we can promise for a particular AI recommendation. Our standard initial programme runs for 90 days, which gives a defined period to deliver the agreed work, track changes and review what the evidence shows. Your starting position, competition and the pace of approvals all affect how quickly visibility moves.",
-  },
-];
 
 function stripContext<T extends { "@context"?: unknown }>(obj: T) {
   const { "@context": _context, ...rest } = obj;
@@ -242,27 +206,15 @@ const homeGraph = {
   ],
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const reviewCount = await getTrustpilotReviewCount();
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homeGraph) }}
       />
-      <Hero />
-      <div className="mt-6 lg:mt-16">
-        <ClientMarquee />
-      </div>
-      <HowItWorks />
-      <ProofSection />
-      <FounderSection />
-      <Testimonials showBookCall only={["Eamon Shahir", "Arjun Kumar", "Sam Barraclough"]} />
-      <FAQ items={homeFaqs} heading="Common questions." />
-      <CTA
-        heading="Find out where you stand in AI search."
-        sub="Request a free AI visibility check, or book a 30-minute call to talk through an AI search roadmap for your business. We'll show you where you appear today, who is being recommended instead, and what we would work on first."
-        secondary={{ label: "Check my AI visibility", href: "/#visibility-check" }}
-      />
+      <ApprovedHome reviews={trustpilotReviews} reviewCount={reviewCount} />
     </>
   );
 }

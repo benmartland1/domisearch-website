@@ -39,9 +39,10 @@ export function LayoutChrome({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const bare = BARE_ROUTES.some(
-    (r) => pathname === r || pathname.startsWith(`${r}/`),
-  );
+  // The homepage is the approved design with its own banner, nav and footer.
+  const bare =
+    pathname === "/" ||
+    BARE_ROUTES.some((r) => pathname === r || pathname.startsWith(`${r}/`));
 
   if (bare) {
     return <main className="relative z-10">{children}</main>;

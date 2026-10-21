@@ -10,7 +10,8 @@ const schema = z.object({
   url: z.string().min(3).max(300),
   name: z.string().min(1).max(120),
   email: z.string().email().max(200),
-  phone: z.string().min(5).max(40),
+  // Optional: the homepage review form asks for name, email and website only.
+  phone: z.string().max(40).optional(),
   // Honeypot - must be empty.
   hp_company: z.string().optional(),
 });
@@ -38,7 +39,7 @@ export async function POST(request: Request) {
   const parsed = schema.safeParse(data);
   if (!parsed.success) {
     return NextResponse.json(
-      { error: "Please enter your name, a valid email, phone number and website." },
+      { error: "Please enter your name, a valid email and website." },
       { status: 422 },
     );
   }
@@ -80,7 +81,7 @@ export async function POST(request: Request) {
 Name:    ${name}
 Website: ${website}
 Email:   ${email}
-Phone:   ${phone}
+Phone:   ${phone || "not provided"}
 
 Run the check and reach out with their audit. Reply to this email to reach them.`,
       html: `
@@ -89,7 +90,7 @@ Run the check and reach out with their audit. Reply to this email to reach them.
           <p style="line-height: 1.6; margin: 0 0 8px;"><strong>Name:</strong> ${name}</p>
           <p style="line-height: 1.6; margin: 0 0 8px;"><strong>Website:</strong> <a href="${website}" style="color: #01a36b;">${website}</a></p>
           <p style="line-height: 1.6; margin: 0 0 8px;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #01a36b;">${email}</a></p>
-          <p style="line-height: 1.6; margin: 0 0 16px;"><strong>Phone:</strong> <a href="tel:${phone}" style="color: #01a36b;">${phone}</a></p>
+          <p style="line-height: 1.6; margin: 0 0 16px;"><strong>Phone:</strong> ${phone ? `<a href="tel:${phone}" style="color: #01a36b;">${phone}</a>` : "not provided"}</p>
           <p style="line-height: 1.6; margin: 0; color: #666; font-size: 14px;">From the homepage. Run the check and reach out with their audit.</p>
         </div>
       `,
