@@ -687,3 +687,122 @@
  .ds-site .ds-case-tracked-row img{width:26px;height:26px}
 }
 .ds-site .ds-case-topline img.ds-taxd-white{filter:none}
+
+/* ====================================================================== */
+/* Homepage refinement (.ds-home only): contrast, scale, spacing          */
+/* ====================================================================== */
+.ds-site.ds-home{--ds-muted:#34463c;--ds-meta:#536157}
+.ds-site.ds-home .ds-page{font-size:17px;line-height:1.6}
+.ds-site.ds-home .ds-page p{color:#34463c}
+/* type scale */
+.ds-site.ds-home .ds-page h1{font-size:clamp(42px,5.2vw,72px);line-height:1.06;letter-spacing:-.035em}
+.ds-site.ds-home .ds-page h2{font-size:clamp(30px,3.3vw,46px);line-height:1.12;letter-spacing:-.03em;max-width:none}
+.ds-site.ds-home .ds-journey-heading h2,.ds-site.ds-home .ds-plan-header h2,.ds-site.ds-home .ds-sector h2,.ds-site.ds-home .ds-founder-copy h2,.ds-site.ds-home .ds-voices-header h2,.ds-site.ds-home .ds-faq-intro h2,.ds-site.ds-home .ds-review h2{font-size:clamp(30px,3.3vw,46px);line-height:1.12;letter-spacing:-.03em}
+.ds-site.ds-home .ds-page h3{font-size:26px;line-height:1.25;letter-spacing:-.02em}
+.ds-site.ds-home .ds-journey-copy h3{font-size:26px;margin-bottom:14px;max-width:none}
+.ds-site.ds-home .ds-month h3{font-size:22px;margin-bottom:10px}
+.ds-site.ds-home .ds-form h3{font-size:24px}
+/* body copy: 17px, readable measure, full-strength colour */
+.ds-site.ds-home .ds-lead,.ds-site.ds-home .ds-journey-copy>p,.ds-site.ds-home .ds-founder-copy>p,.ds-site.ds-home .ds-month p,.ds-site.ds-home .ds-plan-bottom p,.ds-site.ds-home .ds-faq-list details p,.ds-site.ds-home .ds-journey-heading>p,.ds-site.ds-home .ds-sector .ds-lead,.ds-site.ds-home .ds-plan-header .ds-lead{font-size:17px;line-height:1.6;color:#34463c;max-width:34em}
+.ds-site.ds-home .ds-journey-copy>p{margin-bottom:0}
+.ds-site.ds-home .ds-founder-copy>p{margin-bottom:14px}
+.ds-site.ds-home .ds-faq-list summary{font-size:17px;line-height:1.5;padding:18px 28px 18px 0}
+.ds-site.ds-home .ds-faq-list details p{padding-bottom:20px}
+.ds-site.ds-home .ds-faq-intro p{font-size:17px;color:#34463c}
+.ds-site.ds-home .ds-sector-list a{font-size:19px}
+.ds-site.ds-home .ds-sector-list small{font-size:14px;color:#34463c}
+.ds-site.ds-home .ds-journey-cta p{font-size:18px}
+/* labels and metadata */
+.ds-site.ds-home .ds-eyebrow{font-size:12px;letter-spacing:1.4px;margin-bottom:16px;color:var(--ds-forest)}
+.ds-site.ds-home .ds-journey-number,.ds-site.ds-home .ds-journey-scenario,.ds-site.ds-home .ds-small,.ds-site.ds-home .ds-hero-note,.ds-site.ds-home .ds-case-footnote,.ds-site.ds-home .ds-case-topline>span,.ds-site.ds-home .ds-person small,.ds-site.ds-home .ds-review-source span,.ds-site.ds-home .ds-review-link,.ds-site.ds-home .ds-form-note{font-size:13px;color:#536157}
+.ds-site.ds-home .ds-person strong{font-size:14px}
+.ds-site.ds-home .ds-text-link{font-size:14px;font-weight:500}
+/* dark panels: readable off-white, no faded paragraphs */
+.ds-site.ds-home .ds-case-number-caption{font-size:21px;color:#f8f7f1}
+.ds-site.ds-home .ds-case-scope span,.ds-site.ds-home .ds-case-tracked-label{color:#e2ebe5}
+.ds-site.ds-home .ds-case-quote blockquote{font-size:21px;line-height:1.55;color:#f8f7f1}
+.ds-site.ds-home .ds-mini-person p{color:#f8f7f1;font-size:14px}
+.ds-site.ds-home .ds-mini-person small{color:#d1e3d7;font-size:13px}
+.ds-site.ds-home .ds-review-copy>p{font-size:17px;line-height:1.6;color:#f8f7f1;margin-top:18px;max-width:30em}
+.ds-site.ds-home .ds-review-checks{font-size:15px;color:#f8f7f1}
+.ds-site.ds-home .ds-review-copy .ds-talk-option{font-size:14px;color:#e2ebe5}
+.ds-site.ds-home .ds-form>p{font-size:14px;color:#536157}
+.ds-site.ds-home .ds-field{font-size:13px}
+/* hero: headline, sentence, button; everything else quieter */
+.ds-site.ds-home .ds-hero-stage{min-height:0}
+.ds-site.ds-home .ds-hero-grid{padding-top:44px;padding-bottom:20px}
+.ds-site.ds-home .ds-hero-copy h1{margin-bottom:20px}
+.ds-site.ds-home .ds-hero-copy .ds-lead{max-width:30em}
+.ds-site.ds-home .ds-hero-copy .ds-actions{margin-top:26px}
+.ds-site.ds-home .ds-hero-copy .ds-button{font-size:14px}
+.ds-site.ds-home .ds-hero-note{margin-top:10px}
+.ds-site.ds-home .ds-hero-copy .ds-text-link{margin-top:14px!important;font-size:13px;color:#536157;border-bottom-color:#b9c2b7}
+.ds-site.ds-home .ds-engine-strip{padding-top:22px;padding-bottom:22px}
+/* section rhythm */
+.ds-site.ds-home .ds-section{padding-top:84px;padding-bottom:84px}
+.ds-site.ds-home .ds-client-strip{padding-top:30px;padding-bottom:32px}
+.ds-site.ds-home .ds-case-intro{margin-bottom:28px}
+.ds-site.ds-home .ds-case-quote .ds-mini-person{margin-top:22px}
+.ds-site.ds-home .ds-journey{padding-top:0}
+.ds-site.ds-home .ds-journey-heading{margin-bottom:8px}
+.ds-site.ds-home .ds-journey-heading h2{margin-bottom:18px}
+.ds-site.ds-home .ds-journey-scenario{margin-top:28px;padding-bottom:4px;border-bottom:1px solid var(--ds-line)}
+.ds-site.ds-home .ds-journey-row{padding:40px 0}
+.ds-site.ds-home .ds-journey-number{margin-bottom:14px}
+.ds-site.ds-home .ds-journey-cta{margin-top:28px}
+.ds-site.ds-home .ds-plan{background:transparent;border-top:1px solid var(--ds-line);padding-top:72px;padding-bottom:72px}
+.ds-site.ds-home .ds-timeline{border-top-color:var(--ds-line)}
+.ds-site.ds-home .ds-plan-bottom{border-top-color:var(--ds-line)}
+.ds-site.ds-home .ds-plan-header{margin-bottom:32px}
+.ds-site.ds-home .ds-plan-header .ds-lead{margin-top:28px}
+.ds-site.ds-home .ds-month p{color:#34463c;font-size:16px}
+.ds-site.ds-home .ds-plan-bottom p{font-size:14px;color:#536157;max-width:38em}
+.ds-site.ds-home .ds-sector h2{margin-bottom:18px}
+.ds-site.ds-home .ds-founder-copy{padding:48px 9% 44px 8%}
+.ds-site.ds-home .ds-founder-copy h2{margin-bottom:18px}
+.ds-site.ds-home .ds-founder-copy .ds-actions{margin-top:22px}
+.ds-site.ds-home .ds-voices-header{margin-bottom:28px}
+.ds-site.ds-home .ds-reviews-intro{margin-top:16px!important;font-size:15px;color:#536157!important}
+.ds-site.ds-home .ds-review-card blockquote{color:#34463c}
+.ds-site.ds-home .ds-review-card blockquote p{color:#34463c}
+.ds-site.ds-home .ds-faq-intro h2{margin-bottom:18px}
+.ds-site.ds-home .ds-review h2{max-width:none}
+.ds-site.ds-home .ds-review-checks{margin-top:22px}
+/* one pale sage for every illustration panel */
+.ds-site.ds-home .ds-journey-art{background:#e9eee4}
+/* conversion path: the visibility review is the one green action in the dark close; other links quiet */
+.ds-site.ds-home .ds-journey-cta .ds-button{background:#fff;color:var(--ds-ink)}
+.ds-site.ds-home .ds-journey-cta .ds-button:hover{background:var(--ds-forest);color:#fff}
+/* handwritten notes slightly smaller than before */
+.ds-site.ds-home .ds-note{font-size:24px}
+.ds-site.ds-home .ds-note-founder{font-size:32px}
+@media(max-width:1000px){
+ .ds-site.ds-home .ds-page h2,.ds-site.ds-home .ds-journey-heading h2,.ds-site.ds-home .ds-plan-header h2,.ds-site.ds-home .ds-sector h2,.ds-site.ds-home .ds-founder-copy h2,.ds-site.ds-home .ds-voices-header h2,.ds-site.ds-home .ds-faq-intro h2,.ds-site.ds-home .ds-review h2{font-size:clamp(30px,4vw,40px)}
+ .ds-site.ds-home .ds-journey-copy h3{font-size:24px}
+ .ds-site.ds-home .ds-note{font-size:22px}
+}
+@media(max-width:700px){
+ .ds-site.ds-home .ds-page h1{font-size:44px;letter-spacing:-.03em}
+ .ds-site.ds-home .ds-page h2,.ds-site.ds-home .ds-journey-heading h2,.ds-site.ds-home .ds-plan-header h2,.ds-site.ds-home .ds-sector h2,.ds-site.ds-home .ds-founder-copy h2,.ds-site.ds-home .ds-voices-header h2,.ds-site.ds-home .ds-faq-intro h2,.ds-site.ds-home .ds-review h2{font-size:31px;line-height:1.15}
+ .ds-site.ds-home .ds-journey-copy h3{font-size:23px}
+ .ds-site.ds-home .ds-page h3{font-size:22px}
+ .ds-site.ds-home .ds-lead,.ds-site.ds-home .ds-journey-copy>p,.ds-site.ds-home .ds-founder-copy>p,.ds-site.ds-home .ds-month p,.ds-site.ds-home .ds-faq-list details p,.ds-site.ds-home .ds-journey-heading>p,.ds-site.ds-home .ds-review-copy>p{font-size:16px}
+ .ds-site.ds-home .ds-section{padding-top:56px;padding-bottom:56px}
+ .ds-site.ds-home .ds-hero-stage{min-height:0}
+ .ds-site.ds-home .ds-hero-grid{padding-top:32px;padding-bottom:12px}
+ .ds-site.ds-home .ds-journey-row{padding:32px 0}
+ .ds-site.ds-home .ds-plan{padding-top:52px;padding-bottom:52px}
+ .ds-site.ds-home .ds-founder-copy{padding:36px 6% 40px}
+ .ds-site.ds-home .ds-note{font-size:20px}
+ .ds-site.ds-home .ds-note-founder{font-size:26px}
+}
+
+/* dark panels: paragraphs stay off-white regardless of the body-colour rule above */
+.ds-site.ds-home .ds-page .ds-case-number-caption,.ds-site.ds-home .ds-page .ds-case-quote blockquote,.ds-site.ds-home .ds-page .ds-mini-person p,.ds-site.ds-home .ds-page .ds-review-copy>p,.ds-site.ds-home .ds-page .ds-review-copy .ds-talk-option{color:#f8f7f1}
+.ds-site.ds-home .ds-page .ds-mini-person small{color:#d1e3d7}
+.ds-site.ds-home .ds-page .ds-review-copy .ds-talk-option{color:#e2ebe5}
+.ds-site.ds-home .ds-page .ds-form>p,.ds-site.ds-home .ds-page .ds-form-note{color:#536157}
+.ds-site.ds-home .ds-page .ds-review-card blockquote p{color:#34463c}
+@media(max-width:700px){.ds-site.ds-home .ds-page h1{font-size:41px}}
+.ds-site.ds-home .ds-page .ds-case-topline>span{color:#e2ebe5}
+.ds-site.ds-home .ds-page .ds-review .ds-eyebrow{color:var(--ds-green)}

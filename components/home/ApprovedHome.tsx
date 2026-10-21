@@ -63,7 +63,7 @@ function ExternalLink({ href, className, children }: { href: string; className?:
 
 export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotReview[]; reviewCount: number }) {
   return (
-    <div className="ds-site" data-surface="paper">
+    <div className="ds-site ds-home" data-surface="paper">
       <div className="ds-page">
         <Ticker />
         <SiteNav />
@@ -252,20 +252,6 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
             </h2>
             <p>Helping the right people find your business, trust your expertise and get in touch.</p>
           </div>
-          <div className="ds-journey-rail" aria-label="Four steps from AI research to ongoing improvement">
-            <span>
-              <b>01</b> Find the questions
-            </span>
-            <span>
-              <b>02</b> Build the answer
-            </span>
-            <span>
-              <b>03</b> Make contact easy
-            </span>
-            <span>
-              <b>04</b> Keep improving
-            </span>
-          </div>
           <div className="ds-journey-scenario">Following a recruitment buyer’s journey</div>
 
           <article className="ds-journey-row">
@@ -278,9 +264,8 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
               </h3>
               <p>
                 We research the questions people ask when looking for services like yours, and see which
-                businesses AI recommends. This helps us decide where to focus your strategy.
+                businesses AI recommends today. That decides where to focus.
               </p>
-              <span className="ds-journey-takeaway">Start with how your buyers actually search.</span>
             </div>
             <div className="ds-art-wrap">
               <div className="ds-note-research">
@@ -332,11 +317,9 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                 become the answer.
               </h3>
               <p>
-                We improve your website and create useful content that answers those questions. Your
-                services, experience and client results become easier for AI to understand and potential
-                clients to trust.
+                We improve your website and publish useful content that answers those questions, so your
+                services, experience and results are easy for AI to understand and clients to trust.
               </p>
-              <span className="ds-journey-takeaway">Make your expertise clear, useful and credible.</span>
             </div>
             <div className="ds-journey-art ds-art-content">
               <div className="ds-website-demo">
@@ -383,11 +366,9 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
               <span className="ds-journey-number">03 / Enquiries</span>
               <h3>We make it easier for interested buyers to get in touch.</h3>
               <p>
-                Once someone discovers your business, they need to understand why you’re a good fit. Clear
-                service pages, convincing client stories and a simple enquiry process help them take the
-                next step.
+                Clear service pages, convincing client stories and a simple enquiry process help someone
+                who has found you take the next step.
               </p>
-              <span className="ds-journey-takeaway">Give interested people a clear next step.</span>
             </div>
             <div className="ds-art-wrap">
               <div className="ds-journey-art ds-art-enquiry">
@@ -435,14 +416,10 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                 and keep improving.
               </h3>
               <p>
-                We monitor where your business gets mentioned, review the work we’ve completed and use what
-                we learn to decide what to do next.
+                We monitor where your business gets mentioned, review the work we’ve completed and decide
+                what to do next. Domi Studio connects that work with the visibility data, so each monthly
+                review is about what changed and what comes next.
               </p>
-              <p>
-                Domi Studio connects completed work with visibility data, so your monthly review can focus
-                on what changed and the next priorities.
-              </p>
-              <span className="ds-journey-takeaway">A clear record of the work and what follows.</span>
             </div>
             <div className="ds-journey-art ds-art-report">
               <div className="ds-report-demo">
@@ -503,8 +480,8 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
               </h2>
             </div>
             <p className="ds-lead">
-              A focused initial programme to establish your starting point, put the right work in place
-              and review what the evidence shows.
+              A focused first programme: establish your starting point, put the right work in place and
+              review what the evidence shows.
             </p>
           </div>
           <div className="ds-timeline">
@@ -526,8 +503,8 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
           </div>
           <div className="ds-plan-bottom">
             <p>
-              We track progress throughout. The first 90 days give us a defined period to deliver and
-              review; they aren’t a deadline for a guaranteed recommendation.
+              We track progress throughout. The first 90 days are a defined period to deliver and review,
+              not a deadline for a guaranteed recommendation.
             </p>
             <a className="ds-text-link" href="#visibility-check">
               Find your starting point <span className="ds-icon"><ArrowUpRight /></span>
@@ -601,18 +578,9 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
               e-commerce and service businesses in-house and agency-side.
             </p>
             <p>
-              Today I lead our AI search research and delivery, and personally review every client
-              account. We start by looking at why one firm gets named in AI answers and another doesn’t.
+              Today I lead our AI search research and delivery and personally review every client
+              account. We work with UK service businesses, with recruitment agencies a core focus.
             </p>
-            <p>We work with UK service businesses, with recruitment agencies a core focus.</p>
-            <div className="ds-founder-facts">
-              <span>
-                <b>2023</b> DomiSearch founded
-              </span>
-              <span>
-                <b>Every account</b> personally reviewed
-              </span>
-            </div>
             <div className="ds-actions">
               <ExternalLink className="ds-text-link" href={site.calendly}>
                 Book a call with us <span className="ds-icon"><ArrowUpRight /></span>
@@ -676,7 +644,7 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
               <br />
               <span>you stand.</span>
             </h2>
-            <p>Get a free AI visibility review for your business. See what potential clients might find, and where we’d focus first.</p>
+            <p>A free review of where your business appears in AI answers, and where we’d focus first.</p>
             <ul className="ds-review-checks">
               <li>Where your business appears today</li>
               <li>Who is being recommended instead</li>
