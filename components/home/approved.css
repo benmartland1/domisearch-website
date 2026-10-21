@@ -603,15 +603,19 @@
 .ds-site .ds-email-actions span svg{width:13px;height:13px;margin-right:4px;vertical-align:-2px}
 .ds-site .ds-review-stars>span svg{width:12px;height:12px;display:block}
 
-/* ---- Client logos: grid from tablet up, continuous scroll on phones ---- */
+/* ---- Client logos: one continuous scroll at every width (grid under reduced motion) ---- */
 @keyframes ds-logo-scroll{to{transform:translateX(-50%)}}
-.ds-site .ds-logo-marquee{display:none}
+.ds-site .ds-client-logos{display:none}
+.ds-site .ds-logo-marquee{display:block;overflow:hidden;margin:0 -5%;padding:0 5%;-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)}
+.ds-site .ds-logo-track{display:flex;width:max-content;animation:ds-logo-scroll 40s linear infinite}
+.ds-site .ds-logo-marquee:hover .ds-logo-track{animation-play-state:paused}
+.ds-site .ds-logo-group{display:flex;align-items:center;gap:64px;padding-right:64px;flex-shrink:0}
+.ds-site .ds-logo-group img{width:auto;height:34px;max-width:150px;object-fit:contain;filter:brightness(0);opacity:.88}
 @media(max-width:700px){
- .ds-site .ds-client-logos{display:none}
- .ds-site .ds-logo-marquee{display:block;overflow:hidden;margin:0 -6vw;padding:0 6vw;-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
- .ds-site .ds-logo-track{display:flex;width:max-content;animation:ds-logo-scroll 28s linear infinite}
- .ds-site .ds-logo-group{display:flex;align-items:center;gap:36px;padding-right:36px;flex-shrink:0}
- .ds-site .ds-logo-group img{width:auto;height:26px;max-width:120px;object-fit:contain;filter:brightness(0);opacity:.88}
+ .ds-site .ds-logo-marquee{margin:0 -6vw;padding:0 6vw}
+ .ds-site .ds-logo-track{animation-duration:28s}
+ .ds-site .ds-logo-group{gap:36px;padding-right:36px}
+ .ds-site .ds-logo-group img{height:26px;max-width:120px}
  /* AI platforms on one line: Perplexity is dropped at this width */
  .ds-site .ds-engines{flex-wrap:nowrap;justify-content:space-between;gap:8px}
  .ds-site .ds-engine{font-size:10.5px;gap:5px;white-space:nowrap}
