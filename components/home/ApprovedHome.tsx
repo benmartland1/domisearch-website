@@ -216,8 +216,8 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                   “
                 </div>
                 <blockquote>
-                  Taxd has grown a phenomenal customer base thanks to our fantastic search acquisition
-                  strategy.
+                  The important thing here is that Ben will spend the time to really understand the
+                  business and the metrics behind the scenes.
                 </blockquote>
               </div>
               <div className="ds-mini-person">
@@ -472,12 +472,8 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
         <section className="ds-plan ds-wrap" id="programme">
           <div className="ds-plan-header">
             <div>
-              <span className="ds-eyebrow">Your first 90 days</span>
-              <h2>
-                A plan with work{" "}
-                <br />
-                behind it.
-              </h2>
+              <span className="ds-eyebrow">The programme</span>
+              <h2>Your first 90 days with DomiSearch.</h2>
             </div>
             <p className="ds-lead">
               A focused first programme: establish your starting point, put the right work in place and
@@ -516,11 +512,7 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
         <section className="ds-sector ds-section ds-wrap">
           <div>
             <span className="ds-eyebrow">Who we work with</span>
-            <h2>
-              For businesses{" "}
-              <br />
-              chosen on trust.
-            </h2>
+            <h2>AI search for service businesses.</h2>
             <p className="ds-lead">When clients compare expertise before they get in touch, the recommendation matters.</p>
           </div>
           <div className="ds-sector-list">
@@ -602,7 +594,6 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                 <br />
                 clients say.
               </h2>
-              <p className="ds-reviews-intro">Every review on Trustpilot, shown in full.</p>
             </div>
             <ExternalLink className="ds-review-source" href={site.trustpilot}>
               <strong>

@@ -806,3 +806,41 @@
 @media(max-width:700px){.ds-site.ds-home .ds-page h1{font-size:41px}}
 .ds-site.ds-home .ds-page .ds-case-topline>span{color:#e2ebe5}
 .ds-site.ds-home .ds-page .ds-review .ds-eyebrow{color:var(--ds-green)}
+
+/* ---- Final refinement ---- */
+/* hero note: more room under the header */
+.ds-site.ds-home .ds-hero-grid{padding-top:68px}
+/* How it works: tighter rows and illustration containers */
+.ds-site.ds-home .ds-journey-row{padding:30px 0;gap:6%}
+.ds-site.ds-home .ds-journey-art{padding:18px}
+.ds-site.ds-home .ds-demo-brand{padding:13px 17px}
+.ds-site.ds-home .ds-demo-question{margin:16px 17px!important;padding:12px 15px}
+.ds-site.ds-home .ds-research-notes{margin:0 17px 16px;gap:9px}
+.ds-site.ds-home .ds-art-footer{margin-top:14px}
+.ds-site.ds-home .ds-demo-content{padding:20px 20px}
+.ds-site.ds-home .ds-demo-content h4{margin-bottom:12px}
+.ds-site.ds-home .ds-demo-byline{margin-top:14px}
+.ds-site.ds-home .ds-demo-service{margin-top:16px;padding-top:12px}
+.ds-site.ds-home .ds-email-content{padding:18px 20px 16px}
+.ds-site.ds-home .ds-email-content h4{margin-bottom:14px}
+.ds-site.ds-home .ds-email-sender{margin-bottom:14px}
+.ds-site.ds-home .ds-email-actions{margin-top:16px}
+.ds-site.ds-home .ds-report-header,.ds-site.ds-home .ds-report-company{padding-top:13px;padding-bottom:13px}
+.ds-site.ds-home .ds-report-entry{padding:11px 19px}
+.ds-site.ds-home .ds-note-research{padding-bottom:10px}
+.ds-site.ds-home .ds-note-enquiry{padding-top:8px}
+.ds-site.ds-home .ds-journey-scenario{margin-top:22px}
+.ds-site.ds-home .ds-journey-cta{margin-top:22px}
+/* headings without hard breaks */
+.ds-site.ds-home .ds-plan-header h2{max-width:11em}
+.ds-site.ds-home .ds-sector h2{max-width:10em}
+/* client logos: recognisable mid-dark grey, narrow fades */
+.ds-site .ds-logo-group img{filter:none;opacity:1}
+.ds-site .ds-logo-marquee{-webkit-mask-image:linear-gradient(to right,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(to right,transparent,#000 3%,#000 97%,transparent)}
+@media(max-width:1000px){.ds-site.ds-home .ds-hero-grid{padding-top:66px}}
+@media(max-width:700px){
+ .ds-site.ds-home .ds-hero-grid{padding-top:32px}
+ .ds-site.ds-home .ds-journey-row{padding:24px 0;gap:18px}
+ .ds-site.ds-home .ds-journey-art{padding:16px}
+}
+.ds-site .ds-client-logos img{filter:none;opacity:1}
