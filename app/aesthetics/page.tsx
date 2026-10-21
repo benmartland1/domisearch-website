@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata , Viewport } from "next";
 import { ReportFunnelProvider, DomainCaptureForm } from "@/components/landing/ReportFunnel";
 import { DomiMark } from "@/components/landing/DomiMark";
 import { EngineStrip } from "@/components/landing/EngineStrip";
@@ -40,6 +40,9 @@ function Highlight({ children }: { children: React.ReactNode }) {
     </span>
   );
 }
+
+/** Dark landing page: keep the browser chrome dark. */
+export const viewport: Viewport = { themeColor: "#090909", width: "device-width", initialScale: 1 };
 
 export const metadata: Metadata = {
   title: "Is AI Recommending Your Aesthetic Clinic? · DomiSearch",

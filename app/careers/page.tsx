@@ -38,12 +38,12 @@ export default function CareersPage() {
         <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-16 lg:px-10 lg:pt-24">
           <ScrollReveal as="span" className="eyebrow">Careers</ScrollReveal>
           <ScrollReveal delay={60}>
-            <h1 className="display mt-5 max-w-4xl text-balance text-[clamp(2.5rem,6vw,5rem)]">
+            <h1 className="display mt-5 max-w-4xl text-balance text-[clamp(2.4rem,5.45vw,4.2rem)]">
               Build the search agency you'd want to hire.
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={160}>
-            <p className="mt-8 max-w-3xl text-lg text-[color:var(--color-fog)]/85 sm:text-xl">
+            <p className="mt-8 max-w-3xl text-lg text-[color:var(--color-muted)] sm:text-xl">
               We hire slowly and rarely. We look for senior operators who genuinely enjoy the
               craft - paid media specialists, technical SEOs, AEO researchers, and a handful of
               generalists who want to define a new discipline.
@@ -58,9 +58,9 @@ export default function CareersPage() {
           {principles.map((p, i) => (
             <ScrollReveal key={p.title} delay={(i % 2) * 100}>
               <article className="card p-8">
-                <h3 className="text-2xl font-[600] text-[color:var(--color-glacier)]">{p.title}</h3>
+                <h3 className="text-2xl font-[600] text-[color:var(--color-ink)]">{p.title}</h3>
                 <div className="hairline mt-4" />
-                <p className="mt-4 text-[color:var(--color-fog)]/85">{p.body}</p>
+                <p className="mt-4 text-[color:var(--color-muted)]">{p.body}</p>
               </article>
             </ScrollReveal>
           ))}
@@ -72,7 +72,7 @@ export default function CareersPage() {
           <ScrollReveal>
             <div className="eyebrow">Current openings</div>
             <h2 className="display mt-4 text-3xl sm:text-4xl">No public roles right now.</h2>
-            <p className="mt-5 max-w-2xl text-[color:var(--color-fog)]/85">
+            <p className="mt-5 max-w-2xl text-[color:var(--color-muted)]">
               We hire opportunistically. If you're exceptional at Google Ads, AEO, or you
               think you'd be a great fit for a small senior team, email Ben directly.
               Include work you're proud of.

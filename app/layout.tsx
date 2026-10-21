@@ -9,9 +9,11 @@ import { JsonLd } from "@/components/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 import "./globals.css";
+import "@/components/home/approved.css";
 
 export const viewport: Viewport = {
-  themeColor: "#090909",
+  // The site is paper; the dark landing pages override this per route.
+  themeColor: "#f8f7f1",
   width: "device-width",
   initialScale: 1,
 };

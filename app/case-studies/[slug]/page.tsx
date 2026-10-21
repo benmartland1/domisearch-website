@@ -117,7 +117,7 @@ export default async function CaseStudyPage({ params }: Props) {
           <ScrollReveal>
             <Link
               href="/"
-              className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-domigreen)]"
+              className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-forest)]"
             >
               ← Back to home
             </Link>
@@ -130,13 +130,13 @@ export default async function CaseStudyPage({ params }: Props) {
                   {cs.services.filter((s) => s !== "Integrated").map((s) => (
                     <span
                       key={s}
-                      className="rounded-full border border-white/15 px-3 py-1 text-[color:var(--color-fog)]/80"
+                      className="rounded-full border border-[color:var(--color-line)] px-3 py-1 text-[color:var(--color-muted)]"
                     >
                       {s}
                     </span>
                   ))}
                   {cs.services.includes("Integrated") && (
-                    <span className="rounded-full bg-[color:var(--color-domigreen)]/15 px-3 py-1 text-[color:var(--color-domigreen)]">
+                    <span className="rounded-full bg-[color:var(--color-forest)]/10 px-3 py-1 text-[color:var(--color-forest)]">
                       Integrated
                     </span>
                   )}
@@ -150,13 +150,13 @@ export default async function CaseStudyPage({ params }: Props) {
               </ScrollReveal>
 
               <ScrollReveal delay={200}>
-                <p className="mt-6 max-w-xl text-lg text-[color:var(--color-fog)]/80">
+                <p className="mt-6 max-w-xl text-lg text-[color:var(--color-muted)]">
                   {cs.excerpt}
                 </p>
               </ScrollReveal>
 
               <ScrollReveal delay={280}>
-                <div className="mt-8 flex flex-wrap items-center gap-6 text-xs uppercase tracking-[0.2em] text-[color:var(--color-fog)]/60">
+                <div className="mt-8 flex flex-wrap items-center gap-6 text-xs uppercase tracking-[0.2em] text-[color:var(--color-muted)]">
                   <div className="flex items-center gap-3">
                     <span>Client</span>
                     {cs.clientLogo && (
@@ -165,14 +165,14 @@ export default async function CaseStudyPage({ params }: Props) {
                         alt={cs.client}
                         width={100}
                         height={28}
-                        className="h-6 w-auto opacity-85 brightness-0 invert"
+                        className="h-6 w-auto opacity-85 brightness-0"
                         sizes="100px"
                       />
                     )}
                   </div>
-                  <span className="hidden h-4 w-px bg-white/10 sm:block" />
+                  <span className="hidden h-4 w-px bg-white sm:block" />
                   <span>{cs.sector}</span>
-                  <span className="hidden h-4 w-px bg-white/10 sm:block" />
+                  <span className="hidden h-4 w-px bg-white sm:block" />
                   <span>{cs.timeline}</span>
                 </div>
               </ScrollReveal>
@@ -180,15 +180,15 @@ export default async function CaseStudyPage({ params }: Props) {
 
             {/* Hero metric - single hero stat, dramatic */}
             <ScrollReveal delay={200}>
-              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-8 sm:p-10">
+              <div className="relative overflow-hidden rounded-[2rem] border border-[color:var(--color-line)] bg-white p-8 sm:p-10">
                 <div className="eyebrow">Headline result</div>
                 <div
-                  className="display mt-4 text-[clamp(2.75rem,7.5vw,5.5rem)] leading-none text-[color:var(--color-domigreen)]"
+                  className="display mt-4 text-[clamp(2.75rem,7.5vw,5.5rem)] leading-none text-[color:var(--color-forest)]"
                   style={{ letterSpacing: "-0.035em" }}
                 >
                   {cs.heroMetric.value}
                 </div>
-                <div className="mt-4 max-w-[16rem] text-sm uppercase tracking-[0.18em] text-[color:var(--color-fog)]/80">
+                <div className="mt-4 max-w-[16rem] text-sm uppercase tracking-[0.18em] text-[color:var(--color-muted)]">
                   {cs.heroMetric.label}
                 </div>
               </div>
@@ -197,8 +197,6 @@ export default async function CaseStudyPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Dark → paper seam */}
-      <div className="paper-seam" aria-hidden />
 
       {/* ============================================================ */}
       {/* PAPER - OUTCOMES band (big metric tiles)                     */}
@@ -216,7 +214,7 @@ export default async function CaseStudyPage({ params }: Props) {
                 The numbers behind the partnership.
               </h2>
             </ScrollReveal>
-            <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-black/10 bg-black/10 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-black/10 bg-white sm:grid-cols-2 lg:grid-cols-4">
               {cs.metrics.slice(0, 4).map((m, i) => (
                 <ScrollReveal
                   key={m.label}
@@ -367,16 +365,6 @@ export default async function CaseStudyPage({ params }: Props) {
           </div>
         </section>
       )}
-
-      {/* Paper → dark */}
-      <div
-        aria-hidden
-        className="h-2"
-        style={{
-          background:
-            "linear-gradient(to bottom, var(--color-paper) 0%, var(--color-paper) 50%, var(--color-charcoal) 50%, var(--color-charcoal) 100%)",
-        }}
-      />
 
       {related.length > 0 && (
         <section className="relative mx-auto max-w-7xl px-6 pt-24 lg:px-10">

@@ -15,7 +15,7 @@ export function AuthorBio({ author, variant = "dark" }: Props) {
       className={`mt-16 rounded-2xl border p-6 sm:p-8 ${
         isPaper
           ? "border-black/10 bg-[color:var(--color-paper-2)]"
-          : "border-white/10 bg-white/[0.03]"
+          : "border-[color:var(--color-line)] bg-white"
       }`}
     >
       <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
@@ -25,34 +25,34 @@ export function AuthorBio({ author, variant = "dark" }: Props) {
           width={72}
           height={72}
           className={`h-16 w-16 shrink-0 rounded-full object-cover object-center ring-1 sm:h-[72px] sm:w-[72px] ${
-            isPaper ? "ring-black/10" : "ring-white/10"
+            isPaper ? "ring-black/10" : "ring-black/10"
           }`}
         />
         <div className="min-w-0">
           <div
             className={`text-[10px] font-medium uppercase tracking-[0.24em] ${
-              isPaper ? "text-[color:var(--color-ink-2)]" : "text-[color:var(--color-domigreen)]"
+              isPaper ? "text-[color:var(--color-ink-2)]" : "text-[color:var(--color-forest)]"
             }`}
           >
             About the author
           </div>
           <h3
             className={`mt-2 text-lg font-[600] ${
-              isPaper ? "text-[color:var(--color-ink)]" : "text-[color:var(--color-glacier)]"
+              isPaper ? "text-[color:var(--color-ink)]" : "text-[color:var(--color-ink)]"
             }`}
           >
             {author.name}
           </h3>
           <div
             className={`text-xs uppercase tracking-[0.14em] ${
-              isPaper ? "text-[color:var(--color-ink-3)]" : "text-[color:var(--color-fog)]/60"
+              isPaper ? "text-[color:var(--color-ink-3)]" : "text-[color:var(--color-muted)]"
             }`}
           >
             {author.role}
           </div>
           <p
             className={`mt-4 text-sm leading-relaxed ${
-              isPaper ? "text-[color:var(--color-ink-2)]" : "text-[color:var(--color-fog)]/85"
+              isPaper ? "text-[color:var(--color-ink-2)]" : "text-[color:var(--color-muted)]"
             }`}
           >
             {author.bio}
@@ -63,7 +63,7 @@ export function AuthorBio({ author, variant = "dark" }: Props) {
               className={
                 isPaper
                   ? "text-[color:var(--color-pine)] hover:text-[color:var(--color-ink)]"
-                  : "text-[color:var(--color-domigreen)] hover:text-[color:var(--color-glacier)]"
+                  : "text-[color:var(--color-forest)] hover:text-[color:var(--color-ink)]"
               }
             >
               About →
@@ -75,7 +75,7 @@ export function AuthorBio({ author, variant = "dark" }: Props) {
               className={
                 isPaper
                   ? "text-[color:var(--color-pine)] hover:text-[color:var(--color-ink)]"
-                  : "text-[color:var(--color-domigreen)] hover:text-[color:var(--color-glacier)]"
+                  : "text-[color:var(--color-forest)] hover:text-[color:var(--color-ink)]"
               }
             >
               Book a call →
@@ -88,7 +88,7 @@ export function AuthorBio({ author, variant = "dark" }: Props) {
                 className={
                   isPaper
                     ? "text-[color:var(--color-ink-3)] hover:text-[color:var(--color-ink)]"
-                    : "text-[color:var(--color-fog)]/60 hover:text-[color:var(--color-glacier)]"
+                    : "text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)]"
                 }
               >
                 LinkedIn →

@@ -86,15 +86,15 @@ export default function PricingPage() {
             Pricing
           </ScrollReveal>
           <ScrollReveal delay={60}>
-            <h1 className="display mt-5 text-balance text-[clamp(2.5rem,6vw,5rem)]">
+            <h1 className="display mt-5 text-balance text-[clamp(2.4rem,5.45vw,4.2rem)]">
               One programme.{" "}
-              <span className="text-[color:var(--color-domigreen)]">
+              <span className="text-[color:var(--color-forest)]">
                 Plain pricing.
               </span>
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={140}>
-            <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-fog)]/85 sm:text-xl">
+            <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-muted)] sm:text-xl">
               The AI search visibility programme, priced in full so you can qualify
               yourself before the call. Pay monthly, or pay the first three months
               upfront and save. No setup fees.
@@ -111,13 +111,13 @@ export default function PricingPage() {
       {/* Trust strip under the table */}
       <section className="relative mx-auto mt-6 max-w-7xl px-6 lg:px-10">
         <ScrollReveal>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/55">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
             <span>3-month minimum, 6 recommended</span>
-            <span className="hidden h-1 w-1 rounded-full bg-[color:var(--color-fog)]/30 sm:block" />
+            <span className="hidden h-1 w-1 rounded-full bg-[color:var(--color-line)] sm:block" />
             <span>No setup fees</span>
-            <span className="hidden h-1 w-1 rounded-full bg-[color:var(--color-fog)]/30 sm:block" />
+            <span className="hidden h-1 w-1 rounded-full bg-[color:var(--color-line)] sm:block" />
             <span>Daily tracking, monthly review</span>
-            <span className="hidden h-1 w-1 rounded-full bg-[color:var(--color-fog)]/30 sm:block" />
+            <span className="hidden h-1 w-1 rounded-full bg-[color:var(--color-line)] sm:block" />
             <span>Rolling after the minimum term</span>
           </div>
         </ScrollReveal>
@@ -126,14 +126,14 @@ export default function PricingPage() {
       {/* Custom quote nudge */}
       <section className="relative mx-auto mt-32 max-w-4xl px-6 lg:px-10">
         <ScrollReveal>
-          <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.02] p-10 text-center">
-            <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-domigreen)]">
+          <div className="rounded-[1.5rem] border border-[color:var(--color-line)] bg-white p-10 text-center">
+            <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-forest)]">
               Outside the standard programme
             </div>
             <h2 className="display mt-4 text-balance text-2xl sm:text-3xl">
               A group of businesses, several territories, or Google Ads as well?
             </h2>
-            <p className="mt-5 text-[color:var(--color-fog)]/80">
+            <p className="mt-5 text-[color:var(--color-muted)]">
               We scope those on a call rather than publishing a figure that would be
               wrong for half the people reading it. Tell us about the business and we
               will come back within two working days with a realistic scope and fee.

@@ -46,7 +46,7 @@ function Check({ muted = false }: { muted?: boolean }) {
       viewBox="0 0 18 18"
       fill="none"
       aria-hidden
-      className={`mt-[3px] shrink-0 ${muted ? "text-[color:var(--color-fog)]/60" : "text-[color:var(--color-domigreen)]"}`}
+      className={`mt-[3px] shrink-0 ${muted ? "text-[color:var(--color-muted)]" : "text-[color:var(--color-forest)]"}`}
     >
       <path d="M3.5 9.5l3.2 3.2 7.8-7.8" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
@@ -59,17 +59,17 @@ export function PricingTable() {
       {/* What the programme includes */}
       <ScrollReveal>
         <div className="card h-full p-8 sm:p-10">
-          <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-domigreen)]">
+          <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-forest)]">
             AI search visibility programme
           </div>
           <h2 className="display mt-4 text-3xl sm:text-4xl">One programme. Two ways to pay.</h2>
-          <p className="mt-4 text-[color:var(--color-fog)]/80">
+          <p className="mt-4 text-[color:var(--color-muted)]">
             Every client gets the same programme, scoped to their services and markets. The
             price covers one business; additional territories or group companies are agreed on
             the call.
           </p>
           <div className="hairline mt-8" />
-          <ul className="mt-8 space-y-4 text-[0.95rem] leading-relaxed text-[color:var(--color-fog)]/90">
+          <ul className="mt-8 space-y-4 text-[0.95rem] leading-relaxed text-[color:var(--color-muted)]">
             {included.map((item) => (
               <li key={item} className="flex gap-3">
                 <Check />
@@ -77,7 +77,7 @@ export function PricingTable() {
               </li>
             ))}
           </ul>
-          <p className="mt-8 text-sm text-[color:var(--color-fog)]/60">
+          <p className="mt-8 text-sm text-[color:var(--color-muted)]">
             Not included: ad spend of any kind, third-party tools you already pay for, and any
             outreach, original research or paid placements, which are scoped separately if they
             are relevant.
@@ -92,30 +92,30 @@ export function PricingTable() {
             <div
               className={`relative flex h-full flex-col rounded-[1.5rem] border p-8 transition-colors ${
                 o.highlight
-                  ? "border-[color:var(--color-domigreen)]/50 bg-[color:color-mix(in_oklab,var(--color-domigreen)_6%,transparent)]"
-                  : "border-white/10 bg-white/[0.02] hover:border-white/20"
+                  ? "border-[color:var(--color-forest)]/40 bg-[color:color-mix(in_oklab,var(--color-domigreen)_6%,transparent)]"
+                  : "border-[color:var(--color-line)] bg-white hover:border-[color:var(--color-ink)]"
               }`}
             >
               {o.highlight && o.badge && (
-                <span className="absolute left-8 top-0 -translate-y-1/2 rounded-full border border-[color:var(--color-domigreen)]/50 bg-[color:var(--color-charcoal)] px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-domigreen)]">
+                <span className="absolute left-8 top-0 -translate-y-1/2 rounded-full border border-[color:var(--color-forest)]/40 bg-[color:var(--color-paper)] px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-forest)]">
                   {o.badge}
                 </span>
               )}
-              <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-fog)]/65">
+              <div className="text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-muted)]">
                 {o.name}
               </div>
-              <p className="mt-3 text-sm text-[color:var(--color-fog)]/75">{o.tagline}</p>
+              <p className="mt-3 text-sm text-[color:var(--color-muted)]">{o.tagline}</p>
               <div className="mt-8 flex items-baseline gap-2">
                 <span
                   className={`display leading-none text-[3rem] sm:text-[3.5rem] ${
-                    o.highlight ? "text-[color:var(--color-domigreen)]" : "text-[color:var(--color-glacier)]"
+                    o.highlight ? "text-[color:var(--color-forest)]" : "text-[color:var(--color-ink)]"
                   }`}
                 >
                   {o.price}
                 </span>
-                <span className="text-sm text-[color:var(--color-fog)]/70">{o.cadence}</span>
+                <span className="text-sm text-[color:var(--color-muted)]">{o.cadence}</span>
               </div>
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-[color:var(--color-fog)]/80">{o.term}</p>
+              <p className="mt-4 flex-1 text-sm leading-relaxed text-[color:var(--color-muted)]">{o.term}</p>
               <div className="mt-8">
                 <Link
                   href={site.calendly}

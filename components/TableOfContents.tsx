@@ -42,13 +42,13 @@ export function TableOfContents({ headings, variant = "dark" }: Props) {
   const isPaper = variant === "paper";
   const labelClass = isPaper
     ? "mb-4 text-[10px] font-medium uppercase tracking-[0.22em] text-[color:var(--color-ink-2)]"
-    : "eyebrow mb-4 text-[color:var(--color-fog)]/75";
+    : "eyebrow mb-4 text-[color:var(--color-muted)]";
   const activeClass = isPaper
     ? "border-[color:var(--color-pine)] text-[color:var(--color-ink)]"
-    : "border-[color:var(--color-domigreen)] text-[color:var(--color-domigreen)]";
+    : "border-[color:var(--color-domigreen)] text-[color:var(--color-forest)]";
   const inactiveClass = isPaper
     ? "border-black/10 text-[color:var(--color-ink-3)] hover:border-black/30 hover:text-[color:var(--color-ink)]"
-    : "border-white/10 text-[color:var(--color-fog)]/65 hover:border-white/30 hover:text-[color:var(--color-glacier)]";
+    : "border-[color:var(--color-line)] text-[color:var(--color-muted)] hover:border-[color:var(--color-ink)] hover:text-[color:var(--color-ink)]";
 
   return (
     <nav aria-label="On this page" className="text-sm">

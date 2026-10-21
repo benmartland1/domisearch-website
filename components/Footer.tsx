@@ -1,80 +1,72 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import type { CSSProperties } from "react";
 import { site } from "@/lib/site";
 
-export function Footer() {
+/**
+ * The site footer, in the approved design. `note` adds a small-print line
+ * above the copyright row (the sector pages use it for their illustration
+ * disclaimer).
+ */
+export function Footer({ note }: { note?: string }) {
   return (
-    <footer className="relative z-10 mt-32 border-t border-white/5 bg-[color:var(--color-charcoal)]">
-      <div className="mx-auto grid max-w-7xl gap-16 px-6 py-20 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-10">
-        <div>
-          <Link href="/" className="inline-block">
-            <Image
-              src="/brand/logo.png"
-              alt="DomiSearch"
-              width={203}
-              height={32}
-              className="h-8 w-auto"
-            />
-          </Link>
-          <p className="mt-5 max-w-sm text-sm leading-relaxed text-[color:var(--color-fog)]/80">
-            AI search visibility for service businesses. We help brands get discovered,
-            mentioned and cited across {site.platforms.join(", ")}.
+    <footer className="ds-footer ds-wrap" style={{ "--ds-logo-mask": "url(/brand/logo.png)" } as CSSProperties}>
+      <div className="ds-footer-top">
+        <div className="ds-footer-brand">
+          <div className="ds-brand-lockup">
+            <Image className="ds-logo ds-logo-light" src="/brand/logo.png" alt="DomiSearch" width={155} height={24} />
+            <span className="ds-logo-solid" aria-hidden="true" />
+          </div>
+          <p>
+            AI search visibility for service businesses.
+            <br />
+            Be the brand AI recommends.
           </p>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+          <a href={`tel:${site.phoneHref}`}>{site.phone}</a>
+          <span>
+            {site.city}, {site.country}
+          </span>
         </div>
-
-        <div>
-          <h4 className="eyebrow mb-4 text-[color:var(--color-glacier)]">Services</h4>
-          <ul className="space-y-3 text-sm">
-            <li><Link href="/services/aeo" className="hover:text-[color:var(--color-domigreen)]">AI Search Visibility (AEO)</Link></li>
-            <li><Link href="/services/google-ads" className="hover:text-[color:var(--color-domigreen)]">Google Ads Management</Link></li>
-          </ul>
-          <h4 className="eyebrow mb-4 mt-10 text-[color:var(--color-glacier)]">Sectors</h4>
-          <ul className="space-y-3 text-sm">
-            {site.sectors.map((s) =>
-              s.href.startsWith("http") ? (
-                <li key={s.href}><a href={s.href} target="_blank" rel="noopener" className="hover:text-[color:var(--color-domigreen)]">{s.label}</a></li>
-              ) : (
-                <li key={s.href}><Link href={s.href} className="hover:text-[color:var(--color-domigreen)]">{s.label}</Link></li>
-              ),
-            )}
-          </ul>
+        <div className="ds-footer-links">
+          <strong>Services</strong>
+          <Link href="/services/aeo">AI Search Visibility</Link>
+          <Link href="/services/google-ads">Google Ads Management</Link>
+          <Link href="/#results">Client results</Link>
+          <Link href="/#visibility-check">Get a visibility review ↗</Link>
         </div>
-
-        <div>
-          <h4 className="eyebrow mb-4 text-[color:var(--color-glacier)]">Company</h4>
-          <ul className="space-y-3 text-sm">
-            <li><Link href="/about" className="hover:text-[color:var(--color-domigreen)]">About</Link></li>
-            <li><Link href="/pricing" className="hover:text-[color:var(--color-domigreen)]">Pricing</Link></li>
-            <li><Link href="/blog" className="hover:text-[color:var(--color-domigreen)]">Blog</Link></li>
-            <li><Link href="/careers" className="hover:text-[color:var(--color-domigreen)]">Careers</Link></li>
-            <li><Link href="/contact" className="hover:text-[color:var(--color-domigreen)]">Contact</Link></li>
-            <li><Link href="/privacy" className="hover:text-[color:var(--color-domigreen)]">Privacy</Link></li>
-            <li><Link href="/terms" className="hover:text-[color:var(--color-domigreen)]">Terms</Link></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 className="eyebrow mb-4 text-[color:var(--color-glacier)]">Reach us</h4>
-          <ul className="space-y-3 text-sm">
-            <li>
-              <a className="hover:text-[color:var(--color-domigreen)]" href={`mailto:${site.email}`}>
-                {site.email}
+        <div className="ds-footer-links">
+          <strong>Sectors</strong>
+          {site.sectors.map((s) =>
+            s.href.startsWith("http") ? (
+              <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer">
+                {s.label} ↗
               </a>
-            </li>
-            <li>
-              <a className="hover:text-[color:var(--color-domigreen)]" href={`tel:${site.phoneHref}`}>
-                {site.phone}
-              </a>
-            </li>
-            <li className="text-[color:var(--color-fog)]/70">{site.city}, {site.country}</li>
-          </ul>
+            ) : (
+              <Link key={s.href} href={s.href}>
+                {s.label}
+              </Link>
+            ),
+          )}
+        </div>
+        <div className="ds-footer-links">
+          <strong>Company</strong>
+          <Link href="/about">About</Link>
+          <Link href="/pricing">Pricing</Link>
+          <Link href="/blog">Blog</Link>
+          <Link href="/careers">Careers</Link>
+          <Link href="/contact">Contact</Link>
         </div>
       </div>
-
-      <div className="border-t border-white/5">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 px-6 py-6 text-xs text-[color:var(--color-fog)]/60 sm:flex-row sm:items-center lg:px-10">
-          <span>© {new Date().getFullYear()} DomiSearch. All rights reserved.</span>
-          <span>Built in Manchester. Delivered worldwide.</span>
+      {note ? <p className="ds-footer-note">{note}</p> : null}
+      <div className="ds-footer-bottom">
+        <span>© {new Date().getFullYear()} DomiSearch. Built in Manchester. Delivered worldwide.</span>
+        <div>
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/terms">Terms</Link>
+          <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer">
+            LinkedIn ↗
+          </a>
         </div>
       </div>
     </footer>

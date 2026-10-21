@@ -1,10 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata , Viewport } from "next";
 import Image from "next/image";
 import { DomiMark } from "@/components/landing/DomiMark";
 import { EngineStrip } from "@/components/landing/EngineStrip";
 import { RoadmapMockup } from "@/components/landing/RoadmapMockup";
 import { RoadmapCheckout } from "@/components/landing/RoadmapCheckout";
 import { site } from "@/lib/site";
+
+/** Dark landing page: keep the browser chrome dark. */
+export const viewport: Viewport = { themeColor: "#090909", width: "device-width", initialScale: 1 };
 
 export const metadata: Metadata = {
   title: "The £99 AI Visibility Roadmap · DomiSearch",

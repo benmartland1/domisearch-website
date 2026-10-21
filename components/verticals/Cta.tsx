@@ -15,13 +15,13 @@ type Props = {
 };
 
 const BASE =
-  "group inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-[15px] font-bold tracking-tight transition-all duration-200 hover:-translate-y-px motion-reduce:transition-none motion-reduce:hover:translate-y-0";
+  "group inline-flex items-center justify-center gap-3 rounded-[3px] px-6 py-3.5 text-[14px] font-medium transition-all duration-200 hover:-translate-y-px motion-reduce:transition-none motion-reduce:hover:translate-y-0";
 
 const VARIANTS = {
   solid:
-    "bg-[color:var(--color-ink)] text-[color:var(--color-paper)] shadow-[0_16px_36px_-18px_rgba(20,17,13,0.8)] hover:bg-[color:var(--color-domigreen)] hover:text-[color:var(--color-charcoal)] hover:shadow-[0_18px_42px_-14px_rgba(1,232,144,0.6)]",
+    "border border-[color:var(--color-ink)] bg-[color:var(--color-ink)] text-white hover:border-[color:var(--color-forest)] hover:bg-[color:var(--color-forest)]",
   outline:
-    "border border-black/[0.14] bg-white text-[color:var(--color-ink)] hover:border-[color:var(--color-domigreen)] hover:bg-[color:var(--color-domigreen)] hover:text-[color:var(--color-charcoal)]",
+    "border border-[color:var(--color-line)] bg-white text-[color:var(--color-ink)] hover:border-[color:var(--color-ink)]",
 } as const;
 
 export function Cta({ href, variant = "solid", className = "", children }: Props) {

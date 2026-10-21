@@ -49,10 +49,10 @@ export function LayoutChrome({
   }
 
   return (
-    <>
+    <div className="ds-site" data-surface="paper">
       {header}
-      <main className="relative z-10 pt-24">{children}</main>
+      <main className="relative z-10">{children}</main>
       {footer}
-    </>
+    </div>
   );
 }

@@ -16,7 +16,7 @@ export default function PrivacyPage() {
         <h1 className="display mt-4 text-4xl sm:text-5xl">Privacy Policy</h1>
       </ScrollReveal>
       <ScrollReveal delay={140}>
-        <div className="prose-dsrc mt-10">
+        <div className="prose-paper mt-10">
           <p>
             This policy explains how DomiSearch collects and uses personal data. We take
             your privacy seriously and only collect what we need to respond to enquiries,

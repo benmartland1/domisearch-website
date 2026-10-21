@@ -35,10 +35,8 @@ const TONES = {
   light: {
     // Matches the pill links beside it in the light nav.
     button: (open: boolean, active: boolean) =>
-      `rounded-full px-3 py-1.5 text-[13px] font-medium tracking-tight hover:bg-black/[0.04] hover:text-[color:var(--color-ink)] ${
-        open || active
-          ? "bg-black/[0.04] text-[color:var(--color-ink)]"
-          : "text-[color:var(--color-ink-2)]"
+      `ds-sectors-button text-[12px] font-medium text-[color:var(--color-ink)] hover:underline [text-underline-offset:5px] ${
+        open || active ? "underline" : ""
       }`,
     panel:
       "border border-black/[0.07] bg-white shadow-[0_24px_50px_-24px_rgba(20,17,13,0.45)]",

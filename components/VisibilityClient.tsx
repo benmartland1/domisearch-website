@@ -69,7 +69,7 @@ function band_color(band: Report["visibility_band"]): string {
     case "Patchy":
       return "text-yellow-300";
     case "Visible":
-      return "text-[color:var(--color-domigreen)]";
+      return "text-[color:var(--color-forest)]";
   }
 }
 
@@ -83,7 +83,7 @@ function highlight(text: string, company: string, url: string): string {
   let out = text;
   for (const n of needles) {
     const re = new RegExp(`(${n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi");
-    out = out.replace(re, '<mark class="bg-[color:var(--color-domigreen)]/30 text-[color:var(--color-glacier)] px-0.5 rounded">$1</mark>');
+    out = out.replace(re, '<mark class="bg-[color:var(--color-forest)]/10 text-[color:var(--color-ink)] px-0.5 rounded">$1</mark>');
   }
   return out;
 }
@@ -175,7 +175,7 @@ export function VisibilityClient() {
   if (!authed) {
     return (
       <form onSubmit={handleAuth} className="card mx-auto mt-8 max-w-md p-8">
-        <label htmlFor="token" className="block text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-fog)]/60">
+        <label htmlFor="token" className="block text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-muted)]">
           Access password
         </label>
         <input
@@ -184,7 +184,7 @@ export function VisibilityClient() {
           autoFocus
           value={tokenInput}
           onChange={(e) => setTokenInput(e.target.value)}
-          className="mt-3 w-full rounded-md border border-white/15 bg-white/[0.04] px-4 py-3 text-base text-[color:var(--color-glacier)] focus:border-[color:var(--color-domigreen)]/60 focus:outline-none"
+          className="mt-3 w-full rounded-md border border-[color:var(--color-line)] bg-white px-4 py-3 text-base text-[color:var(--color-ink)] focus:border-[color:var(--color-forest)]/40 focus:outline-none"
           placeholder="Enter VISIBILITY_PASSWORD"
         />
         <button type="submit" className="btn btn-primary mt-6 w-full justify-center">
@@ -200,7 +200,7 @@ export function VisibilityClient() {
       {/* Form */}
       <form onSubmit={handleRun} className="card grid gap-5 p-8 sm:grid-cols-2">
         <div>
-          <label htmlFor="company" className="block text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-fog)]/60">
+          <label htmlFor="company" className="block text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-muted)]">
             Brand name
           </label>
           <input
@@ -208,12 +208,12 @@ export function VisibilityClient() {
             required
             value={company}
             onChange={(e) => setCompany(e.target.value)}
-            className="mt-2 w-full rounded-md border border-white/15 bg-white/[0.04] px-4 py-3 text-base text-[color:var(--color-glacier)] focus:border-[color:var(--color-domigreen)]/60 focus:outline-none"
+            className="mt-2 w-full rounded-md border border-[color:var(--color-line)] bg-white px-4 py-3 text-base text-[color:var(--color-ink)] focus:border-[color:var(--color-forest)]/40 focus:outline-none"
             placeholder="e.g. Taxd"
           />
         </div>
         <div>
-          <label htmlFor="url" className="block text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-fog)]/60">
+          <label htmlFor="url" className="block text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-muted)]">
             Website
           </label>
           <input
@@ -222,19 +222,19 @@ export function VisibilityClient() {
             type="text"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            className="mt-2 w-full rounded-md border border-white/15 bg-white/[0.04] px-4 py-3 text-base text-[color:var(--color-glacier)] focus:border-[color:var(--color-domigreen)]/60 focus:outline-none"
+            className="mt-2 w-full rounded-md border border-[color:var(--color-line)] bg-white px-4 py-3 text-base text-[color:var(--color-ink)] focus:border-[color:var(--color-forest)]/40 focus:outline-none"
             placeholder="taxd.com or https://example.com"
           />
         </div>
         <div>
-          <label htmlFor="industry" className="block text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-fog)]/60">
+          <label htmlFor="industry" className="block text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-muted)]">
             Industry
           </label>
           <select
             id="industry"
             value={industry}
             onChange={(e) => setIndustry(e.target.value)}
-            className="mt-2 w-full rounded-md border border-white/15 bg-white/[0.04] px-4 py-3 text-base text-[color:var(--color-glacier)] focus:border-[color:var(--color-domigreen)]/60 focus:outline-none"
+            className="mt-2 w-full rounded-md border border-[color:var(--color-line)] bg-white px-4 py-3 text-base text-[color:var(--color-ink)] focus:border-[color:var(--color-forest)]/40 focus:outline-none"
           >
             {INDUSTRIES.map((i) => (
               <option key={i} value={i}>
@@ -244,14 +244,14 @@ export function VisibilityClient() {
           </select>
         </div>
         <div>
-          <label htmlFor="location" className="block text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-fog)]/60">
+          <label htmlFor="location" className="block text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-muted)]">
             Primary market
           </label>
           <select
             id="location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="mt-2 w-full rounded-md border border-white/15 bg-white/[0.04] px-4 py-3 text-base text-[color:var(--color-glacier)] focus:border-[color:var(--color-domigreen)]/60 focus:outline-none"
+            className="mt-2 w-full rounded-md border border-[color:var(--color-line)] bg-white px-4 py-3 text-base text-[color:var(--color-ink)] focus:border-[color:var(--color-forest)]/40 focus:outline-none"
           >
             {LOCATIONS.map((l) => (
               <option key={l} value={l}>
@@ -261,8 +261,8 @@ export function VisibilityClient() {
           </select>
         </div>
         <div className="sm:col-span-2">
-          <label htmlFor="description" className="block text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-fog)]/60">
-            What they actually do <span className="lowercase tracking-normal text-[color:var(--color-fog)]/40">(optional but improves accuracy)</span>
+          <label htmlFor="description" className="block text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-muted)]">
+            What they actually do <span className="lowercase tracking-normal text-[color:var(--color-muted)]">(optional but improves accuracy)</span>
           </label>
           <textarea
             id="description"
@@ -270,15 +270,15 @@ export function VisibilityClient() {
             onChange={(e) => setDescription(e.target.value)}
             rows={2}
             maxLength={500}
-            className="mt-2 w-full rounded-md border border-white/15 bg-white/[0.04] px-4 py-3 text-base text-[color:var(--color-glacier)] focus:border-[color:var(--color-domigreen)]/60 focus:outline-none"
+            className="mt-2 w-full rounded-md border border-[color:var(--color-line)] bg-white px-4 py-3 text-base text-[color:var(--color-ink)] focus:border-[color:var(--color-forest)]/40 focus:outline-none"
             placeholder="e.g. Taxd is self-assessment tax software for UK individuals (not accountants) — they file their own tax return online via a guided flow."
           />
-          <p className="mt-1 text-[11px] text-[color:var(--color-fog)]/45">
+          <p className="mt-1 text-[11px] text-[color:var(--color-muted)]">
             If blank, we&apos;ll auto-fetch the homepage title + meta description. A clear one-liner here produces sharper prompts.
           </p>
         </div>
         <div className="sm:col-span-2 flex flex-wrap items-center justify-between gap-4 pt-2">
-          <p className="text-xs text-[color:var(--color-fog)]/60">
+          <p className="text-xs text-[color:var(--color-muted)]">
             10 prompts · ChatGPT · web search ON · ~20-30 seconds
           </p>
           <button type="submit" disabled={loading} className="btn btn-primary disabled:opacity-60">
@@ -301,7 +301,7 @@ export function VisibilityClient() {
             </button>
           </div>
           {diagnosis && (
-            <pre className="mt-4 overflow-auto rounded-md border border-white/10 bg-black/40 p-4 text-xs text-[color:var(--color-fog)]/80">
+            <pre className="mt-4 overflow-auto rounded-md border border-[color:var(--color-line)] bg-white p-4 text-xs text-[color:var(--color-muted)]">
               {diagnosis}
             </pre>
           )}
@@ -309,8 +309,8 @@ export function VisibilityClient() {
       )}
 
       {loading && (
-        <div className="card flex items-center gap-4 p-6 text-[color:var(--color-fog)]/80">
-          <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-[color:var(--color-domigreen)]" />
+        <div className="card flex items-center gap-4 p-6 text-[color:var(--color-muted)]">
+          <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-[color:var(--color-forest)]" />
           Generating prompts, querying ChatGPT (web search ON), analysing mentions… this typically takes 20–40 seconds.
         </div>
       )}
@@ -364,7 +364,7 @@ function ScoreGauge({ score, band }: { score: number; band: Report["visibility_b
         <div className="display text-6xl leading-none" style={{ color }}>
           {score}
         </div>
-        <div className="mt-2 text-[10px] uppercase tracking-[0.28em] text-[color:var(--color-fog)]/55">
+        <div className="mt-2 text-[10px] uppercase tracking-[0.28em] text-[color:var(--color-muted)]">
           / 100
         </div>
         <div className="mt-2 text-xs font-medium uppercase tracking-[0.18em]" style={{ color }}>
@@ -382,7 +382,7 @@ function StackedBar({ recommended, mentionedOnly, missing }: { recommended: numb
   const mis = (missing / total) * 100;
   return (
     <div>
-      <div className="flex h-3 w-full overflow-hidden rounded-full bg-white/[0.04]">
+      <div className="flex h-3 w-full overflow-hidden rounded-full bg-white">
         {recommended > 0 && (
           <div style={{ width: `${rec}%`, background: "#01e890" }} title={`Recommended: ${recommended}`} />
         )}
@@ -393,7 +393,7 @@ function StackedBar({ recommended, mentionedOnly, missing }: { recommended: numb
           <div style={{ width: `${mis}%`, background: "rgba(248,113,113,0.7)" }} title={`Not mentioned: ${missing}`} />
         )}
       </div>
-      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-xs text-[color:var(--color-fog)]/75">
+      <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-xs text-[color:var(--color-muted)]">
         <span className="flex items-center gap-2">
           <span className="h-2 w-2 rounded-sm" style={{ background: "#01e890" }} />
           Recommended ({recommended})
@@ -422,8 +422,8 @@ function statusPill(p: Analysis) {
   }
   if (p.target_recommended) {
     return (
-      <span className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--color-domigreen)]/15 px-3 py-1 text-xs font-medium text-[color:var(--color-domigreen)]">
-        <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-domigreen)]" />
+      <span className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--color-forest)]/10 px-3 py-1 text-xs font-medium text-[color:var(--color-forest)]">
+        <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-forest)]" />
         Recommended
       </span>
     );
@@ -465,27 +465,27 @@ function Report({ report }: { report: Report }) {
         <div className="relative flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:gap-14">
           <ScoreGauge score={report.visibility_score} band={report.visibility_band} />
           <div className="flex-1 text-center lg:text-left">
-            <div className="text-[10px] uppercase tracking-[0.28em] text-[color:var(--color-domigreen)]">
+            <div className="text-[10px] uppercase tracking-[0.28em] text-[color:var(--color-forest)]">
               AI Visibility Snapshot
             </div>
             <h2 className="display mt-3 text-balance text-4xl sm:text-5xl">{report.company}</h2>
             <div className="mt-3 flex flex-wrap justify-center gap-2 text-xs lg:justify-start">
-              <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[color:var(--color-fog)]/80">
+              <span className="rounded-full border border-[color:var(--color-line)] bg-white px-3 py-1 text-[color:var(--color-muted)]">
                 {report.industry}
               </span>
-              <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[color:var(--color-fog)]/80">
+              <span className="rounded-full border border-[color:var(--color-line)] bg-white px-3 py-1 text-[color:var(--color-muted)]">
                 {report.location}
               </span>
               <a
                 href={report.url}
                 target="_blank"
                 rel="noopener"
-                className="rounded-full border border-[color:var(--color-domigreen)]/30 bg-[color:var(--color-domigreen)]/5 px-3 py-1 text-[color:var(--color-domigreen)] hover:bg-[color:var(--color-domigreen)]/10"
+                className="rounded-full border border-[color:var(--color-forest)]/40 bg-[color:var(--color-forest)]/10 px-3 py-1 text-[color:var(--color-forest)] hover:bg-[color:var(--color-forest)]/10"
               >
                 {report.url.replace(/^https?:\/\//, "")} ↗
               </a>
             </div>
-            <p className="mt-4 text-xs text-[color:var(--color-fog)]/55">
+            <p className="mt-4 text-xs text-[color:var(--color-muted)]">
               Generated {generated} · 10 buyer-intent prompts · ChatGPT (gpt-4o) with live web search
             </p>
           </div>
@@ -498,15 +498,15 @@ function Report({ report }: { report: Report }) {
             { label: "Mentioned", value: report.mentions, total: report.total, accent: "#fde047" },
             { label: "Competitors", value: report.top_competitors.length, total: null, accent: "#94a3b8" },
           ].map((kpi) => (
-            <div key={kpi.label} className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+            <div key={kpi.label} className="relative overflow-hidden rounded-2xl border border-[color:var(--color-line)] bg-white p-6">
               <span aria-hidden className="absolute left-0 top-0 h-full w-[2px]" style={{ background: kpi.accent }} />
-              <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/55">
+              <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
                 {kpi.label}
               </div>
-              <div className="display mt-3 text-4xl text-[color:var(--color-glacier)]">
+              <div className="display mt-3 text-4xl text-[color:var(--color-ink)]">
                 {kpi.value}
                 {kpi.total !== null && (
-                  <span className="ml-1 text-xl text-[color:var(--color-fog)]/40">/ {kpi.total}</span>
+                  <span className="ml-1 text-xl text-[color:var(--color-muted)]">/ {kpi.total}</span>
                 )}
               </div>
             </div>
@@ -515,7 +515,7 @@ function Report({ report }: { report: Report }) {
 
         {/* ============ STACKED BAR ============ */}
         <div className="mt-8">
-          <div className="mb-3 text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/55">
+          <div className="mb-3 text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
             Prompt outcomes
           </div>
           <StackedBar recommended={recommendedCount} mentionedOnly={mentionedOnly} missing={missingCount} />
@@ -527,14 +527,14 @@ function Report({ report }: { report: Report }) {
         <div className="card p-8 sm:p-10">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <div>
-              <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-domigreen)]">
+              <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-forest)]">
                 Top rivals
               </div>
               <h3 className="display mt-2 text-2xl sm:text-3xl">
-                Brands ChatGPT recommended <span className="text-[color:var(--color-fog)]/50">instead</span>
+                Brands ChatGPT recommended <span className="text-[color:var(--color-muted)]">instead</span>
               </h3>
             </div>
-            <p className="text-xs text-[color:var(--color-fog)]/55">
+            <p className="text-xs text-[color:var(--color-muted)]">
               Ranked by mention count across {report.total} prompts
             </p>
           </div>
@@ -543,12 +543,12 @@ function Report({ report }: { report: Report }) {
               const pct = Math.max(8, (c.count / maxCompetitorCount) * 100);
               return (
                 <li key={c.name} className="grid grid-cols-[28px_1fr_60px] items-center gap-4">
-                  <span className="text-sm font-medium text-[color:var(--color-fog)]/45">{i + 1}.</span>
+                  <span className="text-sm font-medium text-[color:var(--color-muted)]">{i + 1}.</span>
                   <div className="flex items-center gap-3">
-                    <span className="min-w-[160px] text-sm font-medium text-[color:var(--color-glacier)]">
+                    <span className="min-w-[160px] text-sm font-medium text-[color:var(--color-ink)]">
                       {c.name}
                     </span>
-                    <div className="h-2 flex-1 overflow-hidden rounded-full bg-white/[0.04]">
+                    <div className="h-2 flex-1 overflow-hidden rounded-full bg-white">
                       <div
                         className="h-full rounded-full"
                         style={{
@@ -559,7 +559,7 @@ function Report({ report }: { report: Report }) {
                       />
                     </div>
                   </div>
-                  <span className="text-right text-sm tabular-nums text-[color:var(--color-fog)]/75">
+                  <span className="text-right text-sm tabular-nums text-[color:var(--color-muted)]">
                     {c.count} {c.count === 1 ? "mention" : "mentions"}
                   </span>
                 </li>
@@ -573,24 +573,24 @@ function Report({ report }: { report: Report }) {
       <div>
         <div className="mb-6 flex flex-wrap items-baseline justify-between gap-2">
           <div>
-            <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-domigreen)]">
+            <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-forest)]">
               The detail
             </div>
             <h3 className="display mt-2 text-2xl sm:text-3xl">Prompt-by-prompt breakdown</h3>
           </div>
-          <p className="text-xs text-[color:var(--color-fog)]/55">
+          <p className="text-xs text-[color:var(--color-muted)]">
             Click any card to read the full ChatGPT response
           </p>
         </div>
         <div className="space-y-3">
           {report.prompts.map((p, i) => (
-            <div key={i} className="card group p-6 sm:p-8 transition-colors hover:border-white/20">
+            <div key={i} className="card group p-6 sm:p-8 transition-colors hover:border-[color:var(--color-ink)]">
               <div className="flex flex-wrap items-start gap-4">
-                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 bg-white/[0.03] text-sm font-medium text-[color:var(--color-fog)]/60">
+                <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[color:var(--color-line)] bg-white text-sm font-medium text-[color:var(--color-muted)]">
                   {i + 1}
                 </div>
                 <div className="flex-1 min-w-[200px]">
-                  <p className="text-base font-medium leading-relaxed text-[color:var(--color-glacier)]">
+                  <p className="text-base font-medium leading-relaxed text-[color:var(--color-ink)]">
                     &ldquo;{p.prompt}&rdquo;
                   </p>
                 </div>
@@ -604,21 +604,21 @@ function Report({ report }: { report: Report }) {
               )}
 
               {p.answer_summary && (
-                <p className="ml-14 mt-4 border-l-2 border-[color:var(--color-domigreen)]/30 pl-4 text-sm leading-relaxed text-[color:var(--color-fog)]/75">
+                <p className="ml-14 mt-4 border-l-2 border-[color:var(--color-forest)]/40 pl-4 text-sm leading-relaxed text-[color:var(--color-muted)]">
                   {p.answer_summary}
                 </p>
               )}
 
               {p.competitors.length > 0 && (
                 <div className="ml-14 mt-5">
-                  <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/45">
+                  <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
                     Brands ChatGPT named
                   </div>
                   <div className="mt-2 flex flex-wrap gap-1.5">
                     {p.competitors.map((c, j) => (
                       <span
                         key={j}
-                        className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 text-xs text-[color:var(--color-fog)]/85"
+                        className="rounded-md border border-[color:var(--color-line)] bg-white px-2.5 py-1 text-xs text-[color:var(--color-muted)]"
                       >
                         {c}
                       </span>
@@ -629,11 +629,11 @@ function Report({ report }: { report: Report }) {
 
               {p.response && (
                 <details className="ml-14 mt-5 group/details">
-                  <summary className="cursor-pointer text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/45 transition-colors hover:text-[color:var(--color-domigreen)] group-open/details:text-[color:var(--color-domigreen)]">
+                  <summary className="cursor-pointer text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-muted)] transition-colors hover:text-[color:var(--color-forest)] group-open/details:text-[color:var(--color-forest)]">
                     Read full ChatGPT response ↓
                   </summary>
                   <div
-                    className="prose prose-invert mt-4 max-w-none whitespace-pre-wrap rounded-lg border border-white/5 bg-black/20 p-5 text-sm leading-relaxed text-[color:var(--color-fog)]/85"
+                    className="prose prose-invert mt-4 max-w-none whitespace-pre-wrap rounded-lg border border-[color:var(--color-line)] bg-white p-5 text-sm leading-relaxed text-[color:var(--color-muted)]"
                     dangerouslySetInnerHTML={{ __html: highlight(p.response, report.company, report.url) }}
                   />
                 </details>
@@ -644,15 +644,15 @@ function Report({ report }: { report: Report }) {
       </div>
 
       {/* ============ METHODOLOGY FOOTER ============ */}
-      <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6 text-xs leading-relaxed text-[color:var(--color-fog)]/55">
-        <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-fog)]/45">
+      <div className="rounded-2xl border border-[color:var(--color-line)] bg-white p-6 text-xs leading-relaxed text-[color:var(--color-muted)]">
+        <div className="text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
           Methodology
         </div>
         <p className="mt-2">
           10 buyer-intent prompts generated by Claude based on the brand&apos;s product and market. Each prompt is run through OpenAI&apos;s gpt-4o with live web search ON — the same retrieval stack ChatGPT.com uses for fresh queries. Responses are analysed by Claude to detect brand mentions, recommendations, and competitor brands. The visibility score is the percentage of prompts in which the target brand appears.
         </p>
         <p className="mt-2">
-          Snapshot generated by <span className="text-[color:var(--color-domigreen)]">DomiSearch</span> on {generated}.
+          Snapshot generated by <span className="text-[color:var(--color-forest)]">DomiSearch</span> on {generated}.
         </p>
       </div>
 

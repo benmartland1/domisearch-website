@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import Image from "next/image";
 import { JsonLd } from "@/components/JsonLd";
+import { Ticker } from "@/components/home/Ticker";
+import { Footer } from "@/components/Footer";
 import { AISearchDemo } from "@/components/verticals/AISearchDemo";
 import { PromptBoard } from "@/components/verticals/PromptBoard";
-import { PromptTicker } from "@/components/verticals/PromptTicker";
 import { VerticalNav } from "@/components/verticals/VerticalNav";
 import { VerticalFaq, type FaqItem } from "@/components/verticals/VerticalFaq";
 import { Cta, CtaBlock } from "@/components/verticals/Cta";
@@ -80,13 +81,6 @@ const SHOW_TERRITORIES =
   process.env.NEXT_PUBLIC_SHOW_TERRITORIES === "true" ||
   process.env.NODE_ENV === "development";
 
-const TICKER = [
-  "Google Partner agency",
-  "Be the brand AI recommends",
-  "Built for UK recruitment firms",
-  "Tracking ChatGPT · Gemini · Perplexity · Copilot · Google AI",
-  "Manchester based, working UK-wide",
-];
 
 /**
  * Every figure here is one we can evidence today.
@@ -322,24 +316,6 @@ const FAQS: FaqItem[] = [
 /* Small presentational pieces                                                 */
 /* -------------------------------------------------------------------------- */
 
-function Ticker() {
-  const items = [...TICKER, ...TICKER];
-  return (
-    <div className="hidden overflow-hidden bg-[color:var(--color-ink)] py-2.5 sm:block">
-      <div className="ticker-track">
-        {items.map((t, i) => (
-          <span
-            key={i}
-            className="flex shrink-0 items-center gap-8 whitespace-nowrap px-8 text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-paper)]/70"
-          >
-            {t}
-            <span className="text-[color:var(--color-domigreen)]">/</span>
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 function TrustpilotCue() {
   return (
@@ -391,10 +367,9 @@ export default function RecruitmentPage() {
     <div
       id="top"
       data-surface="paper"
-      className="min-h-screen overflow-x-clip bg-[color:var(--color-paper)] text-[color:var(--color-ink-2)]"
+      className="ds-site min-h-screen overflow-x-clip bg-[color:var(--color-paper)] text-[color:var(--color-ink-2)]"
     >
       <JsonLd data={[faqSchema]} />
-      <PromptTicker />
       <StickyCta href={site.calendly} />
       <Ticker />
       <VerticalNav
@@ -1049,47 +1024,7 @@ The programme pays for itself if it wins you a single extra client a
           </p>
         </div>
       </section>
-
-      {/* ===================== 10 · FOOTER ===================== */}
-      <footer className="bg-[color:var(--color-ink)] text-[color:var(--color-paper)]/55">
-        <div className="mx-auto max-w-5xl px-5 py-10 sm:px-6 sm:py-14">
-          <div className="flex flex-col items-center gap-3 text-center">
-            <div className="flex items-center gap-3">
-              <Image
-                src="/brand/logo.png"
-                alt="DomiSearch"
-                width={178}
-                height={28}
-                className="h-5 w-auto"
-              />
-              <span className="text-[13px] font-semibold text-[color:var(--color-paper)]/60">
-                &copy; {new Date().getFullYear()}
-              </span>
-            </div>
-            <div className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-[13px]">
-              <a href="/" className="hover:text-[color:var(--color-paper)]">
-                Home
-              </a>
-              <a href="/services/aeo" className="hover:text-[color:var(--color-paper)]">
-                AI Search
-              </a>
-              <a href="/case-studies/taxd" className="hover:text-[color:var(--color-paper)]">
-                Case study
-              </a>
-              <a href="/contact" className="hover:text-[color:var(--color-paper)]">
-                Contact
-              </a>
-            </div>
-          </div>
-          <p className="mx-auto mt-9 max-w-3xl text-center text-[11px] leading-relaxed text-[color:var(--color-paper)]/40">
-            The ChatGPT interface shown on this page is an illustration of how AI answers are
-            presented, not a screenshot of a live result. Not endorsed by or affiliated with OpenAI,
-            Google, Microsoft or any AI provider. Results shown are based on real client work and are
-            not typical or guaranteed. AI visibility outcomes depend on industry, competition,
-            existing web presence and execution.
-          </p>
-        </div>
-      </footer>
+      <Footer note="The ChatGPT interface shown on this page is an illustration of how AI answers are presented, not a screenshot of a live result. Not endorsed by or affiliated with OpenAI, Google, Microsoft or any AI provider. Results shown are based on real client work and are not typical or guaranteed. AI visibility outcomes depend on industry, competition, existing web presence and execution." />
     </div>
   );
 }

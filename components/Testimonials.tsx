@@ -138,7 +138,7 @@ function Avatar({
         alt={testimonial.name}
         width={px}
         height={px}
-        className={`${className} shrink-0 rounded-full object-cover object-center ring-1 ring-white/10`}
+        className={`${className} shrink-0 rounded-full object-cover object-center ring-1 ring-black/10`}
         sizes={`${px}px`}
       />
     );
@@ -146,7 +146,7 @@ function Avatar({
 
   return (
     <span
-      className={`${className} grid shrink-0 place-items-center rounded-full border border-white/10 text-sm font-[600]`}
+      className={`${className} grid shrink-0 place-items-center rounded-full border border-[color:var(--color-line)] text-sm font-[600]`}
       style={{ color: testimonial.accent }}
     >
       {initials(testimonial.name)}
@@ -202,7 +202,7 @@ export function Testimonials({ showBookCall = false, only }: TestimonialsProps =
                 Featured · {featured.company}
               </div>
               <blockquote
-                className="mt-6 max-w-3xl text-balance text-2xl leading-snug text-[color:var(--color-glacier)] sm:text-3xl lg:text-[2.1rem]"
+                className="mt-6 max-w-3xl text-balance text-2xl leading-snug text-[color:var(--color-ink)] sm:text-3xl lg:text-[2.1rem]"
                 style={{ fontWeight: 500, letterSpacing: "-0.015em" }}
               >
                 &ldquo;{featured.quote}&rdquo;
@@ -210,10 +210,10 @@ export function Testimonials({ showBookCall = false, only }: TestimonialsProps =
               <figcaption className="mt-8 flex items-center gap-4">
                 <Avatar testimonial={featured} size="lg" />
                 <div>
-                  <div className="text-sm font-[600] text-[color:var(--color-glacier)]">
+                  <div className="text-sm font-[600] text-[color:var(--color-ink)]">
                     {featured.name}
                   </div>
-                  <div className="text-xs uppercase tracking-[0.18em] text-[color:var(--color-fog)]/65">
+                  <div className="text-xs uppercase tracking-[0.18em] text-[color:var(--color-muted)]">
                     {featured.role} · {featured.company}
                   </div>
                 </div>
@@ -226,7 +226,7 @@ export function Testimonials({ showBookCall = false, only }: TestimonialsProps =
                   alt={featured.company}
                   width={120}
                   height={40}
-                  className="h-8 w-auto opacity-75 brightness-0 invert"
+                  className="h-8 w-auto opacity-75 brightness-0"
                   sizes="120px"
                 />
               </div>
@@ -246,7 +246,7 @@ export function Testimonials({ showBookCall = false, only }: TestimonialsProps =
                 style={{ background: t.accent, opacity: 0.55 }}
               />
               <blockquote
-                className="text-lg leading-snug text-[color:var(--color-glacier)]"
+                className="text-lg leading-snug text-[color:var(--color-ink)]"
                 style={{ fontWeight: 500, letterSpacing: "-0.01em" }}
               >
                 &ldquo;{t.quote}&rdquo;
@@ -254,10 +254,10 @@ export function Testimonials({ showBookCall = false, only }: TestimonialsProps =
               <figcaption className="mt-6 flex items-center gap-3">
                 <Avatar testimonial={t} size="md" />
                 <div>
-                  <div className="text-sm font-[600] text-[color:var(--color-glacier)]">
+                  <div className="text-sm font-[600] text-[color:var(--color-ink)]">
                     {t.name}
                   </div>
-                  <div className="text-xs uppercase tracking-[0.15em] text-[color:var(--color-fog)]/65">
+                  <div className="text-xs uppercase tracking-[0.15em] text-[color:var(--color-muted)]">
                     {t.role} · {t.company}
                   </div>
                 </div>
@@ -294,7 +294,7 @@ export function Testimonials({ showBookCall = false, only }: TestimonialsProps =
             href={site.calendly}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex h-16 items-center justify-center gap-4 rounded-full border border-white/10 bg-white/[0.04] py-2.5 pl-2.5 pr-7 text-[15px] font-medium text-[color:var(--color-glacier)] shadow-[0_12px_36px_-14px_rgba(0,0,0,0.5)] transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-[color:var(--color-domigreen)]/50 hover:shadow-[0_18px_44px_-14px_color-mix(in_oklab,var(--color-domigreen)_38%,transparent)]"
+            className="group inline-flex h-16 items-center justify-center gap-4 rounded-full border border-[color:var(--color-line)] bg-white py-2.5 pl-2.5 pr-7 text-[15px] font-medium text-[color:var(--color-ink)] shadow-[0_12px_36px_-14px_rgba(0,0,0,0.5)] transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:border-[color:var(--color-ink)] hover:shadow-[0_18px_44px_-14px_color-mix(in_oklab,var(--color-domigreen)_38%,transparent)]"
           >
             <Image
               src="/brand/founder-cta.png"

@@ -48,19 +48,26 @@
 }
 
 @theme {
+  /* The approved homepage palette (components/home/approved.css) is the
+     site's palette. charcoal/glacier/fog remain for the dark paid-traffic
+     landing pages, which keep their own look. */
   --color-charcoal: #090909;
   --color-ash: #373737;
-  --color-pine: #01634c;
+  --color-pine: #113c2d;
   --color-sage: #2dc295;
-  --color-domigreen: #01e890;
+  --color-domigreen: #00dc98;
   --color-glacier: #eeffff;
   --color-fog: #dddfde;
 
-  --color-paper: #f5f2ec;
-  --color-paper-2: #ede9e1;
-  --color-ink: #111111;
-  --color-ink-2: #3d3d3d;
-  --color-ink-3: #6a6a6a;
+  --color-paper: #f8f7f1;
+  --color-paper-2: #eeeae0;
+  --color-pale: #e4eddf;
+  --color-ink: #17271f;
+  --color-ink-2: #536157;
+  --color-ink-3: #627566;
+  --color-muted: #536157;
+  --color-forest: #113c2d;
+  --color-line: #d4d8cf;
 
   --font-display: "Axiforma", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Axiforma", ui-sans-serif, system-ui, sans-serif;
@@ -893,3 +900,48 @@ html:has([data-surface="paper"]) {
 .step-highlight {
   animation: step-highlight 2.6s ease-in-out 1;
 }
+
+/* ====================================================================== */
+/* Site-wide light surface (.ds-site)                                      */
+/* Every page with the global nav and footer sits inside .ds-site, so the  */
+/* approved homepage look is the default and the old dark utilities map    */
+/* onto it. The dark paid-traffic landing pages are outside it.            */
+/* ====================================================================== */
+body:has(.ds-site) {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  color-scheme: light;
+}
+.ds-site { color: var(--color-ink); }
+.ds-site ::selection { background: var(--color-domigreen); color: var(--color-ink); }
+.ds-site .display { color: var(--color-ink); line-height: 1.12; letter-spacing: -0.045em; }
+.ds-site .eyebrow { color: var(--color-forest); font-weight: 700; font-size: 11px; letter-spacing: 1.5px; }
+.ds-site .btn {
+  border-radius: 3px;
+  padding: 16px 22px;
+  min-height: 54px;
+  font-size: 13px;
+  font-weight: 500;
+  gap: 18px;
+  border: 1px solid var(--color-ink);
+  transition: background .18s, transform .18s, border-color .18s, color .18s;
+}
+.ds-site .btn-primary { background: var(--color-ink); color: #fff; box-shadow: none; }
+.ds-site .btn-primary:hover { background: var(--color-forest); border-color: var(--color-forest); transform: translateY(-2px); box-shadow: none; }
+.ds-site .btn-ghost { background: #fff; color: var(--color-ink); border-color: var(--color-line); }
+.ds-site .btn-ghost:hover { border-color: var(--color-ink); color: var(--color-ink); }
+.ds-site .card {
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: 4px;
+  backdrop-filter: none;
+}
+.ds-site .card:hover { border-color: var(--color-ink); background: #fff; }
+.ds-site .hairline { background: var(--color-line); }
+.ds-site .grid-backdrop, .ds-site .glow, .ds-site .paper-seam, .ds-site .spotlight::before { display: none; }
+.ds-site .on-paper { background: transparent; }
+.ds-site .nav-link::after { background: var(--color-forest); }
+.ds-site .logo-mark:hover { filter: none; }
+.ds-site .prose-dsrc { color: var(--color-ink-2); }
+.ds-site .prose-dsrc h2, .ds-site .prose-dsrc h3, .ds-site .prose-dsrc strong { color: var(--color-ink); }
+.ds-site .prose-dsrc a { color: var(--color-forest); background-image: linear-gradient(to right, var(--color-forest), var(--color-forest)); }

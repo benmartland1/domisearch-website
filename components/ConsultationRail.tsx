@@ -26,7 +26,7 @@ export function ConsultationRail({
         style={{ background: "linear-gradient(to bottom, var(--color-domigreen), transparent)" }}
       />
 
-      <div className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-domigreen)]">
+      <div className="text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-forest)]">
         {eyebrow}
       </div>
 
@@ -45,7 +45,7 @@ export function ConsultationRail({
           href={site.whatsappHref}
           target="_blank"
           rel="noopener"
-          className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.02] px-5 py-2.5 text-sm text-[color:var(--color-glacier)] transition hover:border-[#25D366]/55 hover:text-[color:var(--color-glacier)]"
+          className="inline-flex items-center justify-center gap-2 rounded-full border border-[color:var(--color-line)] bg-white px-5 py-2.5 text-sm text-[color:var(--color-ink)] transition hover:border-[#25D366]/55 hover:text-[color:var(--color-ink)]"
         >
           <svg
             aria-hidden
@@ -65,7 +65,7 @@ export function ConsultationRail({
       <div className="hairline my-6" />
 
       <div className="flex items-start gap-3">
-        <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-white/10 bg-[color:var(--color-charcoal)]">
+        <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-[color:var(--color-line)] bg-[color:var(--color-paper)]">
           <Image
             src="/brand/ben-warm.jpg"
             alt={`${site.founder}, founder of ${site.name}`}
@@ -75,13 +75,13 @@ export function ConsultationRail({
           />
         </div>
         <div className="min-w-0">
-          <div className="text-sm font-[600] text-[color:var(--color-glacier)]">
+          <div className="text-sm font-[600] text-[color:var(--color-ink)]">
             {site.founder}
           </div>
-          <div className="text-[11px] uppercase tracking-[0.18em] text-[color:var(--color-fog)]/60">
+          <div className="text-[11px] uppercase tracking-[0.18em] text-[color:var(--color-muted)]">
             Founder · {site.city}
           </div>
-          <p className="mt-2 text-[13px] leading-relaxed text-[color:var(--color-fog)]/80">
+          <p className="mt-2 text-[13px] leading-relaxed text-[color:var(--color-muted)]">
             &ldquo;{founderQuote}&rdquo;
           </p>
         </div>

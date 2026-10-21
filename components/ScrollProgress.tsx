@@ -23,7 +23,7 @@ export function ScrollProgress() {
       className="fixed left-0 right-0 top-0 z-[60] h-[2px] origin-left bg-transparent"
     >
       <div
-        className="h-full bg-[color:var(--color-domigreen)] transition-[width] duration-150 ease-out"
+        className="h-full bg-[color:var(--color-forest)] transition-[width] duration-150 ease-out"
         style={{
           width: `${pct}%`,
           boxShadow: "0 0 16px color-mix(in oklab, var(--color-domigreen) 60%, transparent)",

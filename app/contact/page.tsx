@@ -30,14 +30,14 @@ export default function ContactPage() {
         <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-16 lg:px-10 lg:pt-24">
           <ScrollReveal as="span" className="eyebrow">Get in touch</ScrollReveal>
           <ScrollReveal delay={60}>
-            <h1 className="display mt-5 max-w-4xl text-balance text-[clamp(2.5rem,6vw,5rem)]">
+            <h1 className="display mt-5 max-w-4xl text-balance text-[clamp(2.4rem,5.45vw,4.2rem)]">
               Let's talk about where
               <br />
-              <span className="text-[color:var(--color-domigreen)]">you stand in AI search.</span>
+              <span className="text-[color:var(--color-forest)]">you stand in AI search.</span>
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={160}>
-            <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-fog)]/85">
+            <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-muted)]">
               Send us a message, email, or book a free 30-minute discovery call with Ben. We reply
               to every enquiry within one working day. Google Ads enquiries are welcome too.
             </p>
@@ -55,7 +55,7 @@ export default function ContactPage() {
             <div className="flex flex-col gap-6">
               <div className="card p-8">
                 <div className="eyebrow">Straight to Ben</div>
-                <p className="mt-4 text-[color:var(--color-fog)]/85">
+                <p className="mt-4 text-[color:var(--color-muted)]">
                   Prefer to skip the form? Book a free 30-minute discovery call about your AI search visibility.
                 </p>
                 <Link
@@ -71,25 +71,25 @@ export default function ContactPage() {
 
               <div className="card p-8">
                 <div className="eyebrow">Direct</div>
-                <dl className="mt-5 space-y-4 text-[color:var(--color-fog)]/85">
+                <dl className="mt-5 space-y-4 text-[color:var(--color-muted)]">
                   <div>
-                    <dt className="text-xs uppercase tracking-[0.18em] text-[color:var(--color-fog)]/60">Email</dt>
+                    <dt className="text-xs uppercase tracking-[0.18em] text-[color:var(--color-muted)]">Email</dt>
                     <dd className="mt-1">
-                      <a className="text-[color:var(--color-glacier)] hover:text-[color:var(--color-domigreen)]" href={`mailto:${site.email}`}>
+                      <a className="text-[color:var(--color-ink)] hover:text-[color:var(--color-forest)]" href={`mailto:${site.email}`}>
                         {site.email}
                       </a>
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-xs uppercase tracking-[0.18em] text-[color:var(--color-fog)]/60">Phone</dt>
+                    <dt className="text-xs uppercase tracking-[0.18em] text-[color:var(--color-muted)]">Phone</dt>
                     <dd className="mt-1">
-                      <a className="text-[color:var(--color-glacier)] hover:text-[color:var(--color-domigreen)]" href={`tel:${site.phoneHref}`}>
+                      <a className="text-[color:var(--color-ink)] hover:text-[color:var(--color-forest)]" href={`tel:${site.phoneHref}`}>
                         {site.phone}
                       </a>
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-xs uppercase tracking-[0.18em] text-[color:var(--color-fog)]/60">Where</dt>
+                    <dt className="text-xs uppercase tracking-[0.18em] text-[color:var(--color-muted)]">Where</dt>
                     <dd className="mt-1">{site.city}, {site.country}</dd>
                   </div>
                 </dl>

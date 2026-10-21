@@ -41,18 +41,6 @@ function ReviewCard({ review }: { review: TrustpilotReview }) {
   const date = formatReviewDate(review.publishedDate);
   return (
     <article className="ds-review-card">
-      <span className="ds-review-stars" role="img" aria-label={`Rated ${review.rating} out of 5`}>
-        {[0, 1, 2, 3, 4].map((i) => (
-          <span key={i} aria-hidden="true" style={i < review.rating ? undefined : { opacity: 0.3 }}>
-            ★
-          </span>
-        ))}
-      </span>
-      <blockquote>
-        {paragraphs.map((p, i) => (
-          <p key={i}>{p}</p>
-        ))}
-      </blockquote>
       <div className="ds-person">
         {review.photo ? (
           <Image src={review.photo} alt="" width={44} height={44} sizes="44px" />
@@ -68,6 +56,18 @@ function ReviewCard({ review }: { review: TrustpilotReview }) {
           </small>
         </p>
       </div>
+      <span className="ds-review-stars" role="img" aria-label={`Rated ${review.rating} out of 5`}>
+        {[0, 1, 2, 3, 4].map((i) => (
+          <span key={i} aria-hidden="true" style={i < review.rating ? undefined : { opacity: 0.3 }}>
+            ★
+          </span>
+        ))}
+      </span>
+      <blockquote>
+        {paragraphs.map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
+      </blockquote>
       <a className="ds-review-link" href={review.url} target="_blank" rel="noopener noreferrer">
         Read on Trustpilot ↗<span className="sr-only"> (review by {review.name}, opens in a new tab)</span>
       </a>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata , Viewport } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { AddToGoogleCalendar } from "@/components/landing/AddToGoogleCalendar";
@@ -10,6 +10,9 @@ import { Testimonials } from "@/components/Testimonials";
 import { getFeaturedCaseStudies } from "@/lib/case-studies";
 import { buildGoogleCalendarUrl } from "@/lib/google-calendar";
 import { site } from "@/lib/site";
+
+/** Dark landing page: keep the browser chrome dark. */
+export const viewport: Viewport = { themeColor: "#090909", width: "device-width", initialScale: 1 };
 
 export const metadata: Metadata = {
   title: "You're booked · DomiSearch",

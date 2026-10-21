@@ -16,7 +16,7 @@ export default function TermsPage() {
         <h1 className="display mt-4 text-4xl sm:text-5xl">Terms of Service</h1>
       </ScrollReveal>
       <ScrollReveal delay={140}>
-        <div className="prose-dsrc mt-10">
+        <div className="prose-paper mt-10">
           <p>
             These terms apply to your use of domisearch.com. Client engagements are governed by a
             separate Master Services Agreement.

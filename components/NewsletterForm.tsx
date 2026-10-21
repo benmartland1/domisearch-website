@@ -40,25 +40,20 @@ export function NewsletterForm() {
 
   return (
     <section className="mt-16">
-      <div className="relative overflow-hidden rounded-3xl bg-[color:var(--color-charcoal)] p-8 sm:p-12">
-        <div
-          aria-hidden
-          className="absolute -right-24 -top-24 h-72 w-72 rounded-full opacity-25 blur-3xl"
-          style={{ background: "var(--color-domigreen)" }}
-        />
+      <div className="relative overflow-hidden rounded-[4px] bg-[color:var(--color-forest)] p-8 text-[color:var(--color-paper)] sm:p-12">
         <div className="relative">
-          <div className="text-[10px] font-medium uppercase tracking-[0.24em] text-[color:var(--color-domigreen)]">
+          <div className="text-[11px] font-bold uppercase tracking-[1.5px] text-[color:var(--color-domigreen)]">
             The DomiSearch Dispatch
           </div>
-          <h3 className="display mt-4 max-w-2xl text-balance text-3xl text-[color:var(--color-glacier)] sm:text-4xl">
+          <h3 className="display mt-4 max-w-2xl text-balance text-3xl sm:text-4xl" style={{ color: "var(--color-paper)" }}>
             Monthly notes on Google Ads, AEO &amp; how search is actually changing.
           </h3>
-          <p className="mt-4 max-w-xl text-[color:var(--color-fog)]/80">
+          <p className="mt-4 max-w-xl text-[#cadcd1]">
             No fluff. One email per month. Unsubscribe any time.
           </p>
 
           {status === "success" ? (
-            <div className="mt-8 rounded-xl border border-[color:var(--color-domigreen)]/40 bg-[color:var(--color-domigreen)]/10 px-5 py-4 text-sm text-[color:var(--color-glacier)]">
+            <div className="mt-8 rounded-[3px] border border-[color:var(--color-domigreen)]/50 bg-[color:var(--color-domigreen)]/10 px-5 py-4 text-sm">
               You're in. Check your inbox for a quick confirmation.
             </div>
           ) : (
@@ -82,11 +77,11 @@ export function NewsletterForm() {
                 required
                 autoComplete="email"
                 placeholder="you@company.com"
-                className="flex-1 rounded-full border border-white/10 bg-black/30 px-5 py-3 text-base text-[color:var(--color-glacier)] outline-none transition-colors placeholder:text-white/35 focus:border-[color:var(--color-domigreen)]"
+                className="flex-1 rounded-[2px] border border-[#b7c0b5] bg-white px-4 py-3 text-base text-[color:var(--color-ink)] outline-none transition-colors placeholder:text-[#7c867f] focus:border-[color:var(--color-ink)]"
               />
               <button
                 type="submit"
-                className="btn btn-primary justify-center"
+                className="ds-button ds-button-green justify-center"
                 disabled={status === "sending"}
               >
                 {status === "sending" ? "Subscribing…" : "Subscribe"}
@@ -96,10 +91,10 @@ export function NewsletterForm() {
           )}
 
           {status === "error" && (
-            <p className="mt-3 text-sm text-[color:#ff9d9d]">{error}</p>
+            <p className="mt-3 text-sm text-[#ffb4b4]">{error}</p>
           )}
 
-          <p className="mt-4 text-xs text-[color:var(--color-fog)]/55">
+          <p className="mt-4 text-xs text-[#cadcd1]">
             We only use your email to send the newsletter. No third-party sharing.
           </p>
         </div>

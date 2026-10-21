@@ -45,7 +45,7 @@ export function CaseStudyCard({ caseStudy, variant = "default" }: Props) {
           <div
             className="flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.22em]"
             style={{
-              color: isFeatured ? "var(--color-glacier)" : "var(--color-domigreen)",
+              color: isFeatured ? "var(--color-ink)" : "var(--color-forest)",
             }}
           >
             {caseStudy.services.filter((s) => s !== "Integrated").map((s) => (
@@ -60,7 +60,7 @@ export function CaseStudyCard({ caseStudy, variant = "default" }: Props) {
                       ? `color-mix(in oklab, ${accent} 15%, transparent)`
                       : "color-mix(in oklab, var(--color-domigreen) 10%, transparent)",
                   color:
-                    isFeatured && accent ? accent : "var(--color-domigreen)",
+                    isFeatured && accent ? accent : "var(--color-forest)",
                 }}
               >
                 Integrated
@@ -80,7 +80,7 @@ export function CaseStudyCard({ caseStudy, variant = "default" }: Props) {
         </h3>
 
         {caseStudy.excerpt && isFeatured && (
-          <p className="mt-6 w-full text-base leading-relaxed text-[color:var(--color-fog)]/80 sm:text-lg lg:text-xl">
+          <p className="mt-6 w-full text-base leading-relaxed text-[color:var(--color-muted)] sm:text-lg lg:text-xl">
             {caseStudy.excerpt}
           </p>
         )}
@@ -98,12 +98,12 @@ export function CaseStudyCard({ caseStudy, variant = "default" }: Props) {
             }`}
             style={{
               color:
-                isFeatured && accent ? accent : "var(--color-domigreen)",
+                isFeatured && accent ? accent : "var(--color-forest)",
             }}
           >
             {caseStudy.heroMetric.value}
           </div>
-          <div className="mt-2 max-w-[14rem] text-xs uppercase tracking-[0.16em] text-[color:var(--color-fog)]/70">
+          <div className="mt-2 max-w-[14rem] text-xs uppercase tracking-[0.16em] text-[color:var(--color-muted)]">
             {caseStudy.heroMetric.label}
           </div>
         </div>
@@ -115,7 +115,7 @@ export function CaseStudyCard({ caseStudy, variant = "default" }: Props) {
               alt={caseStudy.client}
               width={96}
               height={32}
-              className={`w-auto opacity-75 brightness-0 invert ${
+              className={`w-auto opacity-75 brightness-0 ${
                 isFeatured ? "h-8" : "h-6"
               }`}
               sizes="96px"
@@ -129,7 +129,7 @@ export function CaseStudyCard({ caseStudy, variant = "default" }: Props) {
           isFeatured ? "text-base" : ""
         }`}
         style={{
-          color: isFeatured ? "var(--color-glacier)" : "var(--color-domigreen)",
+          color: isFeatured ? "var(--color-ink)" : "var(--color-forest)",
         }}
       >
         Read case study →

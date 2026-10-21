@@ -108,15 +108,15 @@ export default function AboutPage() {
         <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-16 lg:px-10 lg:pt-24">
           <ScrollReveal as="span" className="eyebrow">About</ScrollReveal>
           <ScrollReveal delay={60}>
-            <h1 className="display mt-5 max-w-4xl text-balance text-[clamp(2.5rem,6vw,5rem)]">
+            <h1 className="display mt-5 max-w-4xl text-balance text-[clamp(2.4rem,5.45vw,4.2rem)]">
               An AI search visibility agency for service businesses.
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={160}>
-            <p className="mt-8 max-w-3xl text-lg text-[color:var(--color-fog)]/85 sm:text-xl">
+            <p className="mt-8 max-w-3xl text-lg text-[color:var(--color-muted)] sm:text-xl">
               DomiSearch helps service businesses improve how they are discovered, mentioned and
               cited across{" "}
-              <span className="text-[color:var(--color-glacier)]">
+              <span className="text-[color:var(--color-ink)]">
                 ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews
               </span>
               . Recruitment agencies are a core focus. We work with clients across the UK, EU and
@@ -142,8 +142,8 @@ export default function AboutPage() {
                   opacity: 0.22,
                 }}
               />
-              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-white/[0.06] via-white/[0.02] to-transparent p-2">
-                <div className="relative aspect-square w-full overflow-hidden rounded-[1.6rem] bg-[color:var(--color-charcoal)]">
+              <div className="relative overflow-hidden rounded-[2rem] border border-[color:var(--color-line)] bg-white p-2">
+                <div className="relative aspect-square w-full overflow-hidden rounded-[1.6rem] bg-[color:var(--color-paper)]">
                   <Image
                     src="/brand/founder.png"
                     alt="Ben Martland, Founder of DomiSearch"
@@ -162,7 +162,7 @@ export default function AboutPage() {
               <h2 className="display mt-4 text-3xl sm:text-4xl">Ben Martland</h2>
             </ScrollReveal>
             <ScrollReveal delay={140}>
-              <p className="mt-6 max-w-xl text-[color:var(--color-fog)]/85">
+              <p className="mt-6 max-w-xl text-[color:var(--color-muted)]">
                 Ben Martland founded DomiSearch in 2023 and leads its AI search research and client
                 delivery: the buyer-question research, the visibility tracking and the review of
                 every client account. Before that he spent five years in search marketing, running
@@ -170,7 +170,7 @@ export default function AboutPage() {
               </p>
             </ScrollReveal>
             <ScrollReveal delay={200}>
-              <p className="mt-4 max-w-xl text-[color:var(--color-fog)]/80">
+              <p className="mt-4 max-w-xl text-[color:var(--color-muted)]">
                 The agency is based in Manchester and works with clients across the UK, EU and US.
               </p>
             </ScrollReveal>
@@ -192,32 +192,32 @@ export default function AboutPage() {
         <ScrollReveal delay={120}>
           <div className="card p-10">
             <div className="eyebrow">How we work</div>
-            <p className="mt-6 max-w-3xl text-[color:var(--color-fog)]/85">
+            <p className="mt-6 max-w-3xl text-[color:var(--color-muted)]">
               Every programme starts with evidence: where you, your competitors and the cited
               sources appear today for the questions your potential clients ask AI. That baseline
               decides the work. We then improve the technical foundations, service pages and
               content, with your team's expertise and approval, and track the agreed questions
               daily so the monthly review is about what changed, not what we hoped would.
             </p>
-            <ul className="mt-8 grid gap-5 text-[color:var(--color-fog)]/85 sm:grid-cols-2">
+            <ul className="mt-8 grid gap-5 text-[color:var(--color-muted)] sm:grid-cols-2">
               <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
-                <span><strong className="text-[color:var(--color-glacier)]">Research first.</strong> Buyer questions, competitor appearances and cited sources, recorded before any work starts.</span>
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-forest)]" />
+                <span><strong className="text-[color:var(--color-ink)]">Research first.</strong> Buyer questions, competitor appearances and cited sources, recorded before any work starts.</span>
               </li>
               <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
-                <span><strong className="text-[color:var(--color-glacier)]">Daily tracking, monthly review.</strong> The same questions, the same platforms, so periods can be compared fairly.</span>
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-forest)]" />
+                <span><strong className="text-[color:var(--color-ink)]">Daily tracking, monthly review.</strong> The same questions, the same platforms, so periods can be compared fairly.</span>
               </li>
               <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
-                <span><strong className="text-[color:var(--color-glacier)]">Your expertise, our structure.</strong> Content is built with your team and approved by you before publication.</span>
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-forest)]" />
+                <span><strong className="text-[color:var(--color-ink)]">Your expertise, our structure.</strong> Content is built with your team and approved by you before publication.</span>
               </li>
               <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
-                <span><strong className="text-[color:var(--color-glacier)]">Honest about limits.</strong> We cannot control which brands an AI platform recommends, and we say so.</span>
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-forest)]" />
+                <span><strong className="text-[color:var(--color-ink)]">Honest about limits.</strong> We cannot control which brands an AI platform recommends, and we say so.</span>
               </li>
             </ul>
-            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm font-medium text-[color:var(--color-domigreen)]">
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm font-medium text-[color:var(--color-forest)]">
               <Link
                 href="/services/aeo"
                 className="inline-flex items-center gap-2 transition-transform duration-300 hover:translate-x-0.5"
@@ -226,7 +226,7 @@ export default function AboutPage() {
               </Link>
               <Link
                 href="/services/google-ads"
-                className="inline-flex items-center gap-2 text-[color:var(--color-fog)]/70 transition-transform duration-300 hover:translate-x-0.5"
+                className="inline-flex items-center gap-2 text-[color:var(--color-muted)] transition-transform duration-300 hover:translate-x-0.5"
               >
                 Google Ads management <span aria-hidden>→</span>
               </Link>
@@ -239,12 +239,12 @@ export default function AboutPage() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:gap-16">
           <ScrollReveal>
             <div className="eyebrow">The thesis</div>
-            <h2 className="display mt-4 text-balance text-4xl sm:text-5xl lg:text-[3.5rem]">
+            <h2 className="display mt-4 text-balance text-4xl sm:text-5xl lg:text-[3.1rem]">
               Reverse engineer the answer.
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={120}>
-            <div className="space-y-5 text-[color:var(--color-fog)]/85">
+            <div className="space-y-5 text-[color:var(--color-muted)]">
               <p>
                 A growing share of buyers now research a service business by asking an AI tool
                 before they visit a website or make a call. The answer they get back is their
@@ -257,7 +257,7 @@ export default function AboutPage() {
                 changes, content and credibility work most likely to move it, and we keep
                 measuring to see whether it did.
               </p>
-              <p className="text-[color:var(--color-glacier)]">
+              <p className="text-[color:var(--color-ink)]">
                 Evidence in, work out, measured against the same questions every day.
               </p>
             </div>
@@ -271,9 +271,9 @@ export default function AboutPage() {
           {values.map((v, i) => (
             <ScrollReveal key={v.title} delay={(i % 2) * 120}>
               <article className="card p-8">
-                <h3 className="text-2xl font-[600] text-[color:var(--color-glacier)]">{v.title}</h3>
+                <h3 className="text-2xl font-[600] text-[color:var(--color-ink)]">{v.title}</h3>
                 <div className="hairline mt-4" />
-                <p className="mt-4 text-[color:var(--color-fog)]/85">{v.body}</p>
+                <p className="mt-4 text-[color:var(--color-muted)]">{v.body}</p>
               </article>
             </ScrollReveal>
           ))}

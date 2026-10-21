@@ -1,10 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata , Viewport } from "next";
 import Image from "next/image";
 import { ReportFunnelProvider, DomainCaptureForm } from "@/components/landing/ReportFunnel";
 import { DomiMark } from "@/components/landing/DomiMark";
 import { EngineStrip } from "@/components/landing/EngineStrip";
 import { ReportMockup } from "@/components/landing/ReportMockup";
 import { site } from "@/lib/site";
+
+/** Dark landing page: keep the browser chrome dark. */
+export const viewport: Viewport = { themeColor: "#090909", width: "device-width", initialScale: 1 };
 
 export const metadata: Metadata = {
   title: "Free AI Visibility Report - Are You in the Answer? · DomiSearch",

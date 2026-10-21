@@ -1,13 +1,12 @@
 import Image from "next/image";
-import type { CSSProperties } from "react";
 import { site } from "@/lib/site";
 import type { TrustpilotReview } from "@/lib/trustpilot";
 import { homeFaqs } from "./faqs";
-import { MobileNav, type NavLink } from "./MobileNav";
 import { ReviewsCarousel } from "./ReviewsCarousel";
 import { Ticker } from "./Ticker";
 import { VisibilityReviewForm } from "./VisibilityReviewForm";
-import "./approved.css";
+import { Footer } from "@/components/Footer";
+import { SiteNav } from "@/components/SiteNav";
 
 /*
  * The approved homepage, built section for section from the supplied mockup
@@ -18,13 +17,6 @@ import "./approved.css";
  * Imagery is the site's own: the phone hero, the client and AI platform
  * logos, Ben's photo and the Taxd founders' headshots.
  */
-
-const NAV: NavLink[] = [
-  { label: "Our results", href: "#results" },
-  { label: "How it works", href: "#how-it-works" },
-  { label: "About us", href: "#about" },
-];
-const NAV_CTA: NavLink = { label: "Get a visibility review", href: "#visibility-check" };
 
 const ENGINES = [
   { name: "ChatGPT", icon: "/engines/openai.svg" },
@@ -56,23 +48,6 @@ const SECTORS = [
   { label: "Other service businesses", note: "Let’s look at how your potential clients search.", href: "#visibility-check" },
 ];
 
-function Logo({ light = false }: { light?: boolean }) {
-  return (
-    <>
-      <Image
-        className={`ds-logo${light ? " ds-logo-light" : ""}`}
-        src="/brand/logo.png"
-        alt="DomiSearch"
-        width={155}
-        height={24}
-        priority={!light}
-      />
-      {/* Solid green ring: the brand green masked by the logo's own shape. */}
-      <span className="ds-logo-solid" aria-hidden="true" />
-    </>
-  );
-}
-
 function Arrow({ children = "↗" }: { children?: string }) {
   return <span className="ds-arrow">{children}</span>;
 }
@@ -87,29 +62,10 @@ function ExternalLink({ href, className, children }: { href: string; className?:
 
 export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotReview[]; reviewCount: number }) {
   return (
-    <div
-      id="ds-homepage-refined"
-      data-surface="paper"
-      style={{ "--ds-logo-mask": "url(/brand/logo.png)" } as CSSProperties}
-    >
+    <div className="ds-site" data-surface="paper">
       <div className="ds-page">
         <Ticker />
-        <header className="ds-navbar ds-wrap">
-          <a className="ds-brand-link" href="/" aria-label="DomiSearch homepage">
-            <Logo />
-          </a>
-          <nav className="ds-navlinks" aria-label="Main navigation">
-            {NAV.map((l) => (
-              <a key={l.href} href={l.href}>
-                {l.label}
-              </a>
-            ))}
-            <a className="ds-button" href={NAV_CTA.href}>
-              {NAV_CTA.label} <Arrow />
-            </a>
-          </nav>
-          <MobileNav links={[...NAV, { ...NAV_CTA, label: `${NAV_CTA.label} ↗` }]} />
-        </header>
+        <SiteNav />
       </div>
 
       {/* ===== Hero: "Search in the real world" ===== */}
@@ -689,55 +645,8 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
           <VisibilityReviewForm />
         </section>
 
-        {/* ===== Footer ===== */}
-        <footer className="ds-footer ds-wrap">
-          <div className="ds-footer-top">
-            <div className="ds-footer-brand">
-              <div className="ds-brand-lockup">
-                <Logo light />
-              </div>
-              <p>
-                AI search visibility for service businesses.{" "}
-                <br />
-                Be the brand AI recommends.
-              </p>
-              <a href={`mailto:${site.email}`}>{site.email}</a>
-              <a href={`tel:${site.phoneHref}`}>{site.phone}</a>
-              <span>Manchester, United Kingdom</span>
-            </div>
-            <div className="ds-footer-links">
-              <strong>Services</strong>
-              <a href="/services/aeo">AI Search Visibility</a>
-              <a href="/services/google-ads">Google Ads Management</a>
-              <a href="#results">Client results</a>
-              <a href="#visibility-check">Get a visibility review ↗</a>
-            </div>
-            <div className="ds-footer-links">
-              <strong>Sectors</strong>
-              <a href="/recruitment">Recruitment</a>
-              <a href="/accountants">Accountants</a>
-              <a href="/healthcare">Healthcare</a>
-              <ExternalLink href="https://www.domicare.ai">Care homes · DomiCare ↗</ExternalLink>
-            </div>
-            <div className="ds-footer-links">
-              <strong>Company</strong>
-              <a href="/about">About</a>
-              <a href="/pricing">Pricing</a>
-              <a href="/blog">Blog</a>
-              <a href="/careers">Careers</a>
-              <a href="/contact">Contact</a>
-            </div>
-          </div>
-          <div className="ds-footer-bottom">
-            <span>© {new Date().getFullYear()} DomiSearch. Built in Manchester. Delivered worldwide.</span>
-            <div>
-              <a href="/privacy">Privacy</a>
-              <a href="/terms">Terms</a>
-              <ExternalLink href={site.social.linkedin}>LinkedIn ↗</ExternalLink>
-            </div>
-          </div>
-        </footer>
       </main>
+      <Footer />
     </div>
   );
 }

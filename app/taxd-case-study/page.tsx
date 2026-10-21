@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata , Viewport } from "next";
 import Image from "next/image";
 import { DomiMark } from "@/components/landing/DomiMark";
 import { CaseStudyGate } from "@/components/landing/CaseStudyGate";
@@ -6,6 +6,9 @@ import { CaseStudyStack } from "@/components/landing/CaseStudyStack";
 import { LinkedInCard } from "@/components/landing/LinkedInCard";
 import { UnlockCards } from "@/components/landing/UnlockCards";
 import { site } from "@/lib/site";
+
+/** Dark landing page: keep the browser chrome dark. */
+export const viewport: Viewport = { themeColor: "#090909", width: "device-width", initialScale: 1 };
 
 export const metadata: Metadata = {
   title: "How Taxd became the name AI recommends · DomiSearch",

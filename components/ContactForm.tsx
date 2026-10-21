@@ -43,7 +43,7 @@ export function ContactForm() {
       <div className="card p-10 text-center">
         <div className="eyebrow">Message received</div>
         <h3 className="display mt-4 text-3xl">Thanks - we'll be in touch.</h3>
-        <p className="mt-4 text-[color:var(--color-fog)]/85">
+        <p className="mt-4 text-[color:var(--color-muted)]">
           Ben reads every submission personally. Expect a reply within one working day.
         </p>
       </div>
@@ -77,7 +77,7 @@ export function ContactForm() {
       <Field name="message" label="What can we help with?" textarea required />
 
       <div className="flex flex-col items-start gap-4 pt-2 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs text-[color:var(--color-fog)]/60">
+        <p className="text-xs text-[color:var(--color-muted)]">
           We'll only use your details to reply. No list, no spam.
         </p>
         <button type="submit" className="btn btn-primary" disabled={status === "sending"}>
@@ -87,7 +87,7 @@ export function ContactForm() {
       </div>
 
       {status === "error" && (
-        <p className="text-sm text-[color:#ff9d9d]">{error}</p>
+        <p className="text-sm text-red-600">{error}</p>
       )}
     </form>
   );
@@ -108,16 +108,16 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-2 block text-xs font-medium uppercase tracking-[0.18em] text-[color:var(--color-fog)]/70">
+      <span className="mb-2 block text-xs font-medium uppercase tracking-[0.18em] text-[color:var(--color-muted)]">
         {label}
-        {required && <span aria-hidden className="ml-1 text-[color:var(--color-domigreen)]">*</span>}
+        {required && <span aria-hidden className="ml-1 text-[color:var(--color-forest)]">*</span>}
       </span>
       {textarea ? (
         <textarea
           name={name}
           required={required}
           rows={5}
-          className="block w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-base text-[color:var(--color-glacier)] outline-none transition-colors placeholder:text-white/30 focus:border-[color:var(--color-domigreen)]"
+          className="block w-full rounded-xl border border-[color:var(--color-line)] bg-white px-4 py-3 text-base text-[color:var(--color-ink)] outline-none transition-colors placeholder:text-black/35 focus:border-[color:var(--color-domigreen)]"
         />
       ) : (
         <input
@@ -125,7 +125,7 @@ function Field({
           type={type}
           required={required}
           autoComplete={name === "email" ? "email" : name === "name" ? "name" : "off"}
-          className="block w-full rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-base text-[color:var(--color-glacier)] outline-none transition-colors placeholder:text-white/30 focus:border-[color:var(--color-domigreen)]"
+          className="block w-full rounded-xl border border-[color:var(--color-line)] bg-white px-4 py-3 text-base text-[color:var(--color-ink)] outline-none transition-colors placeholder:text-black/35 focus:border-[color:var(--color-domigreen)]"
         />
       )}
     </label>

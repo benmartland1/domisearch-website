@@ -161,16 +161,16 @@ export default async function BlogPostPage({ params }: Props) {
           <ScrollReveal>
             <Link
               href="/blog"
-              className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-domigreen)]"
+              className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-forest)]"
             >
               ← Back to blog
             </Link>
           </ScrollReveal>
 
           <ScrollReveal delay={80}>
-            <div className="mt-8 flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.2em] text-[color:var(--color-fog)]/70">
+            <div className="mt-8 flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.2em] text-[color:var(--color-muted)]">
               {tags.map((t) => (
-                <span key={t} className="rounded-full border border-white/10 px-3 py-1">
+                <span key={t} className="rounded-full border border-[color:var(--color-line)] px-3 py-1">
                   {t}
                 </span>
               ))}
@@ -178,25 +178,23 @@ export default async function BlogPostPage({ params }: Props) {
           </ScrollReveal>
 
           <ScrollReveal delay={120}>
-            <h1 className="display mt-6 text-balance text-4xl sm:text-5xl lg:text-[3.5rem]">
+            <h1 className="display mt-6 text-balance text-4xl sm:text-5xl lg:text-[3.1rem]">
               {post.title}
             </h1>
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
-            <div className="mt-8 flex items-center gap-3 text-sm text-[color:var(--color-fog)]/70">
+            <div className="mt-8 flex items-center gap-3 text-sm text-[color:var(--color-muted)]">
               <span>{author.name}</span>
-              <span className="text-[color:var(--color-fog)]/30">·</span>
+              <span className="text-[color:var(--color-muted)]">·</span>
               <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
-              <span className="text-[color:var(--color-fog)]/30">·</span>
+              <span className="text-[color:var(--color-muted)]">·</span>
               <span>{getReadingTime(post.body)}</span>
             </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Dark → paper seam */}
-      <div className="paper-seam" aria-hidden />
 
       {/* ============================================================ */}
       {/* Paper body - TOC + article content                           */}
@@ -223,16 +221,6 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Paper → dark seam */}
-      <div
-        aria-hidden
-        className="h-2"
-        style={{
-          background:
-            "linear-gradient(to bottom, var(--color-paper) 0%, var(--color-paper) 50%, var(--color-charcoal) 50%, var(--color-charcoal) 100%)",
-        }}
-      />
-
       {/* FAQs authored in the Studio. Posts whose questions are already H3s in
           the prose render nothing here — resolveFaqs keeps their schema
           without repeating the content. */}
@@ -248,13 +236,13 @@ export default async function BlogPostPage({ params }: Props) {
             {related.map((p, i) => (
               <ScrollReveal key={p.slug} delay={i * 80}>
                 <Link href={`/blog/${p.slug}`} className="card block h-full p-8">
-                  <div className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-domigreen)]">
+                  <div className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-forest)]">
                     {p.tags?.[0] ?? "Article"}
                   </div>
                   <h3 className="display mt-4 text-xl leading-tight text-balance sm:text-2xl">
                     {p.title}
                   </h3>
-                  <p className="mt-3 text-sm text-[color:var(--color-fog)]/75">{p.excerpt}</p>
+                  <p className="mt-3 text-sm text-[color:var(--color-muted)]">{p.excerpt}</p>
                 </Link>
               </ScrollReveal>
             ))}
