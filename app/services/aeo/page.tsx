@@ -189,16 +189,16 @@ export default function AEOPage() {
             <AIEnginesBadge className="w-[240px]! sm:w-[280px]!" />
           </ScrollReveal>
           <ScrollReveal delay={80}>
-            <h1 className="display mt-10 text-balance text-[clamp(2.5rem,6vw,5rem)]">
+            <h1 className="display mt-10 text-balance text-[clamp(2.4rem,5.45vw,4.2rem)]">
               Be the brand
               <br />
-              <span className="text-[color:var(--color-domigreen)]">AI recommends.</span>
+              <span className="text-[color:var(--color-forest)]">AI recommends.</span>
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={140}>
-            <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-fog)]/85 sm:text-xl">
+            <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-muted)] sm:text-xl">
               We help service businesses get discovered, mentioned and cited across{" "}
-              <strong className="text-[color:var(--color-glacier)]">
+              <strong className="text-[color:var(--color-ink)]">
                 ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews
               </strong>
               . Research-led, tracked daily, reported monthly in plain English.
@@ -216,7 +216,7 @@ export default function AEOPage() {
             </div>
           </ScrollReveal>
           <ScrollReveal delay={260}>
-            <p className="mt-6 text-xs uppercase tracking-[0.22em] text-[color:var(--color-fog)]/55">
+            <p className="mt-6 text-xs uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
               UK-built · For service businesses · Recruitment a core focus
             </p>
           </ScrollReveal>
@@ -227,11 +227,11 @@ export default function AEOPage() {
       <section className="relative mx-auto mt-16 max-w-7xl px-6 lg:px-10">
         <ScrollReveal>
           <div className="flex items-center gap-4">
-            <span className="h-px w-10 bg-[color:var(--color-domigreen)]/70" />
+            <span className="h-px w-10 bg-[color:var(--color-forest)]/10" />
             <span className="eyebrow">The zero-click era is already here</span>
           </div>
         </ScrollReveal>
-        <div className="mt-10 grid gap-4 border-t border-white/5 pt-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-4 border-t border-[color:var(--color-line)] pt-10 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { value: 61, prefix: "−", suffix: "%", label: "Organic CTR on AI Overview queries", source: "Dataslayer, 2026" },
             { value: 60, suffix: "%+", label: "Of searches end without a click", source: "Digital Bloom, 2025" },
@@ -240,11 +240,11 @@ export default function AEOPage() {
           ].map((s, i) => (
             <ScrollReveal key={s.label} delay={i * 80}>
               <div>
-                <div className="display text-4xl text-[color:var(--color-domigreen)] sm:text-5xl">
+                <div className="display text-4xl text-[color:var(--color-forest)] sm:text-5xl">
                   <Counter value={s.value} prefix={s.prefix} suffix={s.suffix} />
                 </div>
-                <div className="mt-3 text-sm text-[color:var(--color-fog)]/85">{s.label}</div>
-                <div className="mt-2 text-[10px] uppercase tracking-[0.18em] text-[color:var(--color-fog)]/50">
+                <div className="mt-3 text-sm text-[color:var(--color-muted)]">{s.label}</div>
+                <div className="mt-2 text-[10px] uppercase tracking-[0.18em] text-[color:var(--color-muted)]">
                   {s.source}
                 </div>
               </div>
@@ -271,20 +271,20 @@ export default function AEOPage() {
           <div className="mt-10 grid gap-8 lg:grid-cols-2">
             <ScrollReveal delay={120}>
               <div>
-                <div className="text-xs uppercase tracking-[0.22em] text-[color:var(--color-fog)]/60">
+                <div className="text-xs uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
                   The quiet deals you're already losing
                 </div>
-                <ul className="mt-4 space-y-3 text-[color:var(--color-fog)]/85">
+                <ul className="mt-4 space-y-3 text-[color:var(--color-muted)]">
                   <li className="flex gap-3">
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[color:var(--color-fog)]/60" />
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[color:var(--color-line)]" />
                     <span>ChatGPT recommends a competitor for a query your brand should own.</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[color:var(--color-fog)]/60" />
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[color:var(--color-line)]" />
                     <span>Buyers mention your competitor by name before they've ever visited your site.</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[color:var(--color-fog)]/60" />
+                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[color:var(--color-line)]" />
                     <span>Your board asks why you're not showing up in AI answers - you don't have an answer either.</span>
                   </li>
                 </ul>
@@ -292,20 +292,20 @@ export default function AEOPage() {
             </ScrollReveal>
             <ScrollReveal delay={180}>
               <div>
-                <div className="text-xs uppercase tracking-[0.22em] text-[color:var(--color-domigreen)]">
+                <div className="text-xs uppercase tracking-[0.22em] text-[color:var(--color-forest)]">
                   What it looks like with AEO working
                 </div>
-                <ul className="mt-4 space-y-3 text-[color:var(--color-fog)]">
+                <ul className="mt-4 space-y-3 text-[color:var(--color-muted)]">
                   <li className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-forest)]" />
                     <span>Buyers arrive having already seen your name in the answer, before the first call.</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-forest)]" />
                     <span>Your services, markets and evidence are described accurately, alongside the competitors you are measured against.</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-domigreen)]" />
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-forest)]" />
                     <span>You can see, month by month, how often you are named and which sources the answers rely on.</span>
                   </li>
                 </ul>
@@ -326,7 +326,7 @@ export default function AEOPage() {
           {engines.map((e, i) => (
             <ScrollReveal key={e.name} delay={i * 60}>
               <div
-                className="flex h-14 items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] py-2 pl-2 pr-5 transition-colors hover:border-[color:var(--color-domigreen)]/40"
+                className="flex h-14 items-center gap-3 rounded-full border border-[color:var(--color-line)] bg-white py-2 pl-2 pr-5 transition-colors hover:border-[color:var(--color-ink)]"
                 title={e.name}
               >
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white">
@@ -339,7 +339,7 @@ export default function AEOPage() {
                     className="h-8 w-8 object-contain"
                   />
                 </span>
-                <span className="whitespace-nowrap text-sm font-medium text-[color:var(--color-glacier)]">
+                <span className="whitespace-nowrap text-sm font-medium text-[color:var(--color-ink)]">
                   {e.name}
                 </span>
               </div>
@@ -361,12 +361,12 @@ export default function AEOPage() {
               {whatWeDo.map((c, i) => (
                 <ScrollReveal key={c.title} delay={i * 60}>
                   <SpotlightCard as="article" className="card h-full p-8">
-                    <div className="text-xs uppercase tracking-[0.22em] text-[color:var(--color-domigreen)]">
+                    <div className="text-xs uppercase tracking-[0.22em] text-[color:var(--color-forest)]">
                       {c.tag}
                     </div>
-                    <h3 className="mt-4 text-xl font-[600] text-[color:var(--color-glacier)]">{c.title}</h3>
+                    <h3 className="mt-4 text-xl font-[600] text-[color:var(--color-ink)]">{c.title}</h3>
                     <div className="hairline mt-4" />
-                    <p className="mt-4 text-[color:var(--color-fog)]/85">{c.body}</p>
+                    <p className="mt-4 text-[color:var(--color-muted)]">{c.body}</p>
                   </SpotlightCard>
                 </ScrollReveal>
               ))}
@@ -390,7 +390,7 @@ export default function AEOPage() {
             <h2 className="display mt-4 text-3xl sm:text-4xl">
               Service businesses whose clients research before they buy.
             </h2>
-            <p className="mt-5 text-[color:var(--color-fog)]/85">
+            <p className="mt-5 text-[color:var(--color-muted)]">
               The work pays off where a buyer compares providers before making contact, and where
               your expertise and track record give an AI answer something real to cite.
             </p>
@@ -398,26 +398,26 @@ export default function AEOPage() {
           <ScrollReveal delay={100}>
             <ul className="space-y-5">
               <li>
-                <div className="text-lg font-[600] text-[color:var(--color-glacier)]">
-                  <Link href="/recruitment" className="hover:text-[color:var(--color-domigreen)]">Recruitment agencies</Link>
+                <div className="text-lg font-[600] text-[color:var(--color-ink)]">
+                  <Link href="/recruitment" className="hover:text-[color:var(--color-forest)]">Recruitment agencies</Link>
                 </div>
-                <p className="mt-1 text-sm text-[color:var(--color-fog)]/80">
+                <p className="mt-1 text-sm text-[color:var(--color-muted)]">
                   Hiring managers now ask AI which agencies specialise in their sector and region. Our core focus.
                 </p>
               </li>
               <li>
-                <div className="text-lg font-[600] text-[color:var(--color-glacier)]">
-                  <Link href="/accountants" className="hover:text-[color:var(--color-domigreen)]">Accountancy and professional services</Link>
+                <div className="text-lg font-[600] text-[color:var(--color-ink)]">
+                  <Link href="/accountants" className="hover:text-[color:var(--color-forest)]">Accountancy and professional services</Link>
                 </div>
-                <p className="mt-1 text-sm text-[color:var(--color-fog)]/80">
+                <p className="mt-1 text-sm text-[color:var(--color-muted)]">
                   Considered, often regulated decisions where clear evidence and specialisms matter.
                 </p>
               </li>
               <li>
-                <div className="text-lg font-[600] text-[color:var(--color-glacier)]">
-                  <Link href="/healthcare" className="hover:text-[color:var(--color-domigreen)]">Healthcare and clinics</Link>
+                <div className="text-lg font-[600] text-[color:var(--color-ink)]">
+                  <Link href="/healthcare" className="hover:text-[color:var(--color-forest)]">Healthcare and clinics</Link>
                 </div>
-                <p className="mt-1 text-sm text-[color:var(--color-fog)]/80">
+                <p className="mt-1 text-sm text-[color:var(--color-muted)]">
                   Patients research treatments and providers in AI before they book.
                 </p>
               </li>

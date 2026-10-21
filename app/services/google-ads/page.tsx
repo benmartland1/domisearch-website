@@ -120,14 +120,14 @@ export default function GoogleAdsPage() {
             <GooglePartnerBadge className="w-[165px]! sm:w-[195px]!" />
           </ScrollReveal>
           <ScrollReveal delay={80}>
-            <h1 className="display mt-10 text-balance text-[clamp(2.5rem,6vw,5rem)]">
+            <h1 className="display mt-10 text-balance text-[clamp(2.4rem,5.45vw,4.2rem)]">
               More revenue from Google Ads.
               <br />
-              <span className="text-[color:var(--color-domigreen)]">Without wasting budget.</span>
+              <span className="text-[color:var(--color-forest)]">Without wasting budget.</span>
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={160}>
-            <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-fog)]/85 sm:text-xl">
+            <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-muted)] sm:text-xl">
               A Google Partner managing £3M+ in ad spend across e-commerce and service-business
               accounts. Clear numbers, real optimisation, no performance theatre.
             </p>
@@ -148,18 +148,18 @@ export default function GoogleAdsPage() {
 
       {/* -------------------- METRICS STRIP -------------------- */}
       <section className="mx-auto mt-10 max-w-7xl px-6 lg:px-10">
-        <div className="grid gap-6 border-y border-white/5 py-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 border-y border-[color:var(--color-line)] py-10 sm:grid-cols-2 lg:grid-cols-4">
           {metrics.map((m, i) => (
             <ScrollReveal key={m.label} delay={i * 80}>
               <div>
-                <div className="display text-4xl text-[color:var(--color-domigreen)] sm:text-5xl">
+                <div className="display text-4xl text-[color:var(--color-forest)] sm:text-5xl">
                   <Counter
                     value={m.value}
                     prefix={m.prefix}
                     suffix={m.suffix}
                   />
                 </div>
-                <div className="mt-2 text-xs uppercase tracking-[0.18em] text-[color:var(--color-fog)]/70">
+                <div className="mt-2 text-xs uppercase tracking-[0.18em] text-[color:var(--color-muted)]">
                   {m.label}
                 </div>
               </div>
@@ -181,9 +181,9 @@ export default function GoogleAdsPage() {
               {pillars.map((p, i) => (
                 <ScrollReveal key={p.title} delay={i * 80}>
                   <SpotlightCard as="article" className="card h-full p-8">
-                    <h3 className="text-2xl font-[700] text-[color:var(--color-glacier)]">{p.title}</h3>
+                    <h3 className="text-2xl font-[700] text-[color:var(--color-ink)]">{p.title}</h3>
                     <div className="hairline mt-4" />
-                    <p className="mt-5 text-[color:var(--color-fog)]/85">{p.body}</p>
+                    <p className="mt-5 text-[color:var(--color-muted)]">{p.body}</p>
                   </SpotlightCard>
                 </ScrollReveal>
               ))}
@@ -210,7 +210,7 @@ export default function GoogleAdsPage() {
           <div className="mt-10">
             <Link
               href="/services/aeo"
-              className="inline-flex items-center gap-2 text-[color:var(--color-domigreen)]"
+              className="inline-flex items-center gap-2 text-[color:var(--color-forest)]"
             >
               Explore AEO →
             </Link>
