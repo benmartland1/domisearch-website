@@ -27,7 +27,7 @@ export function SiteNav() {
     <header className="ds-navbar ds-wrap">
       <Link className="ds-brand-link" href="/" aria-label="DomiSearch homepage">
         {/* The dark logo asset as supplied, with its own coloured ring. */}
-        <Image className="ds-logo ds-logo-dark" src="/brand/logo-dark.png" alt="DomiSearch" width={155} height={24} priority />
+        <Image className="ds-logo ds-logo-dark" src="/brand/logo-dark-2026.png" alt="DomiSearch" width={155} height={24} priority />
       </Link>
 
       <nav className="ds-navlinks" aria-label="Main navigation">
