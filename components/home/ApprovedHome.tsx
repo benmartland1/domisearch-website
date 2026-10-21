@@ -248,10 +248,6 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
             </div>
           </div>
           <div className="ds-case-footnote">
-            <p>
-              30 days to 16 Oct 2026 · ChatGPT, Perplexity and Google AI Overviews · Source: Searchable.
-              Client quote refers to the wider search engagement.
-            </p>
             <details className="ds-measurement">
               <summary>How to read these numbers</summary>
               <p>
