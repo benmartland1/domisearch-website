@@ -269,7 +269,7 @@ const UPDATED = lastUpdated("app/recruitment/page.tsx");
  * match the pricing cards and stats below.
  */
 const SUMMARY =
-  "DomiSearch is a specialist AI search (AEO) agency for UK recruitment firms, based in Manchester. We make recruitment agencies the firms ChatGPT, Gemini and Perplexity name when hiring managers ask which recruiter to use - tracked monthly across five AI engines, priced from £2,995/month.";
+  "DomiSearch is a specialist AI search (AEO) agency for UK recruitment firms, based in Manchester. We make recruitment agencies the firms ChatGPT, Gemini and Perplexity name when hiring managers ask which recruiter to use - tracked monthly across five AI engines, priced from £2,450/month.";
 
 const FAQS: FaqItem[] = [
   {

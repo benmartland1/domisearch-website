@@ -12,12 +12,12 @@ import { aeoPricingSentence } from "@/lib/pricing";
 export const metadata: Metadata = {
   title: "Pricing · DomiSearch",
   description:
-    "AI search visibility programme pricing: £2,995 a month on a 3-month minimum, or £7,500 for the first 3 months paid upfront. No setup fees. Google Ads is scoped separately.",
+    "AI search visibility programme pricing: £2,450 a month on a 3-month minimum, or £6,950 for the first 3 months paid upfront. No setup fees. Google Ads is scoped separately.",
   alternates: { canonical: "/pricing" },
   openGraph: {
     title: "Pricing · DomiSearch",
     description:
-      "One AI search programme, two ways to pay. £2,995 a month or £7,500 for the first three months upfront.",
+      "One AI search programme, two ways to pay. £2,450 a month or £6,950 for the first three months upfront.",
     url: "/pricing",
   },
 };

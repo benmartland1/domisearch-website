@@ -4,8 +4,8 @@
  * the figures cannot drift apart. Google Ads has no published price.
  */
 export const AEO_PRICING = {
-  monthly: 2995,
-  upfront: 7500,
+  monthly: 2450,
+  upfront: 6950,
   upfrontMonths: 3,
   minimumMonths: 3,
   recommendedMonths: 6,

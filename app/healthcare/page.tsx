@@ -396,7 +396,7 @@ const UPDATED = lastUpdated("app/healthcare/page.tsx");
  * match the pricing cards and stats below.
  */
 const SUMMARY =
-  "DomiSearch is an AI search (AEO) agency for UK private healthcare providers, based in Manchester. We work to make clinics and practices the ones ChatGPT, Gemini and Perplexity name when patients ask where to go for treatment - tracked monthly across five AI engines, priced from £2,995/month.";
+  "DomiSearch is an AI search (AEO) agency for UK private healthcare providers, based in Manchester. We work to make clinics and practices the ones ChatGPT, Gemini and Perplexity name when patients ask where to go for treatment - tracked monthly across five AI engines, priced from £2,450/month.";
 
 const FAQS: FaqItem[] = [
   {
