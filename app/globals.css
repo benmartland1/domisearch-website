@@ -945,3 +945,10 @@ body:has(.ds-site) {
 .ds-site .prose-dsrc { color: var(--color-ink-2); }
 .ds-site .prose-dsrc h2, .ds-site .prose-dsrc h3, .ds-site .prose-dsrc strong { color: var(--color-ink); }
 .ds-site .prose-dsrc a { color: var(--color-forest); background-image: linear-gradient(to right, var(--color-forest), var(--color-forest)); }
+
+/* Typography weights (2026-10-26): page and blog titles Medium, SectionHeader titles Book, its intro genuine Light (DSAxiforma 300). */
+.ds-site .display { font-weight: 500; }
+.ds-site .display.section-title { font-weight: 400; }
+.ds-site .lede { font-family: DSAxiforma, Arial, sans-serif; font-weight: 300; font-size: 20px; line-height: 1.55; }
+@media (max-width: 700px) { .ds-site .lede { font-size: 18px; } }
+.ds-site .prose-paper h2 { font-weight: 500; }
