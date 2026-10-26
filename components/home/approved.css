@@ -11,6 +11,7 @@
 .ds-site .ds-page{letter-spacing:normal}
 @font-face{font-family:DSAxiforma;src:url('/fonts/Axiforma-Light.woff2') format('woff2');font-weight:300;font-display:swap}
 @font-face{font-family:DSAxiforma;src:url('/fonts/Axiforma-Book.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:DSAxiforma;src:url('/fonts/Axiforma-Regular.woff2') format('woff2');font-weight:450;font-display:swap}
 @font-face{font-family:DSAxiforma;src:url('/fonts/Axiforma-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
 @font-face{font-family:DSAxiforma;src:url('/fonts/Axiforma-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
 .ds-site{width:100%;--ds-paper:#f8f7f1;--ds-white:#fff;--ds-ink:#17271f;--ds-muted:#536157;--ds-line:#d4d8cf;--ds-green:#00dc98;--ds-forest:#113c2d;--ds-pale:#e4eddf;--ds-serif:Georgia,serif}
@@ -846,8 +847,11 @@
 }
 .ds-site .ds-client-logos img{filter:none;opacity:1}
 
-/* Typography weights (2026-10-26): hero and card headings Medium, section headings Book, short intros genuine Light. Big figures stay Bold. */
+/* Typography weights (2026-10-26): hero and card headings Medium, section headings Regular (450, between Book and Medium), short intros genuine Light. Big figures stay Bold. */
 .ds-site .ds-page h1,.ds-site .ds-page h3{font-weight:500}
-.ds-site .ds-page h2{font-weight:400}
+.ds-site .ds-page h2{font-weight:450}
 .ds-site .ds-page .ds-lead,.ds-site .ds-page .ds-journey-heading>p,.ds-site .ds-page .ds-faq-intro p{font-weight:300;font-size:20px;line-height:1.55}
 @media(max-width:700px){.ds-site .ds-page .ds-lead,.ds-site .ds-page .ds-journey-heading>p,.ds-site .ds-page .ds-faq-intro p{font-size:18px}}
+/* Closing visibility-review band and footer run edge to edge; content keeps the 1400px column. */
+.ds-site .ds-review.ds-wrap,.ds-site .ds-footer.ds-wrap{max-width:none;padding-left:max(5%,calc(50% - 630px));padding-right:max(5%,calc(50% - 630px))}
+@media(max-width:700px){.ds-site .ds-review.ds-wrap,.ds-site .ds-footer.ds-wrap{padding-left:6%;padding-right:6%}}
