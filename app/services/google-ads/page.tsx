@@ -128,7 +128,7 @@ export default function GoogleAdsPage() {
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={160}>
-            <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-muted)] sm:text-xl">
+            <p className="lede lede-lg mt-8 max-w-2xl text-lg text-[color:var(--color-muted)] sm:text-xl">
               A Google Partner managing £3M+ in ad spend across e-commerce and service-business
               accounts. Clear numbers, real optimisation, no performance theatre.
             </p>
@@ -182,7 +182,7 @@ export default function GoogleAdsPage() {
               {pillars.map((p, i) => (
                 <ScrollReveal key={p.title} delay={i * 80}>
                   <SpotlightCard as="article" className="card h-full p-8">
-                    <h3 className="text-2xl font-[700] text-[color:var(--color-ink)]">{p.title}</h3>
+                    <h3 className="text-2xl font-medium text-[color:var(--color-ink)]">{p.title}</h3>
                     <div className="hairline mt-4" />
                     <p className="mt-5 text-[color:var(--color-muted)]">{p.body}</p>
                   </SpotlightCard>

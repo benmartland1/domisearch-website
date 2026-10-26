@@ -197,7 +197,7 @@ export default function AEOPage() {
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={140}>
-            <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-muted)] sm:text-xl">
+            <p className="lede lede-lg mt-8 max-w-2xl text-lg text-[color:var(--color-muted)] sm:text-xl">
               We help service businesses get discovered, mentioned and cited across{" "}
               <strong className="text-[color:var(--color-ink)]">
                 ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews
@@ -365,7 +365,7 @@ export default function AEOPage() {
                     <div className="text-xs uppercase tracking-[0.22em] text-[color:var(--color-forest)]">
                       {c.tag}
                     </div>
-                    <h3 className="mt-4 text-xl font-[600] text-[color:var(--color-ink)]">{c.title}</h3>
+                    <h3 className="mt-4 text-xl font-medium text-[color:var(--color-ink)]">{c.title}</h3>
                     <div className="hairline mt-4" />
                     <p className="mt-4 text-[color:var(--color-muted)]">{c.body}</p>
                   </SpotlightCard>
@@ -399,7 +399,7 @@ export default function AEOPage() {
           <ScrollReveal delay={100}>
             <ul className="space-y-5">
               <li>
-                <div className="text-lg font-[600] text-[color:var(--color-ink)]">
+                <div className="text-lg font-medium text-[color:var(--color-ink)]">
                   <Link href="/recruitment" className="hover:text-[color:var(--color-forest)]">Recruitment agencies</Link>
                 </div>
                 <p className="mt-1 text-sm text-[color:var(--color-muted)]">
@@ -407,7 +407,7 @@ export default function AEOPage() {
                 </p>
               </li>
               <li>
-                <div className="text-lg font-[600] text-[color:var(--color-ink)]">
+                <div className="text-lg font-medium text-[color:var(--color-ink)]">
                   <Link href="/accountants" className="hover:text-[color:var(--color-forest)]">Accountancy and professional services</Link>
                 </div>
                 <p className="mt-1 text-sm text-[color:var(--color-muted)]">
@@ -415,7 +415,7 @@ export default function AEOPage() {
                 </p>
               </li>
               <li>
-                <div className="text-lg font-[600] text-[color:var(--color-ink)]">
+                <div className="text-lg font-medium text-[color:var(--color-ink)]">
                   <Link href="/healthcare" className="hover:text-[color:var(--color-forest)]">Healthcare and clinics</Link>
                 </div>
                 <p className="mt-1 text-sm text-[color:var(--color-muted)]">

@@ -25,7 +25,7 @@ export default function VisibilityPage() {
           <h1 className="display mt-5 text-balance text-[clamp(2.25rem,5vw,3.75rem)]">
             AI Visibility Snapshot.
           </h1>
-          <p className="mt-6 max-w-2xl text-lg text-[color:var(--color-muted)]">
+          <p className="lede lede-lg mt-6 max-w-2xl text-lg text-[color:var(--color-muted)]">
             Enter a brand. We generate ten buyer-intent prompts, run them through ChatGPT with live web
             search, and return a snapshot of where the brand is — and isn&apos;t — cited. For demos and Loom
             walkthroughs.

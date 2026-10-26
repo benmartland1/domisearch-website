@@ -56,7 +56,7 @@ export function Cta({ href, variant = "solid", className = "", children }: Props
 export function CtaBlock({ href, line }: { href: string; line: string }) {
   return (
     <div className="mt-10 flex flex-col items-start gap-4 border-t border-black/[0.07] pt-8 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-      <p className="max-w-xl text-[16px] font-semibold leading-snug tracking-tight text-[color:var(--color-ink)] sm:text-[17px]">
+      <p className="max-w-xl text-[16px] font-medium leading-snug tracking-tight text-[color:var(--color-ink)] sm:text-[17px]">
         {line}
       </p>
       <Cta href={href} className="w-full shrink-0 sm:w-auto" />

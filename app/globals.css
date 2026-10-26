@@ -7,6 +7,14 @@
   font-style: normal;
   font-display: swap;
 }
+/* Regular sits between Book and Medium; used for section headings. */
+@font-face {
+  font-family: "Axiforma";
+  src: url("/fonts/Axiforma-Regular.woff2") format("woff2");
+  font-weight: 450;
+  font-style: normal;
+  font-display: swap;
+}
 @font-face {
   font-family: "Axiforma";
   src: url("/fonts/Axiforma-Medium.woff2") format("woff2");
@@ -946,9 +954,11 @@ body:has(.ds-site) {
 .ds-site .prose-dsrc h2, .ds-site .prose-dsrc h3, .ds-site .prose-dsrc strong { color: var(--color-ink); }
 .ds-site .prose-dsrc a { color: var(--color-forest); background-image: linear-gradient(to right, var(--color-forest), var(--color-forest)); }
 
-/* Typography weights (2026-10-26): page and blog titles Medium, SectionHeader titles Regular, its intro genuine Light (DSAxiforma 300). */
-.ds-site .display { font-weight: 500; }
-.ds-site .display.section-title { font-family: DSAxiforma, Arial, sans-serif; font-weight: 450; }
-.ds-site .lede { font-family: DSAxiforma, Arial, sans-serif; font-weight: 300; font-size: 20px; line-height: 1.55; }
-@media (max-width: 700px) { .ds-site .lede { font-size: 18px; } }
-.ds-site .prose-paper h2 { font-weight: 500; }
+/* Typography weights (2026-10-26), every page inside .ds-site: titles and card headings Medium, */
+/* section headings Regular, short intros genuine Light (DSAxiforma 300). Big figures stay Bold. */
+.ds-site h1, .ds-site h3, .ds-site h4, .ds-site .display { font-weight: 500; }
+.ds-site h2, .ds-site h2.display { font-weight: 450; }
+.ds-site h2.display.post-title { font-weight: 500; }
+.ds-site .lede { font-family: DSAxiforma, Arial, sans-serif; font-weight: 300; }
+.ds-site .lede-lg { font-size: 20px; line-height: 1.55; }
+@media (max-width: 700px) { .ds-site .lede-lg { font-size: 18px; } }

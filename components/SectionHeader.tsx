@@ -16,13 +16,13 @@ export function SectionHeader({ eyebrow, title, description, align = "left" }: P
         </ScrollReveal>
       )}
       <ScrollReveal delay={80}>
-        <h2 className="display section-title mt-4 text-balance text-4xl sm:text-5xl lg:text-[3.1rem]">
+        <h2 className="display mt-4 text-balance text-4xl sm:text-5xl lg:text-[3.1rem]">
           {title}
         </h2>
       </ScrollReveal>
       {description && (
         <ScrollReveal delay={160}>
-          <p className="lede mt-5 max-w-2xl text-pretty text-[color:var(--color-muted)]">
+          <p className="lede lede-lg mt-5 max-w-2xl text-pretty text-[color:var(--color-muted)]">
             {description}
           </p>
         </ScrollReveal>

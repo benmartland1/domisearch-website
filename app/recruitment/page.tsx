@@ -393,12 +393,12 @@ export default function RecruitmentPage() {
           <div>
             <SectionLabel>AEO for recruitment</SectionLabel>
 
-            <h1 className="mt-3.5 text-balance text-[clamp(1.85rem,7.2vw,3.6rem)] font-bold leading-[1.02] tracking-[-0.035em] text-[color:var(--color-ink)] sm:mt-5">
+            <h1 className="mt-3.5 text-balance text-[clamp(1.85rem,7.2vw,3.6rem)] font-medium leading-[1.02] tracking-[-0.035em] text-[color:var(--color-ink)] sm:mt-5">
               Be the recruitment firm{" "}
               <span className="text-[color:var(--color-ink-3)]">AI recommends</span>
             </h1>
 
-            <p className="mt-3.5 max-w-xl text-pretty text-[15px] leading-relaxed text-[color:var(--color-ink-2)] sm:mt-6 sm:text-[19px]">
+            <p className="lede mt-3.5 max-w-xl text-pretty text-[17px] leading-relaxed text-[color:var(--color-ink-2)] sm:mt-6 sm:text-[19px]">
               When a hiring manager asks ChatGPT for the best construction recruiter in Manchester,
               one firm gets named. Right now it isn&apos;t yours. We fix that.
             </p>
@@ -476,7 +476,7 @@ export default function RecruitmentPage() {
           {/* Left column carries the headline and the two stats, so it is not a
               headline sitting over empty space beside six paragraphs. */}
           <div>
-            <h2 className="text-balance text-[clamp(1.7rem,4.4vw,3.2rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
+            <h2 className="text-balance text-[clamp(1.7rem,4.4vw,3.2rem)] font-medium leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
               Your next client is asking an AI which agency to use{" "}
               <span className="text-[color:var(--color-ink-3)]">and you never see the question</span>
             </h2>
@@ -520,7 +520,7 @@ export default function RecruitmentPage() {
               </p>
             </div>
 
-            <p className="mt-8 text-[17px] font-semibold leading-snug text-[color:var(--color-ink)] sm:text-[18px]">
+            <p className="mt-8 text-[17px] font-medium leading-snug text-[color:var(--color-ink)] sm:text-[18px]">
               The firms getting named aren&apos;t always the biggest. They&apos;re the ones an AI can
               read, verify and confidently recommend.
             </p>
@@ -551,7 +551,7 @@ export default function RecruitmentPage() {
             >
               <path d="M9.5 6C6.5 7 5 9.5 5 13v5h6v-6H8c0-2 .8-3.4 2.6-4L9.5 6Zm9 0c-3 1-4.5 3.5-4.5 7v5h6v-6h-3c0-2 .8-3.4 2.6-4L18.5 6Z" />
             </svg>
-            <blockquote className="mx-auto mt-6 max-w-2xl text-balance text-[clamp(1.2rem,2.6vw,1.75rem)] font-bold leading-[1.35] tracking-[-0.025em] text-[color:var(--color-paper)]">
+            <blockquote className="mx-auto mt-6 max-w-2xl text-balance text-[clamp(1.2rem,2.6vw,1.75rem)] font-medium leading-[1.35] tracking-[-0.025em] text-[color:var(--color-paper)]">
               &ldquo;A hiring manager rang about an urgent data centre role and said ChatGPT had given
               him three names, and ours was first. No PSL, no cold call, a client we would never have
               met. It is the first marketing spend I can tie to an actual fee.&rdquo;
@@ -573,7 +573,7 @@ export default function RecruitmentPage() {
                 </svg>
               </span>
               <span className="text-left leading-tight">
-                <span className="block text-[15px] font-bold text-[color:var(--color-paper)]">
+                <span className="block text-[15px] font-medium text-[color:var(--color-paper)]">
                   Mark Ellison
                 </span>
                 <span className="block text-[13px] text-[color:var(--color-paper)]/55">
@@ -592,7 +592,7 @@ export default function RecruitmentPage() {
       <section id="system" className="border-y border-black/[0.06] bg-[color:var(--color-paper-2)]">
         <div className="mx-auto max-w-6xl px-5 py-7 sm:px-6 sm:py-28">
           <SectionLabel>How it works</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
+          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-medium leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
             The Territory Engine.{" "}
             <span className="text-[color:var(--color-ink-3)]">
               Four moves, run every month until you&apos;re the answer.
@@ -617,7 +617,7 @@ export default function RecruitmentPage() {
         <section id="territories" className="border-b border-black/[0.06] bg-white">
           <div className="mx-auto max-w-5xl px-5 py-7 sm:px-6 sm:py-24">
             <SectionLabel>Availability</SectionLabel>
-            <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
+            <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-medium leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
               Can we work with your firm?{" "}
               <span className="text-[color:var(--color-ink-3)]">Check the map.</span>
             </h2>
@@ -641,7 +641,7 @@ export default function RecruitmentPage() {
       {/* ===================== 5 · PROOF ===================== */}
       <section id="proof" className="mx-auto max-w-6xl px-5 py-7 sm:px-6 sm:py-28">
         <SectionLabel>Proof</SectionLabel>
-        <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
+        <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-medium leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
           We&apos;ve done this outside recruitment{" "}
           <span className="text-[color:var(--color-ink-3)]">and we&apos;ll show you the work</span>
         </h2>
@@ -661,7 +661,7 @@ export default function RecruitmentPage() {
                 height={184}
                 className="h-7 w-auto"
               />
-              <p className="mt-6 text-balance text-[clamp(1.5rem,3.2vw,2.2rem)] font-bold leading-[1.15] tracking-[-0.03em]">
+              <p className="mt-6 text-balance text-[clamp(1.5rem,3.2vw,2.2rem)] font-medium leading-[1.15] tracking-[-0.03em]">
                 From invisible in AI answers to the name ChatGPT gives when someone asks for tax
                 help.
               </p>
@@ -742,7 +742,7 @@ export default function RecruitmentPage() {
       <section id="team" className="border-y border-black/[0.06] bg-[color:var(--color-paper-2)]">
         <div className="mx-auto max-w-3xl px-5 py-7 sm:px-6 sm:py-28">
           <SectionLabel>Who you&apos;ll work with</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
+          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-medium leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
             Two of us.{" "}
             <span className="text-[color:var(--color-ink-3)]">Both on every account.</span>
           </h2>
@@ -794,7 +794,7 @@ export default function RecruitmentPage() {
                 </div>
 
                 <div className="mt-9">
-                  <p className="text-[16px] font-bold leading-tight tracking-tight text-[color:var(--color-ink)]">
+                  <p className="text-[16px] font-medium leading-tight tracking-tight text-[color:var(--color-ink)]">
                     {m.name}
                   </p>
                   <p className="mt-0.5 text-[13px] text-[color:var(--color-ink-3)]">{m.role}</p>
@@ -807,7 +807,7 @@ export default function RecruitmentPage() {
             ))}
           </div>
 
-          <p className="mt-12 border-l-2 border-[color:var(--color-pine)] pl-4 text-[17px] font-bold leading-snug tracking-tight text-[color:var(--color-ink)] sm:text-[19px]">
+          <p className="mt-12 border-l-2 border-[color:var(--color-pine)] pl-4 text-[17px] font-medium leading-snug tracking-tight text-[color:var(--color-ink)] sm:text-[19px]">
             One of us has spent £3M+ making brands findable. One of us has sat in your seat. Most
             agencies bring neither.
           </p>
@@ -841,7 +841,7 @@ export default function RecruitmentPage() {
             <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-domigreen)]" />
             Pricing
           </span>
-          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-paper)]">
+          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-medium leading-[1.06] tracking-[-0.035em] text-[color:var(--color-paper)]">
             One programme. One goal.{" "}
             <span className="text-[color:var(--color-paper)]/55">Your patch held exclusively.</span>
           </h2>
@@ -880,7 +880,7 @@ The programme pays for itself if it wins you a single extra client a
               and works on touch without a handler. */}
           <details className="group mt-10 sm:mt-16 overflow-hidden rounded-[1.5rem] border border-white/12 bg-white/[0.04] [&_summary::-webkit-details-marker]:hidden">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 sm:px-8">
-              <span className="text-[15px] font-bold tracking-tight text-[color:var(--color-paper)] sm:text-[17px]">
+              <span className="text-[15px] font-medium tracking-tight text-[color:var(--color-paper)] sm:text-[17px]">
                 What&apos;s inside the engine
               </span>
               <span className="flex items-center gap-2 text-[13px] text-[color:var(--color-paper)]/50">
@@ -923,7 +923,7 @@ The programme pays for itself if it wins you a single extra client a
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-domigreen)]">
               Our guarantee
             </span>
-            <p className="mx-auto mt-3 max-w-2xl text-balance text-[clamp(1.15rem,2.6vw,1.6rem)] font-bold leading-snug tracking-tight text-[color:var(--color-paper)]">
+            <p className="mx-auto mt-3 max-w-2xl text-balance text-[clamp(1.15rem,2.6vw,1.6rem)] font-medium leading-snug tracking-tight text-[color:var(--color-paper)]">
               Cited on your priority prompts by month four, or we work free until you are.
             </p>
             <p className="mx-auto mt-3 max-w-xl text-[14px] leading-relaxed text-[color:var(--color-paper)]/60">
@@ -953,7 +953,7 @@ The programme pays for itself if it wins you a single extra client a
               </svg>
             </span>
             <div>
-              <p className="text-[16px] font-bold leading-snug tracking-tight text-[color:var(--color-paper)] sm:text-[18px]">
+              <p className="text-[16px] font-medium leading-snug tracking-tight text-[color:var(--color-paper)] sm:text-[18px]">
                 We will never work with a competitor competing for the same prompts.
               </p>
               <p className="mt-2 text-[14px] leading-relaxed text-[color:var(--color-paper)]/60">
@@ -978,7 +978,7 @@ The programme pays for itself if it wins you a single extra client a
       {/* ===================== 8 · FAQ ===================== */}
       <section className="border-t border-black/[0.06] bg-[color:var(--color-paper-2)]">
         <div className="mx-auto max-w-3xl px-5 py-7 sm:px-6 sm:py-28">
-          <h2 className="text-balance text-center text-[clamp(1.6rem,4vw,2.6rem)] font-bold leading-[1.1] tracking-[-0.03em] text-[color:var(--color-ink)]">
+          <h2 className="text-balance text-center text-[clamp(1.6rem,4vw,2.6rem)] font-medium leading-[1.1] tracking-[-0.03em] text-[color:var(--color-ink)]">
             Questions recruitment owners ask
           </h2>
           <div className="mt-5 sm:mt-10">
@@ -996,7 +996,7 @@ The programme pays for itself if it wins you a single extra client a
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-4 text-center">
-            <p className="text-[16px] font-semibold tracking-tight text-[color:var(--color-ink)]">
+            <p className="text-[16px] font-medium tracking-tight text-[color:var(--color-ink)]">
               Still got a question? Ask it on the call.
             </p>
             <Cta href={site.calendly} />
@@ -1008,7 +1008,7 @@ The programme pays for itself if it wins you a single extra client a
       <section className="relative bg-[color:var(--color-paper)]">
         <div aria-hidden className="pointer-events-none absolute inset-0 grid-backdrop-light" />
         <div className="relative mx-auto max-w-3xl px-5 py-10 text-center sm:px-6 sm:py-32">
-          <h2 className="mx-auto max-w-2xl text-balance text-[clamp(2rem,5vw,3.4rem)] font-bold leading-[1.04] tracking-[-0.035em] text-[color:var(--color-ink)]">
+          <h2 className="mx-auto max-w-2xl text-balance text-[clamp(2rem,5vw,3.4rem)] font-medium leading-[1.04] tracking-[-0.035em] text-[color:var(--color-ink)]">
             Find out what AI says about your firm{" "}
             <span className="text-[color:var(--color-ink-3)]">before your competitor does</span>
           </h2>

@@ -45,7 +45,7 @@ export default async function BlogIndexPage() {
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={140}>
-            <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-muted)]">
+            <p className="lede lede-lg mt-8 max-w-2xl text-lg text-[color:var(--color-muted)]">
               Playbooks, research and opinion from the team - on AEO, Google Ads and what's
               coming next in search.
             </p>
@@ -72,7 +72,7 @@ export default async function BlogIndexPage() {
                       <span className="h-px w-8 bg-[color:var(--color-forest)]/10" />
                       <span className="text-[color:var(--color-muted)]">{readingTimeFromWords(featured.wordCount)}</span>
                     </div>
-                    <h2 className="display mt-6 text-balance text-3xl sm:text-4xl lg:text-5xl">
+                    <h2 className="display post-title mt-6 text-balance text-3xl sm:text-4xl lg:text-5xl">
                       {featured.title}
                     </h2>
                     <p className="mt-6 max-w-xl text-[color:var(--color-muted)]">

@@ -62,7 +62,7 @@ export function PricingCard({ plan, href }: { plan: PricingPlan; href: string })
       <div className="grid gap-8 lg:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] lg:gap-0">
         {/* ---- What it costs ---- */}
         <div className="flex flex-col lg:pr-12">
-          <h3 className="mt-2 text-[19px] font-bold tracking-tight text-[color:var(--color-ink)] sm:mt-0 sm:text-[21px]">
+          <h3 className="mt-2 text-[19px] font-medium tracking-tight text-[color:var(--color-ink)] sm:mt-0 sm:text-[21px]">
             {plan.name}
           </h3>
 
@@ -146,7 +146,7 @@ export function PricingCard({ plan, href }: { plan: PricingPlan; href: string })
 
           <div aria-hidden className="mt-6 border-t border-black/[0.07]" />
 
-          <p className="mt-5 text-[16px] font-bold leading-snug tracking-tight text-[color:var(--color-pine)]">
+          <p className="mt-5 text-[16px] font-medium leading-snug tracking-tight text-[color:var(--color-pine)]">
             {plan.tagline}
           </p>
           <p className="mt-4 rounded-xl bg-[color:var(--color-pine)]/[0.08] px-3.5 py-3 text-[13px] font-semibold leading-relaxed text-[color:var(--color-pine)]">

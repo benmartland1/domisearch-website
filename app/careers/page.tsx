@@ -44,7 +44,7 @@ export default function CareersPage() {
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={160}>
-            <p className="mt-8 max-w-3xl text-lg text-[color:var(--color-muted)] sm:text-xl">
+            <p className="lede lede-lg mt-8 max-w-3xl text-lg text-[color:var(--color-muted)] sm:text-xl">
               We hire slowly and rarely. We look for senior operators who genuinely enjoy the
               craft - paid media specialists, technical SEOs, AEO researchers, and a handful of
               generalists who want to define a new discipline.
@@ -59,7 +59,7 @@ export default function CareersPage() {
           {principles.map((p, i) => (
             <ScrollReveal key={p.title} delay={(i % 2) * 100}>
               <article className="card p-8">
-                <h3 className="text-2xl font-[600] text-[color:var(--color-ink)]">{p.title}</h3>
+                <h3 className="text-2xl font-medium text-[color:var(--color-ink)]">{p.title}</h3>
                 <div className="hairline mt-4" />
                 <p className="mt-4 text-[color:var(--color-muted)]">{p.body}</p>
               </article>

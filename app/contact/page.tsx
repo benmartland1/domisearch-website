@@ -38,7 +38,7 @@ export default function ContactPage() {
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={160}>
-            <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-muted)]">
+            <p className="lede lede-lg mt-8 max-w-2xl text-lg text-[color:var(--color-muted)]">
               Send us a message, email, or book a free 30-minute discovery call with Ben. We reply
               to every enquiry within one working day. Google Ads enquiries are welcome too.
             </p>

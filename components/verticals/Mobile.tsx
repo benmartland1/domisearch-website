@@ -105,7 +105,7 @@ export function StepsAccordion({
                 {s.n}
               </span>
               <span className="min-w-0 flex-1">
-                <span className="block text-[18px] font-bold tracking-tight text-[color:var(--color-ink)] sm:text-[22px]">
+                <span className="block text-[18px] font-medium tracking-tight text-[color:var(--color-ink)] sm:text-[22px]">
                   {s.title}
                 </span>
                 <span className="mt-1 block text-[14px] leading-snug text-[color:var(--color-ink-3)] sm:hidden">

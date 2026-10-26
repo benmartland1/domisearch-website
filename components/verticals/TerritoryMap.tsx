@@ -288,7 +288,7 @@ export function TerritoryMap({
         <div className="rounded-[1.25rem] border border-black/[0.08] bg-[color:var(--color-paper-2)] p-4 sm:p-6">
           {isWorld ? (
             <>
-              <h3 className="text-[16px] font-bold tracking-tight text-[color:var(--color-ink)]">
+              <h3 className="text-[16px] font-medium tracking-tight text-[color:var(--color-ink)]">
                 Where do you work?
               </h3>
               <p className="mt-2 text-[14px] leading-relaxed text-[color:var(--color-ink-2)]">
@@ -297,7 +297,7 @@ export function TerritoryMap({
             </>
           ) : !region || !result ? (
             <>
-              <h3 className="text-[16px] font-bold tracking-tight text-[color:var(--color-ink)]">
+              <h3 className="text-[16px] font-medium tracking-tight text-[color:var(--color-ink)]">
                 Pick your region
               </h3>
               <p className="mt-2 text-[14px] leading-relaxed text-[color:var(--color-ink-2)]">
@@ -317,7 +317,7 @@ export function TerritoryMap({
               >
                 {result.status === "held" ? "Held" : result.status === "limited" ? "Limited" : "Open"}
               </span>
-              <h3 className="mt-3 text-balance text-[17px] font-bold leading-snug tracking-tight text-[color:var(--color-ink)]">
+              <h3 className="mt-3 text-balance text-[17px] font-medium leading-snug tracking-tight text-[color:var(--color-ink)]">
                 {result.status === "held"
                   ? `${industry.name} in ${region.name} is held.`
                   : result.status === "limited"

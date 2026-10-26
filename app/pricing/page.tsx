@@ -95,7 +95,7 @@ export default function PricingPage() {
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={140}>
-            <p className="mt-8 max-w-2xl text-lg text-[color:var(--color-muted)] sm:text-xl">
+            <p className="lede lede-lg mt-8 max-w-2xl text-lg text-[color:var(--color-muted)] sm:text-xl">
               The AI search visibility programme, priced in full so you can qualify
               yourself before the call. Pay monthly, or pay the first three months
               upfront and save. No setup fees.

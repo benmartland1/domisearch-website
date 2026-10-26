@@ -114,7 +114,7 @@ export default function AboutPage() {
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={160}>
-            <p className="mt-8 max-w-3xl text-lg text-[color:var(--color-muted)] sm:text-xl">
+            <p className="lede lede-lg mt-8 max-w-3xl text-lg text-[color:var(--color-muted)] sm:text-xl">
               DomiSearch helps service businesses improve how they are discovered, mentioned and
               cited across{" "}
               <span className="text-[color:var(--color-ink)]">
@@ -272,7 +272,7 @@ export default function AboutPage() {
           {values.map((v, i) => (
             <ScrollReveal key={v.title} delay={(i % 2) * 120}>
               <article className="card p-8">
-                <h3 className="text-2xl font-[600] text-[color:var(--color-ink)]">{v.title}</h3>
+                <h3 className="text-2xl font-medium text-[color:var(--color-ink)]">{v.title}</h3>
                 <div className="hairline mt-4" />
                 <p className="mt-4 text-[color:var(--color-muted)]">{v.body}</p>
               </article>

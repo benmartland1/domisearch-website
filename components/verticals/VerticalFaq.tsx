@@ -24,7 +24,7 @@ export function VerticalFaq({ items }: { items: FaqItem[] }) {
               aria-expanded={isOpen}
               className="flex w-full items-center gap-4 px-5 py-4 text-left transition-colors hover:bg-black/[0.015] sm:px-7 sm:py-5"
             >
-              <span className="flex-1 text-[15px] font-bold tracking-tight text-[color:var(--color-ink)] sm:text-[17px]">
+              <span className="flex-1 text-[15px] font-medium tracking-tight text-[color:var(--color-ink)] sm:text-[17px]">
                 {item.q}
               </span>
               <span

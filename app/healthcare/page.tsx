@@ -524,12 +524,12 @@ export default function HealthcarePage() {
           <div>
             <SectionLabel>AEO for healthcare</SectionLabel>
 
-            <h1 className="mt-3.5 text-balance text-[clamp(1.85rem,7.2vw,3.6rem)] font-bold leading-[1.02] tracking-[-0.035em] text-[color:var(--color-ink)] sm:mt-5">
+            <h1 className="mt-3.5 text-balance text-[clamp(1.85rem,7.2vw,3.6rem)] font-medium leading-[1.02] tracking-[-0.035em] text-[color:var(--color-ink)] sm:mt-5">
               Be the clinic{" "}
               <span className="text-[color:var(--color-ink-3)]">AI recommends</span>
             </h1>
 
-            <p className="mt-3.5 max-w-xl text-pretty text-[15px] leading-relaxed text-[color:var(--color-ink-2)] sm:mt-6 sm:text-[19px]">
+            <p className="lede mt-3.5 max-w-xl text-pretty text-[17px] leading-relaxed text-[color:var(--color-ink-2)] sm:mt-6 sm:text-[19px]">
               When a patient asks ChatGPT for the best implant dentist in Manchester, one or two
               clinics get named. Right now it isn&apos;t yours. We fix that.
             </p>
@@ -614,7 +614,7 @@ export default function HealthcarePage() {
           {/* Left column carries the headline and the two figures, so it is not
               a headline sitting over empty space beside six paragraphs. */}
           <div>
-            <h2 className="text-balance text-[clamp(1.7rem,4.4vw,3.2rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
+            <h2 className="text-balance text-[clamp(1.7rem,4.4vw,3.2rem)] font-medium leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
               Your next patient is asking an AI where to go{" "}
               <span className="text-[color:var(--color-ink-3)]">and you never see the question</span>
             </h2>
@@ -662,7 +662,7 @@ export default function HealthcarePage() {
               </p>
             </div>
 
-            <p className="mt-8 text-[17px] font-semibold leading-snug text-[color:var(--color-ink)] sm:text-[18px]">
+            <p className="mt-8 text-[17px] font-medium leading-snug text-[color:var(--color-ink)] sm:text-[18px]">
               The clinics getting named aren&apos;t always the biggest. They&apos;re the ones an AI
               can read, verify and confidently recommend.
             </p>
@@ -685,7 +685,7 @@ export default function HealthcarePage() {
       <section id="system" className="border-y border-black/[0.06] bg-[color:var(--color-paper-2)]">
         <div className="mx-auto max-w-6xl px-5 py-7 sm:px-6 sm:py-28">
           <SectionLabel>How it works</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
+          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-medium leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
             The Territory Engine.{" "}
             <span className="text-[color:var(--color-ink-3)]">
               Four moves, run every month until you&apos;re the answer.
@@ -713,7 +713,7 @@ export default function HealthcarePage() {
         <section id="territories" className="border-b border-black/[0.06] bg-white">
           <div className="mx-auto max-w-5xl px-5 py-7 sm:px-6 sm:py-24">
             <SectionLabel>Availability</SectionLabel>
-            <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
+            <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-medium leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
               Can we work with your clinic?{" "}
               <span className="text-[color:var(--color-ink-3)]">Check the map.</span>
             </h2>
@@ -737,7 +737,7 @@ export default function HealthcarePage() {
       {/* ===================== 5 · PROOF ===================== */}
       <section id="proof" className="mx-auto max-w-6xl px-5 py-7 sm:px-6 sm:py-28">
         <SectionLabel>Proof</SectionLabel>
-        <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
+        <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-medium leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
           We&apos;ve done this outside healthcare{" "}
           <span className="text-[color:var(--color-ink-3)]">and we&apos;ll show you the work</span>
         </h2>
@@ -758,7 +758,7 @@ export default function HealthcarePage() {
                 height={184}
                 className="h-7 w-auto"
               />
-              <p className="mt-6 text-balance text-[clamp(1.5rem,3.2vw,2.2rem)] font-bold leading-[1.15] tracking-[-0.03em]">
+              <p className="mt-6 text-balance text-[clamp(1.5rem,3.2vw,2.2rem)] font-medium leading-[1.15] tracking-[-0.03em]">
                 From invisible in AI answers to the name ChatGPT gives when someone asks for tax
                 help.
               </p>
@@ -796,7 +796,7 @@ export default function HealthcarePage() {
         <div className="mt-5 grid gap-px overflow-hidden rounded-[1.5rem] border border-black/[0.08] bg-black/[0.06] sm:mt-6 sm:grid-cols-3">
           {TRANSFERS.map((c) => (
             <div key={c.h} className="bg-[color:var(--color-paper)] p-5 sm:p-7">
-              <p className="text-[15px] font-bold tracking-tight text-[color:var(--color-ink)] sm:text-[16px]">
+              <p className="text-[15px] font-medium tracking-tight text-[color:var(--color-ink)] sm:text-[16px]">
                 {c.h}
               </p>
               <p className="mt-2.5 text-[14px] leading-relaxed text-[color:var(--color-ink-2)] sm:text-[15px]">
@@ -858,7 +858,7 @@ export default function HealthcarePage() {
       <section id="team" className="border-y border-black/[0.06] bg-[color:var(--color-paper-2)]">
         <div className="mx-auto max-w-3xl px-5 py-7 sm:px-6 sm:py-28">
           <SectionLabel>Who you&apos;ll work with</SectionLabel>
-          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
+          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-medium leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
             You work with me.{" "}
             <span className="text-[color:var(--color-ink-3)]">Not an account manager.</span>
           </h2>
@@ -900,7 +900,7 @@ export default function HealthcarePage() {
             </div>
 
             <div className="mt-9 min-w-0 sm:mt-0">
-              <p className="text-[16px] font-bold leading-tight tracking-tight text-[color:var(--color-ink)]">
+              <p className="text-[16px] font-medium leading-tight tracking-tight text-[color:var(--color-ink)]">
                 Ben Martland
               </p>
               <p className="mt-0.5 text-[13px] text-[color:var(--color-ink-3)]">
@@ -918,7 +918,7 @@ export default function HealthcarePage() {
             </div>
           </div>
 
-          <p className="mt-12 border-l-2 border-[color:var(--color-pine)] pl-4 text-[17px] font-bold leading-snug tracking-tight text-[color:var(--color-ink)] sm:text-[19px]">
+          <p className="mt-12 border-l-2 border-[color:var(--color-pine)] pl-4 text-[17px] font-medium leading-snug tracking-tight text-[color:var(--color-ink)] sm:text-[19px]">
             If your regulator would not sign it off, we will not publish it.
           </p>
 
@@ -945,7 +945,7 @@ export default function HealthcarePage() {
             <span className="h-1.5 w-1.5 rounded-full bg-[color:var(--color-domigreen)]" />
             Pricing
           </span>
-          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-bold leading-[1.06] tracking-[-0.035em] text-[color:var(--color-paper)]">
+          <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-medium leading-[1.06] tracking-[-0.035em] text-[color:var(--color-paper)]">
             One programme. One goal.{" "}
             <span className="text-[color:var(--color-paper)]/55">Your patch held exclusively.</span>
           </h2>
@@ -988,7 +988,7 @@ export default function HealthcarePage() {
               and works on touch without a handler. */}
           <details className="group mt-10 overflow-hidden rounded-[1.5rem] border border-white/12 bg-white/[0.04] sm:mt-16 [&_summary::-webkit-details-marker]:hidden">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 sm:px-8">
-              <span className="text-[15px] font-bold tracking-tight text-[color:var(--color-paper)] sm:text-[17px]">
+              <span className="text-[15px] font-medium tracking-tight text-[color:var(--color-paper)] sm:text-[17px]">
                 What&apos;s inside the engine
               </span>
               <span className="flex items-center gap-2 text-[13px] text-[color:var(--color-paper)]/50">
@@ -1031,7 +1031,7 @@ export default function HealthcarePage() {
             <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-domigreen)]">
               Our guarantee
             </span>
-            <p className="mx-auto mt-3 max-w-2xl text-balance text-[clamp(1.15rem,2.6vw,1.6rem)] font-bold leading-snug tracking-tight text-[color:var(--color-paper)]">
+            <p className="mx-auto mt-3 max-w-2xl text-balance text-[clamp(1.15rem,2.6vw,1.6rem)] font-medium leading-snug tracking-tight text-[color:var(--color-paper)]">
               Cited on your priority prompts by month four, or we work free until you are.
             </p>
             <p className="mx-auto mt-3 max-w-xl text-[14px] leading-relaxed text-[color:var(--color-paper)]/60">
@@ -1061,7 +1061,7 @@ export default function HealthcarePage() {
               </svg>
             </span>
             <div>
-              <p className="text-[16px] font-bold leading-snug tracking-tight text-[color:var(--color-paper)] sm:text-[18px]">
+              <p className="text-[16px] font-medium leading-snug tracking-tight text-[color:var(--color-paper)] sm:text-[18px]">
                 We will never work with a competitor competing for the same prompts.
               </p>
               <p className="mt-2 text-[14px] leading-relaxed text-[color:var(--color-paper)]/60">
@@ -1085,7 +1085,7 @@ export default function HealthcarePage() {
       {/* ===================== 8 · FAQ ===================== */}
       <section className="border-t border-black/[0.06] bg-[color:var(--color-paper-2)]">
         <div className="mx-auto max-w-3xl px-5 py-7 sm:px-6 sm:py-28">
-          <h2 className="text-balance text-center text-[clamp(1.6rem,4vw,2.6rem)] font-bold leading-[1.1] tracking-[-0.03em] text-[color:var(--color-ink)]">
+          <h2 className="text-balance text-center text-[clamp(1.6rem,4vw,2.6rem)] font-medium leading-[1.1] tracking-[-0.03em] text-[color:var(--color-ink)]">
             Questions clinic owners ask
           </h2>
           <div className="mt-5 sm:mt-10">
@@ -1103,7 +1103,7 @@ export default function HealthcarePage() {
           </p>
 
           <div className="mt-10 flex flex-col items-center gap-4 text-center">
-            <p className="text-[16px] font-semibold tracking-tight text-[color:var(--color-ink)]">
+            <p className="text-[16px] font-medium tracking-tight text-[color:var(--color-ink)]">
               Still got a question? Ask it on the call.
             </p>
             <Cta href={site.calendly} />
@@ -1115,7 +1115,7 @@ export default function HealthcarePage() {
       <section className="relative bg-[color:var(--color-paper)]">
         <div aria-hidden className="pointer-events-none absolute inset-0 grid-backdrop-light" />
         <div className="relative mx-auto max-w-3xl px-5 py-10 text-center sm:px-6 sm:py-32">
-          <h2 className="mx-auto max-w-2xl text-balance text-[clamp(2rem,5vw,3.4rem)] font-bold leading-[1.04] tracking-[-0.035em] text-[color:var(--color-ink)]">
+          <h2 className="mx-auto max-w-2xl text-balance text-[clamp(2rem,5vw,3.4rem)] font-medium leading-[1.04] tracking-[-0.035em] text-[color:var(--color-ink)]">
             Find out what AI says about your clinic{" "}
             <span className="text-[color:var(--color-ink-3)]">before your competitor does</span>
           </h2>

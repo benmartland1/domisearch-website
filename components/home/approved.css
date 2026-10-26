@@ -855,3 +855,22 @@
 /* Closing visibility-review band and footer run edge to edge; content keeps the 1400px column. */
 .ds-site .ds-review.ds-wrap,.ds-site .ds-footer.ds-wrap{max-width:none;padding-left:max(5%,calc(50% - 630px));padding-right:max(5%,calc(50% - 630px))}
 @media(max-width:700px){.ds-site .ds-review.ds-wrap,.ds-site .ds-footer.ds-wrap{padding-left:6%;padding-right:6%}}
+/* Founder section, redone 2026-10-26: a contained portrait card beside the copy instead of a half-screen photo. */
+.ds-site .ds-people{display:block;background:#eeeae0;padding:88px 0}
+.ds-site .ds-founder-inner{display:grid;grid-template-columns:minmax(240px,340px) minmax(0,600px);justify-content:center;gap:clamp(48px,7vw,104px);align-items:center}
+.ds-site .ds-founder-photo{min-height:0;height:auto;aspect-ratio:auto;margin:0}
+.ds-site .ds-founder-frame{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:4px;background:#d9d5ca}
+.ds-site .ds-founder-photo .ds-founder-frame>img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
+.ds-site .ds-founder-caption{position:static;margin-top:14px;color:#17271f;font-size:14px;font-weight:500;text-shadow:none}
+.ds-site .ds-founder-caption small{font-size:12px;font-weight:400;color:#536157;opacity:1;margin-top:2px}
+.ds-site .ds-note-founder,.ds-site.ds-home .ds-note-founder{right:18px;bottom:14px;font-size:28px}
+.ds-site .ds-people .ds-founder-copy,.ds-site.ds-home .ds-people .ds-founder-copy{padding:0;max-width:36em}
+@media(max-width:700px){
+ .ds-site .ds-people{padding:56px 0}
+ .ds-site .ds-founder-inner{grid-template-columns:1fr;gap:32px}
+ .ds-site .ds-founder-photo{display:flex;align-items:center;gap:18px;aspect-ratio:auto}
+ .ds-site .ds-founder-frame{width:112px;flex:none;aspect-ratio:4/5}
+ .ds-site .ds-founder-caption{margin-top:0;font-size:16px}
+ .ds-site .ds-founder-caption small{font-size:13px}
+ .ds-site .ds-note-founder,.ds-site.ds-home .ds-note-founder{display:none}
+}

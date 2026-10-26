@@ -540,46 +540,50 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
 
         {/* ===== Meet the founder ===== */}
         <section className="ds-people" id="about">
-          <figure className="ds-founder-photo">
-            <Image
-              src="/brand/founder.png"
-              alt="Ben Martland, founder of DomiSearch"
-              width={550}
-              height={550}
-              sizes="(max-width: 700px) 100vw, 46vw"
-            />
-            <figcaption className="ds-founder-caption">
-              Ben Martland
-              <small>Founder, DomiSearch · Manchester, UK</small>
-            </figcaption>
-            <Note tone="paper" rotate={-3} className="ds-note-founder">
-              Ben
-            </Note>
-          </figure>
-          <div className="ds-founder-copy">
-            <span className="ds-eyebrow">Meet the founder</span>
-            <h2>
-              Hi, I’m Ben.{" "}
-              <br />
-              Let’s make your{" "}
-              <br />
-              expertise visible.
-            </h2>
-            <p>
-              I founded DomiSearch in 2023, after five years in search marketing, running paid search for
-              e-commerce and service businesses in-house and agency-side.
-            </p>
-            <p>
-              Today I lead our AI search research and delivery and personally review every client
-              account. We work with UK service businesses, with recruitment agencies a core focus.
-            </p>
-            <div className="ds-actions">
-              <ExternalLink className="ds-text-link" href={site.calendly}>
-                Book a call with us <span className="ds-icon"><ArrowUpRight /></span>
-              </ExternalLink>
-              <a className="ds-text-link" href="/about">
-                More about the agency <span className="ds-icon"><ArrowUpRight /></span>
-              </a>
+          <div className="ds-founder-inner ds-wrap">
+            <figure className="ds-founder-photo">
+              <div className="ds-founder-frame">
+                <Image
+                  src="/brand/founder.png"
+                  alt="Ben Martland, founder of DomiSearch"
+                  width={550}
+                  height={550}
+                  sizes="(max-width: 700px) 120px, 360px"
+                />
+                <Note tone="paper" rotate={-3} className="ds-note-founder">
+                  Ben
+                </Note>
+              </div>
+              <figcaption className="ds-founder-caption">
+                Ben Martland
+                <small>Founder, DomiSearch · Manchester, UK</small>
+              </figcaption>
+            </figure>
+            <div className="ds-founder-copy">
+              <span className="ds-eyebrow">Meet the founder</span>
+              <h2>
+                Hi, I’m Ben.{" "}
+                <br />
+                Let’s make your{" "}
+                <br />
+                expertise visible.
+              </h2>
+              <p>
+                I founded DomiSearch in 2023, after five years in search marketing, running paid search for
+                e-commerce and service businesses in-house and agency-side.
+              </p>
+              <p>
+                Today I lead our AI search research and delivery and personally review every client
+                account. We work with UK service businesses, with recruitment agencies a core focus.
+              </p>
+              <div className="ds-actions">
+                <ExternalLink className="ds-text-link" href={site.calendly}>
+                  Book a call with us <span className="ds-icon"><ArrowUpRight /></span>
+                </ExternalLink>
+                <a className="ds-text-link" href="/about">
+                  More about the agency <span className="ds-icon"><ArrowUpRight /></span>
+                </a>
+              </div>
             </div>
           </div>
         </section>

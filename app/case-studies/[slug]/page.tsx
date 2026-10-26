@@ -151,7 +151,7 @@ export default async function CaseStudyPage({ params }: Props) {
               </ScrollReveal>
 
               <ScrollReveal delay={200}>
-                <p className="mt-6 max-w-xl text-lg text-[color:var(--color-muted)]">
+                <p className="lede lede-lg mt-6 max-w-xl text-lg text-[color:var(--color-muted)]">
                   {cs.excerpt}
                 </p>
               </ScrollReveal>
