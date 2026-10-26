@@ -94,12 +94,12 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                   answer.
                 </p>
                 <div className="ds-actions ds-hero-fade" style={{ "--d": "1050ms" } as CSSProperties}>
-                  <a className="ds-button" href="#visibility-check">
-                    Request my AI visibility review <Arrow />
-                  </a>
+                  <ExternalLink className="ds-button" href={site.calendly}>
+                    Book a call <Arrow />
+                  </ExternalLink>
                 </div>
                 <p className="ds-hero-note ds-hero-fade" style={{ "--d": "1150ms" } as CSSProperties}>
-                  Free check across ChatGPT, Gemini &amp; Perplexity.
+                  Free 30-minute call. We’ll show you where you appear in AI answers.
                 </p>
                 <a
                   className="ds-text-link ds-hero-fade"
@@ -639,16 +639,12 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
               <br />
               <span>you stand.</span>
             </h2>
-            <p>A free review of where your business appears in AI answers, and where we’d focus first.</p>
+            <p>Book a free 30-minute call. We’ll show you where your business appears in AI answers, and where we’d focus first.</p>
             <ul className="ds-review-checks">
               <li>Where your business appears today</li>
               <li>Who is being recommended instead</li>
               <li>The gaps we’d work on first</li>
             </ul>
-            <p className="ds-talk-option">
-              Prefer to talk first?{" "}
-              <ExternalLink href={site.calendly}>Book a 30-minute call <ArrowUpRight /></ExternalLink>
-            </p>
           </div>
           <div className="ds-form-column">
             <div className="ds-note-form">

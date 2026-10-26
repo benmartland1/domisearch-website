@@ -10,10 +10,10 @@ import { MobileSectors, SectorsMenu } from "./SectorsMenu";
 
 /**
  * The site navigation, in the approved design: logo lockup with the solid
- * green ring, the site links with the Sectors dropdown, and the visibility
- * review button. Used on every page, including the sector landing pages.
+ * green ring, the site links with the Sectors dropdown, and the Book a call
+ * button. Used on every page, including the sector landing pages.
  */
-const CTA = { label: "Get a visibility review", href: "/#visibility-check" };
+const CTA = { label: "Book a call", href: site.calendly };
 
 export function SiteNav() {
   const pathname = usePathname();
@@ -45,7 +45,7 @@ export function SiteNav() {
             </Link>
           ),
         )}
-        <Link className="ds-button" href={CTA.href}>
+        <Link className="ds-button" href={CTA.href} target="_blank" rel="noopener">
           {CTA.label} <span className="ds-arrow"><ArrowUpRight /></span>
         </Link>
       </nav>
@@ -69,7 +69,7 @@ export function SiteNav() {
               </Link>
             ),
           )}
-          <Link href={CTA.href} onClick={() => menu.current?.removeAttribute("open")}>
+          <Link href={CTA.href} target="_blank" rel="noopener" onClick={() => menu.current?.removeAttribute("open")}>
             {CTA.label} <ArrowUpRight />
           </Link>
         </nav>

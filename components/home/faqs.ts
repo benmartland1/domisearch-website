@@ -41,8 +41,8 @@ export const homeFaqs = [
       "We can’t promise a date for a particular AI recommendation. The initial 90-day programme gives us a defined period to deliver the agreed work, track changes and review the evidence. Your starting position, competition and pace of approvals all affect how quickly visibility moves.",
   },
   {
-    question: "What’s in the free visibility check?",
+    question: "What happens on the free call?",
     answer:
-      "We check where you appear across ChatGPT, Gemini and Perplexity and send back a short audit: where you stand, who is being recommended instead and what we would work on first. You can also book a 30-minute call to talk it through.",
+      "It’s 30 minutes with Ben. We look at where you appear across ChatGPT, Gemini and Perplexity and walk you through it: where you stand, who is being recommended instead and what we would work on first.",
   },
 ];

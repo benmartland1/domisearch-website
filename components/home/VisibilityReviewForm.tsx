@@ -6,9 +6,9 @@ import { site } from "@/lib/site";
 import { trackMeta } from "@/lib/meta";
 
 /**
- * The "Your AI visibility review" form from the approved design, wired to the
- * same /api/audit-request endpoint as the previous homepage form, so requests
- * reach Ben by email exactly as before.
+ * The closing "Book a call" form, wired to the same /api/audit-request
+ * endpoint as before so the details still reach Ben by email; once sent, the
+ * visitor goes straight to Calendly with their name and email prefilled.
  */
 export function VisibilityReviewForm() {
   const [name, setName] = useState("");
@@ -42,14 +42,12 @@ export function VisibilityReviewForm() {
         const body = await res.json().catch(() => ({}));
         throw new Error(body?.error ?? "Something went wrong. Please try again.");
       }
-      trackMeta("Lead", { content_name: "Homepage AI Visibility Review" });
-      setStatus({
-        ok: true,
-        text: `Thanks, ${name.trim()}. We'll check ${website.trim()} across ChatGPT, Gemini and Perplexity and send your review to ${email.trim()}.`,
-      });
-      setName("");
-      setEmail("");
-      setWebsite("");
+      trackMeta("Lead", { content_name: "Homepage Book a Call" });
+      setStatus({ ok: true, text: `Thanks, ${name.trim()}. Taking you to the calendar…` });
+      const calendar = new URL(site.calendly);
+      calendar.searchParams.set("name", name.trim());
+      calendar.searchParams.set("email", email.trim());
+      window.location.assign(calendar.toString());
     } catch (err) {
       setStatus({ ok: false, text: err instanceof Error ? err.message : "Something went wrong. Please try again." });
     } finally {
@@ -59,8 +57,8 @@ export function VisibilityReviewForm() {
 
   return (
     <form className="ds-form" onSubmit={submit} noValidate>
-      <h3>Your AI visibility review</h3>
-      <p>Tell us where to look and where to send it.</p>
+      <h3>Book your call</h3>
+      <p>Tell us who you are, then pick a time that suits you.</p>
       {/* Honeypot: hidden from people, filled in by bots. */}
       <input
         type="text"
@@ -111,10 +109,10 @@ export function VisibilityReviewForm() {
         />
       </label>
       <button className="ds-button ds-button-green" type="submit" disabled={sending}>
-        {sending ? "Sending…" : "Request my free review"} <span className="ds-arrow"><ArrowUpRight /></span>
+        {sending ? "Sending…" : "Book a call"} <span className="ds-arrow"><ArrowUpRight /></span>
       </button>
       <p className="ds-form-note">
-        We’ll use these details to respond to your request.{" "}
+        We’ll use these details to prepare for your call.{" "}
         <a href="/privacy" style={{ textDecoration: "underline" }}>
           Privacy policy
         </a>
@@ -125,9 +123,8 @@ export function VisibilityReviewForm() {
         {status?.ok ? (
           <>
             {" "}
-            Prefer to talk it through?{" "}
-            <a href={site.calendly} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>
-              Book a 30-minute call <ArrowUpRight />
+            <a href={site.calendly} style={{ textDecoration: "underline" }}>
+              Open the calendar <ArrowUpRight />
             </a>
           </>
         ) : null}

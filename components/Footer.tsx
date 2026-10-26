@@ -34,7 +34,7 @@ export function Footer({ note }: { note?: string }) {
           <Link href="/services/aeo">AI Search Visibility</Link>
           <Link href="/services/google-ads">Google Ads Management</Link>
           <Link href="/#results">Client results</Link>
-          <Link href="/#visibility-check">Get a visibility review <ArrowUpRight /></Link>
+          <Link href={site.calendly} target="_blank" rel="noopener">Book a call <ArrowUpRight /></Link>
         </div>
         <div className="ds-footer-links">
           <strong>Sectors</strong>

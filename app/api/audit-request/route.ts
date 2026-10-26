@@ -75,23 +75,23 @@ export async function POST(request: Request) {
       from: `DomiSearch Website <${fromEmail}>`,
       to: [notifyTo],
       replyTo: email,
-      subject: `AI visibility check request: ${name} (${cleanHost})`,
-      text: `New AI visibility audit request (from the homepage).
+      subject: `Book a call lead: ${name} (${cleanHost})`,
+      text: `New Book a call lead (from the homepage form).
 
 Name:    ${name}
 Website: ${website}
 Email:   ${email}
 Phone:   ${phone || "not provided"}
 
-Run the check and reach out with their audit. Reply to this email to reach them.`,
+They were sent on to Calendly to pick a time. If no booking arrives, follow up. Reply to this email to reach them.`,
       html: `
         <div style="font-family: -apple-system, system-ui, sans-serif; max-width: 560px; margin: 0 auto; padding: 32px; color: #1a1a1a;">
-          <h2 style="margin: 0 0 16px; font-size: 20px; font-weight: 600;">New AI visibility audit request</h2>
+          <h2 style="margin: 0 0 16px; font-size: 20px; font-weight: 600;">New Book a call lead</h2>
           <p style="line-height: 1.6; margin: 0 0 8px;"><strong>Name:</strong> ${name}</p>
           <p style="line-height: 1.6; margin: 0 0 8px;"><strong>Website:</strong> <a href="${website}" style="color: #01a36b;">${website}</a></p>
           <p style="line-height: 1.6; margin: 0 0 8px;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #01a36b;">${email}</a></p>
           <p style="line-height: 1.6; margin: 0 0 16px;"><strong>Phone:</strong> ${phone ? `<a href="tel:${phone}" style="color: #01a36b;">${phone}</a>` : "not provided"}</p>
-          <p style="line-height: 1.6; margin: 0; color: #666; font-size: 14px;">From the homepage. Run the check and reach out with their audit.</p>
+          <p style="line-height: 1.6; margin: 0; color: #666; font-size: 14px;">From the homepage form. They were sent on to Calendly to pick a time. If no booking arrives, follow up.</p>
         </div>
       `,
     });

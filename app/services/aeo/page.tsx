@@ -458,7 +458,6 @@ export default function AEOPage() {
       <CTA
         heading="Find out where you stand in AI search."
         sub="Book a free discovery call. If there is a fit, we research your current AI visibility and walk you through an audit and a proposed 90-day roadmap: the buyer questions, who is being recommended today, the gaps and the work we would do first."
-        secondary={{ label: "Request a visibility check", href: "/#visibility-check" }}
       />
     </>
   );
