@@ -591,13 +591,13 @@
 /* ---- Homepage hero entrance (runs once on load) ---- */
 @keyframes ds-hero-word{from{opacity:0;transform:translateY(.55em) rotate(1.5deg)}to{opacity:1;transform:none}}
 @keyframes ds-hero-fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@keyframes ds-hero-ink{from{background-size:0% .17em}to{background-size:100% .17em}}
+@keyframes ds-hero-ink{from{background-size:0% .11em}to{background-size:100% .11em}}
 @keyframes ds-hero-phones{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:none}}
 .ds-site .ds-hero-word{display:inline-block;opacity:0;transform:translateY(.55em) rotate(1.5deg);transform-origin:0 100%;animation:ds-hero-word .85s cubic-bezier(.2,.8,.2,1) var(--d,0ms) forwards}
 .ds-site .ds-hero-fade{opacity:0;animation:ds-hero-fade .7s cubic-bezier(.2,.8,.2,1) var(--d,0ms) forwards}
-.ds-site .ds-hero-ink{box-shadow:none;background-image:linear-gradient(var(--ds-green),var(--ds-green));background-repeat:no-repeat;background-position:0 100%;background-size:0% .17em;animation:ds-hero-ink .6s cubic-bezier(.2,.8,.2,1) 1000ms forwards}
+.ds-site .ds-hero-ink{box-shadow:none;background-image:linear-gradient(var(--ds-green),var(--ds-green));background-repeat:no-repeat;background-position:0 100%;background-size:0% .11em;animation:ds-hero-ink .6s cubic-bezier(.2,.8,.2,1) 1000ms forwards}
 .ds-site .ds-hero-phones{opacity:0;animation:ds-hero-phones 1s cubic-bezier(.2,.8,.2,1) 350ms forwards}
-@media(prefers-reduced-motion:reduce){.ds-site .ds-hero-word,.ds-site .ds-hero-fade,.ds-site .ds-hero-phones{opacity:1;transform:none;animation:none}.ds-site .ds-hero-ink{animation:none;background-size:100% .17em}}
+@media(prefers-reduced-motion:reduce){.ds-site .ds-hero-word,.ds-site .ds-hero-fade,.ds-site .ds-hero-phones{opacity:1;transform:none;animation:none}.ds-site .ds-hero-ink{animation:none;background-size:100% .11em}}
 
 .ds-site .ds-arrow svg{width:1.05em;height:1.05em;vertical-align:-0.15em}
 .ds-site .ds-icon svg{width:1em;height:1em}
