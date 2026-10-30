@@ -598,9 +598,9 @@
 .ds-site .ds-hero-fade{opacity:0;animation:ds-hero-fade .7s cubic-bezier(.2,.8,.2,1) var(--d,0ms) forwards}
 .ds-site .ds-hero-ink{box-shadow:none;background-image:linear-gradient(var(--ds-green),var(--ds-green));background-repeat:no-repeat;background-position:0 100%;background-size:0% .11em;animation:ds-hero-ink .6s cubic-bezier(.2,.8,.2,1) 1000ms forwards}
 /* AI platform logos sitting in the headline, between "AI" and "recommends." */
-.ds-site .ds-hero-logos{display:inline-flex;align-items:center;vertical-align:.14em;margin-left:.04em}
-.ds-site .ds-hero-logo{display:inline-flex;align-items:center;justify-content:center;width:.78em;height:.78em;border-radius:50%;background:#fff;box-shadow:0 0 0 .035em var(--ds-paper),0 .03em .1em rgba(0,0,0,.12);color:var(--ds-forest)}
-.ds-site .ds-hero-logo+.ds-hero-logo{margin-left:-.13em}
+.ds-site .ds-hero-logos{display:inline-flex;align-items:center;vertical-align:.1em;margin-left:.04em}
+.ds-site .ds-hero-logo{display:inline-flex;align-items:center;justify-content:center;width:.86em;height:.86em;border-radius:50%;background:#fff;box-shadow:0 0 0 .035em var(--ds-paper),0 .03em .1em rgba(0,0,0,.12);color:var(--ds-forest)}
+.ds-site .ds-hero-logo+.ds-hero-logo{margin-left:-.07em}
 .ds-site .ds-hero-logo img{width:60%;height:60%;object-fit:contain}
 .ds-site .ds-hero-phones{opacity:0;animation:ds-hero-phones 1s cubic-bezier(.2,.8,.2,1) 350ms forwards}
 @media(prefers-reduced-motion:reduce){.ds-site .ds-hero-word,.ds-site .ds-hero-fade,.ds-site .ds-hero-phones{opacity:1;transform:none;animation:none}.ds-site .ds-hero-ink{animation:none;background-size:100% .11em}}
