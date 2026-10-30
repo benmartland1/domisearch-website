@@ -112,9 +112,9 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
               <figure className="ds-phones ds-hero-phones">
                 <div className="ds-note-hero">
                   <Note rotate={-3}>
-                    Before they even visit
+                    Where your next client
                     <br />
-                    your website.
+                    builds their shortlist.
                   </Note>
                   <ArrowSwoop className="ds-note-hero-arrow" />
                 </div>
