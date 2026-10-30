@@ -85,8 +85,20 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                   <span className="ds-hero-word" style={{ "--d": "280ms" } as CSSProperties}>brand</span>{" "}
                   <br />
                   <span className="ds-hero-word" style={{ "--d": "400ms" } as CSSProperties}>AI</span>{" "}
+                  <span className="ds-hero-logos" aria-hidden="true">
+                    {ENGINES.map((e, i) => (
+                      <span
+                        key={e.name}
+                        className="ds-hero-logo ds-hero-word"
+                        style={{ "--d": `${460 + i * 60}ms` } as CSSProperties}
+                      >
+                        <Image src={e.icon} alt="" width={24} height={24} />
+                      </span>
+                    ))}
+                  </span>
+                  <br />
                   <span className="ds-underlined ds-hero-ink">
-                    <span className="ds-hero-word" style={{ "--d": "480ms" } as CSSProperties}>recommends.</span>
+                    <span className="ds-hero-word" style={{ "--d": "760ms" } as CSSProperties}>recommends.</span>
                   </span>
                 </h1>
                 <p className="ds-lead ds-hero-fade" style={{ "--d": "900ms" } as CSSProperties}>
