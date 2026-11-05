@@ -962,3 +962,26 @@ body:has(.ds-site) {
 .ds-site .lede { font-family: DSAxiforma, Arial, sans-serif; font-weight: 300; }
 .ds-site .lede-lg { font-size: 20px; line-height: 1.55; }
 @media (max-width: 700px) { .ds-site .lede-lg { font-size: 18px; } }
+
+/* -------------------------------------------------------------------------- */
+/* Site-wide booking widget (components/BookingWidget.tsx)                     */
+/* -------------------------------------------------------------------------- */
+.booking-widget [hidden] {
+  display: none !important;
+}
+@media (min-width: 640px) {
+  /* Anchored above the 56px launcher (which becomes the close control);
+     tall enough for Calendly's month view, time slots and booking form. */
+  .booking-panel {
+    right: max(1.25rem, env(safe-area-inset-right));
+    bottom: calc(max(1.25rem, env(safe-area-inset-bottom)) + 4.25rem);
+    width: min(420px, calc(100vw - 2.5rem));
+    height: min(700px, calc(100dvh - 7.5rem));
+  }
+}
+.booking-embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutChrome } from "@/components/LayoutChrome";
 import { MetaPixel } from "@/components/MetaPixel";
+import { BookingWidget } from "@/components/BookingWidget";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
@@ -79,6 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <LayoutChrome header={<Header />} footer={<Footer />}>
           {children}
         </LayoutChrome>
+        <BookingWidget />
         <Analytics />
         <SpeedInsights />
       </body>

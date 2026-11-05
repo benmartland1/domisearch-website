@@ -218,6 +218,16 @@ export function StickyCta({
 
   const show = past && !atFoot;
 
+  // Tell the site-wide booking launcher the bar is up, so it steps aside on
+  // mobile instead of sitting on top of this button.
+  useEffect(() => {
+    const html = document.documentElement;
+    html.dataset.stickyCta = show ? "on" : "off";
+    return () => {
+      delete html.dataset.stickyCta;
+    };
+  }, [show]);
+
   return (
     <div
       className={`fixed inset-x-0 bottom-0 z-40 border-t border-black/[0.08] bg-[color:var(--color-paper)]/95 backdrop-blur transition-transform duration-300 sm:hidden ${

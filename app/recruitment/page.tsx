@@ -37,13 +37,14 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  // The root layout's title template appends " · DomiSearch" itself.
-  title: "AI Search Visibility for Recruitment Agencies",
+  // Absolute, so the commercial intent ("AEO agency") leads the title rather
+  // than the layout's " · DomiSearch" template.
+  title: { absolute: "AEO Agency for UK Recruitment Firms | DomiSearch" },
   description:
-    "Hiring managers now ask ChatGPT and Gemini which recruitment agency to use. DomiSearch works to make your firm the one AI names, for your sectors and your cities.",
+    "Specialist AEO for UK recruitment firms. Buyer-question research, technical improvements, content and measurement to help your agency appear in AI search.",
   alternates: { canonical: "/recruitment" },
   openGraph: {
-    title: "Be the recruitment firm AI recommends",
+    title: "AEO Agency for UK Recruitment Firms | DomiSearch",
     description:
       "When a hiring manager asks ChatGPT for the best construction recruiter in Manchester, one firm gets named. We make it yours.",
     url: `${site.url}/recruitment`,
@@ -92,10 +93,10 @@ const STATS = [
   {
     value: "600+",
     label: "AI mentions a month",
-    note: "Taxd, across every major engine",
+    note: "Taxd, an accountancy client",
   },
   { value: "5.0", label: "Trustpilot rating", note: "Verified client reviews" },
-  { value: "5", label: "AI engines tracked", note: "Monthly, prompt by prompt" },
+  { value: "5", label: "AI engines tracked", note: "Daily, prompt by prompt" },
 ];
 
 const STEPS = [
@@ -119,9 +120,9 @@ const STEPS = [
   },
   {
     n: "04",
-    title: "Tracked monthly",
+    title: "Tracked daily",
     summary: "Movement reported every month, engine by engine.",
-    body: "The Territory Engine dashboard monitors your prompts across ChatGPT, Gemini, Perplexity, Copilot and Google AI, and reports movement every month. Visibility, share of voice, and which sources the models pulled from. You see the same screen we do.",
+    body: "The Territory Engine dashboard monitors your prompts daily across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews, and reports movement every month. Visibility, share of voice, and which sources the models pulled from. You see the same screen we do.",
   },
 ];
 
@@ -260,6 +261,40 @@ const TEAM = [
   },
 ];
 
+/**
+ * "Why DomiSearch for recruitment?" Criteria a buyer can use to compare
+ * agencies. Recruitment experience is Jake's personal background, not five
+ * years of recruitment AEO results; keep it attributed to him. Measurement
+ * wording must not promise a CRM integration or full attribution.
+ */
+const WHY_ROWS = [
+  {
+    matters: "Recruitment expertise",
+    brings:
+      "Jake Duffy brings five years of experience working in UK recruitment. That background informs how we approach your sectors, roles and client acquisition challenges.",
+  },
+  {
+    matters: "AI-search specialism",
+    brings:
+      "Research into buyer questions and cited sources, consistent business information, technical improvements and content that clearly answers hiring managers' questions.",
+  },
+  {
+    matters: "Commercial measurement",
+    brings:
+      "Daily AI-visibility tracking across five engines with a monthly report, alongside the enquiries and booked calls your site records. Where your CRM and attribution data allow, we connect that to pipeline; not every AI recommendation can be traced to a lead.",
+  },
+  {
+    matters: "UK market focus",
+    brings:
+      "Buyer-question research mapped to your sectors, disciplines and target cities, so the work reflects the employers you want to reach.",
+  },
+  {
+    matters: "Practical delivery",
+    brings:
+      "We implement agreed website improvements, create and publish content, and track changes through the programme.",
+  },
+];
+
 /** Moves with the last commit to this file. See lib/last-updated.ts. */
 const UPDATED = lastUpdated("app/recruitment/page.tsx");
 
@@ -269,7 +304,7 @@ const UPDATED = lastUpdated("app/recruitment/page.tsx");
  * match the pricing cards and stats below.
  */
 const SUMMARY =
-  "DomiSearch is a specialist AI search (AEO) agency for UK recruitment firms, based in Manchester. We make recruitment agencies the firms ChatGPT, Gemini and Perplexity name when hiring managers ask which recruiter to use - tracked monthly across five AI engines, priced from £2,450/month.";
+  "DomiSearch is a specialist AI search (AEO) agency for UK recruitment firms, based in Manchester. We make recruitment agencies the firms ChatGPT, Gemini and Perplexity name when hiring managers ask which recruiter to use - tracked daily across five AI engines and reported monthly, priced from £2,450/month.";
 
 const FAQS: FaqItem[] = [
   {
@@ -302,7 +337,7 @@ const FAQS: FaqItem[] = [
   },
   {
     q: "How do you prove it is working?",
-    a: "Monthly tracking across ChatGPT, Gemini, Perplexity, Copilot and Google AI on your specific prompts, showing whether you were mentioned, where you ranked in the answer, and which sources the model cited. It is the Territory Engine dashboard, and you see the same screen we do.",
+    a: "Daily tracking across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews on your specific prompts, reported monthly, showing whether you were mentioned, where you ranked in the answer, and which sources the model cited. It is the Territory Engine dashboard, and you see the same screen we do.",
   },
   {
     // Written to be lifted whole: 40-60 words, names the firm, both people and
@@ -391,7 +426,7 @@ export default function RecruitmentPage() {
         <div className="relative mx-auto grid max-w-6xl items-center gap-7 px-5 pb-10 pt-5 sm:gap-12 sm:px-6 sm:pb-16 sm:pt-14 lg:grid-cols-[1.02fr_minmax(0,1fr)] lg:gap-14 lg:pb-24">
           {/* Copy */}
           <div>
-            <SectionLabel>AEO for recruitment</SectionLabel>
+            <SectionLabel>AEO agency for UK recruitment firms</SectionLabel>
 
             <h1 className="mt-3.5 text-balance text-[clamp(1.85rem,7.2vw,3.6rem)] font-medium leading-[1.02] tracking-[-0.035em] text-[color:var(--color-ink)] sm:mt-5">
               Be the recruitment firm{" "}
@@ -467,6 +502,70 @@ export default function RecruitmentPage() {
               <div className="mt-0.5 text-[11px] leading-snug text-[color:var(--color-ink-3)] sm:mt-1 sm:text-[12px]">{s.note}</div>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ============ 2b · WHY DOMISEARCH FOR RECRUITMENT ============
+          Comparison criteria straight after the proof strip, as a real table so
+          every point is plain, visible HTML. Stacks into rows on mobile. */}
+      <section id="why-domisearch" aria-labelledby="why-domisearch-title" className="mx-auto max-w-6xl px-5 pt-9 sm:px-6 sm:pt-24">
+        <SectionLabel>How to compare agencies</SectionLabel>
+        <h2
+          id="why-domisearch-title"
+          className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-medium leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]"
+        >
+          Why DomiSearch for recruitment?
+        </h2>
+        <p className="mt-4 max-w-2xl text-pretty text-[16px] leading-relaxed text-[color:var(--color-ink-2)] sm:mt-6 sm:text-[17px]">
+          DomiSearch combines UK recruitment experience with specialist AI-search delivery. We
+          research the questions hiring managers ask, improve the content and information available
+          about your firm, and measure progress against agreed commercial goals.
+        </p>
+
+        <table className="mt-7 block w-full border-t border-black/[0.1] text-left sm:mt-12 sm:table sm:border-collapse">
+          <thead className="sr-only sm:not-sr-only sm:table-header-group">
+            <tr>
+              <th
+                scope="col"
+                className="py-4 pr-8 text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink-3)] sm:w-[32%]"
+              >
+                What matters
+              </th>
+              <th
+                scope="col"
+                className="py-4 text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-ink-3)]"
+              >
+                What DomiSearch brings
+              </th>
+            </tr>
+          </thead>
+          <tbody className="block sm:table-row-group">
+            {WHY_ROWS.map((row) => (
+              <tr key={row.matters} className="block border-b border-black/[0.08] py-5 sm:table-row sm:py-0">
+                <th
+                  scope="row"
+                  className="block text-[16px] font-semibold tracking-tight text-[color:var(--color-ink)] sm:table-cell sm:py-6 sm:pr-8 sm:align-top sm:text-[17px]"
+                >
+                  {row.matters}
+                </th>
+                <td className="mt-1.5 block text-[15px] leading-relaxed text-[color:var(--color-ink-2)] sm:mt-0 sm:table-cell sm:py-6 sm:align-top sm:text-[16px]">
+                  {row.brings}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <div className="mt-8 flex flex-col items-start gap-4 sm:mt-10 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+          <a
+            href="/blog/aeo-for-recruitment-agencies"
+            className="text-[15px] font-semibold text-[color:var(--color-pine)] underline underline-offset-4 hover:text-[color:var(--color-ink)]"
+          >
+            Read our guide to AEO for recruitment agencies
+          </a>
+          <Cta href={site.calendly} className="w-full shrink-0 sm:w-auto">
+            Book a discovery call
+          </Cta>
         </div>
       </section>
 
