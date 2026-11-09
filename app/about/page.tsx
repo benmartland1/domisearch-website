@@ -18,7 +18,7 @@ const aboutGraph = {
       "@id": `${site.url}/#organization`,
       name: "DomiSearch",
       url: site.url,
-      logo: `${site.url}/brand/logo.png`,
+      logo: `${site.url}/brand/logo-square.png`,
       foundingDate: "2023",
       description:
         "DomiSearch is a Manchester-based AI search visibility (Answer Engine Optimisation) agency for service businesses. It helps brands get discovered, mentioned and cited across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews, with recruitment agencies a core focus. DomiSearch also manages Google Ads for a smaller number of clients.",

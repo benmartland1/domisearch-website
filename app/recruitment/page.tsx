@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     description:
       "When a hiring manager asks ChatGPT for the best construction recruiter in Manchester, one firm gets named. We make it yours.",
     url: `${site.url}/recruitment`,
-    images: [{ url: "/brand/logo.png", width: 1200, height: 630, alt: "DomiSearch" }],
+    images: [{ url: "/brand/og-default.png", width: 1200, height: 630, alt: "DomiSearch" }],
   },
 };
 

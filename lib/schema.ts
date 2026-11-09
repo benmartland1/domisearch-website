@@ -6,7 +6,7 @@ export const organizationSchema = {
   "@id": `${site.url}/#organization`,
   name: site.name,
   url: site.url,
-  logo: `${site.url}/brand/logo.png`,
+  logo: `${site.url}/brand/logo-square.png`,
   email: site.email,
   telephone: site.phone,
   description:
@@ -28,7 +28,7 @@ export const professionalServiceSchema = {
   url: site.url,
   telephone: site.phone,
   email: site.email,
-  image: `${site.url}/brand/logo.png`,
+  image: `${site.url}/brand/logo-square.png`,
   priceRange: "£££",
   address: {
     "@type": "PostalAddress",
@@ -120,7 +120,7 @@ export function articleSchema(params: {
     publisher: {
       "@type": "Organization",
       name: site.name,
-      logo: { "@type": "ImageObject", url: `${site.url}/brand/logo.png` },
+      logo: { "@type": "ImageObject", url: `${site.url}/brand/logo-square.png` },
     },
     datePublished: params.date,
     dateModified: params.modified ?? params.date,

@@ -62,7 +62,7 @@ export default async function CaseStudyPage({ params }: Props) {
     publisher: {
       "@type": "Organization",
       name: site.name,
-      logo: { "@type": "ImageObject", url: `${site.url}/brand/logo.png` },
+      logo: { "@type": "ImageObject", url: `${site.url}/brand/logo-square.png` },
     },
     about: { "@type": "Organization", name: cs.client },
   };

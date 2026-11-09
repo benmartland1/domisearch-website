@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     description:
       "When a patient asks ChatGPT where to go for treatment, one or two clinics get named. We work to make it yours.",
     url: `${site.url}/healthcare`,
-    images: [{ url: "/brand/logo.png", width: 1200, height: 630, alt: "DomiSearch" }],
+    images: [{ url: "/brand/og-default.png", width: 1200, height: 630, alt: "DomiSearch" }],
   },
 };
 

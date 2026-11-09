@@ -21,7 +21,7 @@ export const authors: Record<string, Author> = {
   "DomiSearch Team": {
     name: "DomiSearch Team",
     role: "AI search visibility for service businesses",
-    image: "/brand/logo.png",
+    image: "/brand/logo-square.png",
     bio: "DomiSearch is an AI search visibility (AEO) agency for service businesses, helping brands get discovered, mentioned and cited across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews.",
     url: site.url,
     sameAs: [site.social.linkedin],

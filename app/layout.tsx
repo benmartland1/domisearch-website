@@ -51,13 +51,13 @@ export const metadata: Metadata = {
     title: "DomiSearch - AI Search Visibility Agency",
     description: site.description,
     locale: "en_GB",
-    images: [{ url: "/brand/logo.png", width: 1200, height: 630, alt: "DomiSearch" }],
+    images: [{ url: "/brand/og-default.png", width: 1200, height: 630, alt: "DomiSearch" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "DomiSearch - AI Search Visibility Agency",
     description: site.description,
-    images: ["/brand/logo.png"],
+    images: ["/brand/og-default.png"],
   },
 };
 

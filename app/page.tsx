@@ -39,11 +39,11 @@ const homeGraph = {
       url: site.url,
       logo: {
         "@type": "ImageObject",
-        url: `${site.url}/brand/logo.png`,
-        width: 200,
-        height: 60,
+        url: `${site.url}/brand/logo-square.png`,
+        width: 500,
+        height: 500,
       },
-      image: `${site.url}/brand/logo.png`,
+      image: `${site.url}/brand/logo-square.png`,
       description: `${site.description} Based in Manchester, UK.`,
       slogan: "Be the brand AI recommends.",
       knowsAbout: [
@@ -187,7 +187,7 @@ const homeGraph = {
       about: { "@id": `${site.url}/#organization` },
       primaryImageOfPage: {
         "@type": "ImageObject",
-        url: `${site.url}/brand/logo.png`,
+        url: `${site.url}/brand/og-default.png`,
       },
       inLanguage: "en-GB",
       breadcrumb: {

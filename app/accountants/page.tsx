@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     description:
       "When someone asks ChatGPT for an accountant, your competitors get named. We make it your practice instead.",
     url: `${site.url}/accountants`,
-    images: [{ url: "/brand/logo.png", width: 1200, height: 630, alt: "DomiSearch" }],
+    images: [{ url: "/brand/og-default.png", width: 1200, height: 630, alt: "DomiSearch" }],
   },
 };
 
