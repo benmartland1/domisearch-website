@@ -43,7 +43,7 @@
 .ds-site .ds-brand-link{position:relative;display:block}
 .ds-site .ds-logo-mark{position:absolute;left:0;top:0;width:155px;clip-path:inset(0 86% 0 0)}
 .ds-site .ds-case-topline img,.ds-site .ds-proof-hero-panel .ds-taxd-logo{filter:brightness(0) invert(1)}
-.ds-site .ds-navbar{display:flex;gap:25px;align-items:center;justify-content:space-between;min-height:95px;border-bottom:1px solid var(--ds-line)}
+.ds-site .ds-navbar{display:flex;gap:25px;align-items:center;justify-content:space-between;min-height:95px;border-bottom:1px solid var(--ds-line);position:relative;z-index:40}
 .ds-site .ds-navlinks{display:flex;align-items:center;gap:28px;font-size:12px;font-weight:500}
 .ds-site .ds-navlinks .ds-button{font-size:12px;min-height:46px;padding:12px 17px;gap:16px}
 .ds-site .ds-mobile-nav{display:none}

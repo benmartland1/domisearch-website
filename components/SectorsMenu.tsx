@@ -169,7 +169,7 @@ export function SectorsMenu({ label, tone }: { label: string; tone: Tone }) {
 
       <div
         id="sectors-menu"
-        className={`absolute left-1/2 top-full -translate-x-1/2 pt-4 transition-[opacity,translate,visibility] duration-200 ease-out ${
+        className={`absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 transition-[opacity,translate,visibility] duration-200 ease-out ${
           open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0"
         }`}
       >
