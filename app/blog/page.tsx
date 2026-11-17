@@ -4,6 +4,9 @@ import Link from "next/link";
 import { getAllPosts, readingTimeFromWords } from "@/lib/posts";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { CTA } from "@/components/CTA";
+import { Caveat } from "next/font/google";
+
+const handwriting = Caveat({ subsets: ["latin"], weight: ["600"], display: "swap" });
 
 export const metadata: Metadata = {
   title: "Blog - AEO & Google Ads insights",
@@ -38,7 +41,27 @@ export default async function BlogIndexPage() {
       <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0 grid-backdrop" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-6 pb-10 pt-16 lg:px-10 lg:pt-24">
-          <ScrollReveal as="span" className="eyebrow">The DomiSearch journal</ScrollReveal>
+          <ScrollReveal as="div">
+            <span
+              className={`${handwriting.className} relative inline-block -rotate-2 text-[clamp(1.9rem,3.6vw,2.6rem)] leading-none text-[color:var(--color-forest)]`}
+            >
+              The DomiSearch journal
+              <svg
+                aria-hidden
+                viewBox="0 0 300 14"
+                preserveAspectRatio="none"
+                className="absolute -bottom-3 left-0 h-3 w-full opacity-70"
+              >
+                <path
+                  d="M3 9 C 60 3, 120 12, 180 6 S 270 4, 297 8"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+          </ScrollReveal>
           <ScrollReveal delay={60}>
             <h1 className="display mt-5 max-w-4xl text-balance text-[clamp(2.4rem,5.45vw,4.2rem)]">
               Field notes from the AI search era.
