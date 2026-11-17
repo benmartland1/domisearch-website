@@ -122,6 +122,7 @@ export default async function BlogPostPage({ params }: Props) {
   const author = resolveAuthor(post.author);
   const faqs = resolveFaqs(post);
   const tags = post.tags ?? [];
+  const hasImage = Boolean(post.mainImage?.asset);
 
   return (
     <>
@@ -159,52 +160,71 @@ export default async function BlogPostPage({ params }: Props) {
       {/* ============================================================ */}
       <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0 grid-backdrop opacity-60" aria-hidden />
-        <div className="relative mx-auto max-w-3xl px-6 pb-24 pt-16 lg:pt-24">
-          <ScrollReveal>
-            <Link
-              href="/blog"
-              className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-forest)]"
-            >
-              <ArrowLeft /> Back to blog
-            </Link>
-          </ScrollReveal>
+        <div
+          className={
+            hasImage
+              ? "relative mx-auto max-w-6xl px-6 pb-4 pt-16 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-14 lg:pb-2 lg:pt-20"
+              : "relative mx-auto max-w-3xl px-6 pb-24 pt-16 lg:pt-24"
+          }
+        >
+          <div>
+            <ScrollReveal>
+              <Link
+                href="/blog"
+                className="text-xs uppercase tracking-[0.2em] text-[color:var(--color-forest)]"
+              >
+                <ArrowLeft /> Back to blog
+              </Link>
+            </ScrollReveal>
 
-          <ScrollReveal delay={80}>
-            <div className="mt-8 flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.2em] text-[color:var(--color-muted)]">
-              {tags.map((t) => (
-                <span key={t} className="rounded-full border border-[color:var(--color-line)] px-3 py-1">
-                  {t}
+            <ScrollReveal delay={80}>
+              <div className="mt-8 flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.2em] text-[color:var(--color-muted)]">
+                {tags.map((t) => (
+                  <span key={t} className="rounded-full border border-[color:var(--color-line)] px-3 py-1">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={120}>
+              <h1
+                className={`display mt-6 text-balance text-4xl sm:text-5xl ${
+                  hasImage ? "lg:text-[2.6rem] lg:leading-[1.08]" : "lg:text-[3.1rem]"
+                }`}
+              >
+                {post.title}
+              </h1>
+            </ScrollReveal>
+
+            <ScrollReveal delay={200}>
+              <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 whitespace-nowrap text-sm text-[color:var(--color-muted)]">
+                <span>{author.name}</span>
+                <span>
+                  <span aria-hidden className="mr-3">·</span>
+                  <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
                 </span>
-              ))}
-            </div>
-          </ScrollReveal>
+                <span>
+                  <span aria-hidden className="mr-3">·</span>
+                  {getReadingTime(post.body)}
+                </span>
+              </div>
+            </ScrollReveal>
+          </div>
 
-          <ScrollReveal delay={120}>
-            <h1 className="display mt-6 text-balance text-4xl sm:text-5xl lg:text-[3.1rem]">
-              {post.title}
-            </h1>
-          </ScrollReveal>
-
-          <ScrollReveal delay={200}>
-            <div className="mt-8 flex items-center gap-3 text-sm text-[color:var(--color-muted)]">
-              <span>{author.name}</span>
-              <span className="text-[color:var(--color-muted)]">·</span>
-              <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
-              <span className="text-[color:var(--color-muted)]">·</span>
-              <span>{getReadingTime(post.body)}</span>
-            </div>
-          </ScrollReveal>
-
-          {post.mainImage?.asset && (
-            <ScrollReveal delay={260}>
+          {/* The main image is usually a branded title card, so on narrow
+              screens - where it would stack directly under the H1 and repeat
+              it - it is left out. It still drives link previews and schema. */}
+          {hasImage && (
+            <ScrollReveal delay={160} className="hidden lg:block">
               <Image
-                src={urlForImage(post.mainImage as never).width(1600).url()}
-                alt={post.mainImage.alt ?? post.title}
-                width={1600}
-                height={900}
+                src={urlForImage(post.mainImage as never).width(1400).url()}
+                alt={post.mainImage?.alt ?? post.title}
+                width={1400}
+                height={788}
                 priority
-                sizes="(min-width: 768px) 720px, 100vw"
-                className="mt-12 h-auto w-full rounded-2xl border border-[color:var(--color-line)]"
+                sizes="560px"
+                className="h-auto w-full rounded-2xl ring-1 ring-[color:var(--color-line)]"
               />
             </ScrollReveal>
           )}
