@@ -4,9 +4,9 @@ import Link from "next/link";
 import { getAllPosts, readingTimeFromWords } from "@/lib/posts";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { CTA } from "@/components/CTA";
-import { Caveat } from "next/font/google";
+import { Mrs_Saint_Delafield } from "next/font/google";
 
-const handwriting = Caveat({ subsets: ["latin"], weight: ["600"], display: "swap" });
+const signature = Mrs_Saint_Delafield({ subsets: ["latin"], weight: "400", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Blog - AEO & Google Ads insights",
@@ -43,22 +43,16 @@ export default async function BlogIndexPage() {
         <div className="relative mx-auto max-w-7xl px-6 pb-10 pt-16 lg:px-10 lg:pt-24">
           <ScrollReveal as="div">
             <span
-              className={`${handwriting.className} relative inline-block -rotate-2 text-[clamp(1.9rem,3.6vw,2.6rem)] leading-none text-[color:var(--color-forest)]`}
+              className={`${signature.className} relative inline-block -rotate-1 pb-2 pr-6 text-[clamp(2.8rem,5.2vw,3.8rem)] leading-[1.1] text-[color:var(--color-forest)]`}
             >
               The DomiSearch journal
               <svg
                 aria-hidden
-                viewBox="0 0 300 14"
+                viewBox="0 0 300 12"
                 preserveAspectRatio="none"
-                className="absolute -bottom-3 left-0 h-3 w-full opacity-70"
+                className="absolute bottom-0 left-[8%] h-2.5 w-[88%] opacity-80"
               >
-                <path
-                  d="M3 9 C 60 3, 120 12, 180 6 S 270 4, 297 8"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                />
+                <path d="M2 9 C 90 3, 200 1, 298 4 C 200 4.5, 90 7, 2 9 Z" fill="currentColor" />
               </svg>
             </span>
           </ScrollReveal>
