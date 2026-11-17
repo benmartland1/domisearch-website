@@ -4,9 +4,6 @@ import Link from "next/link";
 import { getAllPosts, readingTimeFromWords } from "@/lib/posts";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { CTA } from "@/components/CTA";
-import { Dancing_Script } from "next/font/google";
-
-const script = Dancing_Script({ subsets: ["latin"], weight: ["500"], display: "swap" });
 
 export const metadata: Metadata = {
   title: "Blog - AEO & Google Ads insights",
@@ -41,13 +38,7 @@ export default async function BlogIndexPage() {
       <section className="relative isolate overflow-hidden">
         <div className="absolute inset-0 grid-backdrop" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-6 pb-10 pt-16 lg:px-10 lg:pt-24">
-          <ScrollReveal as="div">
-            <span
-              className={`${script.className} inline-block -rotate-1 text-[clamp(2.1rem,4vw,2.9rem)] leading-tight text-[color:var(--color-forest)]`}
-            >
-              The DomiSearch journal
-            </span>
-          </ScrollReveal>
+          <ScrollReveal as="span" className="eyebrow">The DomiSearch journal</ScrollReveal>
           <ScrollReveal delay={60}>
             <h1 className="display mt-5 max-w-4xl text-balance text-[clamp(2.4rem,5.45vw,4.2rem)]">
               Field notes from the AI search era.
