@@ -4,9 +4,9 @@ import Link from "next/link";
 import { getAllPosts, readingTimeFromWords } from "@/lib/posts";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { CTA } from "@/components/CTA";
-import { Mrs_Saint_Delafield } from "next/font/google";
+import { Dancing_Script } from "next/font/google";
 
-const signature = Mrs_Saint_Delafield({ subsets: ["latin"], weight: "400", display: "swap" });
+const script = Dancing_Script({ subsets: ["latin"], weight: ["500"], display: "swap" });
 
 export const metadata: Metadata = {
   title: "Blog - AEO & Google Ads insights",
@@ -43,17 +43,9 @@ export default async function BlogIndexPage() {
         <div className="relative mx-auto max-w-7xl px-6 pb-10 pt-16 lg:px-10 lg:pt-24">
           <ScrollReveal as="div">
             <span
-              className={`${signature.className} relative inline-block -rotate-1 pb-2 pr-6 text-[clamp(2.8rem,5.2vw,3.8rem)] leading-[1.1] text-[color:var(--color-forest)]`}
+              className={`${script.className} inline-block -rotate-1 text-[clamp(2.1rem,4vw,2.9rem)] leading-tight text-[color:var(--color-forest)]`}
             >
               The DomiSearch journal
-              <svg
-                aria-hidden
-                viewBox="0 0 300 12"
-                preserveAspectRatio="none"
-                className="absolute bottom-0 left-[8%] h-2.5 w-[88%] opacity-80"
-              >
-                <path d="M2 9 C 90 3, 200 1, 298 4 C 200 4.5, 90 7, 2 9 Z" fill="currentColor" />
-              </svg>
             </span>
           </ScrollReveal>
           <ScrollReveal delay={60}>
