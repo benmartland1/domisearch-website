@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ArrowLeft } from "@/components/Icons";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -193,6 +194,20 @@ export default async function BlogPostPage({ params }: Props) {
               <span>{getReadingTime(post.body)}</span>
             </div>
           </ScrollReveal>
+
+          {post.mainImage?.asset && (
+            <ScrollReveal delay={260}>
+              <Image
+                src={urlForImage(post.mainImage as never).width(1600).url()}
+                alt={post.mainImage.alt ?? post.title}
+                width={1600}
+                height={900}
+                priority
+                sizes="(min-width: 768px) 720px, 100vw"
+                className="mt-12 h-auto w-full rounded-2xl border border-[color:var(--color-line)]"
+              />
+            </ScrollReveal>
+          )}
         </div>
       </section>
 
