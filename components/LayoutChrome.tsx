@@ -22,6 +22,8 @@ const BARE_ROUTES = [
   "/recruitment",
   "/accountants",
   "/healthcare",
+  // The AEO service page uses the homepage's own ticker, nav and footer.
+  "/services/aeo",
   // Sanity Studio renders its own full-viewport UI.
   "/studio",
   // The onboarding questionnaire, served on onboarding.domisearch.com. It has

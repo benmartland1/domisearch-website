@@ -1,23 +1,32 @@
-import type { Metadata } from "next";
-import { ArrowRight } from "@/components/Icons";
+import type { Metadata, Viewport } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { ScrollReveal } from "@/components/ScrollReveal";
-import { SectionHeader } from "@/components/SectionHeader";
-import { SpotlightCard } from "@/components/SpotlightCard";
-import { Counter } from "@/components/Counter";
-import { CaseStudyCard } from "@/components/CaseStudyCard";
+import { Fragment } from "react";
+import { ArrowRight, ArrowUpRight } from "@/components/Icons";
 import { CTA } from "@/components/CTA";
-import { FAQ } from "@/components/FAQ";
+import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
-import { ConsultationRail } from "@/components/ConsultationRail";
-import { BookCallCTA } from "@/components/BookCallCTA";
-import { Testimonials } from "@/components/Testimonials";
-import { AIEnginesBadge } from "@/components/ui/AIEnginesBadge";
+import { SiteNav } from "@/components/SiteNav";
+import { ReviewsCarousel } from "@/components/home/ReviewsCarousel";
+import { Ticker } from "@/components/home/Ticker";
 import { serviceSchema, faqSchema, breadcrumbSchema } from "@/lib/schema";
-import { getCaseStudiesByService } from "@/lib/case-studies";
 import { site } from "@/lib/site";
 import { aeoPricingSentence } from "@/lib/pricing";
+import { getTrustpilotReviewCount, trustpilotReviews } from "@/lib/trustpilot";
+
+/*
+ * The AEO service page, built in the homepage's design: the same ticker, nav,
+ * footer, page class (.ds-site.ds-home .ds-page) and section components, so
+ * type, spacing and colour come from components/home/approved.css. It is a
+ * bare route in components/LayoutChrome.tsx for that reason.
+ *
+ * Copy is grounded in AEO audience VoC research (content/research).
+ */
+
+export const viewport: Viewport = {
+  themeColor: "#f8f7f1",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "AI Search Visibility (AEO) for Service Businesses | DomiSearch",
@@ -30,21 +39,36 @@ export const metadata: Metadata = {
   },
 };
 
-/* -------------------------------------------------------------------------- */
-/*  Copy is grounded in AEO audience VoC research (content/research)          */
-/*  - pain points, platform names, numbers, anti-hype tone, measurement.      */
-/* -------------------------------------------------------------------------- */
+const STATS = [
+  { value: "−61%", label: "Organic CTR on AI Overview queries", source: "Dataslayer, 2026" },
+  { value: "60%+", label: "Of searches end without a click", source: "Digital Bloom, 2025" },
+  { value: "−80%", label: "HubSpot’s traffic loss", source: "Digital Bloom, 2025" },
+  { value: "47%", label: "B2B buyers research in ChatGPT first", source: "Position Digital, 2026" },
+];
 
-const trafficStats = [
-  { stat: "−61%", label: "Organic CTR on AI Overview queries", source: "Dataslayer, 2026" },
-  { stat: "60%+", label: "Of searches end without a click", source: "Digital Bloom, 2025" },
-  { stat: "70–80%", label: "Organic traffic loss at HubSpot", source: "Digital Bloom, 2025" },
-  { stat: "47%", label: "Of B2B buyers start research in ChatGPT", source: "Position Digital, 2026" },
+const ENGINES = [
+  { name: "ChatGPT", icon: "/engines/openai.svg" },
+  { name: "Gemini", icon: "/engines/gemini.svg" },
+  { name: "Perplexity", icon: "/engines/perplexity.svg" },
+  { name: "Claude", icon: "/engines/claude.svg" },
+  { name: "Google AI\nOverviews", icon: "/engines/google.svg" },
+];
+
+const LOSING = [
+  "ChatGPT recommends a competitor for a query your brand should own.",
+  "Buyers mention your competitor by name before they’ve ever visited your site.",
+  "Your board asks why you’re not showing up in AI answers, and you don’t have an answer either.",
+];
+
+const WORKING = [
+  "Buyers arrive having already seen your name in the answer, before the first call.",
+  "Your services, markets and evidence are described accurately, alongside the competitors you are measured against.",
+  "You can see, month by month, how often you are named and which sources the answers rely on.",
 ];
 
 // The six deliverables of the programme as it is sold today. Keep in step with
 // components/ProgrammeSection.tsx and the "What does an AEO agency do?" post.
-const whatWeDo = [
+const WHAT_WE_DO = [
   {
     tag: "Baseline",
     title: "AI visibility and competitor baseline",
@@ -83,12 +107,22 @@ const whatWeDo = [
   },
 ];
 
-const engines = [
-  { name: "ChatGPT", src: "/engines/chatgpt.png" },
-  { name: "Gemini", src: "/engines/gemini.png" },
-  { name: "Perplexity", src: "/engines/perplexity.png" },
-  { name: "Claude", src: "/engines/claude.png" },
-  { name: "Google AI Overviews", src: "/engines/google.png" },
+const SECTORS = [
+  {
+    label: "Recruitment agencies",
+    note: "Hiring managers now ask AI which agencies specialise in their sector and region. Our core focus.",
+    href: "/recruitment",
+  },
+  {
+    label: "Accountancy and professional services",
+    note: "Considered, often regulated decisions where clear evidence and specialisms matter.",
+    href: "/accountants",
+  },
+  {
+    label: "Healthcare and clinics",
+    note: "Patients research treatments and providers in AI before they book.",
+    href: "/healthcare",
+  },
 ];
 
 const faqs = [
@@ -143,10 +177,35 @@ const faqs = [
   },
 ];
 
-export default function AEOPage() {
-  const relatedCaseStudies = getCaseStudiesByService("AEO", 2);
+/** Axiforma draws "·" as a full stop, so separators use a fallback face. */
+function Dotted({ parts }: { parts: string[] }) {
   return (
     <>
+      {parts.map((p, i) => (
+        <Fragment key={p}>
+          {i > 0 && <span className="ds-result-sep"> · </span>}
+          {p}
+        </Fragment>
+      ))}
+    </>
+  );
+}
+
+function Arrow() {
+  return (
+    <span className="ds-arrow" aria-hidden="true">
+      <ArrowUpRight />
+    </span>
+  );
+}
+
+export default async function AEOPage() {
+  const reviewCount = await getTrustpilotReviewCount();
+  const reviews = trustpilotReviews;
+  const programme = [WHAT_WE_DO.slice(0, 3), WHAT_WE_DO.slice(3)];
+
+  return (
+    <div className="ds-site ds-home ds-aeo" data-surface="paper">
       <JsonLd
         data={[
           serviceSchema({
@@ -165,300 +224,208 @@ export default function AEOPage() {
         ]}
       />
 
-      {/* -------------------- HERO -------------------- */}
-      <section className="relative isolate overflow-hidden">
-        <div className="absolute inset-0 grid-backdrop" aria-hidden />
-        <div
-          aria-hidden
-          className="glow"
-          style={{ width: 520, height: 520, background: "var(--color-domigreen)", top: -160, left: -120 }}
-        />
-        <div
-          aria-hidden
-          className="glow"
-          style={{
-            width: 480,
-            height: 480,
-            background: "var(--color-pine)",
-            bottom: -220,
-            right: -140,
-            opacity: 0.45,
-          }}
-        />
-        <div className="relative mx-auto max-w-7xl px-6 pb-20 pt-16 lg:px-10 lg:pt-24">
-          <ScrollReveal>
-            <AIEnginesBadge className="w-[240px]! sm:w-[280px]!" />
-          </ScrollReveal>
-          <ScrollReveal delay={80}>
-            <h1 className="display mt-10 text-balance text-[clamp(2.4rem,5.45vw,4.2rem)]">
-              Be the brand
-              <br />
-              <span className="text-[color:var(--color-forest)]">AI recommends.</span>
+      <div className="ds-page">
+        <Ticker />
+        <SiteNav />
+      </div>
+
+      <main className="ds-page">
+        {/* ===== Hero ===== */}
+        <section className="ds-wrap ds-aeo-hero" aria-label="AI search visibility">
+          <div className="ds-aeo-hero-copy">
+            <span className="ds-eyebrow">AI search visibility (AEO)</span>
+            <h1>
+              Be the firm <br />
+              AI <span className="ds-underlined">recommends.</span>
             </h1>
-          </ScrollReveal>
-          <ScrollReveal delay={140}>
-            <p className="lede lede-lg mt-8 max-w-2xl text-lg text-[color:var(--color-muted)] sm:text-xl">
-              We help service businesses get discovered, mentioned and cited across{" "}
-              <strong className="text-[color:var(--color-ink)]">
-                ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews
-              </strong>
-              . Research-led, tracked daily, reported monthly in plain English.
+            <p className="ds-lead">
+              We help service businesses get discovered, mentioned and cited across ChatGPT, Gemini,
+              Perplexity, Claude and Google AI Overviews. Research-led, tracked daily, reported monthly
+              in plain English.
             </p>
-          </ScrollReveal>
-          <ScrollReveal delay={200}>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Link href={site.calendly} target="_blank" rel="noopener" className="btn btn-primary">
-                Book a call
-                <span aria-hidden><ArrowRight /></span>
-              </Link>
-              <Link href="/pricing" className="btn btn-ghost">
-                See pricing
-              </Link>
+            <div className="ds-actions">
+              <a className="ds-button" href={site.calendly} target="_blank" rel="noopener noreferrer">
+                Book a call <Arrow />
+              </a>
+              <a className="ds-text-link" href="/pricing">
+                See pricing{" "}
+                <span className="ds-icon" aria-hidden="true">
+                  <ArrowRight />
+                </span>
+              </a>
             </div>
-          </ScrollReveal>
-          <ScrollReveal delay={260}>
-            <p className="mt-6 text-xs uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
-              UK-built · For service businesses · Recruitment a core focus
+            <p className="ds-hero-note">
+              <Dotted parts={["UK-built", "For service businesses", "Recruitment a core focus"]} />
             </p>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* -------------------- TRAFFIC COLLAPSE STATS -------------------- */}
-      <section className="relative mx-auto mt-16 max-w-7xl px-6 lg:px-10">
-        <ScrollReveal>
-          <div className="flex items-center gap-4">
-            <span className="h-px w-10 bg-[color:var(--color-forest)]/10" />
-            <span className="eyebrow">The zero-click era is already here</span>
           </div>
-        </ScrollReveal>
-        <div className="mt-10 grid gap-4 border-t border-[color:var(--color-line)] pt-10 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { value: 61, prefix: "−", suffix: "%", label: "Organic CTR on AI Overview queries", source: "Dataslayer, 2026" },
-            { value: 60, suffix: "%+", label: "Of searches end without a click", source: "Digital Bloom, 2025" },
-            { value: 80, prefix: "−", suffix: "%", label: "HubSpot's traffic loss", source: "Digital Bloom, 2025" },
-            { value: 47, suffix: "%", label: "B2B buyers research in ChatGPT first", source: "Position Digital, 2026" },
-          ].map((s, i) => (
-            <ScrollReveal key={s.label} delay={i * 80}>
-              <div>
-                <div className="display text-4xl text-[color:var(--color-forest)] sm:text-5xl">
-                  <Counter value={s.value} prefix={s.prefix} suffix={s.suffix} />
-                </div>
-                <div className="mt-3 text-sm text-[color:var(--color-muted)]">{s.label}</div>
-                <div className="mt-2 text-[10px] uppercase tracking-[0.18em] text-[color:var(--color-muted)]">
-                  {s.source}
-                </div>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </section>
 
-      {/* -------------------- CLIENT PAIN vs DREAM BLOCK -------------------- */}
-      <section className="relative mx-auto mt-32 max-w-7xl px-6 lg:px-10">
-        <div className="card relative overflow-hidden p-10 sm:p-14">
-          <span
-            aria-hidden
-            className="absolute left-0 top-0 h-full w-[3px]"
-            style={{ background: "linear-gradient(to bottom, var(--color-domigreen), transparent)" }}
-          />
-          <ScrollReveal delay={60}>
-            <h2 className="display text-balance text-3xl sm:text-4xl lg:text-5xl">
-              Your buyers ask ChatGPT first.
-              <br />
-              Right now, the answer isn't you.
-            </h2>
-          </ScrollReveal>
-          <div className="mt-10 grid gap-8 lg:grid-cols-2">
-            <ScrollReveal delay={120}>
-              <div>
-                <div className="text-xs uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
-                  The quiet deals you're already losing
+          <aside className="ds-aeo-stats" aria-label="The zero-click era is already here">
+            <span className="ds-eyebrow">The zero-click era is already here</span>
+            <dl>
+              {STATS.map((s) => (
+                <div key={s.label}>
+                  <dt>{s.label}</dt>
+                  <dd>{s.value}</dd>
+                  <dd className="ds-aeo-stat-source">{s.source}</dd>
                 </div>
-                <ul className="mt-4 space-y-3 text-[color:var(--color-muted)]">
-                  <li className="flex gap-3">
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[color:var(--color-line)]" />
-                    <span>ChatGPT recommends a competitor for a query your brand should own.</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[color:var(--color-line)]" />
-                    <span>Buyers mention your competitor by name before they've ever visited your site.</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[color:var(--color-line)]" />
-                    <span>Your board asks why you're not showing up in AI answers - you don't have an answer either.</span>
-                  </li>
-                </ul>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={180}>
-              <div>
-                <div className="text-xs uppercase tracking-[0.22em] text-[color:var(--color-forest)]">
-                  What it looks like with AEO working
-                </div>
-                <ul className="mt-4 space-y-3 text-[color:var(--color-muted)]">
-                  <li className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-forest)]" />
-                    <span>Buyers arrive having already seen your name in the answer, before the first call.</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-forest)]" />
-                    <span>Your services, markets and evidence are described accurately, alongside the competitors you are measured against.</span>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[color:var(--color-forest)]" />
-                    <span>You can see, month by month, how often you are named and which sources the answers rely on.</span>
-                  </li>
-                </ul>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
+              ))}
+            </dl>
+          </aside>
+        </section>
 
-      <BookCallCTA label="Book a 30-minute AEO call with Ben" />
-
-      {/* -------------------- ENGINES -------------------- */}
-      <section className="relative mx-auto mt-24 max-w-7xl px-6 lg:px-10">
-        <ScrollReveal>
-          <div className="eyebrow">Platforms we track daily</div>
-        </ScrollReveal>
-        <div className="mt-8 flex flex-wrap gap-3">
-          {engines.map((e, i) => (
-            <ScrollReveal key={e.name} delay={i * 60}>
-              <div
-                className="flex h-14 items-center gap-3 rounded-full border border-[color:var(--color-line)] bg-white py-2 pl-2 pr-5 transition-colors hover:border-[color:var(--color-ink)]"
-                title={e.name}
-              >
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white">
-                  <Image
-                    src={e.src}
-                    alt={e.name}
-                    width={32}
-                    height={32}
-                    sizes="32px"
-                    className="h-8 w-8 object-contain"
-                  />
+        <div className="ds-wrap">
+          <div className="ds-engine-strip">
+            <span>Platforms we track daily</span>
+            <div className="ds-engines">
+              {ENGINES.map((e) => (
+                // Every tracked platform stays visible here, including on mobile.
+                <span key={e.name} className="ds-engine">
+                  <Image src={e.icon} alt="" width={23} height={23} />
+                  {e.name.includes("\n") ? (
+                    <>
+                      {e.name.split("\n")[0]}
+                      <br />
+                      {e.name.split("\n")[1]}
+                    </>
+                  ) : (
+                    e.name
+                  )}
                 </span>
-                <span className="whitespace-nowrap text-sm font-medium text-[color:var(--color-ink)]">
-                  {e.name}
-                </span>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </section>
-
-      {/* -------------------- WHAT WE ACTUALLY DO (with consultation rail) -------------------- */}
-      <section className="relative mx-auto mt-32 max-w-7xl px-6 lg:px-10">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-12">
-          <div>
-            <SectionHeader
-              eyebrow="The programme"
-              title="We don't guess. We reverse engineer."
-              description="We examine which brands and sources appear in the AI answers your potential clients read, then use that evidence to guide six areas of work. Each is named, scoped and agreed before we start."
-            />
-            <div className="mt-14 grid gap-4">
-              {whatWeDo.map((c, i) => (
-                <ScrollReveal key={c.title} delay={i * 60}>
-                  <SpotlightCard as="article" className="card h-full p-8">
-                    <div className="text-xs uppercase tracking-[0.22em] text-[color:var(--color-forest)]">
-                      {c.tag}
-                    </div>
-                    <h3 className="mt-4 text-xl font-medium text-[color:var(--color-ink)]">{c.title}</h3>
-                    <div className="hairline mt-4" />
-                    <p className="mt-4 text-[color:var(--color-muted)]">{c.body}</p>
-                  </SpotlightCard>
-                </ScrollReveal>
               ))}
             </div>
           </div>
-
-          <ConsultationRail
-            eyebrow="Arrange a call about AEO"
-            ctaLabel="Book a 30-min AEO call"
-            founderQuote="You'll speak to me, not a sales pod. If AI search isn't the right priority for you yet, I'll say so on the call."
-            className="lg:sticky lg:top-28 lg:self-start"
-          />
         </div>
-      </section>
 
-      {/* -------------------- WHO IT'S FOR -------------------- */}
-      <section className="relative mx-auto mt-32 max-w-7xl px-6 lg:px-10">
-        <div className="card grid gap-10 p-10 lg:grid-cols-[1fr_1fr] lg:p-14">
-          <ScrollReveal>
-            <div className="eyebrow">Who we work best with</div>
-            <h2 className="display mt-4 text-3xl sm:text-4xl">
-              Service businesses whose clients research before they buy.
-            </h2>
-            <p className="mt-5 text-[color:var(--color-muted)]">
-              The work pays off where a buyer compares providers before making contact, and where
-              your expertise and track record give an AI answer something real to cite.
+        {/* ===== The problem and the outcome ===== */}
+        <section className="ds-section ds-wrap ds-aeo-shift" aria-labelledby="aeo-shift">
+          <span className="ds-eyebrow">Why it matters</span>
+          <h2 id="aeo-shift">
+            Your buyers ask ChatGPT first. <br />
+            Right now, the answer isn’t you.
+          </h2>
+          <div className="ds-aeo-compare">
+            <div>
+              <h3>The quiet deals you’re already losing</h3>
+              <ul className="ds-aeo-list ds-aeo-list-muted">
+                {LOSING.map((l) => (
+                  <li key={l}>{l}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3>What it looks like with AEO working</h3>
+              <ul className="ds-aeo-list">
+                {WORKING.map((l) => (
+                  <li key={l}>{l}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== The programme ===== */}
+        <section className="ds-plan ds-wrap" id="programme">
+          <div className="ds-plan-header">
+            <div>
+              <span className="ds-eyebrow">The programme</span>
+              <h2>We don’t guess. We reverse engineer.</h2>
+            </div>
+            <p className="ds-lead">
+              We examine which brands and sources appear in the AI answers your potential clients read,
+              then use that evidence to guide six areas of work. Each is named, scoped and agreed before
+              we start.
             </p>
-          </ScrollReveal>
-          <ScrollReveal delay={100}>
-            <ul className="space-y-5">
-              <li>
-                <div className="text-lg font-medium text-[color:var(--color-ink)]">
-                  <Link href="/recruitment" className="hover:text-[color:var(--color-forest)]">Recruitment agencies</Link>
-                </div>
-                <p className="mt-1 text-sm text-[color:var(--color-muted)]">
-                  Hiring managers now ask AI which agencies specialise in their sector and region. Our core focus.
-                </p>
-              </li>
-              <li>
-                <div className="text-lg font-medium text-[color:var(--color-ink)]">
-                  <Link href="/accountants" className="hover:text-[color:var(--color-forest)]">Accountancy and professional services</Link>
-                </div>
-                <p className="mt-1 text-sm text-[color:var(--color-muted)]">
-                  Considered, often regulated decisions where clear evidence and specialisms matter.
-                </p>
-              </li>
-              <li>
-                <div className="text-lg font-medium text-[color:var(--color-ink)]">
-                  <Link href="/healthcare" className="hover:text-[color:var(--color-forest)]">Healthcare and clinics</Link>
-                </div>
-                <p className="mt-1 text-sm text-[color:var(--color-muted)]">
-                  Patients research treatments and providers in AI before they book.
-                </p>
-              </li>
-            </ul>
-          </ScrollReveal>
-        </div>
-      </section>
+          </div>
+          {programme.map((row, r) => (
+            <div key={r} className={`ds-timeline${r > 0 ? " ds-aeo-timeline-next" : ""}`}>
+              {row.map((c) => (
+                <article key={c.title} className="ds-month">
+                  <span className="ds-eyebrow">{c.tag}</span>
+                  <h3>{c.title}</h3>
+                  <p>{c.body}</p>
+                </article>
+              ))}
+            </div>
+          ))}
+          <div className="ds-plan-bottom">
+            <p>
+              “You’ll speak to me, not a sales pod. If AI search isn’t the right priority for you yet,
+              I’ll say so on the call.” Ben Martland, Founder
+            </p>
+            <a className="ds-button" href={site.calendly} target="_blank" rel="noopener noreferrer">
+              Book a 30-min AEO call <Arrow />
+            </a>
+          </div>
+        </section>
 
-      {relatedCaseStudies.length > 0 && (
-        <section className="relative mx-auto mt-32 max-w-7xl px-6 lg:px-10">
-          <SectionHeader
-            eyebrow="Proof"
-            title="AI search work for a client."
-          />
-          <div
-            className={
-              relatedCaseStudies.length === 1
-                ? "mt-14"
-                : "mt-14 grid gap-6 lg:grid-cols-2"
-            }
-          >
-            {relatedCaseStudies.map((cs, i) => (
-              <ScrollReveal key={cs.slug} delay={i * 120}>
-                <CaseStudyCard
-                  caseStudy={cs}
-                  variant={relatedCaseStudies.length === 1 ? "featured" : "default"}
-                />
-              </ScrollReveal>
+        {/* ===== Who we work with ===== */}
+        <section className="ds-sector ds-section ds-wrap">
+          <div>
+            <span className="ds-eyebrow">Who we work best with</span>
+            <h2>Service businesses whose clients research before they buy.</h2>
+            <p className="ds-lead">
+              The work pays off where a buyer compares providers before making contact, and where your
+              expertise and track record give an AI answer something real to cite.
+            </p>
+          </div>
+          <div className="ds-sector-list">
+            {SECTORS.map((s) => (
+              <a key={s.label} href={s.href}>
+                <span>
+                  {s.label}
+                  <small>{s.note}</small>
+                </span>
+                <Arrow />
+              </a>
             ))}
           </div>
         </section>
-      )}
 
-      <Testimonials showBookCall only={["Eamon Shahir", "Arjun Kumar", "Sam Barraclough"]} />
+        {/* ===== Reviews: every Trustpilot review, in full ===== */}
+        <section className="ds-reviews ds-section ds-wrap" aria-labelledby="reviews-heading">
+          <div className="ds-voices-header">
+            <div>
+              <span className="ds-eyebrow">In our clients’ words</span>
+              <h2 id="reviews-heading">
+                Don’t just take <br />
+                our word for it.
+              </h2>
+            </div>
+            <a className="ds-review-source" href={site.trustpilot} target="_blank" rel="noopener noreferrer">
+              <strong>
+                {reviewCount} {reviewCount === 1 ? "review" : "reviews"}
+              </strong>
+              <span>
+                Read them on Trustpilot <ArrowUpRight />
+              </span>
+            </a>
+          </div>
+          <ReviewsCarousel reviews={reviews} />
+        </section>
 
-      <FAQ items={faqs} heading="AI search visibility, frequently asked" />
-      <CTA
-        heading="Find out where you stand in AI search."
-        sub="Book a free discovery call. If there is a fit, we research your current AI visibility and walk you through an audit and a proposed 90-day roadmap: the buyer questions, who is being recommended today, the gaps and the work we would do first."
-      />
-    </>
+        {/* ===== FAQ ===== */}
+        <section className="ds-faq ds-section ds-wrap">
+          <div className="ds-faq-intro">
+            <span className="ds-eyebrow">Before we talk</span>
+            <h2>AI search visibility, frequently asked.</h2>
+            <p>What the work involves, how we measure it and what you can expect.</p>
+          </div>
+          <div className="ds-faq-list">
+            {faqs.map((f, i) => (
+              <details key={f.question} open={i === 0}>
+                <summary>{f.question}</summary>
+                <p>{f.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        <CTA
+          heading="Find out where you stand in AI search."
+          sub="Book a free discovery call. If there is a fit, we research your current AI visibility and walk you through an audit and a proposed 90-day roadmap: the buyer questions, who is being recommended today, the gaps and the work we would do first."
+        />
+      </main>
+      <Footer />
+    </div>
   );
 }

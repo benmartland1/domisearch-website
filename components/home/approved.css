@@ -996,3 +996,49 @@
 .ds-site .ds-result-detail.ds-result-detail--recruitment{max-width:1152px;padding-left:20px;padding-right:20px}
 .ds-site .ds-result-detail--recruitment>.ds-result{max-width:none}
 @media(min-width:640px){.ds-site .ds-result-detail.ds-result-detail--recruitment{padding-left:24px;padding-right:24px}}
+
+/* ---- /services/aeo: homepage design, plus three page-specific pieces ---- */
+.ds-site .ds-aeo-hero{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:56px}
+.ds-site .ds-aeo-hero-copy h1{margin-bottom:22px}
+.ds-site .ds-aeo-hero-copy .ds-lead{max-width:32em}
+.ds-site .ds-aeo-hero-copy .ds-actions{margin-top:26px}
+.ds-site .ds-aeo-hero-copy .ds-text-link{font-size:14px;font-weight:500}
+.ds-site .ds-aeo-hero-copy .ds-hero-note{margin-top:18px;font-size:13px;color:#536157}
+.ds-site .ds-aeo-stats{background:#e9eee4;border-radius:3px;padding:36px 36px 30px}
+.ds-site .ds-aeo-stats .ds-eyebrow{margin-bottom:22px}
+.ds-site .ds-aeo-stats dl{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:0;border-top:1px solid #c9d3c4}
+.ds-site .ds-aeo-stats dl>div{display:flex;flex-direction:column;padding:22px 0 20px;border-bottom:1px solid #c9d3c4}
+.ds-site .ds-aeo-stats dl>div:nth-child(odd){padding-right:20px;border-right:1px solid #c9d3c4}
+.ds-site .ds-aeo-stats dl>div:nth-child(even){padding-left:22px}
+.ds-site .ds-aeo-stats dl>div:nth-last-child(-n+2){border-bottom:0;padding-bottom:4px}
+.ds-site .ds-aeo-stats dt{order:2;font-size:15px;line-height:1.45;color:#34463c;margin-top:8px}
+.ds-site .ds-aeo-stats dd{order:1;margin:0;font-size:clamp(34px,3.4vw,46px);line-height:1;font-weight:500;letter-spacing:-.03em;color:var(--ds-ink)}
+.ds-site .ds-aeo-stats dd.ds-aeo-stat-source{order:3;font-size:11px;line-height:1.5;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:#536157;margin-top:10px}
+.ds-site .ds-aeo-shift{border-top:1px solid var(--ds-line)}
+.ds-site .ds-aeo-shift h2{max-width:none}
+.ds-site .ds-aeo-compare{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:40px;border-top:1px solid var(--ds-line);padding-top:30px}
+.ds-site .ds-aeo-compare h3{font-size:13px!important;line-height:1.5!important;font-weight:500;letter-spacing:1.25px!important;text-transform:uppercase;color:#536157;margin-bottom:16px}
+.ds-site .ds-aeo-compare>div:last-child h3{color:var(--ds-forest)}
+.ds-site .ds-aeo-list{margin:0;padding:0;list-style:none;display:grid;gap:14px}
+.ds-site .ds-aeo-list li{position:relative;padding-left:22px;font-size:17px;line-height:1.6;color:#34463c}
+.ds-site .ds-aeo-list li::before{content:'';position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:50%;background:var(--ds-forest)}
+.ds-site .ds-aeo-list-muted li::before{background:transparent;border:1.5px solid #9aaea0}
+.ds-site .ds-aeo .ds-plan .ds-month p{font-size:15px;line-height:1.65}
+.ds-site .ds-aeo .ds-plan .ds-month h3{font-size:21px}
+.ds-site .ds-aeo-timeline-next{margin-top:44px}
+.ds-site .ds-aeo .ds-plan-bottom p{max-width:42em;font-size:15px;color:#34463c}
+@media(max-width:900px){
+ .ds-site .ds-aeo-hero{grid-template-columns:1fr;gap:36px;padding-top:44px;padding-bottom:36px}
+ .ds-site .ds-aeo-compare{grid-template-columns:1fr;gap:32px}
+}
+@media(max-width:700px){
+ .ds-site .ds-aeo-stats{padding:26px 22px 22px}
+ .ds-site .ds-aeo-stats dt{font-size:14px}
+ .ds-site .ds-aeo-list li{font-size:16px}
+ .ds-site .ds-aeo-timeline-next{margin-top:0;padding-top:25px;border-top:0}
+ .ds-site .ds-aeo .ds-plan-bottom{flex-direction:column;align-items:flex-start}
+}
+/* The homepage's paragraph colour must not reach the dark closing CTA panel. */
+.ds-site.ds-home .ds-page .ds-cta p{color:#cadcd1}
+/* All five platforms stay visible on /services/aeo, so its strip wraps on mobile. */
+@media(max-width:700px){.ds-site .ds-aeo .ds-engines{flex-wrap:wrap;justify-content:flex-start;gap:14px 22px;overflow:visible}}
