@@ -1057,6 +1057,13 @@
 .ds-site .ds-result-proof strong{display:block;font-size:clamp(32px,4.4vw,48px);line-height:1.08;letter-spacing:-.03em;font-weight:500;color:var(--ds-ink);margin-bottom:12px}
 .ds-site .ds-result-article .ds-result-proof p{font-size:18px;color:var(--ds-ink);margin:0 0 8px}
 .ds-site .ds-result-proof span{display:block;font-size:13px;line-height:1.6;color:var(--ds-muted)}
-.ds-site .ds-result-article ol{margin:0 0 16px;padding-left:22px;list-style:decimal}
-.ds-site .ds-result-article ol li{margin-bottom:14px}
+/* "What we did": numbered rows with hairline dividers */
+.ds-site .ds-result-article ol{margin:8px 0 16px;padding:0;list-style:none;counter-reset:ds-step;border-bottom:1px solid var(--ds-line)}
+.ds-site .ds-result-article ol li{counter-increment:ds-step;display:grid;grid-template-columns:44px 1fr;column-gap:12px;margin:0;padding:22px 0;border-top:1px solid var(--ds-line)}
+.ds-site .ds-result-article ol li::before{content:counter(ds-step,decimal-leading-zero);grid-row:1/span 2;font-size:14px;font-weight:500;line-height:1.7;color:var(--ds-muted);letter-spacing:.04em}
+.ds-site .ds-result-article ol li strong{display:block;margin-bottom:4px}
+/* Result cards: three on one line, wider than the prose on desktop */
+.ds-site .ds-result-article .ds-result-stats>div{padding:22px 24px}
+.ds-site .ds-result-article .ds-result-stats strong{font-size:clamp(40px,4.4vw,54px);white-space:nowrap;margin-bottom:10px}
+@media(min-width:900px){.ds-site .ds-result-article .ds-result-stats,.ds-site .ds-result-article .ds-result-stats+.ds-result-caption-quiet{width:840px;margin-left:calc(50% - 420px)}}
 @media(max-width:700px){.ds-site .ds-result-proof{padding:22px}}

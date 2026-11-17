@@ -1,14 +1,14 @@
 We helped an international recruitment firm strengthen its presence in those conversations. Over a 30-day reporting period, it recorded **372 mentions** in tracked AI answers to questions that didn’t name the business. For one priority recruitment question, ChatGPT included the firm on **29 of 30 days**.
 
 <div class="ds-result-stats">
-  <div><strong>372</strong><span>Mentions in AI answers to questions that didn’t name the firm</span></div>
-  <div><strong>29 of 30</strong><span>Days included in ChatGPT’s answer to a priority recruitment question</span></div>
-  <div><strong>6</strong><span>Newly published website articles used as sources in AI answers</span></div>
+  <div><strong>372</strong><span>Mentions in answers to questions that didn’t name the firm</span></div>
+  <div><strong>29/30</strong><span>Days appearing in ChatGPT for a priority recruitment question</span></div>
+  <div><strong>6</strong><span>New articles used as sources in AI answers</span></div>
 </div>
 
 <p class="ds-result-caption-quiet">Reporting period: 17 October–15 November 2026.</p>
 
-## The challenge: getting considered by potential clients
+## The challenge
 
 Our initial research found relevant recruitment questions where the firm wasn’t appearing in AI answers.
 
