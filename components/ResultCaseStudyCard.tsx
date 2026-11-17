@@ -55,8 +55,10 @@ export function ResultCaseStudyCard({ result: r, variant = "card" }: Props) {
 
       <div className="ds-result-body">
         {showSector && <span className="ds-result-sector">{r.sector}</span>}
-        <Heading className="ds-result-headline">{r.headline}</Heading>
-        <p className="ds-result-summary">{r.summary}</p>
+        <Heading className="ds-result-headline">
+          {isPage ? (r.detail.title ?? r.headline) : r.headline}
+        </Heading>
+        <p className="ds-result-summary">{isPage ? (r.detail.lede ?? r.summary) : r.summary}</p>
 
         <div className="ds-result-foot">
           {isPage ? (

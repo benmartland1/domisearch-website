@@ -58,11 +58,25 @@ export type ResultCaseStudy = {
     metaDescription: string;
     /** Source and sample line, shown under the divider in the page header. */
     source: string;
-    overview: string;
+    /** Page h1 when it differs from the card headline. */
+    title?: string;
+    /** Opening paragraph in the page header, in place of the card summary. */
+    lede?: string;
+    /**
+     * Long-form body: a Markdown file under content/results/. When set it
+     * replaces the short overview / result / reading sections.
+     */
+    article?: string;
+    faqs?: { question: string; answer: string }[];
+    /** Small print after the body. */
+    note?: string;
+    /** Closing call to action; the button is always the booking link. */
+    cta?: { heading: string; sub: string };
+    overview?: string;
     /** The measured result, stated plainly with its scope. */
-    resultPoints: { label: string; value: string }[];
+    resultPoints?: { label: string; value: string }[];
     /** What the figure is and is not. Rendered under "How to read this result". */
-    reading: string[];
+    reading?: string[];
     /** Further approved, verified context. Optional. */
     context?: { heading: string; body: string; link?: { label: string; href: string } };
   };
@@ -91,26 +105,48 @@ export const RESULTS: ResultCaseStudy[] = [
       position: "50% 40%",
     },
     detail: {
-      metaTitle: "Taxd: 52 New Paying Customers Through AI Search | DomiSearch",
+      // Copy supplied by Ben (2026-11-17), with every mention of the tracking
+      // tool replaced: the site never names it. The Perplexity figures cover
+      // 18 October–16 November 2026; the 52 covers a separate 12-month window.
+      metaTitle: "How Taxd Gained 52 New Clients Through AI Search | DomiSearch",
       metaDescription:
-        "Taxd, a UK digital tax platform, recorded 52 new paying customers attributed to AI search over a 12-month reporting period.",
+        "Taxd, a UK digital tax filing platform, recorded 52 new paying customers attributed to AI search over a 12-month reporting period. See the AEO, website and content work, and the Perplexity visibility behind it.",
       source: "Client-confirmed attribution · 12-month reporting period",
-      overview:
-        "Taxd is a UK digital tax platform. It recorded which new paying customers came through AI search over a 12-month reporting period, and confirmed the attribution to us.",
-      resultPoints: [
-        { label: "New paying customers attributed to AI search", value: "52" },
-        { label: "Reporting period", value: "12 months" },
-        { label: "Attribution", value: "Confirmed by Taxd" },
+      title: "How Taxd gained 52 new clients through AI search",
+      lede:
+        "Taxd recorded 52 new paying customers attributed to AI search over a 12-month reporting period. DomiSearch’s work with the online tax platform combined AI search optimisation, website improvements and content to help potential customers discover the service and understand whether it was right for them.",
+      article: "taxd-ai-search.md",
+      faqs: [
+        {
+          question: "How many new customers did Taxd gain through AI search?",
+          answer:
+            "Taxd recorded 52 new paying customers attributed to AI search over a 12-month reporting period. This is the customer acquisition figure used in this case study.",
+        },
+        {
+          question: "What did DomiSearch work on for Taxd?",
+          answer:
+            "Our work covered AI search optimisation, technical foundations, service pages, content and landing page copy. It formed part of our wider work on Taxd’s search acquisition.",
+        },
+        {
+          question: "Which AI platform supports the visibility examples?",
+          answer:
+            "The examples shown here come from Perplexity answers tracked between 18 October and 16 November 2026. Taxd appeared in 15 of 30 answers for one software-comparison question and 14 of 30 for a deadline-related software question.",
+        },
+        {
+          question: "Does 50% visibility mean Taxd appeared in half of all AI searches?",
+          answer:
+            "No. It means Taxd appeared in half of the 30 monitored Perplexity answers to that particular comparison question during the stated period.",
+        },
+        {
+          question: "Are the 52 customers calculated from AI mentions?",
+          answer:
+            "No. The customer figure comes from the reported commercial result, while our tracking measures appearances in monitored AI answers. An appearance in an answer is not counted as a customer.",
+        },
       ],
-      reading: [
-        "This is a commercial result. It counts new paying customers, not leads, website visitors or AI mentions.",
-        "The attribution to AI search was confirmed by Taxd.",
-        "We do not claim that any particular piece of work caused it.",
-      ],
-      context: {
-        heading: "Visibility alongside the commercial result",
-        body: "Separately, in a tracked set of 1,080 AI answers across ChatGPT, Perplexity and Google AI Overviews (30 days to 16 October 2026), Taxd was named 689 times. That figure describes the answers in the tracked set only, not all AI conversations, users, enquiries or revenue.",
-        link: { label: "Read how we run Taxd’s Google Ads", href: "/case-studies/taxd" },
+      note: "Measurement note: The 52-customer result covers a 12-month reporting period. The supporting visibility examples cover 18 October–16 November 2026 and describe selected monitored answers, not all AI conversations or individual customer journeys.",
+      cta: {
+        heading: "Could AI search bring your business more clients?",
+        sub: "Start with the questions your potential customers ask before choosing a provider. Find out which businesses appear, what information supports those recommendations and whether your website gives people a clear reason to choose you. DomiSearch helps businesses research those questions, improve their websites and content, and track their presence in AI answers.",
       },
     },
   },

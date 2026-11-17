@@ -1,11 +1,14 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { marked } from "marked";
 import { ArrowLeft } from "@/components/Icons";
 import { CTA } from "@/components/CTA";
 import { JsonLd } from "@/components/JsonLd";
 import { ResultCaseStudyCard } from "@/components/ResultCaseStudyCard";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 import { getResultBySlug, resultHref } from "@/content/results";
 
@@ -26,10 +29,22 @@ export function resultMetadata(slug: string): Metadata {
   };
 }
 
-/** Concise detail page for one result in content/results.ts. */
+/**
+ * Long-form body from content/results/<file>.md. Read at build time (these
+ * pages are statically rendered). The Markdown is our own copy, not user
+ * input. External links open in a new tab.
+ */
+function renderArticle(file: string): string {
+  const raw = fs.readFileSync(path.join(process.cwd(), "content", "results", file), "utf-8");
+  const html = marked.parse(raw, { async: false, gfm: true }) as string;
+  return html.replace(/<a href="(https?:\/\/[^"]+)"/g, '<a href="$1" target="_blank" rel="noopener noreferrer"');
+}
+
+/** Detail page for one result in content/results.ts. */
 export function ResultCaseStudyPage({ slug }: { slug: string }) {
   const r = getResultBySlug(slug);
   if (!r) notFound();
+  const d = r.detail;
 
   const url = `${site.url}${resultHref(r)}`;
   // Anonymous clients get no `about` organisation: structured data is
@@ -37,8 +52,8 @@ export function ResultCaseStudyPage({ slug }: { slug: string }) {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: r.headline,
-    description: r.detail.metaDescription,
+    headline: d.title ?? r.headline,
+    description: d.metaDescription,
     image: `${site.url}${r.image.src}`,
     mainEntityOfPage: url,
     url,
@@ -51,6 +66,8 @@ export function ResultCaseStudyPage({ slug }: { slug: string }) {
     ...(r.client ? { about: { "@type": "Organization", name: r.client } } : {}),
   };
 
+  const articleHtml = d.article ? renderArticle(d.article) : null;
+
   return (
     <>
       <JsonLd
@@ -60,6 +77,7 @@ export function ResultCaseStudyPage({ slug }: { slug: string }) {
             { name: "Home", url: site.url },
             { name: r.client ?? r.sector, url },
           ]),
+          ...(d.faqs?.length ? [faqSchema(d.faqs)] : []),
         ]}
       />
 
@@ -71,50 +89,79 @@ export function ResultCaseStudyPage({ slug }: { slug: string }) {
         <ResultCaseStudyCard result={r} variant="page" />
         {r.image.caption && <p className="ds-result-caption">{r.image.caption}</p>}
 
-        <div className="ds-result-prose">
-          <section aria-labelledby="overview">
-            <h2 id="overview">Client overview</h2>
-            <p>{r.detail.overview}</p>
-          </section>
+        {articleHtml ? (
+          <div className="ds-result-article">
+            <div dangerouslySetInnerHTML={{ __html: articleHtml }} />
 
-          <section aria-labelledby="result">
-            <h2 id="result">The measured result</h2>
-            <dl className="ds-result-facts">
-              {r.detail.resultPoints.map((p) => (
-                <div key={p.label}>
-                  <dt>{p.label}</dt>
-                  <dd>{p.value}</dd>
-                </div>
-              ))}
-            </dl>
-          </section>
+            {d.faqs && d.faqs.length > 0 && (
+              <section aria-labelledby="faqs">
+                <h2 id="faqs">Frequently Asked Questions</h2>
+                {d.faqs.map((f) => (
+                  <div key={f.question}>
+                    <h3>{f.question}</h3>
+                    <p>{f.answer}</p>
+                  </div>
+                ))}
+              </section>
+            )}
 
-          <section aria-labelledby="reading">
-            <h2 id="reading">How to read this result</h2>
-            <ul>
-              {r.detail.reading.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-            </ul>
-          </section>
+            {d.note && <p className="ds-result-note">{d.note}</p>}
+          </div>
+        ) : (
+          <div className="ds-result-prose">
+            {d.overview && (
+              <section aria-labelledby="overview">
+                <h2 id="overview">Client overview</h2>
+                <p>{d.overview}</p>
+              </section>
+            )}
 
-          {r.detail.context && (
-            <section aria-labelledby="context">
-              <h2 id="context">{r.detail.context.heading}</h2>
-              <p>{r.detail.context.body}</p>
-              {r.detail.context.link && (
-                <Link href={r.detail.context.link.href} className="ds-text-link">
-                  {r.detail.context.link.label}
-                </Link>
-              )}
-            </section>
-          )}
-        </div>
+            {d.resultPoints && (
+              <section aria-labelledby="result">
+                <h2 id="result">The measured result</h2>
+                <dl className="ds-result-facts">
+                  {d.resultPoints.map((p) => (
+                    <div key={p.label}>
+                      <dt>{p.label}</dt>
+                      <dd>{p.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </section>
+            )}
+
+            {d.reading && (
+              <section aria-labelledby="reading">
+                <h2 id="reading">How to read this result</h2>
+                <ul>
+                  {d.reading.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {d.context && (
+              <section aria-labelledby="context">
+                <h2 id="context">{d.context.heading}</h2>
+                <p>{d.context.body}</p>
+                {d.context.link && (
+                  <Link href={d.context.link.href} className="ds-text-link">
+                    {d.context.link.label}
+                  </Link>
+                )}
+              </section>
+            )}
+          </div>
+        )}
       </div>
 
       <CTA
-        heading="Find out where you stand in AI search."
-        sub="Book a free 30-minute call. We’ll show you where your business appears in AI answers today, and where we’d focus first."
+        heading={d.cta?.heading ?? "Find out where you stand in AI search."}
+        sub={
+          d.cta?.sub ??
+          "Book a free 30-minute call. We’ll show you where your business appears in AI answers today, and where we’d focus first."
+        }
       />
     </>
   );
