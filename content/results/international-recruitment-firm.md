@@ -4,6 +4,7 @@
 - **Headline result:** appeared in 29 of 30 daily ChatGPT checks (97%) for one priority buyer question.
 - **Wider progress:** 47% more appearances in non-branded AI answers, from 30 to 44, across 49 tracked buyer questions on ChatGPT, Perplexity and Google AI Overviews.
 - **Links to the website:** 44% more links to the firm’s website from those answers, from 32 to 46.
+- **New content used as sources:** six new articles on the firm’s website were being used as sources for AI answers by 10 November 2026.
 - **Comparison weeks:** 8–14 October 2026 against 3–9 November 2026.
 
 ## The starting point
@@ -71,6 +72,16 @@ An appearance is one AI answer that named the firm. A link is a link to the firm
 The growth came from the two engines where the firm had been almost absent. Google AI Overviews went from no appearances to 16 in a week. Perplexity went from 2 to 10.
 
 ChatGPT appearances across the full set fell over the same two weeks. AI answers change from day to day, and a single engine can move in either direction. That is why we track all three and report the full picture rather than the best-performing one.
+
+## New questions, new sources
+
+The gains were not confined to questions where the firm already had some presence.
+
+**Four previously uncovered buyer questions.** In the baseline week, the firm was not named, linked to or used as a source for four of the tracked questions. By the later review, it was appearing or being linked to in answers to all four.
+
+**One example in detail.** For one of those questions, the firm went from no appearances in the baseline week to being named and linked to in all seven daily Perplexity checks during the later review.
+
+**Six new articles used as sources.** By 10 November 2026, six new articles published on the firm’s website were being used as sources for AI answers. That shows the new content was informing the answers, not just sitting on the site.
 
 ## What this means for a recruitment firm
 

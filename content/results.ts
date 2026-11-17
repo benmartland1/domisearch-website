@@ -176,10 +176,13 @@ export const RESULTS: ResultCaseStudy[] = [
       // naming the firm: 30 -> 44 (+47%). Links = citations of the firm's site:
       // 32 -> 46 (+44%). By engine: AIO 0 -> 16, Perplexity 2 -> 10, ChatGPT
       // 28 -> 18. Keep the ChatGPT fall on the page: the headline is a ChatGPT
-      // figure, so omitting it would mislead. Competitor rankings, "articles
-      // used as sources" and per-question Perplexity claims were NOT verified:
-      // do not add them without checking. Never publish the questions' wording
-      // or the markets they name.
+      // figure, so omitting it would mislead. "Six new articles used as
+      // sources (by 10 Nov)", "four previously uncovered questions" and the
+      // "7 of 7 daily Perplexity checks" example come from the 11 November
+      // performance review and were approved by Ben (2026-11-17). Competitor
+      // rankings were NOT verified (the tool shows 101st -> 15th Perplexity,
+      // unranked -> 16th AIO, not the review's figures): leave them out.
+      // Never publish the questions' wording or the markets they name.
       metaTitle: "97% ChatGPT Visibility for One Priority Buyer Question | DomiSearch",
       metaDescription:
         "An international recruitment firm appeared in 29 of 30 daily ChatGPT checks for one priority buyer question, and appeared in 47% more non-branded AI answers across ChatGPT, Perplexity and Google AI Overviews.",
