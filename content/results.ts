@@ -170,25 +170,50 @@ export const RESULTS: ResultCaseStudy[] = [
       position: "50% 40%",
     },
     detail: {
+      // ACCURACY (wider progress, verified against the tracking data on
+      // 2026-11-17): 49 non-branded questions x 3 engines (ChatGPT, Perplexity,
+      // Google AI Overviews), 8–14 Oct vs 3–9 Nov 2026. Appearances = answers
+      // naming the firm: 30 -> 44 (+47%). Links = citations of the firm's site:
+      // 32 -> 46 (+44%). By engine: AIO 0 -> 16, Perplexity 2 -> 10, ChatGPT
+      // 28 -> 18. Keep the ChatGPT fall on the page: the headline is a ChatGPT
+      // figure, so omitting it would mislead. Competitor rankings, "articles
+      // used as sources" and per-question Perplexity claims were NOT verified:
+      // do not add them without checking. Never publish the questions' wording
+      // or the markets they name.
       metaTitle: "97% ChatGPT Visibility for One Priority Buyer Question | DomiSearch",
       metaDescription:
-        "An international recruitment firm appeared in 29 of 30 daily ChatGPT checks for one priority buyer question.",
+        "An international recruitment firm appeared in 29 of 30 daily ChatGPT checks for one priority buyer question, and appeared in 47% more non-branded AI answers across ChatGPT, Perplexity and Google AI Overviews.",
       source: "One tracked buyer question · 30 daily checks",
       heroCta: "booking",
-      overview:
-        "The client is an international recruitment firm. We tracked one priority buyer question in ChatGPT once a day for 30 days and recorded whether the firm appeared in the answer. The exact question is not published, to protect the client’s confidentiality.",
-      resultPoints: [
-        { label: "Daily ChatGPT checks where the firm appeared", value: "29 of 30" },
-        { label: "Listed first, 9–15 November 2026", value: "5 of 7 daily checks" },
-        { label: "Questions tracked", value: "One priority buyer question" },
-        { label: "Daily checks", value: "30" },
+      article: "international-recruitment-firm.md",
+      faqs: [
+        {
+          question: "What does 97% ChatGPT visibility mean?",
+          answer:
+            "The firm appeared in ChatGPT’s answer to one priority buyer question in 29 of 30 daily checks. 97% is that figure rounded to the nearest whole percent. It is not an overall visibility score across all questions.",
+        },
+        {
+          question: "How much did visibility grow across all tracked questions?",
+          answer:
+            "Across 49 non-branded buyer questions on ChatGPT, Perplexity and Google AI Overviews, the firm appeared in 44 answers in the week of 3–9 November 2026, up from 30 in the week of 8–14 October 2026. That is 47% more.",
+        },
+        {
+          question: "Did visibility improve on every AI engine?",
+          answer:
+            "No. Appearances rose on Google AI Overviews (from 0 to 16) and Perplexity (from 2 to 10), and fell on ChatGPT (from 28 to 18) across the same two weeks.",
+        },
+        {
+          question: "Are links from AI answers the same as website visits?",
+          answer:
+            "No. A link means an AI answer included a link to the firm’s website. It does not tell us whether anyone clicked it.",
+        },
+        {
+          question: "Why is the client not named?",
+          answer:
+            "To protect the client’s confidentiality. For the same reason we do not publish the exact questions we track or the markets they cover.",
+        },
       ],
-      reading: [
-        "97% is 29 of 30 checks, rounded to the nearest whole percent.",
-        "It measures how often the firm appeared in ChatGPT’s answer to one specific question. It is not an increase, and not an overall visibility score across all questions.",
-        "The firm was not always listed first: it was listed first in 5 of the 7 daily checks between 9 and 15 November 2026.",
-        "We do not claim that any particular piece of work caused the result.",
-      ],
+      note: "Measurement note: The 97% figure covers 30 daily ChatGPT checks of one priority buyer question. The wider comparison covers the same 49 non-branded buyer questions on ChatGPT, Perplexity and Google AI Overviews, checked daily, in the weeks of 8–14 October and 3–9 November 2026. These figures describe monitored AI answers, not all AI conversations, website visits or enquiries. We do not claim that any single piece of work caused a particular result.",
     },
   },
 ];

@@ -982,6 +982,15 @@
 .ds-site .ds-result-article td{padding:16px 12px 16px 0;border-bottom:1px solid var(--ds-line);color:var(--ds-ink);vertical-align:top}
 .ds-site .ds-result-article th[align=right],.ds-site .ds-result-article td[align=right]{text-align:right;padding-right:0;padding-left:12px;white-space:nowrap}
 .ds-site .ds-result-article section h3{margin-top:28px}
+/* Before/after bars inside a case-study body (raw HTML in the Markdown). */
+.ds-site .ds-result-bars{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin:32px 0 8px;padding:28px;border:1px solid var(--ds-line);border-radius:16px}
+.ds-site .ds-result-article .ds-result-bars__title{font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--ds-muted);margin:0 0 16px}
+.ds-site .ds-result-bars__row{display:grid;grid-template-columns:64px 1fr 32px;align-items:center;gap:12px;margin-bottom:12px;font-size:14px;color:var(--ds-muted)}
+.ds-site .ds-result-bars__row strong{text-align:right;font-size:17px;color:var(--ds-ink)}
+.ds-site .ds-result-bars__track{height:14px;border-radius:999px;background:rgba(0,0,0,.05);overflow:hidden}
+.ds-site .ds-result-bars__bar{height:100%;border-radius:999px;background:var(--ds-green)}
+.ds-site .ds-result-bars__bar--before{background:var(--ds-line)}
+@media(max-width:700px){.ds-site .ds-result-bars{grid-template-columns:1fr;gap:24px;padding:20px}}
 .ds-site .ds-result-note{margin-top:56px!important;padding-top:20px;border-top:1px solid var(--ds-line);font-size:13px!important;line-height:1.6!important;color:var(--ds-muted)!important;font-style:italic}
 @media(max-width:700px){
  .ds-site .ds-result-article{margin-top:48px}
