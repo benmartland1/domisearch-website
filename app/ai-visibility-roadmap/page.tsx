@@ -12,12 +12,12 @@ export const viewport: Viewport = { themeColor: "#090909", width: "device-width"
 export const metadata: Metadata = {
   title: "The £99 AI Visibility Roadmap · DomiSearch",
   description:
-    "The 90-day plan to become the brand AI recommends across ChatGPT, Google AI, Perplexity and Gemini. The same process we run for clients - yours for £99.",
+    "The 90-day plan to become the firm AI recommends across ChatGPT, Google AI, Perplexity and Gemini. The same process we run for clients - yours for £99.",
   alternates: { canonical: "/ai-visibility-roadmap" },
   openGraph: {
     title: "The £99 AI Visibility Roadmap",
     description:
-      "The 90-day plan to become the brand AI recommends. Delivered within 24 hours, yours to keep.",
+      "The 90-day plan to become the firm AI recommends. Delivered within 24 hours, yours to keep.",
     url: `${site.url}/ai-visibility-roadmap`,
   },
 };
@@ -150,7 +150,7 @@ export default function AiVisibilityRoadmapPage() {
               </h1>
 
               <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-[color:var(--color-ink-2)] sm:text-lg lg:mx-0">
-                Get the exact 90-day roadmap to become the brand AI recommends. The same process we
+                Get the exact 90-day roadmap to become the firm AI recommends. The same process we
                 run for our clients - yours for £99.
               </p>
 

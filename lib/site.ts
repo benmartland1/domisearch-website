@@ -5,7 +5,7 @@ const canonicalUrl = rawUrl.replace(/^https?:\/\/(?!www\.)domisearch\.com/, "htt
 
 export const site = {
   name: "DomiSearch",
-  tagline: "Be the brand AI recommends.",
+  tagline: "Be the firm AI recommends.",
   description:
     "DomiSearch is an AI search visibility (AEO) agency for service businesses. We help brands get discovered, mentioned and cited across ChatGPT, Gemini, Perplexity, Claude and Google AI Overviews.",
   /** The platforms the programme tracks. Worded identically everywhere it appears. */

@@ -11,6 +11,8 @@ import { VisibilityReviewForm } from "./VisibilityReviewForm";
 import { ClientLogos } from "@/components/ClientLogos";
 import { Footer } from "@/components/Footer";
 import { SiteNav } from "@/components/SiteNav";
+import { ResultCaseStudyCard } from "@/components/ResultCaseStudyCard";
+import { RESULTS } from "@/content/results";
 
 /*
  * The approved homepage, built section for section from the supplied mockup
@@ -21,13 +23,6 @@ import { SiteNav } from "@/components/SiteNav";
  * Imagery is the site's own: the phone hero, the client and AI platform
  * logos, Ben's photo and the Taxd founders' headshots.
  */
-
-/** The three platforms in the Taxd reporting data. Not the full five the programme tracks. */
-const TAXD_PLATFORMS = [
-  { name: "ChatGPT", icon: "/engines/openai.svg", mono: true },
-  { name: "Perplexity", icon: "/engines/perplexity.svg", mono: true },
-  { name: "Google AI Overviews", icon: "/engines/google.svg", mono: false },
-];
 
 const ENGINES = [
   { name: "ChatGPT", icon: "/engines/openai.svg" },
@@ -82,7 +77,7 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
                 <h1>
                   <span className="ds-hero-word" style={{ "--d": "120ms" } as CSSProperties}>Be</span>{" "}
                   <span className="ds-hero-word" style={{ "--d": "200ms" } as CSSProperties}>the</span>{" "}
-                  <span className="ds-hero-word" style={{ "--d": "280ms" } as CSSProperties}>brand</span>{" "}
+                  <span className="ds-hero-word" style={{ "--d": "280ms" } as CSSProperties}>firm</span>{" "}
                   <br />
                   <span className="ds-hero-word" style={{ "--d": "400ms" } as CSSProperties}>AI</span>{" "}
                   <span className="ds-hero-logos" aria-hidden="true">
@@ -180,76 +175,18 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
           <ClientLogos />
         </section>
 
-        {/* ===== The evidence ===== */}
-        <section id="results" className="ds-section ds-wrap">
-          <div className="ds-case-intro">
-            <div>
+        {/* ===== Real results from AI search (content/results.ts) ===== */}
+        <section id="results" className="ds-section ds-wrap" aria-labelledby="results-heading">
+          <div className="ds-results">
+            <div className="ds-results-intro">
               <span className="ds-eyebrow">The evidence</span>
-              <h2>
-                A real business.
-                <br />
-                A measurable presence.
-              </h2>
+              <h2 id="results-heading">Real results from AI search.</h2>
             </div>
-          </div>
-          <div className="ds-case">
-            <div className="ds-case-result">
-              <div className="ds-case-topline">
-                <Image src="/clients/taxd-white.png" alt="Taxd" width={111} height={41} className="ds-taxd-white" />
-                <span>UK tax software</span>
-              </div>
-              <div className="ds-case-number">689</div>
-              <p className="ds-case-number-caption">
-                times Taxd was named{" "}
-                <br />
-                in tracked AI answers.
-              </p>
-              <div className="ds-case-scope">
-                <span>
-                  <b>1,080</b>AI answers checked
-                </span>
-              </div>
-              {/* The platforms the Taxd figures actually cover (Searchable, 30 days to 16 Oct 2026). */}
-              <div className="ds-case-tracked">
-                <span className="ds-case-tracked-label">Tracked across</span>
-                <ul className="ds-case-tracked-row">
-                  {TAXD_PLATFORMS.map((p) => (
-                    <li key={p.name}>
-                      <Image src={p.icon} alt="" width={28} height={28} className={p.mono ? "ds-mono-white" : undefined} />
-                      <span>{p.name}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div className="ds-results-list">
+              {RESULTS.filter((r) => r.showOn.page === "home").map((r) => (
+                <ResultCaseStudyCard key={r.slug} result={r} />
+              ))}
             </div>
-            <div className="ds-case-quote">
-              <div>
-                <div className="ds-quote-mark" aria-hidden="true">
-                  “
-                </div>
-                <blockquote>
-                  The important thing here is that Ben will spend the time to really understand the
-                  business and the metrics behind the scenes.
-                </blockquote>
-              </div>
-              <div className="ds-mini-person">
-                <Image src="/testimonials/eamon-shahir.png" alt="Eamon Shahir" width={64} height={64} />
-                <p>
-                  Eamon Shahir{" "}
-                  <br />
-                  <small>Co-Founder, Taxd</small>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="ds-case-footnote">
-            <details className="ds-measurement">
-              <summary>How to read these numbers</summary>
-              <p>
-                These figures describe the answers in the tracked set. They are not a count of all AI
-                conversations, unique users, enquiries or revenue.
-              </p>
-            </details>
           </div>
         </section>
 

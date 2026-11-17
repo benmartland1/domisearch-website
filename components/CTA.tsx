@@ -7,7 +7,7 @@ type Action = { label: string; href: string };
 
 /** Closing call to action: the approved design's forest panel. */
 export function CTA({
-  heading = "Ready to be the brand AI recommends?",
+  heading = "Ready to be the firm AI recommends?",
   sub = "Book a free 30-minute discovery call with Ben. We'll show you where your brand appears in AI answers today, and where it does not.",
   secondary = { label: "Contact us", href: "/contact" },
 }: { heading?: string; sub?: string; secondary?: Action } = {}) {

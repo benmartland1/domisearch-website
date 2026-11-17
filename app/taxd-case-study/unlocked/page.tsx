@@ -4,7 +4,7 @@ import { PlaybookCourse } from "@/components/landing/PlaybookCourse";
 export const metadata: Metadata = {
   title: "The AI Visibility Playbook · DomiSearch",
   description:
-    "How to become the brand AI recommends: the exact framework the DomiSearch AEO team uses for clients, in six short modules.",
+    "How to become the firm AI recommends: the exact framework the DomiSearch AEO team uses for clients, in six short modules.",
   robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
 };
 

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getIndexablePosts } from "@/lib/posts";
 import { getAllCaseStudies } from "@/lib/case-studies";
+import { RESULTS, resultHref } from "@/content/results";
 import { site } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -51,5 +52,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...posts, ...cs];
+  const results = RESULTS.map((r) => ({
+    url: `${base}${resultHref(r)}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...posts, ...cs, ...results];
 }

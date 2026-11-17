@@ -21,7 +21,7 @@ export function Footer({ note }: { note?: string }) {
           <p>
             AI search visibility for service businesses.
             <br />
-            Be the brand AI recommends.
+            Be the firm AI recommends.
           </p>
           <a href={`mailto:${site.email}`}>{site.email}</a>
           <a href={`tel:${site.phoneHref}`}>{site.phone}</a>

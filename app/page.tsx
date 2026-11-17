@@ -45,7 +45,7 @@ const homeGraph = {
       },
       image: `${site.url}/brand/logo-square.png`,
       description: `${site.description} Based in Manchester, UK.`,
-      slogan: "Be the brand AI recommends.",
+      slogan: "Be the firm AI recommends.",
       knowsAbout: [
         "Answer Engine Optimisation",
         "AI search visibility",
@@ -182,7 +182,7 @@ const homeGraph = {
       "@id": `${site.url}/#webpage`,
       url: site.url,
       name: "AI Search Visibility (AEO) Agency for Service Businesses | DomiSearch",
-      description: `DomiSearch helps service businesses get discovered, mentioned and cited across ${platforms}. Be the brand AI recommends. Based in Manchester, UK.`,
+      description: `DomiSearch helps service businesses get discovered, mentioned and cited across ${platforms}. Be the firm AI recommends. Based in Manchester, UK.`,
       isPartOf: { "@id": `${site.url}/#website` },
       about: { "@id": `${site.url}/#organization` },
       primaryImageOfPage: {

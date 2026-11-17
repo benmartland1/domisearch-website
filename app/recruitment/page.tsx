@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { ArrowRight } from "@/components/Icons";
 import Image from "next/image";
 import { JsonLd } from "@/components/JsonLd";
 import { Ticker } from "@/components/home/Ticker";
@@ -23,6 +22,8 @@ import {
   TERRITORIES_CAPACITY,
 } from "@/components/verticals/territoryData";
 import { site } from "@/lib/site";
+import { ResultCaseStudyCard } from "@/components/ResultCaseStudyCard";
+import { RESULTS } from "@/content/results";
 import { formatMonthYear, lastUpdated } from "@/lib/last-updated";
 
 /**
@@ -741,57 +742,19 @@ export default function RecruitmentPage() {
       <section id="proof" className="mx-auto max-w-6xl px-5 py-7 sm:px-6 sm:py-28">
         <SectionLabel>Proof</SectionLabel>
         <h2 className="mt-5 max-w-3xl text-balance text-[clamp(1.65rem,4.2vw,3rem)] font-medium leading-[1.06] tracking-[-0.035em] text-[color:var(--color-ink)]">
-          We&apos;ve done this outside recruitment{" "}
-          <span className="text-[color:var(--color-ink-3)]">and we&apos;ll show you the work</span>
+          A recruitment firm, tracked daily{" "}
+          <span className="text-[color:var(--color-ink-3)]">in ChatGPT</span>
         </h2>
         <p className="mt-5 max-w-2xl text-[16px] leading-relaxed text-[color:var(--color-ink-2)] sm:text-[17px]">
-          Straight answer: recruitment is a new vertical for us. The method isn&apos;t. Here is what it
-          did for a UK tax platform competing against far larger, far older brands.
+          One international recruitment firm, one priority buyer question, checked in ChatGPT
+          every day.
         </p>
 
-        {/* Featured case study */}
-        <div className="mt-8 overflow-hidden rounded-[1.75rem] sm:mt-12 border border-black/[0.08] bg-[color:var(--color-ink)] text-[color:var(--color-paper)]">
-          <div className="grid gap-6 p-6 sm:gap-8 sm:p-12 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div>
-              <Image
-                src="/clients/taxd-white.png"
-                alt="Taxd"
-                width={500}
-                height={184}
-                className="h-7 w-auto"
-              />
-              <p className="mt-6 text-balance text-[clamp(1.5rem,3.2vw,2.2rem)] font-medium leading-[1.15] tracking-[-0.03em]">
-                From invisible in AI answers to the name ChatGPT gives when someone asks for tax
-                help.
-              </p>
-              <a
-                href="/taxd-case-study"
-                className="mt-7 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-domigreen)] px-5 py-3 text-[14px] font-bold tracking-tight text-[color:var(--color-charcoal)] transition-transform hover:-translate-y-px"
-              >
-                Read the full blueprint
-                <span aria-hidden><ArrowRight /></span>
-              </a>
-            </div>
-
-            <div className="grid grid-cols-2 gap-8 lg:w-72 lg:grid-cols-1 lg:gap-7 lg:border-l lg:border-white/10 lg:pl-12">
-              <div>
-                <div className="text-[clamp(2rem,4vw,2.8rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-domigreen)]">
-                  600+
-                </div>
-                <div className="mt-2 text-[13px] text-[color:var(--color-paper)]/60">
-                  AI mentions a month
-                </div>
-              </div>
-              <div>
-                <div className="text-[clamp(2rem,4vw,2.8rem)] font-bold leading-none tracking-[-0.04em] text-[color:var(--color-domigreen)]">
-                  2.7×
-                </div>
-                <div className="mt-2 text-[13px] text-[color:var(--color-paper)]/60">
-                  Daily AI mentions, within a month
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* Case study card: content/results.ts (shown on this page only) */}
+        <div className="mt-8 sm:mt-12">
+          {RESULTS.filter((r) => r.showOn.page === "recruitment").map((r) => (
+            <ResultCaseStudyCard key={r.slug} result={r} />
+          ))}
         </div>
 
         {/* Testimonials */}

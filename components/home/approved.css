@@ -879,3 +879,80 @@
  .ds-site .ds-founder-caption small{font-size:13px}
  .ds-site .ds-note-founder,.ds-site.ds-home .ds-note-founder{display:none}
 }
+
+/* ---- Real results from AI search: photo-led case-study cards ----
+   Homepage section plus the header of /case-studies/<result> pages.
+   Content in content/results.ts, markup in components/ResultCaseStudyCard.
+   Four text styles only: sector label, headline, summary, small source line. */
+.ds-site .ds-results{max-width:1120px;margin:0 auto}
+.ds-site .ds-results-intro{margin-bottom:36px}
+.ds-site .ds-results-list{display:grid;gap:24px}
+.ds-site .ds-result{display:grid;grid-template-columns:45% 1fr;min-height:376px;background:#fffefb;border:1px solid var(--ds-line);border-radius:20px;overflow:hidden;box-shadow:0 1px 2px rgba(23,39,31,.035);font-family:DSAxiforma,Arial,sans-serif;color:var(--ds-ink);text-align:left;letter-spacing:normal}
+.ds-site .ds-result-media{position:relative;min-height:100%;background:var(--ds-pale);overflow:hidden}
+.ds-site .ds-result-overlay{position:absolute;inset:auto 0 0 0;padding:64px 28px 22px;background:linear-gradient(to top,rgba(12,22,17,.6),rgba(12,22,17,0));color:#fff;font-size:14px;font-weight:500;line-height:1.4;pointer-events:none}
+.ds-site .ds-result-overlay .ds-result-logo{width:88px;height:auto;filter:brightness(0) invert(1)}
+.ds-site .ds-result-body{display:flex;flex-direction:column;justify-content:center;padding:44px 56px}
+.ds-site .ds-result-sector{display:block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ds-muted);margin:0 0 14px}
+.ds-site .ds-result :is(h1,h3).ds-result-headline{font-family:DSAxiforma,Arial,sans-serif;font-size:clamp(28px,3vw,38px);line-height:1.14;letter-spacing:-1.4px;font-weight:700;color:var(--ds-ink);margin:0;max-width:500px;text-wrap:balance}
+.ds-site .ds-result-summary{font-size:15px;line-height:1.65;color:var(--ds-muted);margin:14px 0 0;max-width:460px}
+.ds-site .ds-result-foot{margin-top:26px;padding-top:24px;border-top:1px solid var(--ds-line)}
+.ds-site .ds-result-source{font-size:12px;line-height:1.6;color:var(--ds-muted);margin:0}
+.ds-site .ds-result-sep{font-family:Arial,sans-serif;font-weight:700;padding:0 2px}
+.ds-site .ds-result .ds-result-button{min-height:46px;padding:11px 18px;gap:18px;font-size:13px;text-decoration:none}
+.ds-site .ds-result .ds-result-button .ds-arrow{font-size:17px;display:inline-flex}
+.ds-site .ds-result .ds-button:focus-visible,.ds-site .ds-result-detail a:focus-visible{outline:2px solid var(--ds-ink);outline-offset:3px}
+@media(max-width:800px){
+ .ds-site .ds-result{grid-template-columns:1fr;min-height:0;border-radius:16px}
+ .ds-site .ds-result-media{aspect-ratio:3/2;min-height:0}
+ .ds-site .ds-result-overlay{padding:52px 20px 16px;font-size:13px}
+ .ds-site .ds-result-overlay .ds-result-logo{width:76px}
+ .ds-site .ds-result-body{padding:26px 24px 28px}
+ .ds-site .ds-result :is(h1,h3).ds-result-headline{font-size:27px;letter-spacing:-1px}
+ .ds-site .ds-result-summary{font-size:14.5px}
+ .ds-site .ds-result-foot{margin-top:22px;padding-top:20px}
+ .ds-site .ds-results-intro{margin-bottom:26px}
+ .ds-site .ds-results-list{gap:20px}
+}
+
+/* Detail page */
+.ds-site .ds-result-detail{max-width:1220px;padding-top:40px;padding-bottom:104px;font-family:DSAxiforma,Arial,sans-serif;color:var(--ds-ink)}
+.ds-site .ds-result-detail>*{max-width:1120px;margin-left:auto;margin-right:auto}
+.ds-site .ds-result-back{display:flex;align-items:center;gap:8px;width:fit-content;margin-left:0;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ds-muted);margin-bottom:22px;min-height:44px}
+.ds-site .ds-result-page{min-height:420px}
+.ds-site .ds-result-page :is(h1,h3).ds-result-headline{font-size:clamp(30px,3.6vw,44px)}
+.ds-site .ds-result-caption{font-size:12px;color:var(--ds-muted);margin-top:12px}
+.ds-site .ds-result-prose{max-width:720px;margin:64px auto 0;display:grid;gap:52px}
+.ds-site .ds-result-prose h2{font-family:DSAxiforma,Arial,sans-serif;font-size:22px;line-height:1.3;letter-spacing:-.6px;font-weight:700;color:var(--ds-ink);margin:0 0 14px}
+.ds-site .ds-result-prose p,.ds-site .ds-result-prose li{font-size:15.5px;line-height:1.75;color:var(--ds-muted)}
+.ds-site .ds-result-prose ul{margin:0;padding-left:18px;display:grid;gap:8px;list-style:disc}
+.ds-site .ds-result-prose .ds-text-link{margin-top:14px;color:var(--ds-ink)}
+.ds-site .ds-result-facts{margin:0;border-top:1px solid var(--ds-line)}
+.ds-site .ds-result-facts>div{display:grid;grid-template-columns:1fr 1.1fr;gap:24px;padding:16px 0;border-bottom:1px solid var(--ds-line)}
+.ds-site .ds-result-facts dt{font-size:14px;line-height:1.6;color:var(--ds-muted)}
+.ds-site .ds-result-facts dd{margin:0;font-size:15px;line-height:1.55;font-weight:500;color:var(--ds-ink)}
+@media(max-width:700px){
+ .ds-site .ds-result-detail{padding-top:24px;padding-bottom:64px}
+ .ds-site .ds-result-page{min-height:0}
+ .ds-site .ds-result-prose{margin-top:44px;gap:40px}
+ .ds-site .ds-result-facts>div{grid-template-columns:1fr;gap:4px}
+}
+
+/* ---- Homepage variant of the result card ----
+   Matches the homepage's own language: full content width, square-ish 3px
+   corners, flat hairline border, medium-weight headings and 17px body copy
+   (see .ds-journey-copy and .ds-journey-number). The recruitment page keeps
+   the rounded card, which suits that page's own rounded components. */
+.ds-site.ds-home .ds-results{max-width:none}
+.ds-site.ds-home .ds-result{border-radius:3px;box-shadow:none;background:transparent;min-height:400px}
+.ds-site.ds-home .ds-result-body{padding:48px 64px}
+.ds-site.ds-home .ds-result-sector{font-size:13px;font-weight:500;letter-spacing:1.25px;color:var(--ds-muted);margin-bottom:16px}
+.ds-site.ds-home .ds-result :is(h1,h3).ds-result-headline{font-size:clamp(28px,2.9vw,40px);font-weight:500;letter-spacing:-.02em;line-height:1.18;max-width:560px}
+.ds-site.ds-home .ds-result-summary{font-size:17px;line-height:1.6;color:#34463c;margin-top:16px;max-width:520px}
+.ds-site.ds-home .ds-result-foot{margin-top:28px;padding-top:26px}
+@media(max-width:800px){
+ .ds-site.ds-home .ds-result{min-height:0}
+ .ds-site.ds-home .ds-result-body{padding:26px 22px 28px}
+ .ds-site.ds-home .ds-result :is(h1,h3).ds-result-headline{font-size:26px}
+ .ds-site.ds-home .ds-result-summary{font-size:16px}
+ .ds-site.ds-home .ds-result-sector{font-size:12px}
+}

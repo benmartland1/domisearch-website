@@ -1,5 +1,6 @@
 import { getIndexablePosts } from "@/lib/posts";
 import { getAllCaseStudies } from "@/lib/case-studies";
+import { RESULTS, resultHref } from "@/content/results";
 import { site } from "@/lib/site";
 import { aeoPricingSentence } from "@/lib/pricing";
 
@@ -36,6 +37,11 @@ export async function GET() {
     lines.push("## Case studies");
     for (const c of studies) {
       lines.push(`- [${c.client} - ${c.heroMetric.value} ${c.heroMetric.label}](${site.url}/case-studies/${c.slug}): ${c.excerpt}`);
+    }
+    // AI search results. The recruitment client is anonymous; only the public
+    // label in content/results.ts is ever used here.
+    for (const r of RESULTS) {
+      lines.push(`- [${r.headline}](${site.url}${resultHref(r)}): ${r.detail.metaDescription} ${r.detail.source}.`);
     }
     lines.push("");
   }
