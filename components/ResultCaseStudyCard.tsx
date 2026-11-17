@@ -1,16 +1,31 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "@/components/Icons";
+import { ArrowRight, ArrowUpRight } from "@/components/Icons";
 import { resultHref, type ResultCaseStudy } from "@/content/results";
+
+type Cta = {
+  label: string;
+  href: string;
+  /** Opens in a new tab with an ↗ arrow, like the nav's Book a call. */
+  external?: boolean;
+};
 
 type Props = {
   result: ResultCaseStudy;
   /**
-   * "card": the homepage card. Headline, one scope line, then the button.
-   * "page": the detail-page header. h1, eager photo, and the source line under
-   * the divider in place of the button.
+   * "card": headline, one scope line, then a CTA button.
+   * "page": the compact detail-page header (h1, source line instead of a
+   * button). Used by results whose detail page has no `heroCta`.
    */
   variant?: "card" | "page";
+  /** "home": the homepage look (flat, 3px corners, medium-weight type). */
+  look?: "home" | "default";
+  /** Heading element. Defaults to h3 for a card, h1 for a page header. */
+  as?: "h1" | "h3";
+  /** Card CTA. Defaults to "Read case study" linking to the detail page. */
+  cta?: Cta;
+  /** Load the photo eagerly (above the fold). */
+  priority?: boolean;
 };
 
 /**
@@ -19,22 +34,34 @@ type Props = {
  * lives in content/results.ts. The card states the result once; fuller
  * evidence is for the detail page.
  */
-export function ResultCaseStudyCard({ result: r, variant = "card" }: Props) {
+export function ResultCaseStudyCard({
+  result: r,
+  variant = "card",
+  look = "default",
+  as,
+  cta,
+  priority,
+}: Props) {
   const isPage = variant === "page";
-  const Heading = isPage ? "h1" : "h3";
+  const Heading = as ?? (isPage ? "h1" : "h3");
   // The sector label repeats the photo overlay for anonymous clients, so it is
   // shown only where it adds something.
   const showSector = r.sector !== r.overlay.text;
+  const action: Cta = cta ?? { label: "Read case study", href: resultHref(r) };
+  const isDefaultAction = !cta;
+  const className = ["ds-result", isPage && "ds-result-page", look === "home" && "ds-result--home"]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <article className={`ds-result${isPage ? " ds-result-page" : ""}`}>
+    <article className={className}>
       <div className="ds-result-media">
         <Image
           src={r.image.src}
           alt={r.image.alt}
           fill
-          sizes="(max-width: 800px) 100vw, 504px"
-          priority={isPage}
+          sizes="(max-width: 800px) 100vw, 565px"
+          priority={priority ?? isPage}
           style={{ objectFit: "cover", objectPosition: r.image.position ?? "50% 50%" }}
         />
         <div className="ds-result-overlay">
@@ -55,10 +82,8 @@ export function ResultCaseStudyCard({ result: r, variant = "card" }: Props) {
 
       <div className="ds-result-body">
         {showSector && <span className="ds-result-sector">{r.sector}</span>}
-        <Heading className="ds-result-headline">
-          {isPage ? (r.detail.title ?? r.headline) : r.headline}
-        </Heading>
-        <p className="ds-result-summary">{isPage ? (r.detail.lede ?? r.summary) : r.summary}</p>
+        <Heading className="ds-result-headline">{r.headline}</Heading>
+        <p className="ds-result-summary">{r.summary}</p>
 
         <div className="ds-result-foot">
           {isPage ? (
@@ -72,11 +97,23 @@ export function ResultCaseStudyCard({ result: r, variant = "card" }: Props) {
                 </span>
               ))}
             </p>
+          ) : action.external ? (
+            <a
+              href={action.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ds-button ds-result-button"
+            >
+              <span>{action.label}</span>
+              <span className="ds-arrow" aria-hidden="true">
+                <ArrowUpRight />
+              </span>
+            </a>
           ) : (
-            <Link href={resultHref(r)} className="ds-button ds-result-button">
+            <Link href={action.href} className="ds-button ds-result-button">
               <span>
-                Read case study
-                <span className="sr-only">: {r.client ?? r.overlay.text}</span>
+                {action.label}
+                {isDefaultAction && <span className="sr-only">: {r.client ?? r.overlay.text}</span>}
               </span>
               <span className="ds-arrow" aria-hidden="true">
                 <ArrowRight />

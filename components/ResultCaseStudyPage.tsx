@@ -52,7 +52,7 @@ export function ResultCaseStudyPage({ slug }: { slug: string }) {
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: d.title ?? r.headline,
+    headline: r.headline,
     description: d.metaDescription,
     image: `${site.url}${r.image.src}`,
     mainEntityOfPage: url,
@@ -67,6 +67,7 @@ export function ResultCaseStudyPage({ slug }: { slug: string }) {
   };
 
   const articleHtml = d.article ? renderArticle(d.article) : null;
+  const heroIsCard = d.heroCta === "booking";
 
   return (
     <>
@@ -81,12 +82,24 @@ export function ResultCaseStudyPage({ slug }: { slug: string }) {
         ]}
       />
 
-      <div className="ds-result-detail ds-wrap">
+      <div className={`ds-result-detail ds-wrap${heroIsCard ? " ds-result-detail--home" : ""}`}>
         <Link href={r.showOn.href} className="ds-result-back">
           <ArrowLeft /> Back to {r.showOn.label}
         </Link>
 
-        <ResultCaseStudyCard result={r} variant="page" />
+        {heroIsCard ? (
+          // The homepage card, unchanged, as the hero: headline as the h1 and
+          // the nav's booking link in place of "Read case study".
+          <ResultCaseStudyCard
+            result={r}
+            look="home"
+            as="h1"
+            priority
+            cta={{ label: "Book a call", href: site.calendly, external: true }}
+          />
+        ) : (
+          <ResultCaseStudyCard result={r} variant="page" />
+        )}
         {r.image.caption && <p className="ds-result-caption">{r.image.caption}</p>}
 
         {articleHtml ? (

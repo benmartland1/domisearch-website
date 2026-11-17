@@ -184,7 +184,7 @@ export function ApprovedHome({ reviews, reviewCount }: { reviews: TrustpilotRevi
             </div>
             <div className="ds-results-list">
               {RESULTS.filter((r) => r.showOn.page === "home").map((r) => (
-                <ResultCaseStudyCard key={r.slug} result={r} />
+                <ResultCaseStudyCard key={r.slug} result={r} look="home" />
               ))}
             </div>
           </div>

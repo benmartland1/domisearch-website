@@ -943,19 +943,25 @@
    (see .ds-journey-copy and .ds-journey-number). The recruitment page keeps
    the rounded card, which suits that page's own rounded components. */
 .ds-site.ds-home .ds-results{max-width:none}
-.ds-site.ds-home .ds-result{border-radius:3px;box-shadow:none;background:transparent;min-height:400px}
-.ds-site.ds-home .ds-result-body{padding:48px 64px}
-.ds-site.ds-home .ds-result-sector{font-size:13px;font-weight:500;letter-spacing:1.25px;color:var(--ds-muted);margin-bottom:16px}
-.ds-site.ds-home .ds-result :is(h1,h3).ds-result-headline{font-size:clamp(28px,2.9vw,40px);font-weight:500;letter-spacing:-.02em;line-height:1.18;max-width:560px}
-.ds-site.ds-home .ds-result-summary{font-size:17px;line-height:1.6;color:#34463c;margin-top:16px;max-width:520px}
-.ds-site.ds-home .ds-result-foot{margin-top:28px;padding-top:26px}
+/* The homepage look lives on .ds-result--home, so any page can reuse it
+   (the Taxd case-study hero does). Colours are literal rather than
+   var(--ds-muted), which the homepage redefines. */
+.ds-site .ds-result.ds-result--home{border-radius:3px;box-shadow:none;background:transparent;min-height:400px}
+.ds-site .ds-result--home .ds-result-body{padding:48px 64px}
+.ds-site .ds-result--home .ds-result-sector{font-size:13px;font-weight:500;letter-spacing:1.25px;color:#34463c;margin-bottom:16px}
+.ds-site .ds-result.ds-result--home :is(h1,h3).ds-result-headline{font-size:clamp(28px,2.9vw,40px);font-weight:500;letter-spacing:-.02em;line-height:1.18;max-width:560px}
+.ds-site .ds-result--home .ds-result-summary{font-size:17px;line-height:1.6;color:#34463c;margin-top:16px;max-width:520px}
+.ds-site .ds-result--home .ds-result-foot{margin-top:28px;padding-top:26px}
 @media(max-width:800px){
- .ds-site.ds-home .ds-result{min-height:0}
- .ds-site.ds-home .ds-result-body{padding:26px 22px 28px}
- .ds-site.ds-home .ds-result :is(h1,h3).ds-result-headline{font-size:26px}
- .ds-site.ds-home .ds-result-summary{font-size:16px}
- .ds-site.ds-home .ds-result-sector{font-size:12px}
+ .ds-site .ds-result.ds-result--home{min-height:0}
+ .ds-site .ds-result--home .ds-result-body{padding:26px 22px 28px}
+ .ds-site .ds-result.ds-result--home :is(h1,h3).ds-result-headline{font-size:26px}
+ .ds-site .ds-result--home .ds-result-summary{font-size:16px}
+ .ds-site .ds-result--home .ds-result-sector{font-size:12px}
 }
+/* A detail page whose hero is the homepage card: same width as the homepage. */
+.ds-site .ds-result-detail.ds-result-detail--home{max-width:1400px}
+.ds-site .ds-result-detail--home>.ds-result{max-width:none}
 
 /* ---- Long-form case-study body (content/results/*.md) ----
    Typography follows the homepage: 17px body, medium-weight headings. */

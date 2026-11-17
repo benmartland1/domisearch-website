@@ -58,10 +58,11 @@ export type ResultCaseStudy = {
     metaDescription: string;
     /** Source and sample line, shown under the divider in the page header. */
     source: string;
-    /** Page h1 when it differs from the card headline. */
-    title?: string;
-    /** Opening paragraph in the page header, in place of the card summary. */
-    lede?: string;
+    /**
+     * "booking": the page hero is the homepage card itself (same look, headline
+     * as the h1) with a Book a call button in place of Read case study.
+     */
+    heroCta?: "booking";
     /**
      * Long-form body: a Markdown file under content/results/. When set it
      * replaces the short overview / result / reading sections.
@@ -112,9 +113,7 @@ export const RESULTS: ResultCaseStudy[] = [
       metaDescription:
         "Taxd, a UK digital tax filing platform, recorded 52 new paying customers attributed to AI search over a 12-month reporting period. See the AEO, website and content work, and the Perplexity visibility behind it.",
       source: "Client-confirmed attribution · 12-month reporting period",
-      title: "How Taxd gained 52 new clients through AI search",
-      lede:
-        "Taxd recorded 52 new paying customers attributed to AI search over a 12-month reporting period. DomiSearch’s work with the online tax platform combined AI search optimisation, website improvements and content to help potential customers discover the service and understand whether it was right for them.",
+      heroCta: "booking",
       article: "taxd-ai-search.md",
       faqs: [
         {
