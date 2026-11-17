@@ -59,8 +59,9 @@ export type ResultCaseStudy = {
     /** Source and sample line, shown under the divider in the page header. */
     source: string;
     /**
-     * "booking": the page hero is the homepage card itself (same look, headline
-     * as the h1) with a Book a call button in place of Read case study.
+     * "booking": the page hero is the listing card itself (the same look as on
+     * the page that shows it, headline as the h1) with a Book a call button in
+     * place of Read case study.
      */
     heroCta?: "booking";
     /**
@@ -173,6 +174,7 @@ export const RESULTS: ResultCaseStudy[] = [
       metaDescription:
         "An international recruitment firm appeared in 29 of 30 daily ChatGPT checks for one priority buyer question.",
       source: "One tracked buyer question · 30 daily checks",
+      heroCta: "booking",
       overview:
         "The client is an international recruitment firm. We tracked one priority buyer question in ChatGPT once a day for 30 days and recorded whether the firm appeared in the answer. The exact question is not published, to protect the client’s confidentiality.",
       resultPoints: [

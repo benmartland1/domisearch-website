@@ -991,3 +991,8 @@
  .ds-site .ds-result-article table{font-size:14px}
  .ds-site .ds-result-article th{font-size:11px;letter-spacing:.5px}
 }
+/* A detail page whose hero is the /recruitment card: the same container as
+   that page's sections (max-w-6xl, px-5 / sm:px-6), so the card is identical. */
+.ds-site .ds-result-detail.ds-result-detail--recruitment{max-width:1152px;padding-left:20px;padding-right:20px}
+.ds-site .ds-result-detail--recruitment>.ds-result{max-width:none}
+@media(min-width:640px){.ds-site .ds-result-detail.ds-result-detail--recruitment{padding-left:24px;padding-right:24px}}

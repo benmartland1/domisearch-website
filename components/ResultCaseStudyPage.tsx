@@ -68,6 +68,8 @@ export function ResultCaseStudyPage({ slug }: { slug: string }) {
 
   const articleHtml = d.article ? renderArticle(d.article) : null;
   const heroIsCard = d.heroCta === "booking";
+  // The hero is the card exactly as it appears on the page that lists it.
+  const heroLook = r.showOn.page === "home" ? "home" : "default";
 
   return (
     <>
@@ -82,17 +84,17 @@ export function ResultCaseStudyPage({ slug }: { slug: string }) {
         ]}
       />
 
-      <div className={`ds-result-detail ds-wrap${heroIsCard ? " ds-result-detail--home" : ""}`}>
+      <div className={`ds-result-detail ds-wrap${heroIsCard ? ` ds-result-detail--${r.showOn.page}` : ""}`}>
         <Link href={r.showOn.href} className="ds-result-back">
           <ArrowLeft /> Back to {r.showOn.label}
         </Link>
 
         {heroIsCard ? (
-          // The homepage card, unchanged, as the hero: headline as the h1 and
+          // The listing card, unchanged, as the hero: headline as the h1 and
           // the nav's booking link in place of "Read case study".
           <ResultCaseStudyCard
             result={r}
-            look="home"
+            look={heroLook}
             as="h1"
             priority
             cta={{ label: "Book a call", href: site.calendly, external: true }}
