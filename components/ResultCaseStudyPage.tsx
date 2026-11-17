@@ -97,6 +97,7 @@ export function ResultCaseStudyPage({ slug }: { slug: string }) {
             look={heroLook}
             as="h1"
             priority
+            eyebrow
             cta={{ label: "Book a call", href: site.calendly, external: true }}
           />
         ) : (

@@ -158,9 +158,8 @@ export const RESULTS: ResultCaseStudy[] = [
     // ACCURACY: 799 / 338 are 30-day TOTALS (17 Oct–15 Nov 2026), not
     // increases. They cover all five monitored engines (ChatGPT, Perplexity,
     // Google AI Overviews, Copilot, Gemini) and both branded and non-branded
-    // questions; Ben chose the five-engine figures (2026-11-17), so the
-    // measurement note names all five. 799 counts repeat references within
-    // 291 answers; 372 of the 799 came from non-branded questions.
+    // questions; Ben chose the five-engine figures (2026-11-17). 799 counts
+    // repeat references within 291 answers; 372 of the 799 came from non-branded questions.
     // 97% = 29 of 30 daily ChatGPT checks for ONE question: keep "one priority
     // buyer question" wherever it appears.
     headline: "799 brand mentions. 338 website citations. One international recruitment firm.",
@@ -173,51 +172,31 @@ export const RESULTS: ResultCaseStudy[] = [
       position: "50% 40%",
     },
     detail: {
-      // ACCURACY (engine comparison, verified against the tracking data on
-      // 2026-11-17): 49 non-branded questions, 8–14 Oct vs 3–9 Nov 2026.
-      // Appearances by engine: Perplexity 2 -> 10 (the "5x"), AIO 0 -> 16,
-      // ChatGPT 28 -> 18. Keep the ChatGPT fall on the page: the 97% is a
-      // ChatGPT figure, so omitting it would mislead. "Six new articles used as
-      // sources (by 10 Nov)", "four previously uncovered questions" and the
-      // "7 of 7 daily Perplexity checks" example come from the 11 November
-      // performance review and were approved by Ben (2026-11-17). Competitor
-      // rankings were NOT verified (the tool shows 101st -> 15th Perplexity,
-      // unranked -> 16th AIO, not the review's figures): leave them out.
-      // Never publish the questions' wording or the markets they name.
-      metaTitle: "799 AI Brand Mentions for an International Recruitment Firm | DomiSearch",
+      // COPY: Ben's brief of 2026-11-17 replaced the earlier page copy. It
+      // drops the FAQ section, the engine-by-engine table and the measurement
+      // note. Do not reintroduce FAQs, caveat blocks or the table. The
+      // "never name the tool" rule above still applies to the captions.
+      // ACCURACY (verified against the tracking data on 2026-11-17): Perplexity 2 -> 10
+      // appearances (the "fivefold") on the same 49 non-branded questions,
+      // 8–14 Oct vs 3–9 Nov 2026. "Six new articles used as sources (by 10 Nov)",
+      // "four previously uncovered questions" and the "7 of 7 daily Perplexity
+      // checks" example come from the 11 November performance review and were
+      // approved by Ben. Listed first in 5 of 7 daily ChatGPT checks, 9–15 Nov.
+      // 799 includes repeated references across branded and non-branded
+      // questions: never present it as 799 recommendations, buyers or leads,
+      // nor citations as traffic, backlinks or customers. Competitor rankings
+      // were NOT verified: leave them out. Never publish the questions' wording
+      // or the markets they name.
+      metaTitle: "799 AI Brand Mentions for a Recruitment Firm | DomiSearch",
       metaDescription:
-        "An international recruitment firm recorded 799 brand mentions and 338 website citations in AI answers over 30 days, and appeared in 29 of 30 daily ChatGPT checks for one priority buyer question.",
+        "An international recruitment firm recorded 799 brand mentions and 338 website citations in AI answers over 30 days. Explore the work and results.",
       source: "30 days of monitoring · 17 October–15 November 2026",
       heroCta: "booking",
       article: "international-recruitment-firm.md",
-      faqs: [
-        {
-          question: "What does 97% ChatGPT visibility mean?",
-          answer:
-            "The firm appeared in ChatGPT’s answer to one priority buyer question in 29 of 30 daily checks. 97% is that figure rounded to the nearest whole percent. It is not an overall visibility score across all questions.",
-        },
-        {
-          question: "What do 799 brand mentions and 338 website citations mean?",
-          answer:
-            "They are totals recorded over 30 days of monitoring, from 17 October to 15 November 2026, not increases. The 799 mentions include repeat references within 291 AI answers, and 372 of them came from questions that did not name the firm. The 338 citations are links to the firm’s website within those answers.",
-        },
-        {
-          question: "Did visibility improve on every AI engine?",
-          answer:
-            "No. Comparing 8–14 October with 3–9 November 2026 on the same non-branded questions, appearances rose on Perplexity (from 2 to 10) and Google AI Overviews (from 0 to 16), and fell on ChatGPT (from 28 to 18).",
-        },
-        {
-          question: "Are links from AI answers the same as website visits?",
-          answer:
-            "No. A link means an AI answer included a link to the firm’s website. It does not tell us whether anyone clicked it.",
-        },
-        {
-          question: "Why is the client not named?",
-          answer:
-            "To protect the client’s confidentiality. For the same reason we do not publish the exact questions we track or the markets they cover.",
-        },
-      ],
-      note: "Measurement note: Thirty-day totals cover 17 October–15 November 2026 across ChatGPT, Perplexity, Google AI Overviews, Microsoft Copilot and Gemini, for branded and non-branded questions. The 799 mentions include repeated references within 291 monitored answers; citations count links to the firm’s website in those answers. The 97% figure covers 29 of 30 daily ChatGPT checks of one priority buyer question. The engine comparison covers the same 49 non-branded questions on ChatGPT, Perplexity and Google AI Overviews, 8–14 October versus 3–9 November 2026. These figures describe monitored AI answers, not all AI conversations, website visits or enquiries. We do not claim that any single piece of work caused a particular result.",
+      cta: {
+        heading: "Want your recruitment firm to appear in AI answers?",
+        sub: "Book a free 30-minute call. We’ll show you where your firm appears today and where we would focus first.",
+      },
     },
   },
 ];

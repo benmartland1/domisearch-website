@@ -26,6 +26,8 @@ type Props = {
   cta?: Cta;
   /** Load the photo eagerly (above the fold). */
   priority?: boolean;
+  /** Always show the sector eyebrow, even when it repeats the photo overlay. */
+  eyebrow?: boolean;
 };
 
 /**
@@ -41,12 +43,13 @@ export function ResultCaseStudyCard({
   as,
   cta,
   priority,
+  eyebrow,
 }: Props) {
   const isPage = variant === "page";
   const Heading = as ?? (isPage ? "h1" : "h3");
   // The sector label repeats the photo overlay for anonymous clients, so it is
   // shown only where it adds something.
-  const showSector = r.sector !== r.overlay.text;
+  const showSector = eyebrow || r.sector !== r.overlay.text;
   const action: Cta = cta ?? { label: "Read case study", href: resultHref(r) };
   const isDefaultAction = !cta;
   const className = ["ds-result", isPage && "ds-result-page", look === "home" && "ds-result--home"]
