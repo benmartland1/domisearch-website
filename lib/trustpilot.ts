@@ -7,7 +7,9 @@ import { site } from "@/lib/site";
  * behind a bot check and the business unit has no API access, so the bodies
  * are captured by hand (last retrieved on the date in the file) and only the
  * aggregate count is fetched live. Never edit the text: it is the reviewer's
- * own wording.
+ * own wording. One exception, at Ben's instruction: reviews written before the
+ * rebrand say "BMAR Digital" / "bmar", shown here as "DomiSearch". If you
+ * re-capture from Trustpilot, re-apply that swap.
  */
 export type TrustpilotReview = {
   id: string;
