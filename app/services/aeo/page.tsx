@@ -255,7 +255,7 @@ export default async function AEOPage() {
               </a>
             </div>
             <p className="ds-hero-note">
-              <Dotted parts={["UK-built", "For service businesses", "Recruitment a core focus"]} />
+              <Dotted parts={["UK-built", "For service businesses"]} />
             </p>
           </div>
 
