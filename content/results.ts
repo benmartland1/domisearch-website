@@ -155,13 +155,16 @@ export const RESULTS: ResultCaseStudy[] = [
     showOn: { page: "recruitment", href: "/recruitment#proof", label: "Recruitment" },
     overlay: { text: "International recruitment firm" },
     sector: "International recruitment firm",
-    // ACCURACY: 97% = 29 of 30 daily ChatGPT checks, rounded to the nearest
-    // whole percent, for ONE tracked question. Not an increase, not an overall
-    // visibility score, and not "always listed first". Keep "one priority
-    // buyer question" and the sample size wherever 97% appears. The overall
-    // reporting dates are deliberately not published.
-    headline: "97% ChatGPT visibility for one priority buyer question",
-    summary: "Appeared in 29 of 30 daily ChatGPT checks.",
+    // ACCURACY: 799 / 338 are 30-day TOTALS (17 Oct–15 Nov 2026), not
+    // increases. They cover all five monitored engines (ChatGPT, Perplexity,
+    // Google AI Overviews, Copilot, Gemini) and both branded and non-branded
+    // questions; Ben chose the five-engine figures (2026-11-17), so the
+    // measurement note names all five. 799 counts repeat references within
+    // 291 answers; 372 of the 799 came from non-branded questions.
+    // 97% = 29 of 30 daily ChatGPT checks for ONE question: keep "one priority
+    // buyer question" wherever it appears.
+    headline: "799 brand mentions. 338 website citations. One international recruitment firm.",
+    summary: "Recorded in AI answers over 30 days, with 97% ChatGPT visibility for one priority buyer question.",
     image: {
       src: "/case-studies/recruitment-office.webp",
       width: 924,
@@ -170,23 +173,21 @@ export const RESULTS: ResultCaseStudy[] = [
       position: "50% 40%",
     },
     detail: {
-      // ACCURACY (wider progress, verified against the tracking data on
-      // 2026-11-17): 49 non-branded questions x 3 engines (ChatGPT, Perplexity,
-      // Google AI Overviews), 8–14 Oct vs 3–9 Nov 2026. Appearances = answers
-      // naming the firm: 30 -> 44 (+47%). Links = citations of the firm's site:
-      // 32 -> 46 (+44%). By engine: AIO 0 -> 16, Perplexity 2 -> 10, ChatGPT
-      // 28 -> 18. Keep the ChatGPT fall on the page: the headline is a ChatGPT
-      // figure, so omitting it would mislead. "Six new articles used as
+      // ACCURACY (engine comparison, verified against the tracking data on
+      // 2026-11-17): 49 non-branded questions, 8–14 Oct vs 3–9 Nov 2026.
+      // Appearances by engine: Perplexity 2 -> 10 (the "5x"), AIO 0 -> 16,
+      // ChatGPT 28 -> 18. Keep the ChatGPT fall on the page: the 97% is a
+      // ChatGPT figure, so omitting it would mislead. "Six new articles used as
       // sources (by 10 Nov)", "four previously uncovered questions" and the
       // "7 of 7 daily Perplexity checks" example come from the 11 November
       // performance review and were approved by Ben (2026-11-17). Competitor
       // rankings were NOT verified (the tool shows 101st -> 15th Perplexity,
       // unranked -> 16th AIO, not the review's figures): leave them out.
       // Never publish the questions' wording or the markets they name.
-      metaTitle: "97% ChatGPT Visibility for One Priority Buyer Question | DomiSearch",
+      metaTitle: "799 AI Brand Mentions for an International Recruitment Firm | DomiSearch",
       metaDescription:
-        "An international recruitment firm appeared in 29 of 30 daily ChatGPT checks for one priority buyer question, and appeared in 47% more non-branded AI answers across ChatGPT, Perplexity and Google AI Overviews.",
-      source: "One tracked buyer question · 30 daily checks",
+        "An international recruitment firm recorded 799 brand mentions and 338 website citations in AI answers over 30 days, and appeared in 29 of 30 daily ChatGPT checks for one priority buyer question.",
+      source: "30 days of monitoring · 17 October–15 November 2026",
       heroCta: "booking",
       article: "international-recruitment-firm.md",
       faqs: [
@@ -196,14 +197,14 @@ export const RESULTS: ResultCaseStudy[] = [
             "The firm appeared in ChatGPT’s answer to one priority buyer question in 29 of 30 daily checks. 97% is that figure rounded to the nearest whole percent. It is not an overall visibility score across all questions.",
         },
         {
-          question: "How much did visibility grow across all tracked questions?",
+          question: "What do 799 brand mentions and 338 website citations mean?",
           answer:
-            "Across 49 non-branded buyer questions on ChatGPT, Perplexity and Google AI Overviews, the firm appeared in 44 answers in the week of 3–9 November 2026, up from 30 in the week of 8–14 October 2026. That is 47% more.",
+            "They are totals recorded over 30 days of monitoring, from 17 October to 15 November 2026, not increases. The 799 mentions include repeat references within 291 AI answers, and 372 of them came from questions that did not name the firm. The 338 citations are links to the firm’s website within those answers.",
         },
         {
           question: "Did visibility improve on every AI engine?",
           answer:
-            "No. Appearances rose on Google AI Overviews (from 0 to 16) and Perplexity (from 2 to 10), and fell on ChatGPT (from 28 to 18) across the same two weeks.",
+            "No. Comparing 8–14 October with 3–9 November 2026 on the same non-branded questions, appearances rose on Perplexity (from 2 to 10) and Google AI Overviews (from 0 to 16), and fell on ChatGPT (from 28 to 18).",
         },
         {
           question: "Are links from AI answers the same as website visits?",
@@ -216,7 +217,7 @@ export const RESULTS: ResultCaseStudy[] = [
             "To protect the client’s confidentiality. For the same reason we do not publish the exact questions we track or the markets they cover.",
         },
       ],
-      note: "Measurement note: The 97% figure covers 30 daily ChatGPT checks of one priority buyer question. The wider comparison covers the same 49 non-branded buyer questions on ChatGPT, Perplexity and Google AI Overviews, checked daily, in the weeks of 8–14 October and 3–9 November 2026. These figures describe monitored AI answers, not all AI conversations, website visits or enquiries. We do not claim that any single piece of work caused a particular result.",
+      note: "Measurement note: Thirty-day totals cover 17 October–15 November 2026 across ChatGPT, Perplexity, Google AI Overviews, Microsoft Copilot and Gemini, for branded and non-branded questions. The 799 mentions include repeated references within 291 monitored answers; citations count links to the firm’s website in those answers. The 97% figure covers 29 of 30 daily ChatGPT checks of one priority buyer question. The engine comparison covers the same 49 non-branded questions on ChatGPT, Perplexity and Google AI Overviews, 8–14 October versus 3–9 November 2026. These figures describe monitored AI answers, not all AI conversations, website visits or enquiries. We do not claim that any single piece of work caused a particular result.",
     },
   },
 ];
