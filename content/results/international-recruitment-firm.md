@@ -1,47 +1,39 @@
+We helped an international recruitment firm strengthen its presence in those conversations. Over a 30-day reporting period, it recorded **372 mentions** in tracked AI answers to questions that didn’t name the business. For one priority recruitment question, ChatGPT included the firm on **29 of 30 days**.
+
 <div class="ds-result-stats">
-  <div><strong>799</strong><span>Brand mentions recorded in AI answers over 30 days</span></div>
-  <div><strong>338</strong><span>Website citations in AI answers over 30 days</span></div>
-  <div><strong>97%</strong><span>ChatGPT visibility for one priority buyer question</span></div>
+  <div><strong>372</strong><span>Mentions in AI answers to questions that didn’t name the firm</span></div>
+  <div><strong>29 of 30</strong><span>Days included in ChatGPT’s answer to a priority recruitment question</span></div>
+  <div><strong>6</strong><span>Newly published website articles used as sources in AI answers</span></div>
 </div>
 
-<p class="ds-result-caption-quiet">Reporting period: 17 October–15 November 2026. Branded and non-branded tracked questions.</p>
+<p class="ds-result-caption-quiet">Reporting period: 17 October–15 November 2026.</p>
 
-## Appearing when potential clients ask AI who to use
+## The challenge: getting considered by potential clients
 
-The firm wanted to strengthen its presence in AI answers about recruitment services. Our initial research identified relevant buyer questions where it was not appearing.
+Our initial research found relevant recruitment questions where the firm wasn’t appearing in AI answers.
 
-We focused on the questions people ask when researching recruitment partners: who to use, how to approach a hire and how to compare their options. These questions shaped the research, website work and content programme.
+These were questions potential clients could ask while deciding which recruitment partner to approach. The opportunity was to get the firm included while those clients were researching their options.
 
-## From buyer questions to useful content
+## What we did
 
-### Researching the questions that matter
+1. **Found the questions potential clients ask.** We mapped questions around the firm’s recruitment services and identified gaps in its appearances.
+2. **Worked backwards from AI’s recommendations.** We examined which agencies appeared and which websites AI used to build its answers.
+3. **Improved the website and answered those questions.** We made technical improvements, clarified service information and published relevant content. Six new articles were subsequently used as sources in AI answers.
 
-We mapped buyer questions around the firm’s services and tracked its appearances in AI answers. This gave us a clear starting point and a way to measure progress.
+## The results
 
-### Reverse engineering the answers
+<!-- SCREENSHOT SLOT: masked ChatGPT answer for the priority question goes here. See the ANONYMITY note in content/results.ts before adding one. -->
 
-We reviewed which firms AI recommended and the websites its answers drew on. That research helped us identify content gaps and prioritise the questions the firm needed to answer.
+<div class="ds-result-proof">
+  <strong>Included on 29 of 30 days</strong>
+  <p>Listed first in five of seven recent daily checks.</p>
+  <span>Results for one priority buyer question in ChatGPT.</span>
+</div>
 
-### Improving the website and publishing content
+### Appearing across four previously uncovered buyer questions
 
-We worked on technical improvements, clearer service information and content that directly answers buyer questions. By 10 November, **six newly published articles** were being used as sources for AI answers.
+Four tracked questions with no recorded presence at baseline later showed appearances or links to the firm.
 
-## Hundreds of mentions across AI answers
+### The wider picture
 
-Across the 30-day reporting period, the firm recorded **799 brand mentions** and **338 website citations** in monitored AI answers.
-
-Of those mentions, **372** appeared in answers to questions that did not name the firm. This shows where it was being included without the question explicitly asking about the business.
-
-For one priority buyer question, the firm appeared in ChatGPT’s answer on **29 of 30 days**. It was also listed first for that question in five of seven daily checks between 9 and 15 November.
-
-## Fivefold growth in Perplexity appearances
-
-Across the same 49 non-branded buyer questions, appearances in Perplexity answers increased **fivefold**—from 2 in the baseline week to 10 in the comparison week.
-
-<p class="ds-result-caption-quiet">8–14 October compared with 3–9 November 2026.</p>
-
-## Visibility across previously uncovered questions
-
-Four buyer questions where the firm had no recorded mentions, links or source uses at baseline showed appearances or links by the later review.
-
-For one of those questions, the firm was named and linked to in **all seven daily Perplexity checks** during the comparison week.
+Across every tracked question, including those that named the firm, it recorded **799 brand mentions** and **338 website citations** in AI answers over the same 30 days.

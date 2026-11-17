@@ -1052,3 +1052,11 @@
 .ds-site.ds-home .ds-page .ds-cta p{color:#cadcd1}
 /* All five platforms stay visible on /services/aeo, so its strip wraps on mobile. */
 @media(max-width:700px){.ds-site .ds-aeo .ds-engines{flex-wrap:wrap;justify-content:flex-start;gap:14px 22px;overflow:visible}}
+/* Single headline proof figure in a case-study body */
+.ds-site .ds-result-proof{margin:8px 0 48px;padding:32px;border:1px solid var(--ds-line);border-top:3px solid var(--ds-green);border-radius:16px;background:#fffefb}
+.ds-site .ds-result-proof strong{display:block;font-size:clamp(32px,4.4vw,48px);line-height:1.08;letter-spacing:-.03em;font-weight:500;color:var(--ds-ink);margin-bottom:12px}
+.ds-site .ds-result-article .ds-result-proof p{font-size:18px;color:var(--ds-ink);margin:0 0 8px}
+.ds-site .ds-result-proof span{display:block;font-size:13px;line-height:1.6;color:var(--ds-muted)}
+.ds-site .ds-result-article ol{margin:0 0 16px;padding-left:22px;list-style:decimal}
+.ds-site .ds-result-article ol li{margin-bottom:14px}
+@media(max-width:700px){.ds-site .ds-result-proof{padding:22px}}

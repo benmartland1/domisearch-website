@@ -155,15 +155,14 @@ export const RESULTS: ResultCaseStudy[] = [
     showOn: { page: "recruitment", href: "/recruitment#proof", label: "Recruitment" },
     overlay: { text: "International recruitment firm" },
     sector: "International recruitment firm",
-    // ACCURACY: 799 / 338 are 30-day TOTALS (17 Oct–15 Nov 2026), not
-    // increases. They cover all five monitored engines (ChatGPT, Perplexity,
-    // Google AI Overviews, Copilot, Gemini) and both branded and non-branded
-    // questions; Ben chose the five-engine figures (2026-11-17). 799 counts
-    // repeat references within 291 answers; 372 of the 799 came from non-branded questions.
-    // 97% = 29 of 30 daily ChatGPT checks for ONE question: keep "one priority
-    // buyer question" wherever it appears.
-    headline: "799 brand mentions. 338 website citations. One international recruitment firm.",
-    summary: "Recorded in AI answers over 30 days, with 97% ChatGPT visibility for one priority buyer question.",
+    // ACCURACY: all figures cover 17 Oct–15 Nov 2026 across five monitored
+    // engines (ChatGPT, Perplexity, Google AI Overviews, Copilot, Gemini).
+    // 372 = mentions from NON-BRANDED questions only (part of the 799 total).
+    // "29 of 30" = daily ChatGPT checks for ONE question: always say "one
+    // priority (recruitment|buyer) question". "Shortlist" in the headline rests
+    // on that one question; the intro states the scope straight after it.
+    headline: "How we got an international recruitment firm onto ChatGPT’s shortlist",
+    summary: "When a potential client asks AI which recruitment agency to use, you want your firm in the answer.",
     image: {
       src: "/case-studies/recruitment-office.webp",
       width: 924,
@@ -172,9 +171,11 @@ export const RESULTS: ResultCaseStudy[] = [
       position: "50% 40%",
     },
     detail: {
-      // COPY: Ben's brief of 2026-11-17 replaced the earlier page copy. It
-      // drops the FAQ section, the engine-by-engine table and the measurement
-      // note. Do not reintroduce FAQs, caveat blocks or the table. The
+      // COPY: Ben's second brief of 2026-11-17: outcome-led headline, 372 /
+      // 29-of-30 / 6 cards up top, challenge, three steps, proof, 799 / 338 as
+      // supporting evidence only. The Perplexity "fivefold" section was cut
+      // from the story on purpose; the figure below stays verified if needed.
+      // Do not reintroduce FAQs, caveat blocks or the engine table. The
       // "never name the tool" rule above still applies to the captions.
       // ACCURACY (verified against the tracking data on 2026-11-17): Perplexity 2 -> 10
       // appearances (the "fivefold") on the same 49 non-branded questions,
@@ -187,15 +188,15 @@ export const RESULTS: ResultCaseStudy[] = [
       // nor citations as traffic, backlinks or customers. Competitor rankings
       // were NOT verified: leave them out. Never publish the questions' wording
       // or the markets they name.
-      metaTitle: "799 AI Brand Mentions for a Recruitment Firm | DomiSearch",
+      metaTitle: "How We Got a Recruitment Firm onto ChatGPT’s Shortlist | DomiSearch",
       metaDescription:
-        "An international recruitment firm recorded 799 brand mentions and 338 website citations in AI answers over 30 days. Explore the work and results.",
+        "An international recruitment firm recorded 372 mentions in AI answers to questions that didn’t name it over 30 days, and appeared in ChatGPT’s answer to a priority recruitment question on 29 of 30 days.",
       source: "30 days of monitoring · 17 October–15 November 2026",
       heroCta: "booking",
       article: "international-recruitment-firm.md",
       cta: {
-        heading: "Want your recruitment firm to appear in AI answers?",
-        sub: "Book a free 30-minute call. We’ll show you where your firm appears today and where we would focus first.",
+        heading: "Is your recruitment firm on AI’s shortlist?",
+        sub: "Book a free 30-minute call. We’ll show you where your firm appears today and the recruitment questions we would focus on first.",
       },
     },
   },
